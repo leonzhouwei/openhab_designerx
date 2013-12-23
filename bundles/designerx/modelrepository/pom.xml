@@ -7,4 +7,5 @@
   </parent>
   <artifactId>modelrepository</artifactId>
   <packaging>pom</packaging>
+  <groupId>org.openhab.bundles.designerx</groupId>
 </project>

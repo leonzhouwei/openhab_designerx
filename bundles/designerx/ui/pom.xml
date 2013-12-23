@@ -7,4 +7,5 @@
   </parent>
   <artifactId>ui</artifactId>
   <packaging>pom</packaging>
+  <groupId>org.openhab.bundles.designerx</groupId>
 </project>
