@@ -1,20 +1,14 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
   <modelVersion>4.0.0</modelVersion>
   <parent>
-    <groupId>org.openhab</groupId>
-    <artifactId>bundles</artifactId>
+    <groupId>org.openhab.bundles</groupId>
+    <artifactId>designerx</artifactId>
     <version>0.0.1-SNAPSHOT</version>
   </parent>
-  <groupId>org.openhab.bundles</groupId>
-  <artifactId>designerx</artifactId>
+  <artifactId>config</artifactId>
   <packaging>pom</packaging>
   <modules>
-  	<module>model</module>
-  	<module>ui</module>
-  	<module>core</module>
-  	<module>modelrepository</module>
-  	<module>persistence</module>
-  	<module>server</module>
-  	<module>config</module>
+  	<module>org.openhab.designerx.config</module>
   </modules>
+  <groupId>org.openhab.bundles.designerx</groupId>
 </project>
