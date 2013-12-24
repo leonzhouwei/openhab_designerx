@@ -14,10 +14,8 @@
 	<dependencyManagement>
 		<dependencies>
 			<dependency>
-				<groupId>org.openhab.designerx.dependency</groupId>
-				<artifactId>
-					org.openhab.designerx.dependency
-				</artifactId>
+				<groupId>org.openhab.designerx.dependencies</groupId>
+				<artifactId>org.openhab.designerx.dependencies</artifactId>
 				<version>0.0.1-SNAPSHOT</version>
 				<type>pom</type>
 				<scope>import</scope>
@@ -42,5 +40,4 @@
 			<artifactId>guava</artifactId>
 		</dependency>
 	</dependencies>
-
 </project>
