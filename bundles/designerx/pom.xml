@@ -17,5 +17,6 @@
 		<module>persistence</module>
 		<module>server</module>
 		<module>config</module>
+		<module>lib</module>
 	</modules>
 </project>
