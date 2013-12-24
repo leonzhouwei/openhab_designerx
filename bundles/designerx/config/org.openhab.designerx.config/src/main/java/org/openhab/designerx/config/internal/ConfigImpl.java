@@ -1,19 +1,24 @@
 package org.openhab.designerx.config.internal;
 
 import java.io.File;
-import java.util.Arrays;
+import java.util.Collections;
+import java.util.List;
 import java.util.Map;
+import java.util.Set;
 
 import org.openhab.designerx.config.Config;
 import org.openhab.designerx.config.ConfigConstants;
+import org.openhab.designerx.config.ConfigException;
 
+import com.google.common.collect.Lists;
 import com.google.common.collect.Maps;
+import com.google.common.collect.Sets;
 
 public class ConfigImpl implements Config {
 
 	private boolean loaded = false;
-	private String home;
-	private String sitemapFolderPath;
+	private String openHABHomeFolderPath;
+	private String sitemapsFolderPath;
 	
 	private static String[] HOME_FOLDER_CHILDREN_NAMES = {
 		ConfigConstants.ADDONS,
@@ -35,12 +40,11 @@ public class ConfigImpl implements Config {
 		ConfigConstants.TRANSFORM
 	};
 
-	public ConfigImpl() {
+	public void load() throws ConfigException {
 		if (loaded) {
 			return;
 		}
 		System.out.println(ConfigConstants.STRIKETHROUGH_80);
-		System.out.println("looking for the openHAB home folder...");
 		loaded = true;
 		File homeFolder = null;
 		homeFolder = lookForHomeFolderInUserMode();
@@ -48,16 +52,25 @@ public class ConfigImpl implements Config {
 			homeFolder = lookForHomeFolderInDevMode();
 		}
 		if (homeFolder == null) {
-			System.err.println("could not find the openHAB home folder");
+			System.err.println("could not find the openHAB home folder!");
 		}
+		verifyHomeFolder(homeFolder);
+		File configFolder = new File(homeFolder.getPath() + ConfigConstants.FILE_SEPARATOR + ConfigConstants.CONFIGURATIONS);
+		verifyConfigFolder(configFolder);
+		System.out.println("listing the files in the openHAB home flder ('" + homeFolder.getPath() + "')");
 		listAsc(homeFolder);
+		openHABHomeFolderPath = homeFolder.getPath();
+		sitemapsFolderPath = configFolder.getPath() + ConfigConstants.FILE_SEPARATOR + ConfigConstants.SITEMAPS;
+	}
+	
+	@Override
+	public String getOpenHABHomeFolderPath() {
+		return openHABHomeFolderPath;
 	}
 
 	@Override
-	public String getSitemapFolderPath() {
-		synchronized (this) {
-			return sitemapFolderPath;
-		}
+	public String getSitemapsFolderPath() {
+		return sitemapsFolderPath;
 	}
 
 	private File lookForHomeFolderInUserMode() {
@@ -106,23 +119,51 @@ public class ConfigImpl implements Config {
 	}
 
 	private void listAsc(File folder) {
-		String[] names = folder.list();
-		Arrays.sort(names);
+		List<String> names = Lists.newArrayList();
+		Map<String, File> map = Maps.newHashMap();
+		File[] files = folder.listFiles();
+		for (File f : files) {
+			String name = f.getName();
+			names.add(name);
+			map.put(name, f);
+		}
+		Collections.sort(names);
 		for (String name : names) {
 			if (name.startsWith(".")) {
 				continue;
 			}
-			System.out.println(name);
+			System.out.print(name);
+			if (map.get(name).isDirectory()) {
+				System.out.print(ConfigConstants.FILE_SEPARATOR);
+			}
+			System.out.println();
 		}
 	}
 	
-	private boolean verifyHomeFolder(File homeFolder) {
-		Map<String, File> map = Maps.newHashMap();
-		return false;
+	private void verifyHomeFolder(File homeFolder) throws ConfigException {
+		Set<String> set = Sets.newHashSet();
+		File[] files = homeFolder.listFiles();
+		for (File f : files) {
+			set.add(f.getName());
+		}
+		for (String name : HOME_FOLDER_CHILDREN_NAMES) {
+			if (!set.contains(name)) {
+				throw new ConfigException("'" + name + "' folder not found in '" + homeFolder.getPath() + "'");
+			}
+		}
 	}
 	
-	private boolean verifyConfigFolder(File configFolder) {
-		return false;
+	private void verifyConfigFolder(File configFolder) throws ConfigException {
+		Set<String> set = Sets.newHashSet();
+		File[] files = configFolder.listFiles();
+		for (File f : files) {
+			set.add(f.getName());
+		}
+		for (String name : CONFIG_FOLDER_CHILDREN_NAMES) {
+			if (!set.contains(name)) {
+				throw new ConfigException("'" + name + "' folder not found in '" + configFolder.getPath() + "'");
+			}
+		}
 	}
-	
+
 }

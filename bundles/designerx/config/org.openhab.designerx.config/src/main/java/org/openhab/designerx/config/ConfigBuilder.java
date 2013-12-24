@@ -6,7 +6,8 @@ public class ConfigBuilder {
 	
 	private static ConfigImpl config = new ConfigImpl();
 	
-	public static Config build() {
+	public synchronized static Config build() throws ConfigException {
+		config.load();
 		return config;
 	}
 	

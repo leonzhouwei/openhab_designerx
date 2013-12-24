@@ -2,6 +2,8 @@ package org.openhab.designerx.config;
 
 public interface Config {
 	
-	public String getSitemapFolderPath();
+	public String getOpenHABHomeFolderPath();
+	
+	public String getSitemapsFolderPath();
 
 }
