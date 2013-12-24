@@ -8,7 +8,4 @@
   <groupId>org.openhab.bundles.designerx</groupId>
   <artifactId>model</artifactId>
   <packaging>pom</packaging>
-  <modules>
-  	<module>org.openhab.designerx.model.core</module>
-  </modules>
 </project>

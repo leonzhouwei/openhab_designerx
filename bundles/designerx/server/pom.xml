@@ -9,7 +9,7 @@
   <packaging>pom</packaging>
   <groupId>org.openhab.bundles.designerx</groupId>
   <modules>
-  	<module>org.openhab.designerx.server.xtext</module>
+  	
   	<module>org.openhab.designerx.server</module>
   </modules>
 </project>
