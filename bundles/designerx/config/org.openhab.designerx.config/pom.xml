@@ -11,6 +11,20 @@
 	<groupId>org.openhab.designerx</groupId>
 	<artifactId>org.openhab.designerx.config</artifactId>
 
+	<dependencyManagement>
+		<dependencies>
+			<dependency>
+				<groupId>org.openhab.designerx.dependency</groupId>
+				<artifactId>
+					org.openhab.designerx.dependency
+				</artifactId>
+				<version>0.0.1-SNAPSHOT</version>
+				<type>pom</type>
+				<scope>import</scope>
+			</dependency>
+		</dependencies>
+	</dependencyManagement>
+
 	<dependencies>
 		<dependency>
 			<groupId>junit</groupId>
@@ -28,4 +42,5 @@
 			<artifactId>guava</artifactId>
 		</dependency>
 	</dependencies>
+
 </project>
