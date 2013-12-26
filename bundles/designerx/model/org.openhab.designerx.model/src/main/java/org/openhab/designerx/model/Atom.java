@@ -6,7 +6,7 @@ public interface Atom {
 
 	/**
 	 * 
-	 * @return "Chart", "Colorpicker", ...
+	 * @return "sitemap", "Chart", "Colorpicker", ...
 	 */
 	public String getType();
 
