@@ -2,7 +2,7 @@ package org.openhab.designerx.model.sitemap;
 
 public interface Element {
 	
-	public Type getType();
+	public ElementType getType();
 
 	public boolean isNestable();
 	
