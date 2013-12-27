@@ -1,5 +1,5 @@
 package org.openhab.designerx.model.sitemap;
 
-public interface NonNestableElement {
+public interface NonNestableElement extends Element {
 
 }
