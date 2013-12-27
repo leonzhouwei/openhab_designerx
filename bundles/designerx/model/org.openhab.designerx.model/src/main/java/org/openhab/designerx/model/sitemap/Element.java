@@ -2,8 +2,6 @@ package org.openhab.designerx.model.sitemap;
 
 public interface Element {
 	
-	public ElementType getType();
-
 	public boolean isNestable();
 	
 	public void setItem(String item);
@@ -17,5 +15,7 @@ public interface Element {
 	public void setIcon(String icon);
 	
 	public String getIcon();
+	
+	public String toXtext();
 	
 }
