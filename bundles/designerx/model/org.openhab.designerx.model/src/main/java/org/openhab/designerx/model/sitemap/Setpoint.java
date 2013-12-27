@@ -4,16 +4,16 @@ import java.math.BigDecimal;
 
 public interface Setpoint extends NonNestableElement {
 	 
-	BigDecimal getMinValue();
+	public BigDecimal getMinValue();
 
-	void setMinValue(BigDecimal value);
+	public void setMinValue(BigDecimal value);
 
-	BigDecimal getMaxValue();
+	public BigDecimal getMaxValue();
 
-	void setMaxValue(BigDecimal value);
+	public void setMaxValue(BigDecimal value);
 
-	BigDecimal getStep();
+	public BigDecimal getStep();
 
-	void setStep(BigDecimal value);
+	public void setStep(BigDecimal value);
 
 }

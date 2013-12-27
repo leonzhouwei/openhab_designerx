@@ -2,8 +2,8 @@ package org.openhab.designerx.model.sitemap;
 
 public interface Video extends NonNestableElement {
 	
-	String getUrl();
+	public String getUrl();
  
-	void setUrl(String value);
+	public void setUrl(String value);
 
 }

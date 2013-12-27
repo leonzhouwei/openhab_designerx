@@ -2,20 +2,20 @@ package org.openhab.designerx.model.sitemap;
 
 public interface VisibilityRule {
 
-	String getItem();
+	public String getItem();
 
-	void setItem(String value);
+	public void setItem(String value);
 
-	String getCondition();
+	public String getCondition();
 
-	void setCondition(String value);
+	public void setCondition(String value);
 
-	String getSign();
+	public String getSign();
 
-	void setSign(String value);
+	public void setSign(String value);
 
-	String getState();
+	public String getState();
 
-	void setState(String value);
+	public void setState(String value);
 
 }

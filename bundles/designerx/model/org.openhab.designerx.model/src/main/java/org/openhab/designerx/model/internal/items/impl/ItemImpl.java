@@ -1,4 +1,4 @@
-package org.openhab.designerx.model.internal.items;
+package org.openhab.designerx.model.internal.items.impl;
 
 import java.util.List;
 

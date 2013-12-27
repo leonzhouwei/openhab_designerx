@@ -2,16 +2,16 @@ package org.openhab.designerx.model.sitemap;
 
 public interface Chart extends NonNestableElement {
 	 
-	String getService();
+	public String getService();
 
-	void setService(String value);
+	public void setService(String value);
 
-	int getRefresh();
+	public int getRefresh();
 
-	void setRefresh(int value);
+	public void setRefresh(int value);
 
-	String getPeriod();
+	public String getPeriod();
 
-	void setPeriod(String value);
+	public void setPeriod(String value);
 
 }

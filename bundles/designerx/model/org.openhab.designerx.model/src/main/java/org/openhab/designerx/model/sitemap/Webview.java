@@ -2,12 +2,12 @@ package org.openhab.designerx.model.sitemap;
 
 public interface Webview extends NonNestableElement {
 	 
-	int getHeight();
+	public int getHeight();
 
-	void setHeight(int value);
+	public void setHeight(int value);
  
-	String getUrl();
+	public String getUrl();
 
-	void setUrl(String value);
+	public void setUrl(String value);
 
 }

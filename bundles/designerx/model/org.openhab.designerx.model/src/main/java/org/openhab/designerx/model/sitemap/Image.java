@@ -4,14 +4,14 @@ import java.util.List;
 
 public interface Image extends NestableElement {
 
-	String getUrl();
+	public String getUrl();
 
-	void setUrl(String value);
+	public void setUrl(String value);
 
-	int getRefresh();
+	public int getRefresh();
 
-	void setRefresh(int value);
+	public void setRefresh(int value);
 
-	List<ColorArray> getIconColor();
+	public List<ColorArray> getIconColor();
 
 }

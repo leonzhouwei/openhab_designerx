@@ -4,6 +4,6 @@ import java.util.List;
 
 public interface Switch extends NonNestableElement {
 	
-	List<Mapping> getMappings();
+	public List<Mapping> getMappings();
 
 }

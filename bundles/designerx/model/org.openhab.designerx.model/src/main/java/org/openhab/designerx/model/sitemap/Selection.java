@@ -4,6 +4,6 @@ import java.util.List;
 
 public interface Selection extends NonNestableElement {
 	 
-	List<Mapping> getMappings();
+	public List<Mapping> getMappings();
 
 }

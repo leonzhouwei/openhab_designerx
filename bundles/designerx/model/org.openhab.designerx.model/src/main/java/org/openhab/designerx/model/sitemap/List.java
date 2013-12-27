@@ -2,8 +2,8 @@ package org.openhab.designerx.model.sitemap;
 
 public interface List extends NonNestableElement {
 
-	String getSeparator();
+	public String getSeparator();
 
-	void setSeparator(String value);
+	public void setSeparator(String value);
 
 }

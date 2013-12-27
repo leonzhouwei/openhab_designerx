@@ -2,12 +2,12 @@ package org.openhab.designerx.model.sitemap;
 
 public interface Mapping {
 	
-	String getCmd();
+	public String getCmd();
 
-	void setCmd(String value);
+	public void setCmd(String value);
 
-	String getLabel();
+	public String getLabel();
 
-	void setLabel(String value);
+	public void setLabel(String value);
 
 }
