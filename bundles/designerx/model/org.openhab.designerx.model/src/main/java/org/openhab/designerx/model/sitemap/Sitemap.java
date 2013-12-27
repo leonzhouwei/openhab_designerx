@@ -1,14 +1,12 @@
 package org.openhab.designerx.model.sitemap;
 
-public interface Element {
-	
-	public ElementType getType();
+import java.util.List;
 
-	public boolean isNestable();
+public interface Sitemap {
 	
-	public void setItem(String item);
+	public void setName(String name);
 	
-	public String getItem();
+	public String getName();
 	
 	public void setLabel(String label);
 	
@@ -18,4 +16,6 @@ public interface Element {
 	
 	public String getIcon();
 	
+	public List<Element> getChildren();
+
 }
