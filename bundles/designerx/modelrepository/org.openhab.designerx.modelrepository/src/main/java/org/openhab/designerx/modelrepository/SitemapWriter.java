@@ -2,8 +2,8 @@ package org.openhab.designerx.modelrepository;
 
 import org.openhab.designerx.model.sitemap.Sitemap;
 
-public interface SitemapReader {
-	
-	public Sitemap read(String name);
+public interface SitemapWriter {
 
+	public void write(String name, Sitemap sitemap);
+	
 }
