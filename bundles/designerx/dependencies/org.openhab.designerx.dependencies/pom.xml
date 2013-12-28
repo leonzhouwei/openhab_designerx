@@ -7,7 +7,7 @@
     <version>0.0.1-SNAPSHOT</version>
   </parent>
   
-  <groupId>org.openhab.designerx.dependencies</groupId>
+  <groupId>org.openhab.designerx</groupId>
   <artifactId>org.openhab.designerx.dependencies</artifactId>
   <packaging>pom</packaging>
   

@@ -4,12 +4,12 @@
 
 	<parent>
 		<groupId>org.openhab.bundles.designerx</groupId>
-		<artifactId>config</artifactId>
+		<artifactId>modelrepository</artifactId>
 		<version>0.0.1-SNAPSHOT</version>
 	</parent>
 
 	<groupId>org.openhab.designerx</groupId>
-	<artifactId>org.openhab.designerx.config</artifactId>
+	<artifactId>org.openhab.designerx.modelrepository</artifactId>
 
 	<dependencyManagement>
 		<dependencies>
