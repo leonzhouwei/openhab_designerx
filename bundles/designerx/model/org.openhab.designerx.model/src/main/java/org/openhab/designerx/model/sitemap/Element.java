@@ -16,6 +16,4 @@ public interface Element {
 	
 	public String getIcon();
 	
-	public String toXtext();
-	
 }
