@@ -4,6 +4,6 @@ import org.openhab.designerx.model.sitemap.Sitemap;
 
 public interface SitemapWriter {
 
-	public void write(String name, Sitemap sitemap);
+	public void write(Sitemap sitemap);
 	
 }
