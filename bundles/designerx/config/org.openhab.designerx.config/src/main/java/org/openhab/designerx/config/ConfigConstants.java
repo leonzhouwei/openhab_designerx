@@ -30,4 +30,8 @@ public final class ConfigConstants {
 	
 	//
 	public static final String STRIKETHROUGH_80 = "--------------------------------------------------------------------------------";
+	
+	// private constructor method
+	private ConfigConstants() {}
+	
 }
