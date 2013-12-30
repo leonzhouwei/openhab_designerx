@@ -13,7 +13,7 @@ import org.openhab.designerx.model.sitemap.VisibilityRule;
  * @author zhouwei
  * 
  */
-final class ColorPickerImpl implements Colorpicker {
+final class ColorpickerImpl implements Colorpicker {
 
 	private NonNestableElementImpl element = new NonNestableElementImpl();
 	private int frequency = 0;
