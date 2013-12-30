@@ -6,14 +6,14 @@ public interface Setpoint extends NonNestableElement {
 	 
 	public BigDecimal getMinValue();
 
-	public void setMinValue(BigDecimal value);
+	public void setMinValue(BigDecimal minValue);
 
 	public BigDecimal getMaxValue();
 
-	public void setMaxValue(BigDecimal value);
+	public void setMaxValue(BigDecimal maxValue);
 
 	public BigDecimal getStep();
 
-	public void setStep(BigDecimal value);
+	public void setStep(BigDecimal step);
 
 }

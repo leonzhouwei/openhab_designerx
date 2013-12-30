@@ -4,6 +4,6 @@ public interface List extends NonNestableElement {
 
 	public String getSeparator();
 
-	public void setSeparator(String value);
+	public void setSeparator(String separator);
 
 }

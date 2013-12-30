@@ -4,22 +4,22 @@ public interface ColorArray {
 
 	public String getItem();
 
-	public void setItem(String value);
+	public void setItem(String item);
 
 	public String getCondition();
 
-	public void setCondition(String value);
+	public void setCondition(String condition);
 
 	public String getSign();
 
-	public void setSign(String value);
+	public void setSign(String sign);
 
 	public String getState();
 
-	public void setState(String value);
+	public void setState(String state);
 
 	public String getArg();
 
-	public void setArg(String value);
+	public void setArg(String arg);
 
 }

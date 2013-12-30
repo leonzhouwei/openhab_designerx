@@ -4,10 +4,10 @@ public interface Slider extends NonNestableElement {
 	 
 	public int getFrequency();
 
-	public void setFrequency(int value);
+	public void setFrequency(int frequency);
 
 	public boolean isSwitchEnabled();
 
-	public void setSwitchEnabled(boolean value);
+	public void setSwitchEnabled(boolean switchEnabled);
 
 }

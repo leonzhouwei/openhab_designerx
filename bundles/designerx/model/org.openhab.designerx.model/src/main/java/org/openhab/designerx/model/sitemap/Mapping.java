@@ -4,10 +4,10 @@ public interface Mapping {
 	
 	public String getCmd();
 
-	public void setCmd(String value);
+	public void setCmd(String cmd);
 
 	public String getLabel();
 
-	public void setLabel(String value);
+	public void setLabel(String label);
 
 }

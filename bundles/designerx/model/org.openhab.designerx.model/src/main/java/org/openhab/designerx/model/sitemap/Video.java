@@ -4,6 +4,6 @@ public interface Video extends NonNestableElement {
 	
 	public String getUrl();
  
-	public void setUrl(String value);
+	public void setUrl(String url);
 
 }
