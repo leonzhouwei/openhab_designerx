@@ -10,5 +10,6 @@
   <packaging>pom</packaging>
   <modules>
   	<module>org.openhab.designerx.model</module>
+  	<module>org.openhab.designerx.model.xtext</module>
   </modules>
 </project>

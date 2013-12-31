@@ -1,4 +1,4 @@
-package org.openhab.designerx.model.sitemap.impl;
+package org.openhab.designerx.model.atomxtextconvert;
 
 import java.util.Collections;
 import java.util.Iterator;

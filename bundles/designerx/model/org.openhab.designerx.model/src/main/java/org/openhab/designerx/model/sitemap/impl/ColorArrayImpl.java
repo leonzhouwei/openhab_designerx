@@ -4,11 +4,11 @@ import org.openhab.designerx.model.sitemap.ColorArray;
 
 final class ColorArrayImpl implements ColorArray {
 
-	private String item;
+	private String arg;
 	private String condition;
+	private String item;
 	private String sign;
 	private String state;
-	private String arg;
 
 	@Override
 	public String getItem() {
