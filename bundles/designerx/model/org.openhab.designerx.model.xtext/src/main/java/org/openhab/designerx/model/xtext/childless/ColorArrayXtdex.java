@@ -1,4 +1,4 @@
-package org.openhab.designerx.model.atomxtextconvert;
+package org.openhab.designerx.model.xtext.childless;
 
 import java.util.Map;
 
