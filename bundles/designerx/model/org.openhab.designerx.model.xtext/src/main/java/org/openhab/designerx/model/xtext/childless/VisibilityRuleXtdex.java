@@ -1,24 +1,12 @@
 package org.openhab.designerx.model.xtext.childless;
 
-import java.util.Map;
-
 import org.openhab.designerx.model.sitemap.Mapping;
 import org.openhab.designerx.model.sitemap.VisibilityRule;
 import org.openhab.designerx.model.sitemap.impl.VisibilityRuleBuilder;
 
-import com.google.common.collect.ImmutableSet;
-
 public final class VisibilityRuleXtdex {
 	
 	public static final String TYPE = "VisibilityRule";
-	
-	public static final ImmutableSet<String> KEYWORDS = ImmutableSet.<String> builder()
-			.add(TYPE)
-			.add("condition=")
-			.add("item=")
-			.add("sign=")
-			.add("state=")
-			.build();
 	
 	public static VisibilityRule fromXtext(String xtext) {
 		xtext = xtext.replaceAll("\\{", "").trim();
@@ -26,24 +14,15 @@ public final class VisibilityRuleXtdex {
 			throw new RuntimeException(xtext + " is NOT a " + TYPE);
 		}
 		VisibilityRule instance = new VisibilityRuleBuilder().build();
-		Map<String, String> map = Separator.separate(xtext, KEYWORDS);
 		// set the parameters
-		String condition = map.get("condition=");
-		if (condition != null) {
-			instance.setCondition(condition);
-		}
-		String item = map.get("item=");
-		if (item != null) {
-			instance.setItem(item);
-		}
-		String sign = map.get("sign=");
-		if (sign != null) {
-			instance.setSign(sign);
-		}
-		String state = map.get("state=");
-		if (state != null) {
-			instance.setState(state);
-		}
+		String condition = Extractor.extract(xtext, Constants.CONDITION_EQU, "\\b" + Constants.CONDITION_EQU + "\\w*");
+		instance.setCondition(condition);
+		String item = Extractor.extract(xtext, Constants.ITEM_EQU, "\\b" + Constants.ITEM_EQU + "\\w*");
+		instance.setItem(item);
+		String sign = Extractor.extract(xtext, Constants.SIGN_EQU, "\\b" + Constants.SIGN_EQU + "\\w*");
+		instance.setSign(sign);
+		String state = Extractor.extract(xtext, Constants.STATE_EQU, "\\b" + Constants.STATE_EQU + "\\w*");
+		instance.setState(state);
 		return instance;
 	}
 	

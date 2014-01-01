@@ -1,18 +1,26 @@
 package org.openhab.designerx.model.xtext.childless;
 
-import com.google.common.collect.ImmutableSet;
-
 final class Constants {
+
+	public static final String ARG_EQU = "arg=";
 	
-	public static final ImmutableSet<String> COMMON_ELEMENT_KEYWORDS = ImmutableSet.<String> builder()
-			.add("item=")
-			.add("label=")
-			.add("icon=")
-			.add("labelColor=")
-			.add("valueColor=")
-			.add("visibility=")
-			.build();
+	public static final String CMD_EQU = "cmd=";
+	public static final String CONDITION_EQU = "condition=";
 	
-	private Constants() {}
+	public static final String ICON_EQU = "icon=";
+	public static final String ITEM_EQU = "item=";
+	
+	public static final String LABELCOLOR_EQU = "labelcolor=";
+	public static final String LABEL_EQU = "label=";
+	
+	public static final String SIGN_EQU = "sign=";
+	public static final String SPACE = " ";
+	public static final String STATE_EQU = "state=";
+	
+	public static final String VALUECOLOR_EQU = "valuecolor=";
+	public static final String VISIBILITY_EQU = "visibility=";
+
+	private Constants() {
+	}
 
 }
