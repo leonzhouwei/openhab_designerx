@@ -21,6 +21,10 @@ final class Extractor {
 		return value;
 	}
 	
+	public static String preProcess(String xtext) {
+		return xtext.replaceAll("\\{", "").replaceAll("\\}", "").trim();
+	}
+	
 	private Extractor() {}
 
 }

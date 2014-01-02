@@ -8,6 +8,7 @@ import org.openhab.designerx.model.sitemap.impl.ElementBuilder;
 public final class ElementXdtex {
 	
 	public static Element fromXtext(String xtext) {
+		xtext = Extractor.preProcess(xtext);
 		Element e = new ElementBuilder().build();
 		String item = Extractor.extract(xtext, Constants.ITEM_EQU, "\\b" + Constants.ITEM_EQU + "\\w*");
 		e.setItem(item);
@@ -29,17 +30,17 @@ public final class ElementXdtex {
 		if (e.getItem() != null) {
 			sb.append(Constants.ITEM_EQU);
 			sb.append(e.getItem());
-			sb.append(Constants.SPACE);
+			sb.append(Constants.SPACE_MARK);
 		}
 		if (e.getLabel() != null) {
 			sb.append(Constants.LABEL_EQU);
 			sb.append(e.getLabel());
-			sb.append(Constants.SPACE);
+			sb.append(Constants.SPACE_MARK);
 		}
 		if (e.getIcon() != null) {
 			sb.append(Constants.ICON_EQU);
 			sb.append(e.getIcon());
-			sb.append(Constants.SPACE);
+			sb.append(Constants.SPACE_MARK);
 		}
 		return sb.toString().trim();
 	}

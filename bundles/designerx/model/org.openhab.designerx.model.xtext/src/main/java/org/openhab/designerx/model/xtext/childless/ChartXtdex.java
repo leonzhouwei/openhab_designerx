@@ -13,7 +13,7 @@ public final class ChartXtdex {
 	private static final String SERVICE_EQU = "service=";
 	
 	public static Chart fromXtext(String xtext) {
-		xtext = xtext.replaceAll("\\{", "").trim();
+		xtext = Extractor.preProcess(xtext);
 		if (!xtext.startsWith(TYPE)) {
 			throw new RuntimeException(xtext + " is NOT a " + TYPE);
 		}
@@ -40,17 +40,17 @@ public final class ChartXtdex {
 	public static String toXtext(Chart e) {
 		StringBuilder sb = new StringBuilder();
 		sb.append(TYPE);
-		sb.append(Constants.SPACE);
+		sb.append(Constants.SPACE_MARK);
 		sb.append(ElementXdtex.toXtext(e).trim());
-		sb.append(Constants.SPACE);
+		sb.append(Constants.SPACE_MARK);
 		if (e.getPeriod() != null) {
 			sb.append(PERIOD_EQU);
 			sb.append(e.getPeriod());
-			sb.append(Constants.SPACE);
+			sb.append(Constants.SPACE_MARK);
 		}
 		sb.append(REFRESH_EQU);
 		sb.append(e.getRefresh());
-		sb.append(Constants.SPACE);
+		sb.append(Constants.SPACE_MARK);
 		if (e.getService() != null) {
 			sb.append(SERVICE_EQU);
 			sb.append(e.getService());

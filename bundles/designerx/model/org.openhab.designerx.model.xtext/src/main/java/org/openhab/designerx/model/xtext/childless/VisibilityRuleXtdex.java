@@ -9,7 +9,7 @@ public final class VisibilityRuleXtdex {
 	public static final String TYPE = "VisibilityRule";
 	
 	public static VisibilityRule fromXtext(String xtext) {
-		xtext = xtext.replaceAll("\\{", "").trim();
+		xtext = Extractor.preProcess(xtext);
 		if (!xtext.startsWith(TYPE)) {
 			throw new RuntimeException(xtext + " is NOT a " + TYPE);
 		}

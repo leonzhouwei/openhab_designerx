@@ -1,34 +1,89 @@
 package org.openhab.designerx.model.xtext.childless;
 
+import java.util.List;
+import java.util.Set;
+
 import org.openhab.designerx.model.sitemap.ColorArray;
 import org.openhab.designerx.model.sitemap.impl.ColorArrayBuilder;
 
-public final class ColorArrayXtdex {
+import com.google.common.collect.ImmutableSet;
+import com.google.common.collect.Lists;
+
+final class ColorArrayXtdex {
 	
-	public static final String TYPE = "colorarry";
+	//  Valid operators are the ==, >=, <=, !=, >, <.
+	private static Set<String> VALIDE_OPERATORS = ImmutableSet.<String>builder()
+			.add("==")
+			.add(">=")
+			.add("<=")
+			.add("!=")
+			.add(">")
+			.add("<")
+			.build();
 	
-	public static ColorArray fromXtext(String xtext) {
-		xtext = xtext.replaceAll("\\{", "").trim();
-		if (!xtext.startsWith(TYPE)) {
-			throw new RuntimeException(xtext + " is NOT a " + TYPE);
+	public static List<ColorArray> fromXtext(String xtext, String type) {
+		xtext = Extractor.preProcess(xtext);
+		if (!xtext.matches(".*" + type + "=\\[.*\\]")) {
+			throw new RuntimeException(xtext + " is NOT a " + type);
 		}
-		ColorArray instance = new ColorArrayBuilder().build();
+		List<ColorArray> ret = Lists.newArrayList();
+		// extract the "[...]" part
+		int i = xtext.indexOf(type);
+		i = xtext.indexOf("[", i);
+		int j = xtext.indexOf("]", i);
+		xtext = xtext.substring(i + 1, j).trim();
+		if (xtext.isEmpty()) {
+			return ret;
+		}
+		String[] rules = xtext.split(",");
+		// parse
+		for (String rule : rules) {
+			ColorArray e = new ColorArrayBuilder().build();
+			int equ = rule.lastIndexOf("=");
+			String pre = rule.substring(0, equ).trim();
+			String arg = rule.substring(equ + 1).trim();
+			//  Valid operators are the ==, >=, <=, !=, >, <.
+			for (String operator : VALIDE_OPERATORS) {
+				e.setCondition(pre);
+				if (pre.endsWith(operator)) {
+					String[] split = pre.split(operator);
+					if (split.length == 2) {
+						e.setItem(split[0]);
+					}
+					break;
+				}
+			}
+			e.setArg(arg);
+			ret.add(e);
+		}
 		// set the parameters
-		String arg = Extractor.extract(xtext, Constants.ARG_EQU, "\\b" + Constants.ARG_EQU + "\\w*");
-		instance.setArg(arg);
-		String condition = Extractor.extract(xtext, Constants.CONDITION_EQU, "\\b" + Constants.CONDITION_EQU + "\\w*");
-		instance.setCondition(condition);
-		String item = Extractor.extract(xtext, Constants.ITEM_EQU, "\\b" + Constants.ITEM_EQU + "\\w*");
-		instance.setItem(item);
-		String sign = Extractor.extract(xtext, Constants.SIGN_EQU, "\\b" + Constants.SIGN_EQU + "\\w*");
-		instance.setSign(sign);
-		String state = Extractor.extract(xtext, Constants.STATE_EQU, "\\b" + Constants.STATE_EQU + "\\w*");
-		instance.setState(state);
-		return instance;
+		return ret;
 	}
 	
-	public static String toXtext(ColorArray colorArray) {
-		return null;
+	public static String toXtext(List<ColorArray> colorArray, String type) {
+		StringBuilder sb = new StringBuilder();
+		sb.append(type);
+		sb.append(Constants.EQU_MARK);
+		sb.append("[");
+		for (ColorArray e : colorArray) {
+			String itemName = e.getItem();
+			if (itemName != null) {
+				sb.append(itemName);
+			}
+			System.out.println("oops: item name: " + itemName);
+			String condition = e.getCondition();
+			if (condition != null) {
+				sb.append(condition);
+			}
+			System.out.println("oops: condition: " + condition);
+			sb.append(Constants.EQU_MARK);
+			sb.append(e.getArg());
+			System.out.println("oops: arg: " + e.getArg());
+			sb.append(Constants.COMMA_MARK);
+		}
+		sb.deleteCharAt(sb.length() - 1);
+		sb.append("]");
+		return sb.toString().trim();
 	}
 	
 	private ColorArrayXtdex() {}
