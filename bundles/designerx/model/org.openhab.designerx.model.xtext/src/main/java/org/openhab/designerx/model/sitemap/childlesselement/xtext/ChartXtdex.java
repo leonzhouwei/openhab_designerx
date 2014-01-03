@@ -19,7 +19,7 @@ public final class ChartXtdex {
 		}
 		Chart instance = new ChartBuilder().build();
 		// set the elementary parameters
-		Element e = ElementXdtex.fromXtext(xtext);
+		Element e = ElementXtdex.fromXtext(xtext);
 		instance.setIcon(e.getIcon());
 		instance.setItem(e.getItem());
 		instance.setLabel(e.getLabel());
@@ -41,7 +41,7 @@ public final class ChartXtdex {
 		StringBuilder sb = new StringBuilder();
 		sb.append(TYPE);
 		sb.append(Constants.SPACE_MARK);
-		sb.append(ElementXdtex.toXtext(e).trim());
+		sb.append(ElementXtdex.toXtext(e).trim());
 		sb.append(Constants.SPACE_MARK);
 		if (e.getPeriod() != null) {
 			sb.append(PERIOD);

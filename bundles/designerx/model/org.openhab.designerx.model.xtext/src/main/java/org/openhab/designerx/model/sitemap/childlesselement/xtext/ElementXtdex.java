@@ -5,7 +5,7 @@ import org.openhab.designerx.model.sitemap.Element;
 import org.openhab.designerx.model.sitemap.VisibilityRule;
 import org.openhab.designerx.model.sitemap.impl.ElementBuilder;
 
-public final class ElementXdtex {
+public final class ElementXtdex {
 	
 	public static Element fromXtext(String xtext) {
 		xtext = PreProcessor.preProcess(xtext);
