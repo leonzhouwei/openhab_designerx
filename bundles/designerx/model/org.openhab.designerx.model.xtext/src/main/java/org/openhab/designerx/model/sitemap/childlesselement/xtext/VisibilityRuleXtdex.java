@@ -15,13 +15,13 @@ public final class VisibilityRuleXtdex {
 		}
 		VisibilityRule instance = new VisibilityRuleBuilder().build();
 		// set the parameters
-		String condition = Extractor.extract(xtext, Constants.CONDITION_EQU, "\\b" + Constants.CONDITION_EQU + "\\w*");
+		String condition = PropertyHandler.extract(xtext, Constants.CONDITION_EQU, "\\b" + Constants.CONDITION_EQU + "\\w*");
 		instance.setCondition(condition);
-		String item = Extractor.extract(xtext, Constants.ITEM_EQU, "\\b" + Constants.ITEM_EQU + "\\w*");
+		String item = PropertyHandler.extract(xtext, Constants.ITEM_EQU, "\\b" + Constants.ITEM_EQU + "\\w*");
 		instance.setItem(item);
-		String sign = Extractor.extract(xtext, Constants.SIGN_EQU, "\\b" + Constants.SIGN_EQU + "\\w*");
+		String sign = PropertyHandler.extract(xtext, Constants.SIGN_EQU, "\\b" + Constants.SIGN_EQU + "\\w*");
 		instance.setSign(sign);
-		String state = Extractor.extract(xtext, Constants.STATE_EQU, "\\b" + Constants.STATE_EQU + "\\w*");
+		String state = PropertyHandler.extract(xtext, Constants.STATE_EQU, "\\b" + Constants.STATE_EQU + "\\w*");
 		instance.setState(state);
 		return instance;
 	}

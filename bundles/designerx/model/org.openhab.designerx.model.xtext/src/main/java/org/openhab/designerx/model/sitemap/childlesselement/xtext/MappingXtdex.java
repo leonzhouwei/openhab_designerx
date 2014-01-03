@@ -14,9 +14,9 @@ public final class MappingXtdex {
 		}
 		// set the parameters
 		Mapping instance = new MappingBuilder().build();
-		String cmd = Extractor.extract(xtext, Constants.CMD_EQU, "\\b" + Constants.CMD_EQU + "\\w*");
+		String cmd = PropertyHandler.extract(xtext, Constants.CMD_EQU, "\\b" + Constants.CMD_EQU + "\\w*");
 		instance.setCmd(cmd);
-		String label = Extractor.extract(xtext, Constants.LABEL_EQU, "\\b" + Constants.LABEL_EQU + "\\w*");
+		String label = PropertyHandler.extract(xtext, Constants.LABEL_EQU, "\\b" + Constants.LABEL_EQU + "\\w*");
 		instance.setLabel(label);
 		return instance;
 	}

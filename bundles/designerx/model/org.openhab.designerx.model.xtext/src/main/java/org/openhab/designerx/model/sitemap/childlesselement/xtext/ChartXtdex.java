@@ -8,9 +8,9 @@ public final class ChartXtdex {
 	
 	public static final String TYPE = "Chart";
 
-	private static final String PERIOD_EQU = "period=";
-	private static final String REFRESH_EQU = "refresh=";
-	private static final String SERVICE_EQU = "service=";
+	private static final String PERIOD = "period";
+	private static final String REFRESH = "refresh";
+	private static final String SERVICE = "service";
 	
 	public static Chart fromXtext(String xtext) {
 		xtext = PreProcessor.preProcess(xtext);
@@ -27,12 +27,12 @@ public final class ChartXtdex {
 		instance.addValueColor(e.getValueColor());
 		instance.addVisibility(e.getVisibility());
 		// set the specific parameters
-		String period = Extractor.extract(xtext, PERIOD_EQU, "\\b" + PERIOD_EQU + "\\w*");
+		String period = PropertyHandler.getValue(xtext, PERIOD);
 		instance.setPeriod(period);
-		String refresh = Extractor.extract(xtext, REFRESH_EQU, "\\b" + REFRESH_EQU + "\\w*");
+		String refresh = PropertyHandler.getValue(xtext, REFRESH);
 		int i = Integer.parseInt(refresh);
 		instance.setRefresh(i);
-		String service = Extractor.extract(xtext, SERVICE_EQU, "\\b" + SERVICE_EQU + "\\w*");
+		String service = PropertyHandler.getValue(xtext, SERVICE);
 		instance.setService(service);
 		return instance;
 	}
@@ -44,15 +44,18 @@ public final class ChartXtdex {
 		sb.append(ElementXdtex.toXtext(e).trim());
 		sb.append(Constants.SPACE_MARK);
 		if (e.getPeriod() != null) {
-			sb.append(PERIOD_EQU);
+			sb.append(PERIOD);
+			sb.append(Constants.EQU_MARK);
 			sb.append(e.getPeriod());
 			sb.append(Constants.SPACE_MARK);
 		}
-		sb.append(REFRESH_EQU);
+		sb.append(REFRESH);
+		sb.append(Constants.EQU_MARK);
 		sb.append(e.getRefresh());
 		sb.append(Constants.SPACE_MARK);
 		if (e.getService() != null) {
-			sb.append(SERVICE_EQU);
+			sb.append(SERVICE);
+			sb.append(Constants.EQU_MARK);
 			sb.append(e.getService());
 		}
 		
