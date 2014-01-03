@@ -24,6 +24,9 @@ final class PropertyHandler {
 	
 	/**
 	 * get the value of the property in the form of "label=<open>content<close>]"
+	 * e.g. 
+	 * input: "mappings=[0="Hour"]", "mappings", "[", "]"
+	 * output: "[0="Hour"]"
 	 * 
 	 * @param xtext
 	 * @param name
@@ -44,15 +47,6 @@ final class PropertyHandler {
 		int j = xtext.indexOf(close, i + open.length());
 		String property = xtext.substring(i, j + 1);
 		return property;
-	}
-	
-	public static String getValue(String property) {
-		String value = null;
-		String[] split = property.split(Constants.EQU_MARK);
-		if (split.length == 2) {
-			value = split[1].trim();
-		}
-		return value;
 	}
 	
 	private PropertyHandler() {}
