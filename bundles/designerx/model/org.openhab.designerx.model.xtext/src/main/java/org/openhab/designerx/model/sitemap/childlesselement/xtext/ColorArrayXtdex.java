@@ -38,22 +38,7 @@ final class ColorArrayXtdex {
 		String[] rules = xtext.split(",");
 		// parse
 		for (String rule : rules) {
-			ColorArray e = new ColorArrayBuilder().build();
-			int equ = rule.lastIndexOf("=");
-			String pre = rule.substring(0, equ).trim();
-			String arg = rule.substring(equ + 1).trim();
-			//  Valid operators are the ==, >=, <=, !=, >, <.
-			for (String operator : VALIDE_OPERATORS) {
-				e.setCondition(pre);
-				if (pre.endsWith(operator)) {
-					String[] split = pre.split(operator);
-					if (split.length == 2) {
-						e.setItem(split[0]);
-					}
-					break;
-				}
-			}
-			e.setArg(arg);
+			ColorArray e = parseRule(rule);
 			ret.add(e);
 		}
 		// set the parameters
@@ -81,6 +66,26 @@ final class ColorArrayXtdex {
 		sb.deleteCharAt(sb.length() - 1);
 		sb.append("]");
 		return sb.toString().trim();
+	}
+	
+	private static ColorArray parseRule(String rule) {
+		ColorArray e = new ColorArrayBuilder().build();
+		int equ = rule.lastIndexOf("=");
+		String pre = rule.substring(0, equ).trim();
+		String arg = rule.substring(equ + 1).trim();
+		//  Valid operators are the ==, >=, <=, !=, >, <.
+		for (String operator : VALIDE_OPERATORS) {
+			e.setCondition(pre);
+			if (pre.endsWith(operator)) {
+				String[] split = pre.split(operator);
+				if (split.length == 2) {
+					e.setItem(split[0]);
+				}
+				break;
+			}
+		}
+		e.setArg(arg);
+		return e;
 	}
 	
 	private ColorArrayXtdex() {}
