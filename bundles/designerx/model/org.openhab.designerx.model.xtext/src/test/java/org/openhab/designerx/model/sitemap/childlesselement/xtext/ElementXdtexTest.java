@@ -1,6 +1,4 @@
-package org.openhab.designerx.model.xtext.childless;
-
-import static org.junit.Assert.*;
+package org.openhab.designerx.model.sitemap.childlesselement.xtext;
 
 import org.junit.Test;
 import org.openhab.designerx.model.sitemap.Element;

@@ -1,7 +1,8 @@
-package org.openhab.designerx.model.xtext.childless;
+package org.openhab.designerx.model.sitemap.childlesselement.xtext;
 
 import org.junit.Test;
 import org.openhab.designerx.model.sitemap.Chart;
+import org.openhab.designerx.model.sitemap.childlesselement.xtext.ChartXtdex;
 
 public class ChartXtdexTest {
 

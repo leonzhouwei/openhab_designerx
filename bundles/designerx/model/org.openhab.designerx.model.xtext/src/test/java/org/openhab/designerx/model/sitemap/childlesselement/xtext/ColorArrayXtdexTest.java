@@ -1,9 +1,10 @@
-package org.openhab.designerx.model.xtext.childless;
+package org.openhab.designerx.model.sitemap.childlesselement.xtext;
 
 import java.util.List;
 
 import org.junit.Test;
 import org.openhab.designerx.model.sitemap.ColorArray;
+import org.openhab.designerx.model.sitemap.childlesselement.xtext.ColorArrayXtdex;
 
 public class ColorArrayXtdexTest {
 	
@@ -22,7 +23,7 @@ public class ColorArrayXtdexTest {
 		System.out.println(ColorArrayXtdex.toXtext(ca, type));
 	}
 
-//	@Test
+	@Test
 	public void testToXtext() {
 		List<ColorArray> ca = ColorArrayXtdex.fromXtext(xtext, type);
 		System.out.println(ColorArrayXtdex.toXtext(ca, type));

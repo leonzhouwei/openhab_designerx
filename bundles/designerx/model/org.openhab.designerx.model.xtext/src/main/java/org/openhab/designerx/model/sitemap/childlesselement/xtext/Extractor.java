@@ -1,4 +1,4 @@
-package org.openhab.designerx.model.xtext.childless;
+package org.openhab.designerx.model.sitemap.childlesselement.xtext;
 
 final class Extractor {
 	
@@ -21,10 +21,6 @@ final class Extractor {
 		return value;
 	}
 	
-	public static String preProcess(String xtext) {
-		return xtext.replaceAll("\\{", "").replaceAll("\\}", "").trim();
-	}
-	
 	private Extractor() {}
-
+	
 }

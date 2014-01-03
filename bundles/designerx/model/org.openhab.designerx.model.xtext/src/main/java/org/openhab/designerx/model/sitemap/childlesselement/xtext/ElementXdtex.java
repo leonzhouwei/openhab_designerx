@@ -1,4 +1,4 @@
-package org.openhab.designerx.model.xtext.childless;
+package org.openhab.designerx.model.sitemap.childlesselement.xtext;
 
 import org.openhab.designerx.model.sitemap.ColorArray;
 import org.openhab.designerx.model.sitemap.Element;
@@ -8,7 +8,7 @@ import org.openhab.designerx.model.sitemap.impl.ElementBuilder;
 public final class ElementXdtex {
 	
 	public static Element fromXtext(String xtext) {
-		xtext = Extractor.preProcess(xtext);
+		xtext = PreProcessor.preProcess(xtext);
 		Element e = new ElementBuilder().build();
 		String item = Extractor.extract(xtext, Constants.ITEM_EQU, "\\b" + Constants.ITEM_EQU + "\\w*");
 		e.setItem(item);

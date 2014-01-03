@@ -1,4 +1,4 @@
-package org.openhab.designerx.model.xtext.childless;
+package org.openhab.designerx.model.sitemap.childlesselement.xtext;
 
 import java.util.List;
 import java.util.Set;
@@ -22,7 +22,7 @@ final class ColorArrayXtdex {
 			.build();
 	
 	public static List<ColorArray> fromXtext(String xtext, String type) {
-		xtext = Extractor.preProcess(xtext);
+		xtext = PreProcessor.preProcess(xtext);
 		if (!xtext.matches(".*" + type + "=\\[.*\\]")) {
 			throw new RuntimeException(xtext + " is NOT a " + type);
 		}
@@ -70,15 +70,12 @@ final class ColorArrayXtdex {
 			if (itemName != null) {
 				sb.append(itemName);
 			}
-			System.out.println("oops: item name: " + itemName);
 			String condition = e.getCondition();
 			if (condition != null) {
 				sb.append(condition);
 			}
-			System.out.println("oops: condition: " + condition);
 			sb.append(Constants.EQU_MARK);
 			sb.append(e.getArg());
-			System.out.println("oops: arg: " + e.getArg());
 			sb.append(Constants.COMMA_MARK);
 		}
 		sb.deleteCharAt(sb.length() - 1);

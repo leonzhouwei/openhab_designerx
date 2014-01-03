@@ -1,4 +1,4 @@
-package org.openhab.designerx.model.xtext.childless;
+package org.openhab.designerx.model.sitemap.childlesselement.xtext;
 
 import org.openhab.designerx.model.sitemap.Mapping;
 import org.openhab.designerx.model.sitemap.VisibilityRule;
@@ -9,7 +9,7 @@ public final class VisibilityRuleXtdex {
 	public static final String TYPE = "VisibilityRule";
 	
 	public static VisibilityRule fromXtext(String xtext) {
-		xtext = Extractor.preProcess(xtext);
+		xtext = PreProcessor.preProcess(xtext);
 		if (!xtext.startsWith(TYPE)) {
 			throw new RuntimeException(xtext + " is NOT a " + TYPE);
 		}

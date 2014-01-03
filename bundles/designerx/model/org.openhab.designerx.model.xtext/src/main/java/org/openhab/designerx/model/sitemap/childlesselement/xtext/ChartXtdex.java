@@ -1,4 +1,4 @@
-package org.openhab.designerx.model.xtext.childless;
+package org.openhab.designerx.model.sitemap.childlesselement.xtext;
 
 import org.openhab.designerx.model.sitemap.Chart;
 import org.openhab.designerx.model.sitemap.Element;
@@ -13,7 +13,7 @@ public final class ChartXtdex {
 	private static final String SERVICE_EQU = "service=";
 	
 	public static Chart fromXtext(String xtext) {
-		xtext = Extractor.preProcess(xtext);
+		xtext = PreProcessor.preProcess(xtext);
 		if (!xtext.startsWith(TYPE)) {
 			throw new RuntimeException(xtext + " is NOT a " + TYPE);
 		}
