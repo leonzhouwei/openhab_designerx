@@ -12,7 +12,7 @@ public class ChartXtdexTest {
 
 	@Test
 	public void testFromXtext() {
-		final String expected = "Chart item=Weather_Chart period=h refresh=600";
+		final String expected = "Chart item=Weather_Chart visibility=[Weather_Chart_Period==0,Weather_Chart_Period==\"Uninitialized\"] period=h refresh=600";
 		Chart chart = ChartXtdex.fromXtext(expected);
 		final String actual = ChartXtdex.toXtext(chart);
 		assertThat(actual, Matchers.equalTo(expected));
@@ -28,5 +28,5 @@ public class ChartXtdexTest {
 		final String actual = ChartXtdex.toXtext(chart);
 		assertThat(actual, Matchers.equalTo(expected));
 	}
-
+	
 }

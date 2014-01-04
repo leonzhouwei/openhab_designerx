@@ -19,7 +19,6 @@ public final class MappingsXtdex {
 		}
 		// set the parameters
 		String value = PropertyHandler.getValueStartingEndingWithBraces(xtext, TYPE);
-		System.out.println(value);
 		value = value.trim().substring(1, value.length() - 1);
 		String[] split = value.trim().split(Constants.COMMA_MARK);
 		for (String s : split) {

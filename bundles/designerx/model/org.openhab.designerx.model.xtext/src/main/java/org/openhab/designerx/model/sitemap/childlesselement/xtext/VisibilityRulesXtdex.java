@@ -21,33 +21,28 @@ final class VisibilityRulesXtdex {
 			.add("<")
 			.build();
 	
-	public static List<VisibilityRule> fromXtext(String xtext, String type) {
+	public static List<VisibilityRule> fromXtext(String xtext) {
 		xtext = PreProcessor.preProcess(xtext);
-		if (!xtext.matches(".*" + type + "=\\[.*\\]")) {
-			throw new RuntimeException(xtext + " is NOT a " + type);
+		List<VisibilityRule> visibility = Lists.newArrayList();
+		if (!xtext.matches(".*" + Constants.VISIBILITY + "\\s*=.*\\[.*\\].*")) {
+			return visibility;
 		}
-		List<VisibilityRule> ret = Lists.newArrayList();
 		// extract the "[...]" part
-		int i = xtext.indexOf(type);
-		i = xtext.indexOf("[", i);
-		int j = xtext.indexOf("]", i);
-		xtext = xtext.substring(i + 1, j).trim();
-		if (xtext.isEmpty()) {
-			return ret;
-		}
+		xtext = PropertyHandler.getValueStartingEndingWithBraces(xtext, Constants.VISIBILITY);
+		xtext = xtext.trim().substring(1, xtext.length() - 1);
 		String[] rules = xtext.split(",");
 		// parse
 		for (String rule : rules) {
 			VisibilityRule e = parseRule(rule);
-			ret.add(e);
+			visibility.add(e);
 		}
 		// set the parameters
-		return ret;
+		return visibility;
 	}
 	
-	public static String toXtext(List<VisibilityRule> list, String type) {
+	public static String toXtext(List<VisibilityRule> list) {
 		StringBuilder sb = new StringBuilder();
-		sb.append(type);
+		sb.append(Constants.VISIBILITY);
 		sb.append(Constants.EQU_MARK);
 		sb.append("[");
 		for (VisibilityRule e : list) {
@@ -68,16 +63,14 @@ final class VisibilityRulesXtdex {
 	
 	private static VisibilityRule parseRule(String rule) {
 		VisibilityRule e = new VisibilityRuleBuilder().build();
-		int equ = rule.lastIndexOf("=");
-		String pre = rule.substring(0, equ).trim();
 		//  Valid operators are the ==, >=, <=, !=, >, <.
 		for (String operator : VALIDE_OPERATORS) {
-			e.setCondition(pre);
-			if (pre.endsWith(operator)) {
-				String[] split = pre.split(operator);
-				if (split.length == 2) {
-					e.setItem(split[0]);
-				}
+			if (rule.contains(operator)) {
+				String[] split = rule.split(operator);
+				String item = split[0].trim();
+				e.setItem(item);
+				String condition = (operator + split[1]).trim();
+				e.setCondition(condition);
 				break;
 			}
 		}

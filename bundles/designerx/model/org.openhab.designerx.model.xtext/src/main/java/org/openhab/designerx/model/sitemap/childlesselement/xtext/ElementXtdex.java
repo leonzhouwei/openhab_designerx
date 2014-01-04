@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.openhab.designerx.model.sitemap.ColorArray;
 import org.openhab.designerx.model.sitemap.Element;
+import org.openhab.designerx.model.sitemap.VisibilityRule;
 import org.openhab.designerx.model.sitemap.impl.ElementBuilder;
 
 public final class ElementXtdex {
@@ -21,6 +22,8 @@ public final class ElementXtdex {
 		e.addLabelColor(labelcolor);
 		List<ColorArray> valuecolor = ColorArrayXtdex.fromXtext(xtext, Constants.VALUECOLOR);
 		e.addValueColor(valuecolor);
+		List<VisibilityRule> visibility = VisibilityRulesXtdex.fromXtext(xtext);
+		e.addVisibility(visibility);
 		return e;
 	}
 	
@@ -52,6 +55,10 @@ public final class ElementXtdex {
 		}
 		if (!e.getValueColor().isEmpty()) {
 			sb.append(ColorArrayXtdex.toXtext(e.getValueColor(), Constants.VALUECOLOR));
+			sb.append(Constants.SPACE_MARK);
+		}
+		if (!e.getVisibility().isEmpty()) {
+			sb.append(VisibilityRulesXtdex.toXtext(e.getVisibility()));
 			sb.append(Constants.SPACE_MARK);
 		}
 		return sb.toString().trim();

@@ -34,7 +34,7 @@ public class ElementXdtexTest {
 
 	@Test
 	public void testToXtext() {
-		final String expected = "item=gFF label=\"First Floor\" icon=\"firstfloor\"";
+		final String expected = "item=gFF label=\"First Floor\" icon=\"firstfloor\" visibility=[Weather_Chart_Period==0,Weather_Chart_Period==\"Uninitialized\"]";
 		Element e = ElementXtdex.fromXtext(expected);
 		final String actual = ElementXtdex.toXtext(e);
 		assertThat(actual, Matchers.equalTo(expected));
