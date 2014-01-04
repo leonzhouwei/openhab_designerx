@@ -10,7 +10,7 @@ public class PropertyHandlerTest {
 	@Test
 	public void testGetValue_1() {
 		final String expected = "gFF";
-		String xtext = "item=" + expected;
+		String xtext = "item=" + expected + " label=item";
 		String item = PropertyHandler.getValue(xtext, "item");
 		assertThat(item, Matchers.equalTo(expected));
 	}
