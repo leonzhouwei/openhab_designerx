@@ -14,12 +14,14 @@ public final class MappingsXtdex {
 	public static List<Mapping> fromXtext(String xtext) {
 		List<Mapping> mappings = Lists.newArrayList();
 		xtext = PreProcessor.preProcess(xtext);
-		if (!xtext.startsWith(TYPE)) {
+		if (!xtext.matches(".*" + TYPE + "=\\[.*\\].*")) {
 			return mappings;
 		}
 		// set the parameters
-		String value = PropertyHandler.getValue(xtext, TYPE, "[", "]");
-		String[] split = value.substring(1, value.length() - 1).split(Constants.COMMA_MARK);
+		String value = PropertyHandler.getValueStartingEndingWithBraces(xtext, TYPE);
+		System.out.println(value);
+		value = value.trim().substring(1, value.length() - 1);
+		String[] split = value.trim().split(Constants.COMMA_MARK);
 		for (String s : split) {
 			String[] a = s.split(Constants.EQU_MARK);
 			Mapping instance = new MappingBuilder().build();

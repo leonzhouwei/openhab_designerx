@@ -27,12 +27,12 @@ public final class ChartXtdex {
 		instance.addValueColor(e.getValueColor());
 		instance.addVisibility(e.getVisibility());
 		// set the specific parameters
-		String period = PropertyHandler.getValue(xtext, PERIOD);
+		String period = PropertyHandler.getValueWithoutStartEndMarks(xtext, PERIOD);
 		instance.setPeriod(period);
-		String refresh = PropertyHandler.getValue(xtext, REFRESH);
+		String refresh = PropertyHandler.getValueWithoutStartEndMarks(xtext, REFRESH);
 		int i = Integer.parseInt(refresh);
 		instance.setRefresh(i);
-		String service = PropertyHandler.getValue(xtext, SERVICE);
+		String service = PropertyHandler.getValueWithoutStartEndMarks(xtext, SERVICE);
 		instance.setService(service);
 		return instance;
 	}

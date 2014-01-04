@@ -11,7 +11,7 @@ public class PropertyHandlerTest {
 	public void testGetValue_1() {
 		final String expected = "gFF";
 		String xtext = "item=" + expected + " label=item";
-		String item = PropertyHandler.getValue(xtext, "item");
+		String item = PropertyHandler.getValueWithoutStartEndMarks(xtext, "item");
 		assertThat(item, Matchers.equalTo(expected));
 	}
 	
@@ -21,12 +21,20 @@ public class PropertyHandlerTest {
 		final String expectedLabel = "\"First Floor\"";
 		final String expectedIcon = "\"firstfloor\"";
 		String xtext = "item=" + expectedItem + " label=" + expectedLabel + " icon=" + expectedIcon;
-		String actualItem = PropertyHandler.getValue(xtext, "item");
+		String actualItem = PropertyHandler.getValueWithoutStartEndMarks(xtext, "item");
 		assertThat(actualItem, Matchers.equalTo(expectedItem));
-		String actualLabel = PropertyHandler.getValue(xtext, "label", "\"", "\"");
+		String actualLabel = PropertyHandler.getValueStartingEndingWithDoubleQuotes(xtext, "label");
 		assertThat(actualLabel, Matchers.equalTo(expectedLabel));
-		String actualIcon = PropertyHandler.getValue(xtext, "icon", "\"", "\"");
+		String actualIcon = PropertyHandler.getValueStartingEndingWithDoubleQuotes(xtext, "icon");
 		assertThat(actualIcon, Matchers.equalTo(expectedIcon));
+	}
+	
+	@Test
+	public void testGetValue_3() {
+		final String expected = "[0=\"Hour\",1=\"Day\",2=\"Week\"]";
+		final String xtext = "mappings=" + expected;
+		final String actual = PropertyHandler.getValueStartingEndingWithBraces(xtext, "mappings");
+		assertThat(actual, Matchers.equalTo(expected));
 	}
 
 }

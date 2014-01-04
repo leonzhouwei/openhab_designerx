@@ -11,11 +11,11 @@ public final class ElementXtdex {
 	public static Element fromXtext(String xtext) {
 		xtext = PreProcessor.preProcess(xtext);
 		Element e = new ElementBuilder().build();
-		String item = PropertyHandler.getValue(xtext, Constants.ITEM);
+		String item = PropertyHandler.getValueWithoutStartEndMarks(xtext, Constants.ITEM);
 		e.setItem(item);
-		String label = PropertyHandler.getValue(xtext, Constants.LABEL, "\"", "\"");
+		String label = PropertyHandler.getValueStartingEndingWithDoubleQuotes(xtext, Constants.LABEL);
 		e.setLabel(label);
-		String icon = PropertyHandler.getValue(xtext, Constants.ICON, "\"", "\"");
+		String icon = PropertyHandler.getValueStartingEndingWithDoubleQuotes(xtext, Constants.ICON);
 		e.setIcon(icon);
 		List<ColorArray> labelcolor = ColorArrayXtdex.fromXtext(xtext, Constants.LABELCOLOR);
 		e.addLabelColor(labelcolor);
