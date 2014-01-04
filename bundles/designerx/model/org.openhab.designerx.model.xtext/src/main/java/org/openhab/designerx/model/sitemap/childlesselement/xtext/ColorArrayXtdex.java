@@ -22,11 +22,11 @@ final class ColorArrayXtdex {
 			.build();
 	
 	public static List<ColorArray> fromXtext(String xtext, String type) {
+		List<ColorArray> ret = Lists.newArrayList();
 		xtext = PreProcessor.preProcess(xtext);
 		if (!xtext.matches(".*" + type + "=\\[.*\\]")) {
-			throw new RuntimeException(xtext + " is NOT a " + type);
+			return ret;
 		}
-		List<ColorArray> ret = Lists.newArrayList();
 		// extract the "[...]" part
 		int i = xtext.indexOf(type);
 		i = xtext.indexOf("[", i);

@@ -12,11 +12,10 @@ public final class MappingsXtdex {
 	public static final String TYPE = "mappings";
 
 	public static List<Mapping> fromXtext(String xtext) {
-		xtext = PreProcessor.preProcess(xtext);
 		List<Mapping> mappings = Lists.newArrayList();
 		xtext = PreProcessor.preProcess(xtext);
 		if (!xtext.startsWith(TYPE)) {
-			throw new RuntimeException(xtext + " is NOT a " + TYPE);
+			return mappings;
 		}
 		// set the parameters
 		String value = PropertyHandler.getValue(xtext, TYPE, "[", "]");

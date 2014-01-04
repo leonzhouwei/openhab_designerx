@@ -23,6 +23,14 @@ public class ElementXdtexTest {
 		final String actual = ElementXtdex.toXtext(e);
 		assertThat(actual, Matchers.equalTo(expected));
 	}
+	
+	@Test
+	public void testFromXtext_3() {
+		final String expected = "item=Weather_Temperature valuecolor=[Weather_LastUpdate==\"Uninitialized\"=\"lightgray\",Weather_LastUpdate>90=\"lightgray\",>25=\"orange\",>15=\"green\",>5=\"orange\",<=5=\"blue\"]";
+		Element e = ElementXtdex.fromXtext(expected);
+		final String actual = ElementXtdex.toXtext(e);
+		assertThat(actual, Matchers.equalTo(expected));
+	}
 
 	@Test
 	public void testToXtext() {
