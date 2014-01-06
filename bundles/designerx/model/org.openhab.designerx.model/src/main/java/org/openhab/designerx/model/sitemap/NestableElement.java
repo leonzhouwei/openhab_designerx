@@ -7,5 +7,7 @@ public interface NestableElement extends Element {
 	public void appendChild(Element child);
 	
 	public List<Element> getChildren();
+	
+	public boolean equalsLogically(NestableElement another);
 
 }

@@ -5,6 +5,7 @@ import java.util.List;
 import org.openhab.designerx.model.sitemap.ColorArray;
 import org.openhab.designerx.model.sitemap.Element;
 import org.openhab.designerx.model.sitemap.Frame;
+import org.openhab.designerx.model.sitemap.NestableElement;
 import org.openhab.designerx.model.sitemap.VisibilityRule;
 
 /**
@@ -17,7 +18,7 @@ import org.openhab.designerx.model.sitemap.VisibilityRule;
  */
 final class FrameImpl implements Frame {
 	
-	private NestableElementImpl element = new NestableElementImpl(); 
+	private NestableElement element = new NestableElementImpl(); 
 	
 	@Override
 	public void setItem(String item) {
@@ -102,6 +103,30 @@ final class FrameImpl implements Frame {
 	@Override
 	public List<Element> getChildren() {
 		return element.getChildren();
+	}
+
+	@Override
+	public boolean equalsLogically(NestableElement another) {
+		if (another == null) {
+			return false;
+		}
+		return element.equalsLogically(another);
+	}
+
+	@Override
+	public boolean equalsLogically(Element another) {
+		if (another == null) {
+			return false;
+		}
+		return element.equalsLogically(another);
+	}
+
+	@Override
+	public boolean equalsLogically(Frame another) {
+		if (another == null) {
+			return false;
+		}
+		return false;
 	}
 	
 }

@@ -4,12 +4,14 @@ import java.math.BigDecimal;
 import java.util.List;
 
 import org.openhab.designerx.model.sitemap.ColorArray;
+import org.openhab.designerx.model.sitemap.Element;
+import org.openhab.designerx.model.sitemap.NonNestableElement;
 import org.openhab.designerx.model.sitemap.Setpoint;
 import org.openhab.designerx.model.sitemap.VisibilityRule;
 
 final class SetpointImpl implements Setpoint {
 	
-	private NonNestableElementImpl element = new NonNestableElementImpl();
+	private NonNestableElement element = new NonNestableElementImpl();
 	private BigDecimal minValue;
 	private BigDecimal maxValue;
 	private BigDecimal step;
@@ -132,6 +134,33 @@ final class SetpointImpl implements Setpoint {
 	public void setStep(String step) {
 		BigDecimal bd = new BigDecimal(step);
 		setStep(bd);
+	}
+
+	@Override
+	public boolean equalsLogically(NonNestableElement another) {
+		if (another == null) {
+			return false;
+		}
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+	@Override
+	public boolean equalsLogically(Element another) {
+		if (another == null) {
+			return false;
+		}
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+	@Override
+	public boolean equalsLogically(Setpoint another) {
+		if (another == null) {
+			return false;
+		}
+		// TODO Auto-generated method stub
+		return false;
 	}
 
 }

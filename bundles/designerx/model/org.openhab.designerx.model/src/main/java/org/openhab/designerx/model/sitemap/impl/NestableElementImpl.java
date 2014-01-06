@@ -11,7 +11,7 @@ import com.google.common.collect.Lists;
 
 final class NestableElementImpl implements NestableElement {
 	
-	private ElementImpl element = new ElementImpl();
+	private Element element = new ElementImpl();
 	private List<Element> children = Lists.newArrayList();
 
 	@Override
@@ -97,6 +97,37 @@ final class NestableElementImpl implements NestableElement {
 	@Override
 	public List<Element> getChildren() {
 		return children;
+	}
+
+	@Override
+	public boolean equalsLogically(Element another) {
+		if (another == null) {
+			return false;
+		}
+		return element.equalsLogically((Element)another);
+	}
+
+	@Override
+	public boolean equalsLogically(NestableElement another) {
+		if (another == null) {
+			return false;
+		}
+		if (!element.equalsLogically((Element)another)) {
+			return false;
+		}
+		List<Element> anotherChildren = another.getChildren();
+		for (Element child : children) {
+			boolean findEqual = false;
+			for (Element anotherChild : anotherChildren) {
+				if (child.equalsLogically(anotherChild)) {
+					findEqual = true;
+				}
+			}
+			if (!findEqual) {
+				return false;
+			}
+		}
+		return true;
 	}
 
 }

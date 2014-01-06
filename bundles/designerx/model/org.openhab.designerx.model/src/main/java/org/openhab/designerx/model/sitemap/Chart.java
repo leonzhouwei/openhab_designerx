@@ -13,5 +13,7 @@ public interface Chart extends NonNestableElement {
 	public String getPeriod();
 
 	public void setPeriod(String period);
+	
+	public boolean equalsLogically(Chart another);
 
 }

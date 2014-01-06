@@ -27,4 +27,27 @@ final class MappingImpl implements Mapping {
 		this.label = label;
 	}
 
+	@Override
+	public boolean equalsLogically(Mapping another) {
+		if (another == null) {
+			return false;
+		}
+		if (this == another) {
+			return true;
+		}
+		final String anotherCmd = another.getCmd();
+		if (cmd == null && anotherCmd != null ||
+			cmd != null && anotherCmd == null ||
+			cmd != null && anotherCmd != null && cmd.compareTo(anotherCmd) != 0) {
+			return false;
+		}
+		final String anotherLabel = another.getLabel();
+		if (label == null && anotherLabel != null ||
+			label != null && anotherLabel == null ||
+			label != null && anotherLabel != null && label.compareTo(anotherLabel) != 0) {
+			return false;
+		}
+		return true;
+	}
+	
 }

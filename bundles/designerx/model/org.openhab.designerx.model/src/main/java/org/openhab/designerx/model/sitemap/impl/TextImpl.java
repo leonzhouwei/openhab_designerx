@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.openhab.designerx.model.sitemap.ColorArray;
 import org.openhab.designerx.model.sitemap.Element;
+import org.openhab.designerx.model.sitemap.NestableElement;
 import org.openhab.designerx.model.sitemap.Text;
 import org.openhab.designerx.model.sitemap.VisibilityRule;
 
@@ -17,7 +18,7 @@ import org.openhab.designerx.model.sitemap.VisibilityRule;
  */
 final class TextImpl implements Text {
 
-	private NestableElementImpl element = new NestableElementImpl(); 
+	private NestableElement element = new NestableElementImpl(); 
 	
 	@Override
 	public void setItem(String item) {
@@ -102,6 +103,33 @@ final class TextImpl implements Text {
 	@Override
 	public List<Element> getChildren() {
 		return element.getChildren();
+	}
+
+	@Override
+	public boolean equalsLogically(NestableElement another) {
+		if (another == null) {
+			return false;
+		}
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+	@Override
+	public boolean equalsLogically(Element another) {
+		if (another == null) {
+			return false;
+		}
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+	@Override
+	public boolean equalsLogically(Text another) {
+		if (another == null) {
+			return false;
+		}
+		// TODO Auto-generated method stub
+		return false;
 	}
 	
 }

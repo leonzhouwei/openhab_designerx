@@ -60,4 +60,45 @@ final class ColorArrayImpl implements ColorArray {
 		this.arg = arg;
 	}
 
+	@Override
+	public boolean equalsLogically(ColorArray another) {
+		if (another == null) {
+			return false;
+		}
+		if (this == another) {
+			return true;
+		}
+		final String anotherArg = another.getArg();
+		if (arg == null && anotherArg != null ||
+			arg != null && anotherArg == null ||
+			arg != null && anotherArg != null && arg.compareTo(anotherArg) != 0) {
+			return false;
+		}
+		final String anotherCondition = another.getCondition();
+		if (condition == null && anotherCondition != null ||
+			condition != null && anotherCondition == null ||
+			condition != null && anotherCondition != null && condition.compareTo(anotherCondition) != 0) {
+			return false;
+		}
+		final String anotherItem = another.getItem();
+		if (item == null && anotherItem != null ||
+			item != null && anotherItem == null ||
+			item != null && anotherItem != null && item.compareTo(anotherItem) != 0) {
+			return false;
+		}
+		final String anotherSign = another.getSign();
+		if (sign == null && anotherSign != null ||
+			sign != null && anotherSign == null ||
+			sign != null && anotherSign != null && sign.compareTo(anotherSign) != 0) {
+			return false;
+		}
+		final String anotherState = another.getState();
+		if (state == null && anotherState != null ||
+			state != null && anotherState == null ||
+			state != null && anotherState != null && state.compareTo(anotherState) != 0) {
+			return false;
+		}
+		return true;
+	}
+
 }

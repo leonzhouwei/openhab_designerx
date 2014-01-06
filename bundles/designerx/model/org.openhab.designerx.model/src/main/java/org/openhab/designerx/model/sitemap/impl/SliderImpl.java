@@ -3,6 +3,8 @@ package org.openhab.designerx.model.sitemap.impl;
 import java.util.List;
 
 import org.openhab.designerx.model.sitemap.ColorArray;
+import org.openhab.designerx.model.sitemap.Element;
+import org.openhab.designerx.model.sitemap.NonNestableElement;
 import org.openhab.designerx.model.sitemap.Slider;
 import org.openhab.designerx.model.sitemap.VisibilityRule;
 
@@ -123,6 +125,33 @@ final class SliderImpl implements Slider {
 	public void setSwitchEnabled(String switchEnabled) {
 		boolean b = Boolean.parseBoolean(switchEnabled);
 		setSwitchEnabled(b);
+	}
+
+	@Override
+	public boolean equalsLogically(NonNestableElement another) {
+		if (another == null) {
+			return false;
+		}
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+	@Override
+	public boolean equalsLogically(Element another) {
+		if (another == null) {
+			return false;
+		}
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+	@Override
+	public boolean equalsLogically(Slider another) {
+		if (another == null) {
+			return false;
+		}
+		// TODO Auto-generated method stub
+		return false;
 	}
 	
 }

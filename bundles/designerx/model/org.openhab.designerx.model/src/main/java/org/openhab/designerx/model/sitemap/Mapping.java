@@ -9,5 +9,7 @@ public interface Mapping {
 	public String getLabel();
 
 	public void setLabel(String label);
+	
+	public boolean equalsLogically(Mapping another);
 
 }

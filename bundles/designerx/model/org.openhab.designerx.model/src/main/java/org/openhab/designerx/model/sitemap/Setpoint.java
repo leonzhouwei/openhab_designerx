@@ -15,5 +15,7 @@ public interface Setpoint extends NonNestableElement {
 	public BigDecimal getStep();
 
 	public void setStep(BigDecimal step);
+	
+	public boolean equalsLogically(Setpoint another);
 
 }

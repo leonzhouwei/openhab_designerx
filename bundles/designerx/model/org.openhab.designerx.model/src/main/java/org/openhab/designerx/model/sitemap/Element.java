@@ -34,4 +34,6 @@ public interface Element {
 	
 	public List<VisibilityRule> getVisibility();
 	
+	public boolean equalsLogically(Element another);
+	
 }

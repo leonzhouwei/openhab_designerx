@@ -9,5 +9,7 @@ public interface Selection extends NonNestableElement {
 	public void addMapping(Mapping mapping);
 	 
 	public List<Mapping> getMappings();
+	
+	public boolean equalsLogically(Selection another);
 
 }

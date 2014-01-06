@@ -4,6 +4,8 @@ import java.util.List;
 
 import org.openhab.designerx.model.sitemap.ColorArray;
 import org.openhab.designerx.model.sitemap.Colorpicker;
+import org.openhab.designerx.model.sitemap.Element;
+import org.openhab.designerx.model.sitemap.NonNestableElement;
 import org.openhab.designerx.model.sitemap.VisibilityRule;
 
 /**
@@ -15,7 +17,7 @@ import org.openhab.designerx.model.sitemap.VisibilityRule;
  */
 final class ColorpickerImpl implements Colorpicker {
 
-	private NonNestableElementImpl element = new NonNestableElementImpl();
+	private NonNestableElement element = new NonNestableElementImpl();
 	private int frequency = 0;
 
 	@Override
@@ -106,6 +108,30 @@ final class ColorpickerImpl implements Colorpicker {
 	@Override
 	public void setFrequency(int frequency) {
 		this.frequency = frequency;
+	}
+
+	@Override
+	public boolean equalsLogically(NonNestableElement another) {
+		if (another == null) {
+			return false;
+		}
+		return element.equalsLogically(another);
+	}
+
+	@Override
+	public boolean equalsLogically(Element another) {
+		if (another == null) {
+			return false;
+		}
+		return element.equalsLogically(another);
+	}
+
+	@Override
+	public boolean equalsLogically(Colorpicker another) {
+		if (another == null) {
+			return false;
+		}
+		return false;
 	}
 
 }

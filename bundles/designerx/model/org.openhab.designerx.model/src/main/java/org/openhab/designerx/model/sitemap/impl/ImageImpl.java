@@ -5,6 +5,7 @@ import java.util.List;
 import org.openhab.designerx.model.sitemap.ColorArray;
 import org.openhab.designerx.model.sitemap.Element;
 import org.openhab.designerx.model.sitemap.Image;
+import org.openhab.designerx.model.sitemap.NestableElement;
 import org.openhab.designerx.model.sitemap.VisibilityRule;
 
 import com.google.common.collect.Lists;
@@ -19,7 +20,7 @@ import com.google.common.collect.Lists;
  */
 final class ImageImpl implements Image {
 
-	private NestableElementImpl element = new NestableElementImpl(); 
+	private NestableElement element = new NestableElementImpl(); 
 	private int refresh = 0;
 	private String url;
 	private List<ColorArray> iconColor = Lists.newArrayList();
@@ -142,6 +143,33 @@ final class ImageImpl implements Image {
 	@Override
 	public void addIconColor(List<ColorArray> iconColor) {
 		this.iconColor.addAll(iconColor);
+	}
+
+	@Override
+	public boolean equalsLogically(NestableElement another) {
+		if (another == null) {
+			return false;
+		}
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+	@Override
+	public boolean equalsLogically(Element another) {
+		if (another == null) {
+			return false;
+		}
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+	@Override
+	public boolean equalsLogically(Image another) {
+		if (another == null) {
+			return false;
+		}
+		// TODO Auto-generated method stub
+		return false;
 	}
 
 }

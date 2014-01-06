@@ -3,12 +3,13 @@ package org.openhab.designerx.model.sitemap.impl;
 import java.util.List;
 
 import org.openhab.designerx.model.sitemap.ColorArray;
+import org.openhab.designerx.model.sitemap.Element;
 import org.openhab.designerx.model.sitemap.NonNestableElement;
 import org.openhab.designerx.model.sitemap.VisibilityRule;
 
 final class NonNestableElementImpl implements NonNestableElement {
 	
-	private ElementImpl element = new ElementImpl();
+	private Element element = new ElementImpl();
 
 	@Override
 	public void setItem(String item) {
@@ -83,6 +84,25 @@ final class NonNestableElementImpl implements NonNestableElement {
 	@Override
 	public List<VisibilityRule> getVisibility() {
 		return element.getVisibility();
+	}
+
+	@Override
+	public boolean equalsLogically(Element another) {
+		if (another == null) {
+			return false;
+		}
+		return element.equalsLogically(another);
+	}
+
+	@Override
+	public boolean equalsLogically(NonNestableElement another) {
+		if (another == null) {
+			return false;
+		}
+		if (!element.equalsLogically((Element) another)) {
+			return false;
+		}
+		return true;
 	}
 	
 }

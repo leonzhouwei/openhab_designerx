@@ -11,8 +11,8 @@ import com.google.common.collect.Lists;
 final class ElementImpl implements Element {
 
 	private String item;
-	private String label;
 	private String icon;
+	private String label;
 	private List<ColorArray> labelColor = Lists.newArrayList();
 	private List<ColorArray> valueColor = Lists.newArrayList();
 	private List<VisibilityRule> visibility = Lists.newArrayList();
@@ -90,6 +90,71 @@ final class ElementImpl implements Element {
 	@Override
 	public List<VisibilityRule> getVisibility() {
 		return visibility;
+	}
+
+	@Override
+	public boolean equalsLogically(Element another) {
+		if (another == null) {
+			return false;
+		}
+		if (this == another) {
+			return true;
+		}
+		final String anotherItem = another.getItem();
+		if (item == null && anotherItem != null ||
+			item != null && anotherItem == null ||
+			item != null && anotherItem != null && item.compareTo(anotherItem) != 0) {
+			return false;
+		}
+		final String anotherIcon = another.getIcon();
+		if (icon == null && anotherIcon != null ||
+			icon != null && anotherIcon == null ||
+			icon != null && anotherIcon != null && icon.compareTo(anotherIcon) != 0) {
+			return false;
+		}
+		final String anotherLabel = another.getLabel();
+		if (label == null && anotherLabel != null ||
+			label != null && anotherLabel == null ||
+			label != null && anotherLabel != null && label.compareTo(anotherLabel) != 0) {
+			return false;
+		}
+		final List<ColorArray> anotherLabelColor = another.getLabelColor();
+		for (ColorArray outer : labelColor) {
+			boolean findEqual = false;
+			for (ColorArray inner : anotherLabelColor) {
+				if (outer.equalsLogically(inner)) {
+					findEqual = true;
+				}
+			}
+			if (!findEqual) {
+				return false;
+			}
+		}
+		final List<ColorArray> anotherValueColor = another.getValueColor();
+		for (ColorArray outer : valueColor) {
+			boolean findEqual = false;
+			for (ColorArray inner : anotherValueColor) {
+				if (outer.equalsLogically(inner)) {
+					findEqual = true;
+				}
+			}
+			if (!findEqual) {
+				return false;
+			}
+		}
+		final List<VisibilityRule> anotherVisibility = another.getVisibility();
+		for (VisibilityRule outer : visibility) {
+			boolean findEqual = false;
+			for (VisibilityRule inner : anotherVisibility) {
+				if (outer.equalsLogically(inner)) {
+					findEqual = true;
+				}
+			}
+			if (!findEqual) {
+				return false;
+			}
+		}
+		return true;
 	}
 
 }

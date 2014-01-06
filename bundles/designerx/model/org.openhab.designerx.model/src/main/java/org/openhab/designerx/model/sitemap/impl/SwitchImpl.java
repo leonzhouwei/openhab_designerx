@@ -3,7 +3,9 @@ package org.openhab.designerx.model.sitemap.impl;
 import java.util.List;
 
 import org.openhab.designerx.model.sitemap.ColorArray;
+import org.openhab.designerx.model.sitemap.Element;
 import org.openhab.designerx.model.sitemap.Mapping;
+import org.openhab.designerx.model.sitemap.NonNestableElement;
 import org.openhab.designerx.model.sitemap.Switch;
 import org.openhab.designerx.model.sitemap.VisibilityRule;
 
@@ -19,7 +21,7 @@ import com.google.common.collect.Lists;
  */
 final class SwitchImpl implements Switch {
 
-	private NonNestableElementImpl element = new NonNestableElementImpl();
+	private NonNestableElement element = new NonNestableElementImpl();
 	private List<Mapping> mappings = Lists.newArrayList();
 	
 	@Override
@@ -110,6 +112,33 @@ final class SwitchImpl implements Switch {
 	@Override
 	public void addMapping(Mapping mapping) {
 		this.mappings.add(mapping);
+	}
+
+	@Override
+	public boolean equalsLogically(NonNestableElement another) {
+		if (another == null) {
+			return false;
+		}
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+	@Override
+	public boolean equalsLogically(Element another) {
+		if (another == null) {
+			return false;
+		}
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+	@Override
+	public boolean equalsLogically(Switch another) {
+		if (another == null) {
+			return false;
+		}
+		// TODO Auto-generated method stub
+		return false;
 	}
 	
 }

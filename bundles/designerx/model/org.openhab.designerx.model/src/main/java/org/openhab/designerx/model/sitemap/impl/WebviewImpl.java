@@ -3,6 +3,8 @@ package org.openhab.designerx.model.sitemap.impl;
 import java.util.List;
 
 import org.openhab.designerx.model.sitemap.ColorArray;
+import org.openhab.designerx.model.sitemap.Element;
+import org.openhab.designerx.model.sitemap.NonNestableElement;
 import org.openhab.designerx.model.sitemap.VisibilityRule;
 import org.openhab.designerx.model.sitemap.Webview;
 
@@ -16,7 +18,7 @@ import org.openhab.designerx.model.sitemap.Webview;
  */
 final class WebviewImpl implements Webview {
 	
-	private NonNestableElementImpl element = new NonNestableElementImpl();
+	private NonNestableElement element = new NonNestableElementImpl();
 	private int height = 0;
 	private String url;
 	
@@ -113,6 +115,33 @@ final class WebviewImpl implements Webview {
 	@Override
 	public void setUrl(String url) {
 		this.url = url;
+	}
+
+	@Override
+	public boolean equalsLogically(NonNestableElement another) {
+		if (another == null) {
+			return false;
+		}
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+	@Override
+	public boolean equalsLogically(Element another) {
+		if (another == null) {
+			return false;
+		}
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+	@Override
+	public boolean equalsLogically(Webview another) {
+		if (another == null) {
+			return false;
+		}
+		// TODO Auto-generated method stub
+		return false;
 	}
 	
 }

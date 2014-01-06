@@ -19,5 +19,7 @@ public interface Sitemap {
 	public List<Element> getChildren();
 	
 	public String toXtext();
+	
+	public boolean equalsLogically(Sitemap another);
 
 }

@@ -1,7 +1,9 @@
 package org.openhab.designerx.model.sitemap.impl;
 
 import org.openhab.designerx.model.sitemap.ColorArray;
+import org.openhab.designerx.model.sitemap.Element;
 import org.openhab.designerx.model.sitemap.List;
+import org.openhab.designerx.model.sitemap.NonNestableElement;
 import org.openhab.designerx.model.sitemap.VisibilityRule;
 
 /**
@@ -14,7 +16,7 @@ import org.openhab.designerx.model.sitemap.VisibilityRule;
  */
 final class ListImpl implements List {
 
-	private NonNestableElementImpl element = new NonNestableElementImpl();
+	private NonNestableElement element = new NonNestableElementImpl();
 	private String separator;
 	
 	@Override
@@ -100,6 +102,33 @@ final class ListImpl implements List {
 	@Override
 	public void setSeparator(String separator) {
 		this.separator = separator;
+	}
+
+	@Override
+	public boolean equalsLogically(NonNestableElement another) {
+		if (another == null) {
+			return false;
+		}
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+	@Override
+	public boolean equalsLogically(Element another) {
+		if (another == null) {
+			return false;
+		}
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+	@Override
+	public boolean equalsLogically(List another) {
+		if (another == null) {
+			return false;
+		}
+		// TODO Auto-generated method stub
+		return false;
 	}
 
 }

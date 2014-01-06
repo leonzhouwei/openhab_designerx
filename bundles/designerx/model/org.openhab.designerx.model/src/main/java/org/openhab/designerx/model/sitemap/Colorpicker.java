@@ -6,4 +6,6 @@ public interface Colorpicker extends NonNestableElement {
 
 	public void setFrequency(int frequency);
 	
+	public boolean equalsLogically(Colorpicker another);
+	
 }

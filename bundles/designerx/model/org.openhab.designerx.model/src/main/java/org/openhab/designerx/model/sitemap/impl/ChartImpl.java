@@ -4,6 +4,8 @@ import java.util.List;
 
 import org.openhab.designerx.model.sitemap.Chart;
 import org.openhab.designerx.model.sitemap.ColorArray;
+import org.openhab.designerx.model.sitemap.Element;
+import org.openhab.designerx.model.sitemap.NonNestableElement;
 import org.openhab.designerx.model.sitemap.VisibilityRule;
 
 /**
@@ -16,7 +18,7 @@ import org.openhab.designerx.model.sitemap.VisibilityRule;
  */
 final class ChartImpl implements Chart {
 
-	private NonNestableElementImpl element = new NonNestableElementImpl();
+	private NonNestableElement element = new NonNestableElementImpl();
 	private String period;
 	private int refresh;
 	private String service;
@@ -129,6 +131,46 @@ final class ChartImpl implements Chart {
 	@Override
 	public void setPeriod(String period) {
 		this.period = period;
+	}
+
+	@Override
+	public boolean equalsLogically(NonNestableElement another) {
+		if (another == null) {
+			return false;
+		}
+		return element.equalsLogically(another);
+	}
+
+	@Override
+	public boolean equalsLogically(Element another) {
+		if (another == null) {
+			return false;
+		}
+		return element.equalsLogically(another);
+	}
+
+	@Override
+	public boolean equalsLogically(Chart another) {
+		if (!equalsLogically((NonNestableElement) another)) {
+			return false;
+		}
+		final String anotherPeriod = another.getPeriod();
+		if (period == null && anotherPeriod != null ||
+			period != null && anotherPeriod == null ||
+			period != null && anotherPeriod != null && period.compareTo(anotherPeriod) != 0) {
+			return false;
+		}
+		final int anotherRefresh = another.getRefresh();
+		if (refresh != anotherRefresh) {
+			return false;
+		}
+		final String anotherService = another.getService();
+		if (service == null && anotherService != null ||
+			service != null && anotherService == null ||
+			service != null && anotherService != null && service.compareTo(anotherService) != 0) {
+			return false;
+		}
+		return true;
 	}
 
 }

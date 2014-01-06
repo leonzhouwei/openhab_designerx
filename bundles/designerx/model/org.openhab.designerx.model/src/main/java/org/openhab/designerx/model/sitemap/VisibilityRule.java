@@ -17,5 +17,7 @@ public interface VisibilityRule {
 	public String getState();
 
 	public void setState(String state);
+	
+	public boolean equalsLogically(VisibilityRule another);
 
 }

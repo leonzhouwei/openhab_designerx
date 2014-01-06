@@ -15,5 +15,7 @@ public interface Image extends NestableElement {
 	public List<ColorArray> getIconColor();
 	
 	public void addIconColor(List<ColorArray> iconColor);
-
+	
+	public boolean equalsLogically(Image another);
+	
 }

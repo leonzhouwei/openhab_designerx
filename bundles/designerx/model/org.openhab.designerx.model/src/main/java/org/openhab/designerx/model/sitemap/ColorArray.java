@@ -21,5 +21,7 @@ public interface ColorArray {
 	public String getArg();
 
 	public void setArg(String arg);
+	
+	public boolean equalsLogically(ColorArray another);
 
 }
