@@ -101,26 +101,24 @@ final class NestableElementImpl implements NestableElement {
 
 	@Override
 	public boolean equalsLogically(Element another) {
-		if (another == null) {
-			return false;
-		}
-		return element.equalsLogically((Element)another);
+		return element.equalsLogically(another);
 	}
 
 	@Override
 	public boolean equalsLogically(NestableElement another) {
-		if (another == null) {
-			return false;
-		}
-		if (!element.equalsLogically((Element)another)) {
+		if (!(another instanceof NestableElement)) {
 			return false;
 		}
 		List<Element> anotherChildren = another.getChildren();
+		if (children.size() != anotherChildren.size()) {
+			return false;
+		}
 		for (Element child : children) {
 			boolean findEqual = false;
 			for (Element anotherChild : anotherChildren) {
 				if (child.equalsLogically(anotherChild)) {
 					findEqual = true;
+					break;
 				}
 			}
 			if (!findEqual) {

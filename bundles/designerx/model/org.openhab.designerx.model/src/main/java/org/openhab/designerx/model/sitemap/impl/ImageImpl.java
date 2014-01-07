@@ -147,29 +147,54 @@ final class ImageImpl implements Image {
 
 	@Override
 	public boolean equalsLogically(NestableElement another) {
-		if (another == null) {
-			return false;
-		}
-		// TODO Auto-generated method stub
-		return false;
+		return element.equalsLogically(another);
 	}
 
 	@Override
 	public boolean equalsLogically(Element another) {
-		if (another == null) {
-			return false;
-		}
-		// TODO Auto-generated method stub
-		return false;
+		return element.equalsLogically(another);
 	}
 
 	@Override
 	public boolean equalsLogically(Image another) {
-		if (another == null) {
+		if (!(another instanceof Image)) {
 			return false;
 		}
-		// TODO Auto-generated method stub
-		return false;
+		if (this == another) {
+			return true;
+		}
+		if (!element.equalsLogically(another)) {
+			return false;
+		}
+		// refresh
+		if (refresh != another.getRefresh()) {
+			return false;
+		}
+		// url
+		final String anotherUrl = another.getUrl();
+		if (url == null && anotherUrl != null ||
+			url != null && anotherUrl == null ||
+			url.compareTo(anotherUrl) != 0) {
+			return false;
+		}
+		// icon color
+		final List<ColorArray> anotherIconColor = another.getIconColor();
+		if (iconColor.size() != anotherIconColor.size()) {
+			return false;
+		}
+		for (ColorArray outer : iconColor) {
+			boolean findEqual = false;
+			for (ColorArray inner : anotherIconColor) {
+				if (outer.equalsLogically(inner)) {
+					findEqual = true;
+					break;
+				}
+			}
+			if (findEqual == false) {
+				return false;
+			}
+		}
+		return true;
 	}
 
 }

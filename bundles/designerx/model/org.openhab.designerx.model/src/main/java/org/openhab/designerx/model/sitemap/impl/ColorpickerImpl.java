@@ -112,26 +112,29 @@ final class ColorpickerImpl implements Colorpicker {
 
 	@Override
 	public boolean equalsLogically(NonNestableElement another) {
-		if (another == null) {
-			return false;
-		}
 		return element.equalsLogically(another);
 	}
 
 	@Override
 	public boolean equalsLogically(Element another) {
-		if (another == null) {
-			return false;
-		}
 		return element.equalsLogically(another);
 	}
 
 	@Override
 	public boolean equalsLogically(Colorpicker another) {
-		if (another == null) {
+		if (!(another instanceof Colorpicker)) {
 			return false;
 		}
-		return false;
+		if (this == another) {
+			return true;
+		}
+		if (!element.equalsLogically(another)) {
+			return false;
+		}
+		if (frequency != another.getFrequency()) {
+			return false;
+		}
+		return true;
 	}
 
 }

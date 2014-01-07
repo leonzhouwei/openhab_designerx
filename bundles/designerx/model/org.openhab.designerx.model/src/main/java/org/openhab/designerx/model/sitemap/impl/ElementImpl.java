@@ -94,7 +94,7 @@ final class ElementImpl implements Element {
 
 	@Override
 	public boolean equalsLogically(Element another) {
-		if (another == null) {
+		if (!(another instanceof Element)) {
 			return false;
 		}
 		if (this == another) {
@@ -124,6 +124,7 @@ final class ElementImpl implements Element {
 			for (ColorArray inner : anotherLabelColor) {
 				if (outer.equalsLogically(inner)) {
 					findEqual = true;
+					break;
 				}
 			}
 			if (!findEqual) {
@@ -136,6 +137,7 @@ final class ElementImpl implements Element {
 			for (ColorArray inner : anotherValueColor) {
 				if (outer.equalsLogically(inner)) {
 					findEqual = true;
+					break;
 				}
 			}
 			if (!findEqual) {
@@ -148,6 +150,7 @@ final class ElementImpl implements Element {
 			for (VisibilityRule inner : anotherVisibility) {
 				if (outer.equalsLogically(inner)) {
 					findEqual = true;
+					break;
 				}
 			}
 			if (!findEqual) {

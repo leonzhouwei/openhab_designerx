@@ -39,5 +39,5 @@ public class ColorArrayXtdexTest {
 		final String actual = ColorArrayXtdex.toXtext(list, Constants.VALUECOLOR);
 		assertThat(actual, Matchers.equalTo(expected));
 	}
-
+	
 }

@@ -138,29 +138,47 @@ final class SetpointImpl implements Setpoint {
 
 	@Override
 	public boolean equalsLogically(NonNestableElement another) {
-		if (another == null) {
-			return false;
-		}
-		// TODO Auto-generated method stub
-		return false;
+		return element.equalsLogically(another);
 	}
 
 	@Override
 	public boolean equalsLogically(Element another) {
-		if (another == null) {
-			return false;
-		}
-		// TODO Auto-generated method stub
-		return false;
+		return element.equalsLogically(another);
 	}
 
 	@Override
 	public boolean equalsLogically(Setpoint another) {
-		if (another == null) {
+		if (!(another instanceof Setpoint)) {
 			return false;
 		}
-		// TODO Auto-generated method stub
-		return false;
+		if (this == another) {
+			return true;
+		}
+		// minValue
+		BigDecimal anotherMinValue = another.getMinValue();
+		if (minValue == null && anotherMinValue != null ||
+			minValue != null && anotherMinValue == null ||
+			minValue.compareTo(anotherMinValue) != 0) {
+			return false;
+		}
+		// maxValue
+		BigDecimal anotherMaxValue = another.getMaxValue();
+		if (maxValue == null && anotherMaxValue != null ||
+			maxValue != null && anotherMaxValue == null ||
+			maxValue.compareTo(anotherMaxValue) != 0) {
+			return false;
+		}
+		// step
+		BigDecimal anotherStep = another.getStep();
+		if (step == null && anotherStep != null ||
+			step != null && anotherStep == null ||
+			step.compareTo(anotherStep) != 0) {
+			return false;
+		}
+		if (!element.equalsLogically(another)) {
+			return false;
+		}
+		return true;
 	}
 
 }

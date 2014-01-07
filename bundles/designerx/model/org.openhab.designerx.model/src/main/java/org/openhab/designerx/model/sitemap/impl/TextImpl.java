@@ -107,29 +107,26 @@ final class TextImpl implements Text {
 
 	@Override
 	public boolean equalsLogically(NestableElement another) {
-		if (another == null) {
-			return false;
-		}
-		// TODO Auto-generated method stub
-		return false;
+		return element.equalsLogically(another);
 	}
 
 	@Override
 	public boolean equalsLogically(Element another) {
-		if (another == null) {
-			return false;
-		}
-		// TODO Auto-generated method stub
-		return false;
+		return element.equalsLogically(another);
 	}
 
 	@Override
 	public boolean equalsLogically(Text another) {
-		if (another == null) {
+		if (!(another instanceof Text)) {
 			return false;
 		}
-		// TODO Auto-generated method stub
-		return false;
+		if (this == another) {
+			return true;
+		}
+		if (!element.equalsLogically(another)) {
+			return false;
+		}
+		return true;
 	}
 	
 }

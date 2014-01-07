@@ -119,29 +119,37 @@ final class WebviewImpl implements Webview {
 
 	@Override
 	public boolean equalsLogically(NonNestableElement another) {
-		if (another == null) {
-			return false;
-		}
-		// TODO Auto-generated method stub
-		return false;
+		return element.equalsLogically(another);
 	}
 
 	@Override
 	public boolean equalsLogically(Element another) {
-		if (another == null) {
-			return false;
-		}
-		// TODO Auto-generated method stub
-		return false;
+		return element.equalsLogically(another);
 	}
 
 	@Override
 	public boolean equalsLogically(Webview another) {
-		if (another == null) {
+		if (!(another instanceof Webview)) {
 			return false;
 		}
-		// TODO Auto-generated method stub
-		return false;
+		if (this == another) {
+			return true;
+		}
+		// height
+		if (height != another.getHeight()) {
+			return false;
+		}
+		// url
+		final String anotherUrl = another.getUrl();
+		if (url == null && anotherUrl != null ||
+			url != null && anotherUrl == null ||
+			url.compareTo(anotherUrl) != 0) {
+			return false;
+		}
+		if (!element.equalsLogically(another)) {
+			return false;
+		}
+		return true;
 	}
 	
 }

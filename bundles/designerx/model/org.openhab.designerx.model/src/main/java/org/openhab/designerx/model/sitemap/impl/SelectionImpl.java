@@ -116,29 +116,42 @@ final class SelectionImpl implements Selection {
 
 	@Override
 	public boolean equalsLogically(NonNestableElement another) {
-		if (another == null) {
-			return false;
-		}
-		// TODO Auto-generated method stub
-		return false;
+		return element.equalsLogically(another);
 	}
 
 	@Override
 	public boolean equalsLogically(Element another) {
-		if (another == null) {
-			return false;
-		}
-		// TODO Auto-generated method stub
-		return false;
+		return element.equalsLogically(another);
 	}
 
 	@Override
 	public boolean equalsLogically(Selection another) {
-		if (another == null) {
+		if (!(another instanceof Selection)) {
 			return false;
 		}
-		// TODO Auto-generated method stub
-		return false;
+		if (this == another) {
+			return true;
+		}
+		final List<Mapping> anotherMappings = another.getMappings();
+		if (mappings.size() != anotherMappings.size()) {
+			return false;
+		}
+		for (Mapping outer : mappings) {
+			boolean findEqual = false;
+			for (Mapping inner : anotherMappings) {
+				if (outer.equalsLogically(inner)) {
+					findEqual = true;
+					break;
+				}
+			}
+			if (findEqual == false) {
+				return false;
+			}
+		}
+		if (!element.equalsLogically(another)) {
+			return false;
+		}
+		return true;
 	}
 	
 }

@@ -51,7 +51,7 @@ final class VisibilityRuleImpl implements VisibilityRule {
 
 	@Override
 	public boolean equalsLogically(VisibilityRule another) {
-		if (another == null) {
+		if (!(another instanceof VisibilityRule)) {
 			return false;
 		}
 		if (this == another) {

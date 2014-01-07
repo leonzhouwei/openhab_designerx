@@ -62,7 +62,7 @@ final class ColorArrayImpl implements ColorArray {
 
 	@Override
 	public boolean equalsLogically(ColorArray another) {
-		if (another == null) {
+		if (!(another instanceof ColorArray)) {
 			return false;
 		}
 		if (this == another) {

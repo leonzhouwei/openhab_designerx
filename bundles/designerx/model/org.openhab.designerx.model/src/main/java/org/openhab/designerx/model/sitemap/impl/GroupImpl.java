@@ -107,29 +107,26 @@ final class GroupImpl implements Group {
 
 	@Override
 	public boolean equalsLogically(NestableElement another) {
-		if (another == null) {
-			return false;
-		}
-		// TODO Auto-generated method stub
-		return false;
+		return element.equalsLogically(another);
 	}
 
 	@Override
 	public boolean equalsLogically(Element another) {
-		if (another == null) {
-			return false;
-		}
-		// TODO Auto-generated method stub
-		return false;
+		return element.equalsLogically(another);
 	}
 
 	@Override
 	public boolean equalsLogically(Group another) {
-		if (another == null) {
+		if (!(another instanceof Group)) {
 			return false;
 		}
-		// TODO Auto-generated method stub
-		return false;
+		if (this == another) {
+			return true;
+		}
+		if (!element.equalsLogically(another)) {
+			return false;
+		}
+		return true;
 	}
 
 }

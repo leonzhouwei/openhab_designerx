@@ -88,21 +88,18 @@ final class NonNestableElementImpl implements NonNestableElement {
 
 	@Override
 	public boolean equalsLogically(Element another) {
-		if (another == null) {
-			return false;
-		}
 		return element.equalsLogically(another);
 	}
 
 	@Override
 	public boolean equalsLogically(NonNestableElement another) {
-		if (another == null) {
+		if (!(another instanceof NonNestableElement)) {
 			return false;
 		}
-		if (!element.equalsLogically((Element) another)) {
-			return false;
+		if (this == another) {
+			return true;
 		}
-		return true;
+		return element.equalsLogically(another);
 	}
 	
 }

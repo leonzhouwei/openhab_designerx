@@ -129,29 +129,35 @@ final class SliderImpl implements Slider {
 
 	@Override
 	public boolean equalsLogically(NonNestableElement another) {
-		if (another == null) {
-			return false;
-		}
-		// TODO Auto-generated method stub
-		return false;
+		return element.equalsLogically(another);
 	}
 
 	@Override
 	public boolean equalsLogically(Element another) {
-		if (another == null) {
-			return false;
-		}
-		// TODO Auto-generated method stub
-		return false;
+		return element.equalsLogically(another);
 	}
 
 	@Override
 	public boolean equalsLogically(Slider another) {
-		if (another == null) {
+		if (!(another instanceof Slider)) {
 			return false;
 		}
-		// TODO Auto-generated method stub
-		return false;
+		if (this == another) {
+			return true;
+		}
+		// frequency
+		final int anotherFreq = another.getFrequency();
+		if (frequency != anotherFreq) {
+			return false;
+		}
+		// switchEnabled
+		if (switchEnabled != another.isSwitchEnabled()) {
+			return false;
+		}
+		if (!element.equalsLogically(another)) {
+			return false;
+		}
+		return true;
 	}
 	
 }

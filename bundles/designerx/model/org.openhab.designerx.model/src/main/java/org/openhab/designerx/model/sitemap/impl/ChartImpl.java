@@ -135,24 +135,21 @@ final class ChartImpl implements Chart {
 
 	@Override
 	public boolean equalsLogically(NonNestableElement another) {
-		if (another == null) {
-			return false;
-		}
 		return element.equalsLogically(another);
 	}
 
 	@Override
 	public boolean equalsLogically(Element another) {
-		if (another == null) {
-			return false;
-		}
 		return element.equalsLogically(another);
 	}
 
 	@Override
 	public boolean equalsLogically(Chart another) {
-		if (!equalsLogically((NonNestableElement) another)) {
+		if (!(another instanceof Chart)) {
 			return false;
+		}
+		if (this == another) {
+			return true;
 		}
 		final String anotherPeriod = another.getPeriod();
 		if (period == null && anotherPeriod != null ||
@@ -172,5 +169,5 @@ final class ChartImpl implements Chart {
 		}
 		return true;
 	}
-
+	
 }

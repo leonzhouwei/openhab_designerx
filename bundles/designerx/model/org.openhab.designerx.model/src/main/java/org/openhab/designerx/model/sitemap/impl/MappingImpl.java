@@ -29,7 +29,7 @@ final class MappingImpl implements Mapping {
 
 	@Override
 	public boolean equalsLogically(Mapping another) {
-		if (another == null) {
+		if (!(another instanceof Mapping)) {
 			return false;
 		}
 		if (this == another) {

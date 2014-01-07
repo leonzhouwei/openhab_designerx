@@ -106,29 +106,29 @@ final class ListImpl implements List {
 
 	@Override
 	public boolean equalsLogically(NonNestableElement another) {
-		if (another == null) {
-			return false;
-		}
-		// TODO Auto-generated method stub
-		return false;
+		return element.equalsLogically(another);
 	}
 
 	@Override
 	public boolean equalsLogically(Element another) {
-		if (another == null) {
-			return false;
-		}
-		// TODO Auto-generated method stub
-		return false;
+		return element.equalsLogically(another);
 	}
 
 	@Override
 	public boolean equalsLogically(List another) {
-		if (another == null) {
+		if (!(another instanceof List)) {
 			return false;
 		}
-		// TODO Auto-generated method stub
-		return false;
+		if (this == another) {
+			return true;
+		}
+		String anotherSeparator = another.getSeparator();
+		if (separator == null && anotherSeparator != null ||
+			separator != null && anotherSeparator == null ||
+			separator.compareTo(anotherSeparator) != 0) {
+			return false;
+		}
+		return true;
 	}
 
 }
