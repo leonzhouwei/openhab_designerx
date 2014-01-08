@@ -1,7 +1,7 @@
 package org.openhab.designerx.model.sitemap;
 
 public interface Chart extends NonNestableElement {
-	 
+	
 	public String getService();
 
 	public void setService(String service);

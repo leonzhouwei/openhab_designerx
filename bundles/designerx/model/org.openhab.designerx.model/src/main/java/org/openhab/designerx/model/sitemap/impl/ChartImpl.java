@@ -8,14 +8,6 @@ import org.openhab.designerx.model.sitemap.Element;
 import org.openhab.designerx.model.sitemap.NonNestableElement;
 import org.openhab.designerx.model.sitemap.VisibilityRule;
 
-/**
- * 
- * Syntax: 
- * Chart [item="<itemname>"] [icon="<iconname>"] [label="<labelname>"] [service="<service>"] [period=xxxx] [refresh=xxxx] [visibility=xxxx]
- * 
- * @author zhouwei
- * 
- */
 final class ChartImpl implements Chart {
 
 	private NonNestableElement element = new NonNestableElementImpl();

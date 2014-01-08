@@ -20,7 +20,7 @@ final class PropertyHandler {
 		return value;
 	}
 	
-	public static String getValueStartingEndingWithBraces(String xtext, String name) {
+	public static String getValueBetweenBraces(String xtext, String name) {
 		if (!xtext.matches(".*" + name + "\\s*=\\s*\\[.*\\].*")) {
 			return null;
 		}
@@ -28,7 +28,7 @@ final class PropertyHandler {
 		String post = split[1].trim();
 		int i = post.indexOf(Constants.OPEN_BRACE_MARK);
 		int j = post.indexOf(Constants.CLOSE_BRACE_MARK, i + Constants.OPEN_BRACE_MARK.length());
-		String value = post.substring(i, j + 1);
+		String value = post.substring(i + 1, j);
 		return value;
 	}
 	
@@ -42,7 +42,7 @@ final class PropertyHandler {
 	 * @param name
 	 * @return
 	 */
-	public static String getValueStartingEndingWithDoubleQuotes(String xtext, String name) {
+	public static String getValueBetweenDoubleQuotes(String xtext, String name) {
 		if (!xtext.matches(".*" + name + "\\s*=\\s*" + Constants.DOUBLE_QUOTE_MARK + ".*" + Constants.DOUBLE_QUOTE_MARK + ".*")) {
 			return null;
 		}
@@ -50,7 +50,7 @@ final class PropertyHandler {
 		String post = split[1].trim();
 		int i = post.indexOf(Constants.DOUBLE_QUOTE_MARK);
 		int j = post.indexOf(Constants.DOUBLE_QUOTE_MARK, i + Constants.DOUBLE_QUOTE_MARK.length());
-		String value = post.substring(i, j + 1);
+		String value = post.substring(i + 1, j);
 		return value;
 	}
 	

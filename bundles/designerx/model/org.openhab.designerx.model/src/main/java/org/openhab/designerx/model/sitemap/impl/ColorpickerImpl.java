@@ -8,13 +8,6 @@ import org.openhab.designerx.model.sitemap.Element;
 import org.openhab.designerx.model.sitemap.NonNestableElement;
 import org.openhab.designerx.model.sitemap.VisibilityRule;
 
-/**
- * 
- * Syntax: Colorpicker [item="<itemname>"] [label="<labelname>"] [icon="<iconname>"] [sendFrequency=""]
- * 
- * @author zhouwei
- * 
- */
 final class ColorpickerImpl implements Colorpicker {
 
 	private NonNestableElement element = new NonNestableElementImpl();

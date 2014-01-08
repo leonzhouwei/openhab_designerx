@@ -16,6 +16,7 @@ public final class Constants {
 	public static final String ARG = "arg";
 	public static final String CMD = "cmd";
 	public static final String CONDITION = "condition";
+	public static final String FREQUENCY = "frequency";
 	public static final String ICON = "icon";
 	public static final String ITEM = "item";
 	public static final String LABEL = "label";

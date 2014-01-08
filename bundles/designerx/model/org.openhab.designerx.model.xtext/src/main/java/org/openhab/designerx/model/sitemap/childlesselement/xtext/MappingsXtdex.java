@@ -9,17 +9,17 @@ import com.google.common.collect.Lists;
 
 public final class MappingsXtdex {
 
-	public static final String TYPE = "mappings";
+	public static final String TARGET_TYPE_NAME = "mappings";
 
 	public static List<Mapping> fromXtext(String xtext) {
 		List<Mapping> mappings = Lists.newArrayList();
 		xtext = PreProcessor.preProcess(xtext);
-		if (!xtext.matches(".*" + TYPE + "=\\[.*\\].*")) {
+		if (!xtext.matches(".*" + TARGET_TYPE_NAME + "=\\[.*\\].*")) {
 			return mappings;
 		}
 		// set the parameters
-		String value = PropertyHandler.getValueStartingEndingWithBraces(xtext, TYPE);
-		value = value.trim().substring(1, value.length() - 1);
+		String value = PropertyHandler.getValueBetweenBraces(xtext, TARGET_TYPE_NAME);
+		value = value.trim();
 		String[] split = value.trim().split(Constants.COMMA_MARK);
 		for (String s : split) {
 			String[] a = s.split(Constants.EQU_MARK);
@@ -33,7 +33,7 @@ public final class MappingsXtdex {
 	
 	public static String toXtext(List<Mapping> mappings) {
 		StringBuilder sb = new StringBuilder();
-		sb.append(TYPE);
+		sb.append(TARGET_TYPE_NAME);
 		sb.append(Constants.EQU_MARK);
 		sb.append("[");
 		for (Mapping e : mappings) {

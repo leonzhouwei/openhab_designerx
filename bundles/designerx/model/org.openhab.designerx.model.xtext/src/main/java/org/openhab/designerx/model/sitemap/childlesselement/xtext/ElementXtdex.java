@@ -14,9 +14,9 @@ public final class ElementXtdex {
 		Element e = new ElementBuilder().build();
 		String item = PropertyHandler.getValueWithoutStartEndMarks(xtext, Constants.ITEM);
 		e.setItem(item);
-		String label = PropertyHandler.getValueStartingEndingWithDoubleQuotes(xtext, Constants.LABEL);
+		String label = PropertyHandler.getValueBetweenDoubleQuotes(xtext, Constants.LABEL);
 		e.setLabel(label);
-		String icon = PropertyHandler.getValueStartingEndingWithDoubleQuotes(xtext, Constants.ICON);
+		String icon = PropertyHandler.getValueBetweenDoubleQuotes(xtext, Constants.ICON);
 		e.setIcon(icon);
 		List<ColorArray> labelcolor = ColorArrayXtdex.fromXtext(xtext, Constants.LABELCOLOR);
 		e.addLabelColor(labelcolor);
@@ -38,13 +38,17 @@ public final class ElementXtdex {
 		if (e.getLabel() != null) {
 			sb.append(Constants.LABEL);
 			sb.append(Constants.EQU_MARK);
+			sb.append(Constants.DOUBLE_QUOTE_MARK);
 			sb.append(e.getLabel());
+			sb.append(Constants.DOUBLE_QUOTE_MARK);
 			sb.append(Constants.SPACE_MARK);
 		}
 		if (e.getIcon() != null) {
 			sb.append(Constants.ICON);
 			sb.append(Constants.EQU_MARK);
+			sb.append(Constants.DOUBLE_QUOTE_MARK);
 			sb.append(e.getIcon());
+			sb.append(Constants.DOUBLE_QUOTE_MARK);
 			sb.append(Constants.SPACE_MARK);
 		}
 		if (!e.getLabelColor().isEmpty()) {

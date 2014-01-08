@@ -4,9 +4,17 @@ import org.openhab.designerx.model.sitemap.Chart;
 import org.openhab.designerx.model.sitemap.Element;
 import org.openhab.designerx.model.sitemap.impl.ChartBuilder;
 
+/**
+ * 
+ * Syntax: 
+ * Chart [item="<itemname>"] [icon="<iconname>"] [label="<labelname>"] [service="<service>"] [period=xxxx] [refresh=xxxx] [visibility=xxxx]
+ * 
+ * @author zhouwei
+ * 
+ */
 public final class ChartXtdex {
 	
-	public static final String TYPE = "Chart";
+	public static final String TARGET_TYPE_NAME = "Chart";
 
 	private static final String PERIOD = "period";
 	private static final String REFRESH = "refresh";
@@ -14,8 +22,8 @@ public final class ChartXtdex {
 	
 	public static Chart fromXtext(String xtext) {
 		xtext = PreProcessor.preProcess(xtext);
-		if (!xtext.startsWith(TYPE)) {
-			throw new RuntimeException(xtext + " is NOT a " + TYPE);
+		if (!xtext.startsWith(TARGET_TYPE_NAME)) {
+			throw new RuntimeException(xtext + " is NOT a " + TARGET_TYPE_NAME);
 		}
 		Chart instance = new ChartBuilder().build();
 		// set the elementary parameters
@@ -30,8 +38,10 @@ public final class ChartXtdex {
 		String period = PropertyHandler.getValueWithoutStartEndMarks(xtext, PERIOD);
 		instance.setPeriod(period);
 		String refresh = PropertyHandler.getValueWithoutStartEndMarks(xtext, REFRESH);
-		int i = Integer.parseInt(refresh);
-		instance.setRefresh(i);
+		if (refresh != null) {
+			int i = Integer.parseInt(refresh);
+			instance.setRefresh(i);
+		}
 		String service = PropertyHandler.getValueWithoutStartEndMarks(xtext, SERVICE);
 		instance.setService(service);
 		return instance;
@@ -39,7 +49,7 @@ public final class ChartXtdex {
 	
 	public static String toXtext(Chart e) {
 		StringBuilder sb = new StringBuilder();
-		sb.append(TYPE);
+		sb.append(TARGET_TYPE_NAME);
 		sb.append(Constants.SPACE_MARK);
 		sb.append(ElementXtdex.toXtext(e).trim());
 		sb.append(Constants.SPACE_MARK);

@@ -28,8 +28,8 @@ final class VisibilityRulesXtdex {
 			return visibility;
 		}
 		// extract the "[...]" part
-		xtext = PropertyHandler.getValueStartingEndingWithBraces(xtext, Constants.VISIBILITY);
-		xtext = xtext.trim().substring(1, xtext.length() - 1);
+		xtext = PropertyHandler.getValueBetweenBraces(xtext, Constants.VISIBILITY);
+		xtext = xtext.trim();
 		String[] rules = xtext.split(",");
 		// parse
 		for (String rule : rules) {

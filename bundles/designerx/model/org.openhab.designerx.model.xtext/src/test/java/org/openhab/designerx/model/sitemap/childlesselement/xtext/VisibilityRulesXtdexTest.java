@@ -33,7 +33,7 @@ public class VisibilityRulesXtdexTest {
 		assertThat(actual, Matchers.equalTo(expected));
 	}
 
-//	@Test
+	@Test
 	public void testToXtext_2() {
 		final String expected = "visibility=[Weather_Chart_Period==0,Weather_Chart_Period==\"Uninitialized\"]";
 		List<VisibilityRule> list = Lists.newArrayList();

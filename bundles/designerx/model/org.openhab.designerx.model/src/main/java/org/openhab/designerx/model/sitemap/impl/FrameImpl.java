@@ -126,7 +126,7 @@ final class FrameImpl implements Frame {
 		if (!element.equalsLogically(another)) {
 			return false;
 		}
-		return false;
+		return true;
 	}
 	
 }
