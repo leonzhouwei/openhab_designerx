@@ -5,6 +5,7 @@ import org.openhab.designerx.model.sitemap.Element;
 import org.openhab.designerx.model.sitemap.List;
 import org.openhab.designerx.model.sitemap.NonNestableElement;
 import org.openhab.designerx.model.sitemap.VisibilityRule;
+import org.openhab.designerx.util.Comparer;
 
 /**
  * 
@@ -123,9 +124,7 @@ final class ListImpl implements List {
 			return true;
 		}
 		String anotherSeparator = another.getSeparator();
-		if (separator == null && anotherSeparator != null ||
-			separator != null && anotherSeparator == null ||
-			separator.compareTo(anotherSeparator) != 0) {
+		if (Comparer.notEqual(separator, anotherSeparator)) {
 			return false;
 		}
 		return true;

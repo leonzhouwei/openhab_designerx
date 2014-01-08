@@ -1,7 +1,6 @@
 package org.openhab.designerx.model.sitemap.childlesselement.xtext;
 
 import org.openhab.designerx.model.sitemap.Frame;
-import org.openhab.designerx.model.sitemap.Element;
 import org.openhab.designerx.model.sitemap.impl.FrameBuilder;
 
 public final class FrameXtdex {
@@ -15,13 +14,7 @@ public final class FrameXtdex {
 		}
 		Frame instance = new FrameBuilder().build();
 		// set the elementary parameters
-		Element e = ElementXtdex.fromXtext(xtext);
-		instance.setIcon(e.getIcon());
-		instance.setItem(e.getItem());
-		instance.setLabel(e.getLabel());
-		instance.addLabelColor(e.getLabelColor());
-		instance.addValueColor(e.getValueColor());
-		instance.addVisibility(e.getVisibility());
+		ElementXtdex.set(instance, xtext);
 		return instance;
 	}
 	

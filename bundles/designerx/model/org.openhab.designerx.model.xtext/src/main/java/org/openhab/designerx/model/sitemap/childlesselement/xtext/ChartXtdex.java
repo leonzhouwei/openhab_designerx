@@ -1,7 +1,6 @@
 package org.openhab.designerx.model.sitemap.childlesselement.xtext;
 
 import org.openhab.designerx.model.sitemap.Chart;
-import org.openhab.designerx.model.sitemap.Element;
 import org.openhab.designerx.model.sitemap.impl.ChartBuilder;
 
 /**
@@ -27,13 +26,7 @@ public final class ChartXtdex {
 		}
 		Chart instance = new ChartBuilder().build();
 		// set the elementary parameters
-		Element e = ElementXtdex.fromXtext(xtext);
-		instance.setIcon(e.getIcon());
-		instance.setItem(e.getItem());
-		instance.setLabel(e.getLabel());
-		instance.addLabelColor(e.getLabelColor());
-		instance.addValueColor(e.getValueColor());
-		instance.addVisibility(e.getVisibility());
+		ElementXtdex.set(instance, xtext);
 		// set the specific parameters
 		String period = PropertyHandler.getValueWithoutStartEndMarks(xtext, PERIOD);
 		instance.setPeriod(period);

@@ -1,6 +1,5 @@
 package org.openhab.designerx.model.sitemap.childlesselement.xtext;
 
-import org.openhab.designerx.model.sitemap.Element;
 import org.openhab.designerx.model.sitemap.Group;
 import org.openhab.designerx.model.sitemap.impl.GroupBuilder;
 
@@ -15,13 +14,7 @@ public final class GroupXtdex {
 		}
 		Group instance = new GroupBuilder().build();
 		// set the elementary parameters
-		Element e = ElementXtdex.fromXtext(xtext);
-		instance.setIcon(e.getIcon());
-		instance.setItem(e.getItem());
-		instance.setLabel(e.getLabel());
-		instance.addLabelColor(e.getLabelColor());
-		instance.addValueColor(e.getValueColor());
-		instance.addVisibility(e.getVisibility());
+		ElementXtdex.set(instance, xtext);
 		return instance;
 	}
 	

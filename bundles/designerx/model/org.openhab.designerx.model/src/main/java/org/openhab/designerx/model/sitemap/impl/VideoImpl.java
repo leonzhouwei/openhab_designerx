@@ -7,6 +7,7 @@ import org.openhab.designerx.model.sitemap.Element;
 import org.openhab.designerx.model.sitemap.NonNestableElement;
 import org.openhab.designerx.model.sitemap.Video;
 import org.openhab.designerx.model.sitemap.VisibilityRule;
+import org.openhab.designerx.util.Comparer;
 
 /**
  * 
@@ -125,9 +126,7 @@ final class VideoImpl implements Video {
 			return true;
 		}
 		final String anotherUrl = another.getUrl();
-		if (url == null && anotherUrl != null ||
-			url != null && anotherUrl == null ||
-			url.compareTo(anotherUrl) != 0) {
+		if (Comparer.notEqual(url, anotherUrl)) {
 			return false;
 		}
 		if (!element.equalsLogically(another)) {

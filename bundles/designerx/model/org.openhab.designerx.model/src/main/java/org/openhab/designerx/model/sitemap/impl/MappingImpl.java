@@ -1,6 +1,7 @@
 package org.openhab.designerx.model.sitemap.impl;
 
 import org.openhab.designerx.model.sitemap.Mapping;
+import org.openhab.designerx.util.Comparer;
 
 final class MappingImpl implements Mapping {
 
@@ -36,15 +37,11 @@ final class MappingImpl implements Mapping {
 			return true;
 		}
 		final String anotherCmd = another.getCmd();
-		if (cmd == null && anotherCmd != null ||
-			cmd != null && anotherCmd == null ||
-			cmd != null && anotherCmd != null && cmd.compareTo(anotherCmd) != 0) {
+		if (Comparer.notEqual(cmd, anotherCmd)) {
 			return false;
 		}
 		final String anotherLabel = another.getLabel();
-		if (label == null && anotherLabel != null ||
-			label != null && anotherLabel == null ||
-			label != null && anotherLabel != null && label.compareTo(anotherLabel) != 0) {
+		if (Comparer.notEqual(label, anotherLabel)) {
 			return false;
 		}
 		return true;

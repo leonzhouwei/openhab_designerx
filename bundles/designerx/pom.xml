@@ -22,5 +22,6 @@
 		<module>config</module>
 		
 		<module>dependencies</module>
+		<module>util</module>
 	</modules>
 </project>

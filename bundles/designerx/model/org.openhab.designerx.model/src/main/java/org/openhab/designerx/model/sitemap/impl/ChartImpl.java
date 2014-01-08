@@ -7,6 +7,7 @@ import org.openhab.designerx.model.sitemap.ColorArray;
 import org.openhab.designerx.model.sitemap.Element;
 import org.openhab.designerx.model.sitemap.NonNestableElement;
 import org.openhab.designerx.model.sitemap.VisibilityRule;
+import org.openhab.designerx.util.Comparer;
 
 final class ChartImpl implements Chart {
 
@@ -144,9 +145,7 @@ final class ChartImpl implements Chart {
 			return true;
 		}
 		final String anotherPeriod = another.getPeriod();
-		if (period == null && anotherPeriod != null ||
-			period != null && anotherPeriod == null ||
-			period != null && anotherPeriod != null && period.compareTo(anotherPeriod) != 0) {
+		if (Comparer.notEqual(period, anotherPeriod)) {
 			return false;
 		}
 		final int anotherRefresh = another.getRefresh();
@@ -154,9 +153,7 @@ final class ChartImpl implements Chart {
 			return false;
 		}
 		final String anotherService = another.getService();
-		if (service == null && anotherService != null ||
-			service != null && anotherService == null ||
-			service != null && anotherService != null && service.compareTo(anotherService) != 0) {
+		if (Comparer.notEqual(service, anotherService)) {
 			return false;
 		}
 		return true;

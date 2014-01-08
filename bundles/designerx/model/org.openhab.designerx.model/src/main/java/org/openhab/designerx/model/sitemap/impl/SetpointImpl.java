@@ -8,6 +8,7 @@ import org.openhab.designerx.model.sitemap.Element;
 import org.openhab.designerx.model.sitemap.NonNestableElement;
 import org.openhab.designerx.model.sitemap.Setpoint;
 import org.openhab.designerx.model.sitemap.VisibilityRule;
+import org.openhab.designerx.util.Comparer;
 
 final class SetpointImpl implements Setpoint {
 	
@@ -156,23 +157,17 @@ final class SetpointImpl implements Setpoint {
 		}
 		// minValue
 		BigDecimal anotherMinValue = another.getMinValue();
-		if (minValue == null && anotherMinValue != null ||
-			minValue != null && anotherMinValue == null ||
-			minValue.compareTo(anotherMinValue) != 0) {
+		if (Comparer.notEqual(minValue, anotherMinValue)) {
 			return false;
 		}
 		// maxValue
 		BigDecimal anotherMaxValue = another.getMaxValue();
-		if (maxValue == null && anotherMaxValue != null ||
-			maxValue != null && anotherMaxValue == null ||
-			maxValue.compareTo(anotherMaxValue) != 0) {
+		if (Comparer.notEqual(maxValue, anotherMaxValue)) {
 			return false;
 		}
 		// step
 		BigDecimal anotherStep = another.getStep();
-		if (step == null && anotherStep != null ||
-			step != null && anotherStep == null ||
-			step.compareTo(anotherStep) != 0) {
+		if (Comparer.notEqual(step, anotherStep)) {
 			return false;
 		}
 		if (!element.equalsLogically(another)) {

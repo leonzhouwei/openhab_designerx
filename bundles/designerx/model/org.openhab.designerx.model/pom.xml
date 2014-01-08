@@ -39,5 +39,11 @@
 			<groupId>com.google.guava</groupId>
 			<artifactId>guava</artifactId>
 		</dependency>
+
+		<dependency>
+			<groupId>org.openhab.designerx</groupId>
+			<artifactId>org.openhab.designerx.util</artifactId>
+			<version>${project.version}</version>
+		</dependency>
 	</dependencies>
 </project>

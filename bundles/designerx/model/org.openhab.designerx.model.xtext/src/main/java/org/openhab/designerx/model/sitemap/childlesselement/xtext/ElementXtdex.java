@@ -9,6 +9,16 @@ import org.openhab.designerx.model.sitemap.impl.ElementBuilder;
 
 public final class ElementXtdex {
 	
+	public static void set(Element target, String xtext) {
+		Element source = fromXtext(xtext);
+		target.setIcon(source.getIcon());
+		target.setItem(source.getItem());
+		target.setLabel(source.getLabel());
+		target.addLabelColor(source.getLabelColor());
+		target.addValueColor(source.getValueColor());
+		target.addVisibility(source.getVisibility());
+	}
+	
 	public static Element fromXtext(String xtext) {
 		xtext = PreProcessor.preProcess(xtext);
 		Element e = new ElementBuilder().build();

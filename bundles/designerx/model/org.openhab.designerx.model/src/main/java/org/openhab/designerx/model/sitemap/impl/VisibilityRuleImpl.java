@@ -1,6 +1,7 @@
 package org.openhab.designerx.model.sitemap.impl;
 
 import org.openhab.designerx.model.sitemap.VisibilityRule;
+import org.openhab.designerx.util.Comparer;
 
 final class VisibilityRuleImpl implements VisibilityRule {
 	
@@ -58,27 +59,19 @@ final class VisibilityRuleImpl implements VisibilityRule {
 			return true;
 		}
 		final String anotherCondition = another.getCondition();
-		if (condition == null && anotherCondition != null ||
-			condition != null && anotherCondition == null ||
-			condition != null && anotherCondition != null && condition.compareTo(anotherCondition) != 0) {
+		if (Comparer.notEqual(condition, anotherCondition)) {
 			return false;
 		}
 		final String anotherItem = another.getItem();
-		if (item == null && anotherItem != null ||
-			item != null && anotherItem == null ||
-			item != null && anotherItem != null && item.compareTo(anotherItem) != 0) {
+		if (Comparer.notEqual(item, anotherItem)) {
 			return false;
 		}
 		final String anotherSign = another.getSign();
-		if (sign == null && anotherSign != null ||
-			sign != null && anotherSign == null ||
-			sign != null && anotherSign != null && sign.compareTo(anotherSign) != 0) {
+		if (Comparer.notEqual(sign, anotherSign)) {
 			return false;
 		}
 		final String anotherState = another.getState();
-		if (state == null && anotherState != null ||
-			state != null && anotherState == null ||
-			state != null && anotherState != null && state.compareTo(anotherState) != 0) {
+		if (Comparer.notEqual(state, anotherState)) {
 			return false;
 		}
 		return true;
