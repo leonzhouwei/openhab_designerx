@@ -17,7 +17,6 @@ public class SliderXtdexTest {
 		expected.setItem(item);
 		expected.setSwitchEnabled(true);
 		final Slider actual = SliderXtdex.fromXtext(xtext);
-		System.out.println(SliderXtdex.toXtext(expected));
 		assertThat(expected.equalsLogically(actual), Matchers.equalTo(true));
 	}
 
