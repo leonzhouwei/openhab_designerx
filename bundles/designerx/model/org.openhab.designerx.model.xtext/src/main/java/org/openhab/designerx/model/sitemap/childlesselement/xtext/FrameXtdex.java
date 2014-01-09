@@ -3,6 +3,14 @@ package org.openhab.designerx.model.sitemap.childlesselement.xtext;
 import org.openhab.designerx.model.sitemap.Frame;
 import org.openhab.designerx.model.sitemap.impl.FrameBuilder;
 
+/**
+ * 
+ * Syntax:
+ * Frame [label="<labelname>"] [icon="<icon>"] [item="<item">]
+ * 
+ * @author zhouwei
+ *
+ */
 public final class FrameXtdex {
 	
 	public static final String TARGET_TYPE_NAME = "Frame";

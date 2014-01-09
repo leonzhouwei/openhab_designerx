@@ -3,6 +3,14 @@ package org.openhab.designerx.model.sitemap.childlesselement.xtext;
 import org.openhab.designerx.model.sitemap.Group;
 import org.openhab.designerx.model.sitemap.impl.GroupBuilder;
 
+/**
+ * 
+ * Syntax:
+ * Group [item="<itemname>"] [label="<labelname>"] [icon="<iconname>"]
+ * 
+ * @author zhouwei
+ *
+ */
 public final class GroupXtdex {
 	
 	public static final String TARGET_TYPE_NAME = "Group";

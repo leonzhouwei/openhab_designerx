@@ -8,14 +8,6 @@ import org.openhab.designerx.model.sitemap.NonNestableElement;
 import org.openhab.designerx.model.sitemap.Slider;
 import org.openhab.designerx.model.sitemap.VisibilityRule;
 
-/**
- * 
- * Syntax:
- * Slider item="<itemname>" [label="<labelname>"] [icon="<iconname>"] [sendFrequency="frequency"] [switchEnabled]
- * 
- * @author zhouwei
- *
- */
 final class SliderImpl implements Slider {
 	
 	private NonNestableElementImpl element = new NonNestableElementImpl();

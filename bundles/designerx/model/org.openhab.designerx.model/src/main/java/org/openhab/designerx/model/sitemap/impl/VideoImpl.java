@@ -9,14 +9,6 @@ import org.openhab.designerx.model.sitemap.Video;
 import org.openhab.designerx.model.sitemap.VisibilityRule;
 import org.openhab.designerx.util.Comparer;
 
-/**
- * 
- * Syntax:
- * Video item="<itemname>"  [icon="<iconname>"] url="<url of video to embed>"
- * 
- * @author zhouwei
- *
- */
 final class VideoImpl implements Video {
 
 	private NonNestableElement element = new NonNestableElementImpl();

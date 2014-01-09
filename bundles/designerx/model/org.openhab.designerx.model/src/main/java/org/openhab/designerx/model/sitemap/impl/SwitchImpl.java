@@ -11,14 +11,6 @@ import org.openhab.designerx.model.sitemap.VisibilityRule;
 
 import com.google.common.collect.Lists;
 
-/**
- * 
- * Syntax:
- * Switch item="<itemname>" [label="<labelname>"] [icon="<iconname>"] [mappings="<mapping definition>"]
- * 
- * @author zhouwei
- *
- */
 final class SwitchImpl implements Switch {
 
 	private NonNestableElement element = new NonNestableElementImpl();

@@ -7,14 +7,6 @@ import org.openhab.designerx.model.sitemap.NonNestableElement;
 import org.openhab.designerx.model.sitemap.VisibilityRule;
 import org.openhab.designerx.util.Comparer;
 
-/**
- * 
- * Syntax:
- * List item="<itemname>" [label="<labelname>"] [icon="<iconname>"] [separator=""]
- * 
- * @author zhouwei
- *
- */
 final class ListImpl implements List {
 
 	private NonNestableElement element = new NonNestableElementImpl();

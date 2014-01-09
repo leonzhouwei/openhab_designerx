@@ -11,14 +11,6 @@ import org.openhab.designerx.model.sitemap.VisibilityRule;
 
 import com.google.common.collect.Lists;
 
-/**
- * 
- * Syntax:
- * Selection item="<itemname>" [label="<labelname>"] [icon="<iconname>"] [mappings="<mapping definition>"]
- * 
- * @author zhouwei
- *
- */
 final class SelectionImpl implements Selection {
 	
 	private NonNestableElement element = new NonNestableElementImpl();

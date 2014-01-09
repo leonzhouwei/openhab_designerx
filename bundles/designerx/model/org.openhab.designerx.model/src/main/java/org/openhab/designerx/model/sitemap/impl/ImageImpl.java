@@ -11,14 +11,6 @@ import org.openhab.designerx.util.Comparer;
 
 import com.google.common.collect.Lists;
 
-/**
- * 
- * Syntax:
- * Image [item="<itemname>"] [icon="<iconname>"] url="<url of image>" [label="<labelname>"] [refresh=IMAGE]
- * 
- * @author zhouwei
- *
- */
 final class ImageImpl implements Image {
 
 	private NestableElement element = new NestableElementImpl(); 

@@ -9,14 +9,6 @@ import org.openhab.designerx.model.sitemap.VisibilityRule;
 import org.openhab.designerx.model.sitemap.Webview;
 import org.openhab.designerx.util.Comparer;
 
-/**
- * 
- * Syntax:
- * Webview item="<itemname>" [label="<labelname>"] [icon="<iconname>"] url="<url>" [height="<heightvalue"]
- * 
- * @author zhouwei
- *
- */
 final class WebviewImpl implements Webview {
 	
 	private NonNestableElement element = new NonNestableElementImpl();

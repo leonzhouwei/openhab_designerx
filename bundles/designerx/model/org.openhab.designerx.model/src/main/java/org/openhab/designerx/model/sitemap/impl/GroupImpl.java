@@ -8,14 +8,6 @@ import org.openhab.designerx.model.sitemap.Group;
 import org.openhab.designerx.model.sitemap.NestableElement;
 import org.openhab.designerx.model.sitemap.VisibilityRule;
 
-/**
- * 
- * Syntax:
- * Group [item="<itemname>"] [label="<labelname>"] [icon="<iconname>"]
- * 
- * @author zhouwei
- *
- */
 final class GroupImpl implements Group {
 	
 	private NestableElement element = new NestableElementImpl(); 

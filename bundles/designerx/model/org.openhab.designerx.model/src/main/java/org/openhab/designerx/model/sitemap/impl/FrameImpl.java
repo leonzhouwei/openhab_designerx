@@ -8,14 +8,6 @@ import org.openhab.designerx.model.sitemap.Frame;
 import org.openhab.designerx.model.sitemap.NestableElement;
 import org.openhab.designerx.model.sitemap.VisibilityRule;
 
-/**
- * 
- * Syntax:
- * Frame [label="<labelname>"] [icon="<icon>"] [item="<item">]
- * 
- * @author zhouwei
- *
- */
 final class FrameImpl implements Frame {
 	
 	private NestableElement element = new NestableElementImpl(); 

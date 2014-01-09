@@ -7,6 +7,13 @@ import org.openhab.designerx.model.sitemap.impl.MappingBuilder;
 
 import com.google.common.collect.Lists;
 
+/**
+ * 
+ * mappings="<mapping definition>"
+ * 
+ * @author zhouwei
+ *
+ */
 public final class MappingsXtdex {
 
 	public static final String TARGET_TYPE_NAME = "mappings";

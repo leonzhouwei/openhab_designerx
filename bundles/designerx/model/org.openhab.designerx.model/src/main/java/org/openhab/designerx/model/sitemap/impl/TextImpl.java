@@ -8,14 +8,6 @@ import org.openhab.designerx.model.sitemap.NestableElement;
 import org.openhab.designerx.model.sitemap.Text;
 import org.openhab.designerx.model.sitemap.VisibilityRule;
 
-/**
- * 
- * Syntax:
- * Text item="<itemname>" [label="<labelname>"] [icon="<iconname>"] [valuecolor=xxxx]
- * 
- * @author zhouwei
- *
- */
 final class TextImpl implements Text {
 
 	private NestableElement element = new NestableElementImpl(); 
