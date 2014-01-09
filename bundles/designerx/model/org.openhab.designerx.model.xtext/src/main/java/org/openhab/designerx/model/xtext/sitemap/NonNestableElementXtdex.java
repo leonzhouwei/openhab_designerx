@@ -2,7 +2,7 @@ package org.openhab.designerx.model.xtext.sitemap;
 
 import org.openhab.designerx.model.sitemap.NonNestableElement;
 
-final class NonNestableElementXtdex {
+public final class NonNestableElementXtdex {
 	
 	public static final NonNestableElement fromXtext(String xtext) {
 		xtext = xtext.trim();
