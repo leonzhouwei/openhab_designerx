@@ -28,14 +28,14 @@ public final class ChartXtdex {
 		// set the elementary parameters
 		ElementXtdex.set(instance, xtext);
 		// set the specific parameters
-		String period = PropertyHandler.getValueWithoutStartEndMarks(xtext, PERIOD);
+		String period = PropertyHandler.getValue(xtext, PERIOD);
 		instance.setPeriod(period);
-		String refresh = PropertyHandler.getValueWithoutStartEndMarks(xtext, REFRESH);
+		String refresh = PropertyHandler.getValue(xtext, REFRESH);
 		if (refresh != null) {
 			int i = Integer.parseInt(refresh);
 			instance.setRefresh(i);
 		}
-		String service = PropertyHandler.getValueWithoutStartEndMarks(xtext, SERVICE);
+		String service = PropertyHandler.getValue(xtext, SERVICE);
 		instance.setService(service);
 		return instance;
 	}

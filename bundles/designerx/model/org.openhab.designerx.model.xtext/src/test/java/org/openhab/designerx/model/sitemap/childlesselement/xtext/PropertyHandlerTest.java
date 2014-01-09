@@ -11,7 +11,7 @@ public class PropertyHandlerTest {
 	public void testGetValue_1() {
 		final String expected = "gFF";
 		String xtext = "item=" + expected + " label=item";
-		String item = PropertyHandler.getValueWithoutStartEndMarks(xtext, "item");
+		String item = PropertyHandler.getValue(xtext, "item");
 		assertThat(item, Matchers.equalTo(expected));
 	}
 	
@@ -21,7 +21,7 @@ public class PropertyHandlerTest {
 		final String expectedLabel = "First Floor";
 		final String expectedIcon = "firstfloor";
 		String xtext = "item=" + expectedItem + " label=\"" + expectedLabel + "\" icon=\"" + expectedIcon + "\"";
-		String actualItem = PropertyHandler.getValueWithoutStartEndMarks(xtext, "item");
+		String actualItem = PropertyHandler.getValue(xtext, "item");
 		assertThat(actualItem, Matchers.equalTo(expectedItem));
 		String actualLabel = PropertyHandler.getValueBetweenDoubleQuotes(xtext, "label");
 		assertThat(actualLabel, Matchers.equalTo(expectedLabel));

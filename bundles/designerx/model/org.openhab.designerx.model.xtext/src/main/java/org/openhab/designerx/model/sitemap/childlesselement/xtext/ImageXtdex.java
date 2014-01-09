@@ -26,7 +26,7 @@ public final class ImageXtdex {
 		// icon color
 		instance.addIconColor(ColorArrayXtdex.fromXtext(xtext, Constants.ICONCOLOR));
 		// refresh
-		String refresh = PropertyHandler.getValueWithoutStartEndMarks(xtext, Constants.REFRESH);
+		String refresh = PropertyHandler.getValue(xtext, Constants.REFRESH);
 		if (refresh != null) {
 			int i = Integer.parseInt(refresh);
 			instance.setRefresh(i);

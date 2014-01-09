@@ -23,7 +23,7 @@ public final class ColorpickerXtdex {
 		// set the elementary parameters
 		ElementXtdex.set(instance, xtext);
 		// set the specific parameters
-		String freq = PropertyHandler.getValueWithoutStartEndMarks(xtext, Constants.SENDFREQUENCY);
+		String freq = PropertyHandler.getValue(xtext, Constants.SENDFREQUENCY);
 		if (freq != null) {
 			int i = Integer.parseInt(freq);
 			instance.setFrequency(i);

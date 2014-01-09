@@ -26,7 +26,7 @@ public final class ListXtdex {
 		// set the elementary parameters
 		ElementXtdex.set(instance, xtext);
 		// separator
-		String separator = PropertyHandler.getValueWithoutStartEndMarks(xtext, SEPARATOR);
+		String separator = PropertyHandler.getValue(xtext, SEPARATOR);
 		instance.setSeparator(separator);
 		return instance;
 	}

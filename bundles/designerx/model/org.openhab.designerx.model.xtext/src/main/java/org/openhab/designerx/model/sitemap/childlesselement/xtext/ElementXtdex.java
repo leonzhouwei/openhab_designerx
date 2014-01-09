@@ -22,7 +22,7 @@ public final class ElementXtdex {
 	public static Element fromXtext(String xtext) {
 		xtext = PreProcessor.preProcess(xtext);
 		Element e = new ElementBuilder().build();
-		String item = PropertyHandler.getValueWithoutStartEndMarks(xtext, Constants.ITEM);
+		String item = PropertyHandler.getValue(xtext, Constants.ITEM);
 		e.setItem(item);
 		String label = PropertyHandler.getValueBetweenDoubleQuotes(xtext, Constants.LABEL);
 		e.setLabel(label);

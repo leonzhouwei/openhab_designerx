@@ -30,17 +30,17 @@ public final class SetpointXtdex {
 		// set the elementary parameters
 		ElementXtdex.set(instance, xtext);
 		// set the specific parameters
-		String min = PropertyHandler.getValueWithoutStartEndMarks(xtext, MINVALUE);
+		String min = PropertyHandler.getValue(xtext, MINVALUE);
 		if (min != null) {
 			BigDecimal bd = new BigDecimal(min);
 			instance.setMinValue(bd);
 		}
-		String max = PropertyHandler.getValueWithoutStartEndMarks(xtext, MAXVALUE);
+		String max = PropertyHandler.getValue(xtext, MAXVALUE);
 		if (max != null) {
 			BigDecimal bd = new BigDecimal(max);
 			instance.setMaxValue(bd);
 		}
-		String step = PropertyHandler.getValueWithoutStartEndMarks(xtext, STEP);
+		String step = PropertyHandler.getValue(xtext, STEP);
 		if (step != null) {
 			BigDecimal bd = new BigDecimal(step);
 			instance.setStep(bd);

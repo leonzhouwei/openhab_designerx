@@ -9,7 +9,7 @@ final class PropertyHandler {
 	 * @param name
 	 * @return
 	 */
-	public static String getValueWithoutStartEndMarks(String xtext, String name) {
+	public static String getValue(String xtext, String name) {
 		if (!xtext.matches(".*" + name + "\\s*=.*")) {
 			return null;
 		}
