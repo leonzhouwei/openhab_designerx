@@ -21,17 +21,6 @@ public class ChartXtdexTest {
 	}
 
 	@Test
-	public void testToXtext() {
-		final String expected = "Chart item=Weather_Chart period=h refresh=600";
-		Chart chart = new ChartBuilder().build();
-		chart.setItem("Weather_Chart");
-		chart.setPeriod("h");
-		chart.setRefresh(600);
-		final String actual = ChartXtdex.toXtext(chart);
-		assertThat(actual, Matchers.equalTo(expected));
-	}
-	
-	@Test
 	public void testFromXtext_2() {
 		final String expected = "Chart item=Weather_Chart visibility=[Weather_Chart_Period==0,Weather_Chart_Period==\"Uninitialized\"] period=h refresh=600";
 		Chart chart = ChartXtdex.fromXtext(expected);
