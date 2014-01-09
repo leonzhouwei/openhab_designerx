@@ -33,6 +33,7 @@ public final class SelectionXtdex {
 		sb.append(TARGET_TYPE_NAME);
 		sb.append(Constants.SPACE_MARK);
 		sb.append(ElementXtdex.toXtext(e).trim());
+		sb.append(Constants.SPACE_MARK);
 		sb.append(MappingsXtdex.toXtext(e.getMappings()));
 		return sb.toString().trim();
 	}
