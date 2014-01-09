@@ -1,7 +1,7 @@
 package org.openhab.designerx.model.sitemap.childlesselement.xtext;
 
-import org.openhab.designerx.model.sitemap.Text;
-import org.openhab.designerx.model.sitemap.impl.TextBuilder;
+import org.openhab.designerx.model.sitemap.Video;
+import org.openhab.designerx.model.sitemap.impl.VideoBuilder;
 
 /**
  * 
@@ -13,31 +13,39 @@ import org.openhab.designerx.model.sitemap.impl.TextBuilder;
  */
 public final class VideoXtdex {
 	
-	public static final String TARGET_TYPE_NAME = "Text";
+	public static final String TARGET_TYPE_NAME = "Video";
 	
-	public static Text fromXtext(String xtext) {
+	public static Video fromXtext(String xtext) {
 		xtext = PreProcessor.preProcess(xtext);
 		if (!xtext.startsWith(TARGET_TYPE_NAME)) {
 			throw new RuntimeException(xtext + " is NOT a " + TARGET_TYPE_NAME);
 		}
-		Text instance = new TextBuilder().build();
+		Video instance = new VideoBuilder().build();
 		// set the elementary parameters
 		ElementXtdex.set(instance, xtext);
 		// set the specific parameters
-		String url = PropertyHandler.getValueWithoutStartEndMarks(xtext, Constants.URL);
+		String url = PropertyHandler.getValueBetweenDoubleQuotes(xtext, Constants.URL);
 		instance.setUrl(url);
 		return instance;
 	}
 	
-	public static String toXtext(Text e) {
+	public static String toXtext(Video e) {
 		StringBuilder sb = new StringBuilder();
 		sb.append(TARGET_TYPE_NAME);
 		sb.append(Constants.SPACE_MARK);
 		sb.append(ElementXtdex.toXtext(e).trim());
 		sb.append(Constants.SPACE_MARK);
+		if (e.getUrl() != null) {
+			sb.append(Constants.URL);
+			sb.append(Constants.EQU_MARK);
+			sb.append(Constants.DOUBLE_QUOTE_MARK);
+			sb.append(e.getUrl());
+			sb.append(Constants.DOUBLE_QUOTE_MARK);
+			sb.append(Constants.SPACE_MARK);
+		}
 		return sb.toString().trim();
 	}
 	
-	private TextXtdex() {}
+	private VideoXtdex() {}
 	
 }

@@ -35,6 +35,11 @@ public final class ListXtdex {
 		StringBuilder sb = new StringBuilder();
 		sb.append(TARGET_TYPE_NAME);
 		sb.append(Constants.SPACE_MARK);
+		if (e.getSeparator() != null) {
+			sb.append(SEPARATOR);
+			sb.append(Constants.EQU_MARK);
+			sb.append(e.getSeparator());
+		}
 		sb.append(ElementXtdex.toXtext(e).trim());
 		return sb.toString().trim();
 	}
