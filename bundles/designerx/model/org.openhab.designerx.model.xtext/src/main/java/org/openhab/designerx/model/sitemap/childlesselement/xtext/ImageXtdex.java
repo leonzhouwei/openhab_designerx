@@ -32,7 +32,7 @@ public final class ImageXtdex {
 			instance.setRefresh(i);
 		}
 		// url
-		String url = PropertyHandler.getValueWithoutStartEndMarks(xtext, Constants.URL);
+		String url = PropertyHandler.getValueBetweenDoubleQuotes(xtext, Constants.URL);
 		instance.setUrl(url);
 		return instance;
 	}
@@ -42,6 +42,19 @@ public final class ImageXtdex {
 		sb.append(TARGET_TYPE_NAME);
 		sb.append(Constants.SPACE_MARK);
 		sb.append(ElementXtdex.toXtext(e).trim());
+		sb.append(Constants.SPACE_MARK);
+		if (e.getUrl() != null) {
+			sb.append(Constants.URL);
+			sb.append(Constants.EQU_MARK);
+			sb.append(Constants.DOUBLE_QUOTE_MARK);
+			sb.append(e.getUrl());
+			sb.append(Constants.DOUBLE_QUOTE_MARK);
+			sb.append(Constants.SPACE_MARK);
+		}
+		sb.append(Constants.REFRESH);
+		sb.append(Constants.EQU_MARK);
+		sb.append(e.getRefresh());
+		sb.append(Constants.SPACE_MARK);
 		return sb.toString().trim();
 	}
 	

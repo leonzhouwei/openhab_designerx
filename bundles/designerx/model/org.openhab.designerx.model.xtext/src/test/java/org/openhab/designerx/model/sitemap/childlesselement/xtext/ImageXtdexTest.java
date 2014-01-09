@@ -11,14 +11,12 @@ public class ImageXtdexTest {
 
 	@Test
 	public void testFromXtext() {
-		final String item = "anItem";
-		final String label = "aLabel";
-		final String icon = "anIcon";
-		final String xtext = "Image item=anItem label=\"aLabel\" icon=\"anIcon\"";
+		final String xtext = "Image url=\"http://localhost:8080/images/splash-ipad-h.png\" label=\"openHAB\"";
+		final String label = PropertyHandler.getValueBetweenDoubleQuotes(xtext, "label");
+		final String url = PropertyHandler.getValueBetweenDoubleQuotes(xtext, "url");
 		final Image expected = new ImageBuilder().build();
-		expected.setItem(item);
 		expected.setLabel(label);
-		expected.setIcon(icon);
+		expected.setUrl(url);
 		final Image actual = ImageXtdex.fromXtext(xtext);
 		assertThat(expected.equalsLogically(actual), Matchers.equalTo(true));
 	}
