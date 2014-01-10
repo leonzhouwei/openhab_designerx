@@ -34,6 +34,14 @@ public final class FrameXtdex {
 		return sb.toString().trim();
 	}
 	
+	public static String toXtextWithoutChildren(Frame e) {
+		StringBuilder sb = new StringBuilder();
+		sb.append(TARGET_TYPE_NAME);
+		sb.append(Constants.SPACE_MARK);
+		sb.append(ElementXtdex.toXtext(e));
+		return sb.toString();
+	}
+	
 	private FrameXtdex() {}
 
 }

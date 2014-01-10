@@ -58,5 +58,25 @@ public final class ImageXtdex {
 		return sb.toString().trim();
 	}
 	
+	public static String toXtextWithoutChildren(Image e) {
+		StringBuilder sb = new StringBuilder();
+		sb.append(TARGET_TYPE_NAME);
+		sb.append(Constants.SPACE_MARK);
+		sb.append(ElementXtdex.toXtext(e).trim());
+		sb.append(Constants.SPACE_MARK);
+		if (e.getUrl() != null) {
+			sb.append(Constants.URL);
+			sb.append(Constants.EQU_MARK);
+			sb.append(Constants.DOUBLE_QUOTE_MARK);
+			sb.append(e.getUrl());
+			sb.append(Constants.DOUBLE_QUOTE_MARK);
+			sb.append(Constants.SPACE_MARK);
+		}
+		sb.append(Constants.REFRESH);
+		sb.append(Constants.EQU_MARK);
+		sb.append(e.getRefresh());
+		return sb.toString();
+	}
+	
 	private ImageXtdex() {}
 }

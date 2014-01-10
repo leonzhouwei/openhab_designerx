@@ -3,6 +3,10 @@ package org.openhab.designerx.model.xtext.sitemap;
 public final class Constants {
 	
 	//--------------------------------------------------------------------------
+	// OS
+	public static final String LINE_SEPARATOR = System.getProperty("line.separator");
+	
+	//--------------------------------------------------------------------------
 	// marks
 	public static final String CLOSE_BRACE_MARK = "]";
 	public static final String COMMA_MARK = ",";

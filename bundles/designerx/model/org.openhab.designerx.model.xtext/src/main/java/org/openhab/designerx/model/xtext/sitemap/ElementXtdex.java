@@ -7,9 +7,9 @@ import org.openhab.designerx.model.sitemap.Element;
 import org.openhab.designerx.model.sitemap.VisibilityRule;
 import org.openhab.designerx.model.sitemap.impl.ElementBuilder;
 
-public final class ElementXtdex {
+final class ElementXtdex {
 	
-	public static void set(Element target, String xtext) {
+	static void set(Element target, String xtext) {
 		Element source = fromXtext(xtext);
 		target.setIcon(source.getIcon());
 		target.setItem(source.getItem());
@@ -19,7 +19,7 @@ public final class ElementXtdex {
 		target.addVisibility(source.getVisibility());
 	}
 	
-	public static Element fromXtext(String xtext) {
+	static Element fromXtext(String xtext) {
 		xtext = PreProcessor.preProcess(xtext);
 		Element e = new ElementBuilder().build();
 		String item = PropertyHandler.getValue(xtext, Constants.ITEM);
@@ -37,7 +37,7 @@ public final class ElementXtdex {
 		return e;
 	}
 	
-	public static String toXtext(Element e) {
+	static String toXtext(Element e) {
 		StringBuilder sb = new StringBuilder();
 		if (e.getItem() != null) {
 			sb.append(Constants.ITEM);

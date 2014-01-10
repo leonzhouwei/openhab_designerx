@@ -36,6 +36,14 @@ public final class TextXtdex {
 		return sb.toString().trim();
 	}
 	
+	public static String toXtextWithoutChildren(Text e) {
+		StringBuilder sb = new StringBuilder();
+		sb.append(TARGET_TYPE_NAME);
+		sb.append(Constants.SPACE_MARK);
+		sb.append(ElementXtdex.toXtext(e));
+		return sb.toString();
+	}
+	
 	private TextXtdex() {}
 	
 }
