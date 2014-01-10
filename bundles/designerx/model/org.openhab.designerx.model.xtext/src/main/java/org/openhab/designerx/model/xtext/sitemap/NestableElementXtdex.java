@@ -69,10 +69,11 @@ final class NestableElementXtdex {
 				continue;
 			}
 			if (s.endsWith("{")) {
-				List<String> list = xtext.subList(i, xtext.size() - 1);
+				final int end = endIndexOf(xtext, i);
+				List<String> list = xtext.subList(i, end + 1);
 				NestableElement child = fromXtext(list);
 				root.appendChild(child);
-				i = endIndexOf(list, i);
+				i = end + 1;
 				continue;
 			}
 			if (NestableElementXtdex.isNestableElement(s)) {
