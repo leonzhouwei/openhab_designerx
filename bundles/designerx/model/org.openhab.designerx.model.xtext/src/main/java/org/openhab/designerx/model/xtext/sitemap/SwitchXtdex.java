@@ -34,7 +34,9 @@ public final class SwitchXtdex {
 		sb.append(Constants.SPACE_MARK);
 		sb.append(ElementXtdex.toXtext(e).trim());
 		sb.append(Constants.SPACE_MARK);
-		sb.append(MappingsXtdex.toXtext(e.getMappings()));
+		if (!e.getMappings().isEmpty()) {
+			sb.append(MappingsXtdex.toXtext(e.getMappings()));
+		}
 		return sb.toString().trim();
 	}
 	

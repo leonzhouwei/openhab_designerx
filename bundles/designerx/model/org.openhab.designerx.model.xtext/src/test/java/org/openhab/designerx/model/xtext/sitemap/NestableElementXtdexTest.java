@@ -37,19 +37,6 @@ public class NestableElementXtdexTest {
 	public void testFromXtext_1() {
 		List<String> list = Lists.newArrayList();
 		list.add("Frame {");
-		list.add("    Group item=gFF label=\"First Floor\" icon=\"firstfloor\"");
-		list.add("    Group item=gGF label=\"Ground Floor\" icon=\"groundfloor\"");
-		list.add("    Group item=gC label=\"Cellar\" icon=\"cellar\"");
-		list.add("    Group item=Outdoor icon=\"garden\"");
-		list.add("}");
-		NestableElement root = NestableElementXtdex.fromXtext(list);
-		System.out.println(NestableElementXtdex.toXtext(root, ""));
-	}
-	
-	@Test
-	public void testFromXtext_2() {
-		List<String> list = Lists.newArrayList();
-		list.add("Frame {");
 		list.add("    Text label=\"Group Demo\" icon=\"firstfloor\" {");
 		list.add("        Switch item=Lights mappings=[OFF=\"All Off\"]");
 		list.add("        Group item=Heating");
@@ -58,7 +45,20 @@ public class NestableElementXtdexTest {
 		list.add("    }");
 		list.add("}");
 		NestableElement root = NestableElementXtdex.fromXtext(list);
-		System.out.println(NestableElementXtdex.toXtext(root, ""));
+		System.out.println(NestableElementXtdex.toXtext(root, "    "));
+	}
+	
+	@Test
+	public void testFromXtext_2() {
+		List<String> list = Lists.newArrayList();
+		list.add("Frame {");
+		list.add("    Group item=gFF label=\"First Floor\" icon=\"firstfloor\"");
+		list.add("    Group item=gGF label=\"Ground Floor\" icon=\"groundfloor\"");
+		list.add("    Group item=gC label=\"Cellar\" icon=\"cellar\"");
+		list.add("    Group item=Outdoor icon=\"garden\"");
+		list.add("}");
+		NestableElement root = NestableElementXtdex.fromXtext(list);
+		System.out.println(NestableElementXtdex.toXtext(root, "    "));
 	}
 	
 	@Test
@@ -80,7 +80,63 @@ public class NestableElementXtdexTest {
 		list.add("    }");
 		list.add("}");
 		NestableElement root = NestableElementXtdex.fromXtext(list);
-		System.out.println(NestableElementXtdex.toXtext(root, ""));
+		System.out.println(NestableElementXtdex.toXtext(root, "    "));
 	}
-
+	
+	@Test
+	public void testFromXtext_4() {
+		List<String> list = Lists.newArrayList();
+		list.add("Frame label=\"Date\" {");
+		list.add("		Text item=Date");
+		list.add("}");
+		NestableElement root = NestableElementXtdex.fromXtext(list);
+		System.out.println(NestableElementXtdex.toXtext(root, "    "));
+	}
+	
+	@Test
+	public void testFromXtext_5() {
+		List<String> list = Lists.newArrayList();
+		list.add("Frame label=\"Demo\" {");
+		list.add("		Text label=\"Group Demo\" icon=\"firstfloor\" {");
+		list.add("			Switch item=Lights mappings=[OFF=\"All Off\"]");
+		list.add("			Group item=Heating");
+		list.add("			Group item=Windows");
+		list.add("			Text item=Temperature");
+		list.add("		}");
+		list.add("		Text label=\"Widget Overview\" icon=\"chart\" {");
+		list.add("			Frame label=\"Binary Widgets\" {");
+		list.add("				Switch item=DemoSwitch label=\"Toggle Switch\"");
+		list.add("				Switch item=DemoSwitch label=\"Button Switch\" mappings=[ON=\"On\"]");
+		list.add("			}");
+		list.add("			Frame label=\"Discrete Widgets\" {");
+		list.add("				Selection item=Scene_General label=\"Scene Selection\" mappings=[0=off, 1=TV, 2=Dinner, 3=Reading]");
+		list.add("				Switch item=Scene_General label=\"Scene\" mappings=[1=TV, 2=Dinner, 3=Reading]");
+		list.add("				Setpoint item=Temperature_Setpoint minValue=16 maxValue=28 step=0.5");
+	    list.add("			}");
+		list.add("			Frame label=\"Percent-based Widgets\" {");
+		list.add("				Slider item=DimmedLight switchSupport");
+		list.add("				Colorpicker item=RGBLight icon=\"slider\"");
+		list.add("				Switch item=DemoShutter");
+		list.add("				Slider item=DemoBlinds");
+		list.add("			}");
+		list.add("		}");
+		list.add("		Text label=\"Multimedia\" icon=\"video\" {");
+		list.add("			Frame label=\"Radio Control\" {");
+		list.add("				Selection item=Radio_Station mappings=[0=off, 1=HR3, 2=SWR3, 3=FFH]");
+		list.add("				Slider item=Volume");
+		list.add("			}");
+		list.add("			Frame label=\"Multimedia Widgets\" {");
+		list.add("				Image url=\"http://localhost:8080/images/splash-ipad-h.png\" label=\"openHAB\" {");
+		list.add("					Text label=\"http://www.openHAB.org\" icon=\"icon\"");
+		list.add("				}");
+		list.add("				Video url=\"http://demo.openhab.org/Hue.m4v\"");
+		list.add("				Webview url=\"http://heise-online.mobi/\" height=8");
+		list.add("			}");
+		list.add("		}");
+		list.add("	}");
+		list.add("}");
+		NestableElement root = NestableElementXtdex.fromXtext(list);
+		System.out.println(NestableElementXtdex.toXtext(root, "    "));
+	}	
+		
 }

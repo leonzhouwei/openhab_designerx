@@ -26,7 +26,7 @@ public final class Constants {
 	public static final String LABEL = "label";
 	public static final String LABELCOLOR = "labelcolor";
 	public static final String REFRESH = "refresh";
-	public static final String SENDFREQUENCY = "sednFrequency";
+	public static final String SENDFREQUENCY = "sendFrequency";
 	public static final String SIGN = "sign";
 	public static final String STATE = "state";
 	public static final String URL = "url";

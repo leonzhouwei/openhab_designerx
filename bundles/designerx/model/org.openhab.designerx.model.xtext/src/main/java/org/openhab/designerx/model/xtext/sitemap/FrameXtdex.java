@@ -39,7 +39,7 @@ public final class FrameXtdex {
 		sb.append(TARGET_TYPE_NAME);
 		sb.append(Constants.SPACE_MARK);
 		sb.append(ElementXtdex.toXtext(e));
-		return sb.toString();
+		return sb.toString().trim();
 	}
 	
 	private FrameXtdex() {}

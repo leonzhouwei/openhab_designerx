@@ -75,7 +75,7 @@ public final class ImageXtdex {
 		sb.append(Constants.REFRESH);
 		sb.append(Constants.EQU_MARK);
 		sb.append(e.getRefresh());
-		return sb.toString();
+		return sb.toString().trim();
 	}
 	
 	private ImageXtdex() {}
