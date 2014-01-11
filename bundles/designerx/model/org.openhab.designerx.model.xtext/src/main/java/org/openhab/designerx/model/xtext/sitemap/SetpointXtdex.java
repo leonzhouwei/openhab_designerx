@@ -51,37 +51,38 @@ public final class SetpointXtdex {
 	public static String toXtext(Setpoint e) {
 		StringBuilder sb = new StringBuilder();
 		sb.append(TARGET_TYPE_NAME);
+		sb.append(Constants.SPACE_MARK);
 		// element
 		String elemStr = ElementXtdex.toXtext(e);
 		if (!elemStr.isEmpty()) {
-			sb.append(Constants.SPACE_MARK);
 			sb.append(elemStr);	
+			sb.append(Constants.SPACE_MARK);
 		}
 		// minValue
 		BigDecimal minValue = e.getMinValue();
 		if (minValue != null) {
-			sb.append(Constants.SPACE_MARK);
 			sb.append(MINVALUE);
 			sb.append(Constants.EQU_MARK);
 			sb.append(minValue);
+			sb.append(Constants.SPACE_MARK);
 		}
 		// maxValue
 		BigDecimal maxValue = e.getMaxValue();
 		if (maxValue != null) {
-			sb.append(Constants.SPACE_MARK);
 			sb.append(MAXVALUE);
 			sb.append(Constants.EQU_MARK);
 			sb.append(maxValue);
+			sb.append(Constants.SPACE_MARK);
 		}
 		// step
 		BigDecimal step = e.getStep();
 		if (step != null) {
-			sb.append(Constants.SPACE_MARK);
 			sb.append(STEP);
 			sb.append(Constants.EQU_MARK);
 			sb.append(step);
+			sb.append(Constants.SPACE_MARK);
 		}
-		return sb.toString();
+		return sb.toString().trim();
 	}
 	
 	private SetpointXtdex() {}
