@@ -43,6 +43,7 @@ public final class MappingsXtdex {
 		sb.append(TARGET_TYPE_NAME);
 		sb.append(Constants.EQU_MARK);
 		sb.append("[");
+		int count = 0;
 		for (Mapping e : mappings) {
 			String cmd = e.getCmd();
 			String label = e.getLabel();
@@ -50,10 +51,13 @@ public final class MappingsXtdex {
 			sb.append(Constants.EQU_MARK);
 			sb.append(label);
 			sb.append(Constants.COMMA_MARK);
+			count += 1;
 		}
-		sb.deleteCharAt(sb.length() - 1);
+		if (count > 0) {
+			sb.deleteCharAt(sb.length() - 1);
+		}
 		sb.append("]");
-		return sb.toString().trim();
+		return sb.toString();
 	}
 	
 	private MappingsXtdex() {}

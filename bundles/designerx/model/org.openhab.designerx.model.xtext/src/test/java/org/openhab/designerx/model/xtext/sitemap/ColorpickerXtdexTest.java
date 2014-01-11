@@ -16,7 +16,7 @@ public class ColorpickerXtdexTest {
 		final String label = "b";
 		final String icon = "c";
 		final int frequency = 1;
-		final String xtext = "Colorpicker item=a label=\"b\" icon=\"c\" frequency=1";
+		final String xtext = "Colorpicker item=a label=\"b\" icon=\"c\" sendFrequency=1";
 		final Colorpicker expected = new ColorpickerBuilder().build();
 		expected.setItem(item);
 		expected.setLabel(label);

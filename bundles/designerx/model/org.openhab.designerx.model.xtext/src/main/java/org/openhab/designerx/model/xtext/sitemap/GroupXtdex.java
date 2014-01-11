@@ -27,19 +27,19 @@ public final class GroupXtdex {
 	}
 	
 	public static String toXtext(Group e) {
-		StringBuilder sb = new StringBuilder();
-		sb.append(TARGET_TYPE_NAME);
-		sb.append(Constants.SPACE_MARK);
-		sb.append(ElementXtdex.toXtext(e).trim());
-		return sb.toString().trim();
+		return toXtextWithoutChildren(e);
 	}
 	
 	public static String toXtextWithoutChildren(Group e) {
 		StringBuilder sb = new StringBuilder();
 		sb.append(TARGET_TYPE_NAME);
-		sb.append(Constants.SPACE_MARK);
-		sb.append(ElementXtdex.toXtext(e));
-		return sb.toString().trim();
+		// element
+		String elemStr = ElementXtdex.toXtext(e);
+		if (!elemStr.isEmpty()) {
+			sb.append(Constants.SPACE_MARK);
+			sb.append(elemStr);	
+		}
+		return sb.toString();
 	}
 	
 	private GroupXtdex() {}

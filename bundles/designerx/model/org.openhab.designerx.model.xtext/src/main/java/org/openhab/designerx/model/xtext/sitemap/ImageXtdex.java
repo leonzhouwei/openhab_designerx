@@ -38,44 +38,34 @@ public final class ImageXtdex {
 	}
 	
 	public static String toXtext(Image e) {
-		StringBuilder sb = new StringBuilder();
-		sb.append(TARGET_TYPE_NAME);
-		sb.append(Constants.SPACE_MARK);
-		sb.append(ElementXtdex.toXtext(e).trim());
-		sb.append(Constants.SPACE_MARK);
-		if (e.getUrl() != null) {
-			sb.append(Constants.URL);
-			sb.append(Constants.EQU_MARK);
-			sb.append(Constants.DOUBLE_QUOTE_MARK);
-			sb.append(e.getUrl());
-			sb.append(Constants.DOUBLE_QUOTE_MARK);
-			sb.append(Constants.SPACE_MARK);
-		}
-		sb.append(Constants.REFRESH);
-		sb.append(Constants.EQU_MARK);
-		sb.append(e.getRefresh());
-		sb.append(Constants.SPACE_MARK);
-		return sb.toString().trim();
+		return toXtextWithoutChildren(e);
 	}
 	
 	public static String toXtextWithoutChildren(Image e) {
 		StringBuilder sb = new StringBuilder();
 		sb.append(TARGET_TYPE_NAME);
-		sb.append(Constants.SPACE_MARK);
-		sb.append(ElementXtdex.toXtext(e).trim());
-		sb.append(Constants.SPACE_MARK);
-		if (e.getUrl() != null) {
+		// element
+		String elemStr = ElementXtdex.toXtext(e);
+		if (!elemStr.isEmpty()) {
+			sb.append(Constants.SPACE_MARK);
+			sb.append(elemStr);	
+		}
+		// url
+		String url = e.getUrl();
+		if (url != null) {
+			sb.append(Constants.SPACE_MARK);
 			sb.append(Constants.URL);
 			sb.append(Constants.EQU_MARK);
 			sb.append(Constants.DOUBLE_QUOTE_MARK);
-			sb.append(e.getUrl());
+			sb.append(url);
 			sb.append(Constants.DOUBLE_QUOTE_MARK);
-			sb.append(Constants.SPACE_MARK);
 		}
+		// refresh
+		sb.append(Constants.SPACE_MARK);
 		sb.append(Constants.REFRESH);
 		sb.append(Constants.EQU_MARK);
 		sb.append(e.getRefresh());
-		return sb.toString().trim();
+		return sb.toString();
 	}
 	
 	private ImageXtdex() {}

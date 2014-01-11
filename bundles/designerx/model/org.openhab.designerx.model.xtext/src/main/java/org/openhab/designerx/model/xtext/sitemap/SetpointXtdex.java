@@ -51,27 +51,37 @@ public final class SetpointXtdex {
 	public static String toXtext(Setpoint e) {
 		StringBuilder sb = new StringBuilder();
 		sb.append(TARGET_TYPE_NAME);
-		sb.append(Constants.SPACE_MARK);
-		if (e.getMinValue() != null) {
+		// element
+		String elemStr = ElementXtdex.toXtext(e);
+		if (!elemStr.isEmpty()) {
+			sb.append(Constants.SPACE_MARK);
+			sb.append(elemStr);	
+		}
+		// minValue
+		BigDecimal minValue = e.getMinValue();
+		if (minValue != null) {
+			sb.append(Constants.SPACE_MARK);
 			sb.append(MINVALUE);
 			sb.append(Constants.EQU_MARK);
-			sb.append(e.getMinValue());
-			sb.append(Constants.SPACE_MARK);
+			sb.append(minValue);
 		}
-		if (e.getMaxValue() != null) {
+		// maxValue
+		BigDecimal maxValue = e.getMaxValue();
+		if (maxValue != null) {
+			sb.append(Constants.SPACE_MARK);
 			sb.append(MAXVALUE);
 			sb.append(Constants.EQU_MARK);
-			sb.append(e.getMaxValue());
-			sb.append(Constants.SPACE_MARK);
+			sb.append(maxValue);
 		}
-		if (e.getStep() != null) {
+		// step
+		BigDecimal step = e.getStep();
+		if (step != null) {
+			sb.append(Constants.SPACE_MARK);
 			sb.append(STEP);
 			sb.append(Constants.EQU_MARK);
-			sb.append(e.getStep());
-			sb.append(Constants.SPACE_MARK);
+			sb.append(step);
 		}
-		sb.append(ElementXtdex.toXtext(e).trim());
-		return sb.toString().trim();
+		return sb.toString();
 	}
 	
 	private SetpointXtdex() {}

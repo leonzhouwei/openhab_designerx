@@ -50,6 +50,7 @@ final class ColorArrayXtdex {
 		sb.append(type);
 		sb.append(Constants.EQU_MARK);
 		sb.append("[");
+		int count = 0;
 		for (ColorArray e : colorArray) {
 			String itemName = e.getItem();
 			if (itemName != null) {
@@ -59,11 +60,17 @@ final class ColorArrayXtdex {
 			if (condition != null) {
 				sb.append(condition);
 			}
-			sb.append(Constants.EQU_MARK);
-			sb.append(e.getArg());
-			sb.append(Constants.COMMA_MARK);
+			String arg = e.getArg();
+			if (arg != null) {
+				count += 1;
+				sb.append(Constants.EQU_MARK);
+				sb.append(arg);
+				sb.append(Constants.COMMA_MARK);	
+			}
 		}
-		sb.deleteCharAt(sb.length() - 1);
+		if (count > 0) {
+			sb.deleteCharAt(sb.length() - 1);
+		}
 		sb.append("]");
 		return sb.toString().trim();
 	}

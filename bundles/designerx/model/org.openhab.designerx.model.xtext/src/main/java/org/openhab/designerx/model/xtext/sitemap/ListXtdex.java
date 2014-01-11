@@ -34,14 +34,21 @@ public final class ListXtdex {
 	public static String toXtext(List e) {
 		StringBuilder sb = new StringBuilder();
 		sb.append(TARGET_TYPE_NAME);
-		sb.append(Constants.SPACE_MARK);
-		if (e.getSeparator() != null) {
+		// element
+		String elemStr = ElementXtdex.toXtext(e);
+		if (!elemStr.isEmpty()) {
+			sb.append(Constants.SPACE_MARK);
+			sb.append(elemStr);	
+		}
+		// separator
+		String separator = e.getSeparator();
+		if (separator != null) {
+			sb.append(Constants.SPACE_MARK);
 			sb.append(SEPARATOR);
 			sb.append(Constants.EQU_MARK);
-			sb.append(e.getSeparator());
+			sb.append(separator);
 		}
-		sb.append(ElementXtdex.toXtext(e).trim());
-		return sb.toString().trim();
+		return sb.toString();
 	}
 	
 	private ListXtdex() {}

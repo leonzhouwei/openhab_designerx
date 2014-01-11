@@ -45,6 +45,7 @@ final class VisibilityRulesXtdex {
 		sb.append(Constants.VISIBILITY);
 		sb.append(Constants.EQU_MARK);
 		sb.append("[");
+		int count = 0;
 		for (VisibilityRule e : list) {
 			String itemName = e.getItem();
 			if (itemName != null) {
@@ -55,8 +56,11 @@ final class VisibilityRulesXtdex {
 				sb.append(condition);
 			}
 			sb.append(Constants.COMMA_MARK);
+			count += 1;
 		}
-		sb.deleteCharAt(sb.length() - 1);
+		if (count > 0) {
+			sb.deleteCharAt(sb.length() - 1);
+		}
 		sb.append("]");
 		return sb.toString().trim();
 	}

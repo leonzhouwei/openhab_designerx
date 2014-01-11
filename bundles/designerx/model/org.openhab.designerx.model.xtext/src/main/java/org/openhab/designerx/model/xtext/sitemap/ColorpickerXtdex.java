@@ -35,11 +35,17 @@ public final class ColorpickerXtdex {
 		StringBuilder sb = new StringBuilder();
 		sb.append(TARGET_TYPE_NAME);
 		sb.append(Constants.SPACE_MARK);
-		sb.append(ElementXtdex.toXtext(e).trim());
-		sb.append(Constants.SPACE_MARK);
+		// element
+		String elemStr = ElementXtdex.toXtext(e);
+		if (!elemStr.isEmpty()) {
+			sb.append(elemStr);	
+			sb.append(Constants.SPACE_MARK);
+		}
+		// frequency
 		sb.append(Constants.SENDFREQUENCY);
 		sb.append(Constants.EQU_MARK);
 		sb.append(e.getFrequency());
+		sb.append(Constants.SPACE_MARK);
 		return sb.toString().trim();
 	}
 	

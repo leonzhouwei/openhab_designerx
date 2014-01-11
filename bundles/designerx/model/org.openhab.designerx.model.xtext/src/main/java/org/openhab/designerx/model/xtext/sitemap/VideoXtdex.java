@@ -32,8 +32,13 @@ public final class VideoXtdex {
 	public static String toXtext(Video e) {
 		StringBuilder sb = new StringBuilder();
 		sb.append(TARGET_TYPE_NAME);
-		sb.append(Constants.SPACE_MARK);
-		sb.append(ElementXtdex.toXtext(e).trim());
+		// element
+		String elemStr = ElementXtdex.toXtext(e);
+		if (!elemStr.isEmpty()) {
+			sb.append(Constants.SPACE_MARK);
+			sb.append(elemStr);	
+		}
+		// url
 		if (e.getUrl() != null) {
 			sb.append(Constants.SPACE_MARK);
 			sb.append(Constants.URL);
@@ -41,7 +46,6 @@ public final class VideoXtdex {
 			sb.append(Constants.DOUBLE_QUOTE_MARK);
 			sb.append(e.getUrl());
 			sb.append(Constants.DOUBLE_QUOTE_MARK);
-			sb.append(Constants.SPACE_MARK);
 		}
 		return sb.toString().trim();
 	}

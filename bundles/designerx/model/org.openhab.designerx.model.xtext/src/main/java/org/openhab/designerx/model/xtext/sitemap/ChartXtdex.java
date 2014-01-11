@@ -44,24 +44,33 @@ public final class ChartXtdex {
 		StringBuilder sb = new StringBuilder();
 		sb.append(TARGET_TYPE_NAME);
 		sb.append(Constants.SPACE_MARK);
-		sb.append(ElementXtdex.toXtext(e).trim());
-		sb.append(Constants.SPACE_MARK);
-		if (e.getPeriod() != null) {
-			sb.append(PERIOD);
-			sb.append(Constants.EQU_MARK);
-			sb.append(e.getPeriod());
+		// element
+		String elemStr = ElementXtdex.toXtext(e);
+		if (!elemStr.isEmpty()) {
+			sb.append(elemStr);	
 			sb.append(Constants.SPACE_MARK);
 		}
+		// period
+		String period = e.getPeriod();
+		if (period != null) {
+			sb.append(PERIOD);
+			sb.append(Constants.EQU_MARK);
+			sb.append(period);
+			sb.append(Constants.SPACE_MARK);
+		}
+		// refresh
 		sb.append(REFRESH);
 		sb.append(Constants.EQU_MARK);
 		sb.append(e.getRefresh());
 		sb.append(Constants.SPACE_MARK);
-		if (e.getService() != null) {
+		// service
+		String service = e.getService();
+		if (service != null) {
 			sb.append(SERVICE);
 			sb.append(Constants.EQU_MARK);
-			sb.append(e.getService());
+			sb.append(service);
+			sb.append(Constants.SPACE_MARK);
 		}
-		
 		return sb.toString().trim();
 	}
 	

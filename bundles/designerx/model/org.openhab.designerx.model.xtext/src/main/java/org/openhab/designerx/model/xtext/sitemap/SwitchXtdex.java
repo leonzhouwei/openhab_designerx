@@ -1,5 +1,8 @@
 package org.openhab.designerx.model.xtext.sitemap;
 
+import java.util.List;
+
+import org.openhab.designerx.model.sitemap.Mapping;
 import org.openhab.designerx.model.sitemap.Switch;
 import org.openhab.designerx.model.sitemap.impl.SwitchBuilder;
 
@@ -31,13 +34,19 @@ public final class SwitchXtdex {
 	public static String toXtext(Switch e) {
 		StringBuilder sb = new StringBuilder();
 		sb.append(TARGET_TYPE_NAME);
-		sb.append(Constants.SPACE_MARK);
-		sb.append(ElementXtdex.toXtext(e).trim());
-		sb.append(Constants.SPACE_MARK);
-		if (!e.getMappings().isEmpty()) {
-			sb.append(MappingsXtdex.toXtext(e.getMappings()));
+		// element
+		String elemStr = ElementXtdex.toXtext(e);
+		if (!elemStr.isEmpty()) {
+			sb.append(Constants.SPACE_MARK);
+			sb.append(elemStr);	
 		}
-		return sb.toString().trim();
+		// mappings
+		List<Mapping> mappings= e.getMappings();
+		if (!mappings.isEmpty()) {
+			sb.append(Constants.SPACE_MARK);
+			sb.append(MappingsXtdex.toXtext(mappings));
+		}
+		return sb.toString();
 	}
 	
 	private SwitchXtdex() {}

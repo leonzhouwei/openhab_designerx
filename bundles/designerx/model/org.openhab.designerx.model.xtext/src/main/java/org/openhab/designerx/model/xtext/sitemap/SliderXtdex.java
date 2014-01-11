@@ -43,17 +43,23 @@ public final class SliderXtdex {
 	public static String toXtext(Slider e) {
 		StringBuilder sb = new StringBuilder();
 		sb.append(TARGET_TYPE_NAME);
-		sb.append(Constants.SPACE_MARK);
-		sb.append(ElementXtdex.toXtext(e).trim());
+		// element
+		String elemStr = ElementXtdex.toXtext(e);
+		if (!elemStr.isEmpty()) {
+			sb.append(Constants.SPACE_MARK);
+			sb.append(elemStr);	
+		}
+		// frequency
 		sb.append(Constants.SPACE_MARK);
 		sb.append(Constants.SENDFREQUENCY);
 		sb.append(Constants.EQU_MARK);
 		sb.append(e.getFrequency());
+		// switchEnabled
 		if (e.isSwitchEnabled()) {
 			sb.append(Constants.SPACE_MARK);
 			sb.append(SWITCHSUPPORT);
 		}
-		return sb.toString().trim();
+		return sb.toString();
 	}
 	
 	private SliderXtdex() {}

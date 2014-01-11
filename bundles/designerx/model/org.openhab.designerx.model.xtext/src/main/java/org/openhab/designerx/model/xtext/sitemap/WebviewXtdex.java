@@ -39,21 +39,28 @@ public final class WebviewXtdex {
 	public static String toXtext(Webview e) {
 		StringBuilder sb = new StringBuilder();
 		sb.append(TARGET_TYPE_NAME);
-		sb.append(Constants.SPACE_MARK);
-		sb.append(ElementXtdex.toXtext(e).trim());
-		if (e.getUrl() != null) {
+		// element
+		String elemStr = ElementXtdex.toXtext(e);
+		if (!elemStr.isEmpty()) {
+			sb.append(Constants.SPACE_MARK);
+			sb.append(elemStr);	
+		}
+		// url
+		String url = e.getUrl();
+		if (url != null) {
 			sb.append(Constants.SPACE_MARK);
 			sb.append(Constants.URL);
 			sb.append(Constants.EQU_MARK);
 			sb.append(Constants.DOUBLE_QUOTE_MARK);
-			sb.append(e.getUrl());
+			sb.append(url);
 			sb.append(Constants.DOUBLE_QUOTE_MARK);
 		}
+		// height
 		sb.append(Constants.SPACE_MARK);
 		sb.append(HEIGHT);
 		sb.append(Constants.EQU_MARK);
 		sb.append(e.getHeight());
-		return sb.toString().trim();
+		return sb.toString();
 	}
 	
 	private WebviewXtdex() {}

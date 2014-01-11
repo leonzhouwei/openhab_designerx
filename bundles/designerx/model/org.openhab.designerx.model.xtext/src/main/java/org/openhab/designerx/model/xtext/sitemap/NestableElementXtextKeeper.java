@@ -2,8 +2,8 @@ package org.openhab.designerx.model.xtext.sitemap;
 
 import java.util.List;
 
-import org.openhab.designerx.model.internal.util.Util;
 import org.openhab.designerx.model.xtext.ModelXtextException;
+import org.openhab.designerx.util.StringHelper;
 
 import com.google.common.collect.ImmutableList;
 import com.google.common.collect.Lists;
@@ -26,34 +26,31 @@ public final class NestableElementXtextKeeper {
 		return builder.build();
 	}
 	
-	private static void checkBraces(List<String> lines) throws ModelXtextException {
+	public void checkBraces(List<String> lines) throws ModelXtextException {
 		// check if '{'s and '}'s have the same count
 		int count = 0;
 		for (String line : lines) {
-			count += Util.count(line, "{");
-			count -= Util.count(line, "}");
+			count += StringHelper.count(line, "{");
+			count -= StringHelper.count(line, "}");
 		}
 		if (count != 0) {
 			throw new ModelXtextException("the number of '{'s is not equal to '}'s");
 		}
 	}
 	
-	private static void checkBeforeFormat(List<String> lines) throws ModelXtextException {
+	public void checkBeforeFormat(List<String> lines) throws ModelXtextException {
 		final int size = lines.size();
-		if (lines.get(size - 1).trim().startsWith("{")) {
-			throw new ModelXtextException("should NOT start with a '{' in the first line: '" + lines.get(0).trim() + "'");
-		}
 		checkBraces(lines);
 		for (int i = 0; i < size; ++i) {
 			String line = lines.get(i).trim();
 			if (line.isEmpty()) {
 				continue;
 			}
-			final int openBraceCount = Util.count(line, "{");
+			final int openBraceCount = StringHelper.count(line, "{");
 			if (openBraceCount > 1) {
 				throw new ModelXtextException("more than 1 '{' found in '" + line + "'");
 			}
-			final int closeBraceCount = Util.count(line, "}");
+			final int closeBraceCount = StringHelper.count(line, "}");
 			if (closeBraceCount > 1) {
 				throw new ModelXtextException("more than 1 '}' found in '" + line + "'");
 			}
@@ -66,7 +63,7 @@ public final class NestableElementXtextKeeper {
 		}
 	}
 	
-	private static void checkAfterFormat(List<String> formatted) throws ModelXtextException {
+	public void checkAfterFormat(List<String> formatted) throws ModelXtextException {
 		checkBraces(formatted);
 		final int size = formatted.size();
 		// check the formatted lines
@@ -75,11 +72,11 @@ public final class NestableElementXtextKeeper {
 			if (line.isEmpty()) {
 				throw new ModelXtextException("an empty line has bee found");
 			}
-			final int openBraceCount = Util.count(line, "{");
+			final int openBraceCount = StringHelper.count(line, "{");
 			if (openBraceCount > 1) {
 				throw new ModelXtextException("more than 1 '{' found in '" + line + "'");
 			}
-			final int closeBraceCount = Util.count(line, "}");
+			final int closeBraceCount = StringHelper.count(line, "}");
 			if (closeBraceCount > 1) {
 				throw new ModelXtextException("more than 1 '}' found in '" + line + "'");
 			}
@@ -101,8 +98,8 @@ public final class NestableElementXtextKeeper {
 		}
 	}
 	
-	public static void format(List<String> lines) throws ModelXtextException {
-		Util.trim(lines);
+	public void format(List<String> lines) throws ModelXtextException {
+		StringHelper.trim(lines);
 		checkBeforeFormat(lines);
 		List<String> formatted = Lists.newArrayList();
 		final int size = lines.size();

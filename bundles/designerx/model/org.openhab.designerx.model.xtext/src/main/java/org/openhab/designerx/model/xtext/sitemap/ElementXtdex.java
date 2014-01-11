@@ -39,40 +39,48 @@ final class ElementXtdex {
 	
 	static String toXtext(Element e) {
 		StringBuilder sb = new StringBuilder();
+		sb.append(Constants.SPACE_MARK);
+		//
+		String item = e.getItem();
 		if (e.getItem() != null) {
 			sb.append(Constants.ITEM);
 			sb.append(Constants.EQU_MARK);
-			sb.append(e.getItem());
+			sb.append(item);
 			sb.append(Constants.SPACE_MARK);
 		}
-		if (e.getLabel() != null) {
+		String label = e.getLabel();
+		if (label != null) {
 			sb.append(Constants.LABEL);
 			sb.append(Constants.EQU_MARK);
 			sb.append(Constants.DOUBLE_QUOTE_MARK);
-			sb.append(e.getLabel());
+			sb.append(label);
 			sb.append(Constants.DOUBLE_QUOTE_MARK);
 			sb.append(Constants.SPACE_MARK);
 		}
-		if (e.getIcon() != null) {
+		String icon = e.getIcon();
+		if (icon != null) {
 			sb.append(Constants.ICON);
 			sb.append(Constants.EQU_MARK);
 			sb.append(Constants.DOUBLE_QUOTE_MARK);
-			sb.append(e.getIcon());
+			sb.append(icon);
 			sb.append(Constants.DOUBLE_QUOTE_MARK);
 			sb.append(Constants.SPACE_MARK);
 		}
-		if (!e.getLabelColor().isEmpty()) {
+		List<ColorArray> labelColor = e.getLabelColor();
+		if (!labelColor.isEmpty()) {
 			sb.append(Constants.LABELCOLOR);
 			sb.append(Constants.EQU_MARK);
-			sb.append(ColorArrayXtdex.toXtext(e.getLabelColor(), Constants.LABELCOLOR));
+			sb.append(ColorArrayXtdex.toXtext(labelColor, Constants.LABELCOLOR));
 			sb.append(Constants.SPACE_MARK);
 		}
-		if (!e.getValueColor().isEmpty()) {
-			sb.append(ColorArrayXtdex.toXtext(e.getValueColor(), Constants.VALUECOLOR));
+		List<ColorArray> valueColor = e.getValueColor();
+		if (!valueColor.isEmpty()) {
+			sb.append(ColorArrayXtdex.toXtext(valueColor, Constants.VALUECOLOR));
 			sb.append(Constants.SPACE_MARK);
 		}
-		if (!e.getVisibility().isEmpty()) {
-			sb.append(VisibilityRulesXtdex.toXtext(e.getVisibility()));
+		List<VisibilityRule> visibility = e.getVisibility();
+		if (!visibility.isEmpty()) {
+			sb.append(VisibilityRulesXtdex.toXtext(visibility));
 			sb.append(Constants.SPACE_MARK);
 		}
 		return sb.toString().trim();

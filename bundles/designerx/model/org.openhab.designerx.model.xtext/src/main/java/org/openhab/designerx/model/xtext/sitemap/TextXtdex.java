@@ -28,20 +28,19 @@ public final class TextXtdex {
 	}
 	
 	public static String toXtext(Text e) {
-		StringBuilder sb = new StringBuilder();
-		sb.append(TARGET_TYPE_NAME);
-		sb.append(Constants.SPACE_MARK);
-		sb.append(ElementXtdex.toXtext(e).trim());
-		sb.append(Constants.SPACE_MARK);
-		return sb.toString().trim();
+		return toXtextWithoutChildren(e);
 	}
 	
 	public static String toXtextWithoutChildren(Text e) {
 		StringBuilder sb = new StringBuilder();
 		sb.append(TARGET_TYPE_NAME);
-		sb.append(Constants.SPACE_MARK);
-		sb.append(ElementXtdex.toXtext(e));
-		return sb.toString().trim();
+		// element
+		String elemStr = ElementXtdex.toXtext(e);
+		if (!elemStr.isEmpty()) {
+			sb.append(Constants.SPACE_MARK);
+			sb.append(elemStr);	
+		}
+		return sb.toString();
 	}
 	
 	private TextXtdex() {}
