@@ -10,6 +10,8 @@ import org.openhab.designerx.model.sitemap.NestableElement;
 import org.openhab.designerx.model.sitemap.NonNestableElement;
 import org.openhab.designerx.model.sitemap.Text;
 
+import com.google.common.collect.ImmutableList;
+
 final class NestableElementXtdex {
 	
 	private static final String DEFAULT_INDENTATION = "    ";
@@ -50,7 +52,7 @@ final class NestableElementXtdex {
 		return false;
 	}
 	
-	static NestableElement fromXtext(List<String> xtext) {
+	static NestableElement fromXtext(ImmutableList<String> xtext) {
 		String line = xtext.get(0).trim();
 		if (!isNestableElement(line)) {
 			return null;
@@ -68,7 +70,7 @@ final class NestableElementXtdex {
 			}
 			if (s.endsWith("{")) {
 				final int end = endIndexOf(xtext, i);
-				List<String> list = xtext.subList(i, end + 1);
+				ImmutableList<String> list = xtext.subList(i, end + 1);
 				NestableElement child = fromXtext(list);
 				root.appendChild(child);
 				i = end + 1;

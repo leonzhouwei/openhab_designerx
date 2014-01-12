@@ -17,7 +17,7 @@ public final class SliderXtdex {
 	
 	private static final String SWITCHSUPPORT = "switchSupport";
 	private static final String SWITCHENABLED = "switchEnabled";
-	private static final String MATCH_REGEX = "\\s" + TARGET_TYPE_NAME + "\\b.*";
+	private static final String MATCH_REGEX = "\\s*" + TARGET_TYPE_NAME + "\\b.*";
 	
 	static Slider fromXtext(NonNestableElementXtextKeeper keeper) {
 		return fromXtext(keeper.getXtext());

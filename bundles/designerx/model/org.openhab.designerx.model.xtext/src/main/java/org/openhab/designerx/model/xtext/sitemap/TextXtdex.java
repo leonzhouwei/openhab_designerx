@@ -15,7 +15,7 @@ import org.openhab.designerx.model.sitemap.impl.TextBuilder;
 public final class TextXtdex {
 	
 	static final String TARGET_TYPE_NAME = "Text";
-	private static final String MATCH_REGEX = "\\s" + TARGET_TYPE_NAME + "\\b.*";
+	private static final String MATCH_REGEX = "\\s*" + TARGET_TYPE_NAME + "\\b.*";
 	
 	public static Text fromXtext(NestableElementXtextKeeper keeper) {
 		return (Text) NestableElementXtdex.fromXtext(keeper);

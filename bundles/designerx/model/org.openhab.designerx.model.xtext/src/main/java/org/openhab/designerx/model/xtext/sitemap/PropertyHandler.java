@@ -28,7 +28,7 @@ final class PropertyHandler {
 		String post = split[1].trim();
 		int i = post.indexOf(Constants.OPEN_BRACE_MARK);
 		int j = post.indexOf(Constants.CLOSE_BRACE_MARK, i + Constants.OPEN_BRACE_MARK.length());
-		String value = post.substring(i + 1, j);
+		String value = post.substring(i + 1, j).trim();
 		return value;
 	}
 	
@@ -50,7 +50,7 @@ final class PropertyHandler {
 		String post = split[1].trim();
 		int i = post.indexOf(Constants.DOUBLE_QUOTE_MARK);
 		int j = post.indexOf(Constants.DOUBLE_QUOTE_MARK, i + Constants.DOUBLE_QUOTE_MARK.length());
-		String value = post.substring(i + 1, j);
+		String value = post.substring(i + 1, j).trim();
 		return value;
 	}
 	

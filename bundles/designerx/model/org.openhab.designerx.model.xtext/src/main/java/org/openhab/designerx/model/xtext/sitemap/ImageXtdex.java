@@ -15,7 +15,7 @@ import org.openhab.designerx.model.sitemap.impl.ImageBuilder;
 public final class ImageXtdex {
 	
 	static final String TARGET_TYPE_NAME = "Image";
-	private static final String MATCH_REGEX = "\\s" + TARGET_TYPE_NAME + "\\b.*";
+	private static final String MATCH_REGEX = "\\s*" + TARGET_TYPE_NAME + "\\b.*";
 	
 	public static Image fromXtext(NestableElementXtextKeeper keeper) {
 		return (Image) NestableElementXtdex.fromXtext(keeper);

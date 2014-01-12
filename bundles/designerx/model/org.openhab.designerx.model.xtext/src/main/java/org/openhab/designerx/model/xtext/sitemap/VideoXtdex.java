@@ -14,7 +14,7 @@ import org.openhab.designerx.model.sitemap.impl.VideoBuilder;
 public final class VideoXtdex {
 	
 	static final String TARGET_TYPE_NAME = "Video";
-	private static final String MATCH_REGEX = "\\s" + TARGET_TYPE_NAME + "\\b.*";
+	private static final String MATCH_REGEX = "\\s*" + TARGET_TYPE_NAME + "\\b.*";
 	
 	static Video fromXtext(NonNestableElementXtextKeeper keeper) {
 		return fromXtext(keeper.getXtext());

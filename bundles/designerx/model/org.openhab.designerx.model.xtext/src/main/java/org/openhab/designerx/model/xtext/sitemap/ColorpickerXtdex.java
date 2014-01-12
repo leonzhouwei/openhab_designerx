@@ -13,7 +13,7 @@ import org.openhab.designerx.model.sitemap.impl.ColorpickerBuilder;
 public final class ColorpickerXtdex {
 	
 	static final String TARGET_TYPE_NAME = "Colorpicker";
-	private static final String MATCH_REGEX = "\\s" + TARGET_TYPE_NAME + "\\b.*";
+	private static final String MATCH_REGEX = "\\s*" + TARGET_TYPE_NAME + "\\b.*";
 	
 	public static Colorpicker fromXtext(NonNestableElementXtextKeeper keeper) {
 		return fromXtext(keeper.getXtext());

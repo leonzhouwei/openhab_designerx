@@ -18,7 +18,7 @@ public final class ChartXtdex {
 	private static final String PERIOD = "period";
 	private static final String REFRESH = "refresh";
 	private static final String SERVICE = "service";
-	private static final String MATCH_REGEX = "\\s" + TARGET_TYPE_NAME + "\\b.*";
+	private static final String MATCH_REGEX = "\\s*" + TARGET_TYPE_NAME + "\\b.*";
 	
 	public static Chart fromXtext(NonNestableElementXtextKeeper keeper) {
 		return fromXtext(keeper.getXtext());

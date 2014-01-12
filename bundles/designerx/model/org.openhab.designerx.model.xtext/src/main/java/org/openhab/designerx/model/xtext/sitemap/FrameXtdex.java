@@ -15,7 +15,7 @@ import org.openhab.designerx.model.sitemap.impl.FrameBuilder;
 public final class FrameXtdex {
 	
 	static final String TARGET_TYPE_NAME = "Frame";
-	private static final String MATCH_REGEX = "\\s" + TARGET_TYPE_NAME + "\\b.*";
+	private static final String MATCH_REGEX = "\\s*" + TARGET_TYPE_NAME + "\\b.*";
 	
 	public static Frame fromXtext(NestableElementXtextKeeper keeper) {
 		return (Frame) NestableElementXtdex.fromXtext(keeper);

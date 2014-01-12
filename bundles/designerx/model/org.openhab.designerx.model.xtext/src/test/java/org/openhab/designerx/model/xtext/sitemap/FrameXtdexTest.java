@@ -23,5 +23,5 @@ public class FrameXtdexTest {
 		final Frame actual = FrameXtdex.fromXtextWithoutChildren(xtext);
 		assertThat(expected.equalsLogically(actual), Matchers.equalTo(true));
 	}
-
+	
 }

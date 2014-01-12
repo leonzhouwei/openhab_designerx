@@ -20,7 +20,7 @@ public final class SetpointXtdex {
 	private static final String MINVALUE = "minValue";
 	private static final String MAXVALUE = "maxValue";
 	private static final String STEP = "step";
-	private static final String MATCH_REGEX = "\\s" + TARGET_TYPE_NAME + "\\b.*";
+	private static final String MATCH_REGEX = "\\s*" + TARGET_TYPE_NAME + "\\b.*";
 	
 	public static Setpoint fromXtext(NonNestableElementXtextKeeper keeper) {
 		return fromXtext(keeper.getXtext());

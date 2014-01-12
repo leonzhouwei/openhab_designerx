@@ -17,7 +17,7 @@ import org.openhab.designerx.model.sitemap.impl.SelectionBuilder;
 public final class SelectionXtdex {
 	
 	static final String TARGET_TYPE_NAME = "Selection";
-	private static final String MATCH_REGEX = "\\s" + TARGET_TYPE_NAME + "\\b.*";
+	private static final String MATCH_REGEX = "\\s*" + TARGET_TYPE_NAME + "\\b.*";
 	
 	public static Selection fromXtext(NonNestableElementXtextKeeper keeper) {
 		return fromXtext(keeper.getXtext());

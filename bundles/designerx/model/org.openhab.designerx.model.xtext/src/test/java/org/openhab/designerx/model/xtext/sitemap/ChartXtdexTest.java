@@ -9,6 +9,7 @@ import org.junit.Test;
 import org.openhab.designerx.model.sitemap.Chart;
 import org.openhab.designerx.model.sitemap.VisibilityRule;
 import org.openhab.designerx.model.sitemap.impl.ChartBuilder;
+import org.openhab.designerx.model.xtext.ModelXtextException;
 import org.openhab.designerx.model.xtext.sitemap.ChartXtdex;
 import org.openhab.designerx.model.xtext.sitemap.VisibilityRulesXtdex;
 
@@ -37,7 +38,7 @@ public class ChartXtdexTest {
 	}
 	
 	@Test
-	public void testFromXtext_3() {
+	public void testFromXtext_3() throws ModelXtextException {
 		final String expected = "Chart item=Weather_Chart visibility=[Weather_Chart_Period==0,Weather_Chart_Period==\"Uninitialized\"] period=h refresh=600";
 		NonNestableElementXtextKeeper keeper = new NonNestableElementXtextKeeper(expected);
 		Chart chart = ChartXtdex.fromXtext(keeper);

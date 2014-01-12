@@ -15,7 +15,7 @@ import org.openhab.designerx.model.sitemap.impl.GroupBuilder;
 public final class GroupXtdex {
 	
 	static final String TARGET_TYPE_NAME = "Group";
-	private static final String MATCH_REGEX = "\\s" + TARGET_TYPE_NAME + "\\b.*";
+	private static final String MATCH_REGEX = "\\s*" + TARGET_TYPE_NAME + "\\b.*";
 	
 	public static Group fromXtext(NestableElementXtextKeeper keeper) {
 		return (Group) NestableElementXtdex.fromXtext(keeper);
