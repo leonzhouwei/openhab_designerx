@@ -12,14 +12,14 @@ import org.openhab.designerx.model.xtext.sitemap.PropertyHandler;
 public class ImageXtdexTest {
 
 	@Test
-	public void testFromXtext() {
+	public void testFromXtextWithoutChildren() {
 		final String xtext = "Image url=\"http://localhost:8080/images/splash-ipad-h.png\" label=\"openHAB\"";
 		final String label = PropertyHandler.getValueBetweenDoubleQuotes(xtext, "label");
 		final String url = PropertyHandler.getValueBetweenDoubleQuotes(xtext, "url");
 		final Image expected = new ImageBuilder().build();
 		expected.setLabel(label);
 		expected.setUrl(url);
-		final Image actual = ImageXtdex.fromXtext(xtext);
+		final Image actual = ImageXtdex.fromXtextWithoutChildren(xtext);
 		assertThat(expected.equalsLogically(actual), Matchers.equalTo(true));
 	}
 

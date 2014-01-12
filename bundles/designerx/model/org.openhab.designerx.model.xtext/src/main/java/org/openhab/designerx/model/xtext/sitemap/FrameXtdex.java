@@ -1,6 +1,7 @@
 package org.openhab.designerx.model.xtext.sitemap;
 
 import org.openhab.designerx.model.sitemap.Frame;
+import org.openhab.designerx.model.sitemap.NestableElement;
 import org.openhab.designerx.model.sitemap.impl.FrameBuilder;
 
 /**
@@ -13,9 +14,13 @@ import org.openhab.designerx.model.sitemap.impl.FrameBuilder;
  */
 public final class FrameXtdex {
 	
-	public static final String TARGET_TYPE_NAME = "Frame";
+	static final String TARGET_TYPE_NAME = "Frame";
 	
-	public static Frame fromXtext(String xtext) {
+	public static Frame fromXtext(NestableElementXtextKeeper keeper) {
+		return (Frame) NestableElementXtdex.fromXtext(keeper);
+	}
+	
+	static Frame fromXtextWithoutChildren(String xtext) {
 		xtext = PreProcessor.preProcess(xtext);
 		if (!xtext.startsWith(TARGET_TYPE_NAME)) {
 			throw new RuntimeException(xtext + " is NOT a " + TARGET_TYPE_NAME);
@@ -27,10 +32,14 @@ public final class FrameXtdex {
 	}
 	
 	public static String toXtext(Frame e) {
-		return toXtextWithoutChildren(e);
+		return toXtext(e, "");
 	}
 	
-	public static String toXtextWithoutChildren(Frame e) {
+	public static String toXtext(Frame e, String indentation) {
+		return NestableElementXtdex.toXtext((NestableElement) e, indentation);
+	}
+	
+	static String toXtextWithoutChildren(Frame e) {
 		StringBuilder sb = new StringBuilder();
 		sb.append(TARGET_TYPE_NAME);
 		sb.append(Constants.SPACE_MARK);

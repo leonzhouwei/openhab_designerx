@@ -15,13 +15,17 @@ import org.openhab.designerx.model.sitemap.impl.SetpointBuilder;
  */
 public final class SetpointXtdex {
 	
-	public static final String TARGET_TYPE_NAME = "Setpoint";
+	static final String TARGET_TYPE_NAME = "Setpoint";
 	
 	private static final String MINVALUE = "minValue";
 	private static final String MAXVALUE = "maxValue";
 	private static final String STEP = "step";
 	
-	public static Setpoint fromXtext(String xtext) {
+	static Setpoint fromXtext(NonNestableElementXtextKeeper keeper) {
+		return fromXtext(keeper.getXtext());
+	}
+	
+	static Setpoint fromXtext(String xtext) {
 		xtext = PreProcessor.preProcess(xtext);
 		if (!xtext.startsWith(TARGET_TYPE_NAME)) {
 			throw new RuntimeException(xtext + " is NOT a " + TARGET_TYPE_NAME);

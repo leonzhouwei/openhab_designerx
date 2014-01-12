@@ -13,11 +13,15 @@ import org.openhab.designerx.model.sitemap.impl.ListBuilder;
  */
 public final class ListXtdex {
 	
-	public static final String TARGET_TYPE_NAME = "List";
+	static final String TARGET_TYPE_NAME = "List";
 	
 	private static final String SEPARATOR = "separator";
 	
-	public static List fromXtext(String xtext) {
+	static List fromXtext(NonNestableElementXtextKeeper keeper) {
+		return fromXtext(keeper.getXtext());
+	}
+	
+	static List fromXtext(String xtext) {
 		xtext = PreProcessor.preProcess(xtext);
 		if (!xtext.startsWith(TARGET_TYPE_NAME)) {
 			throw new RuntimeException(xtext + " is NOT a " + TARGET_TYPE_NAME);

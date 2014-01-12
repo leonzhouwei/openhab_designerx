@@ -23,19 +23,23 @@ final class NestableElementXtdex {
 	
 	private static final String DEFAULT_INDENTATION = "    ";
 	
-	static NestableElement fromXtext(String xtext) {
+	static NestableElement fromXtext(NestableElementXtextKeeper keeper) {
+		return fromXtext(keeper.getXtext());
+	}
+	
+	static NestableElement fromXtextWithoutChildren(String xtext) {
 		xtext = xtext.trim();
 		if (xtext.startsWith(FrameXtdex.TARGET_TYPE_NAME)) {
-			return FrameXtdex.fromXtext(xtext);
+			return FrameXtdex.fromXtextWithoutChildren(xtext);
 		}
 		if (xtext.startsWith(GroupXtdex.TARGET_TYPE_NAME)) {
-			return GroupXtdex.fromXtext(xtext);
+			return GroupXtdex.fromXtextWithoutChildren(xtext);
 		}
 		if (xtext.startsWith(ImageXtdex.TARGET_TYPE_NAME)) {
-			return ImageXtdex.fromXtext(xtext);
+			return ImageXtdex.fromXtextWithoutChildren(xtext);
 		}
 		if (xtext.startsWith(TextXtdex.TARGET_TYPE_NAME)) {
-			return TextXtdex.fromXtext(xtext);
+			return TextXtdex.fromXtextWithoutChildren(xtext);
 		}
 		return null;
 	}
@@ -57,7 +61,7 @@ final class NestableElementXtdex {
 		if (!isNestableElement(line)) {
 			return null;
 		}
-		NestableElement root = fromXtext(line);
+		NestableElement root = fromXtextWithoutChildren(line);
 		int i = 1;
 		final int size = xtext.size();
 		while (i > 0 && i < size) {
@@ -77,7 +81,7 @@ final class NestableElementXtdex {
 				continue;
 			}
 			if (NestableElementXtdex.isNestableElement(s)) {
-				NestableElement child = fromXtext(s);
+				NestableElement child = fromXtextWithoutChildren(s);
 				root.appendChild(child);
 				i += 1;
 				continue;

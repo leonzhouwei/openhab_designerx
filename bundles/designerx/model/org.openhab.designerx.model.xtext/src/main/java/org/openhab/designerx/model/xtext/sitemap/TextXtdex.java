@@ -1,5 +1,6 @@
 package org.openhab.designerx.model.xtext.sitemap;
 
+import org.openhab.designerx.model.sitemap.NestableElement;
 import org.openhab.designerx.model.sitemap.Text;
 import org.openhab.designerx.model.sitemap.impl.TextBuilder;
 
@@ -13,9 +14,9 @@ import org.openhab.designerx.model.sitemap.impl.TextBuilder;
  */
 public final class TextXtdex {
 	
-	public static final String TARGET_TYPE_NAME = "Text";
+	static final String TARGET_TYPE_NAME = "Text";
 	
-	public static Text fromXtext(String xtext) {
+	static Text fromXtextWithoutChildren(String xtext) {
 		xtext = PreProcessor.preProcess(xtext);
 		if (!xtext.startsWith(TARGET_TYPE_NAME)) {
 			throw new RuntimeException(xtext + " is NOT a " + TARGET_TYPE_NAME);
@@ -27,8 +28,12 @@ public final class TextXtdex {
 		return instance;
 	}
 	
-	public static String toXtext(Text e) {
-		return toXtextWithoutChildren(e);
+	static String toXtext(Text e) {
+		return toXtext(e, "");
+	}
+	
+	public static String toXtext(Text e, String indentation) {
+		return NestableElementXtdex.toXtext((NestableElement) e, indentation);
 	}
 	
 	public static String toXtextWithoutChildren(Text e) {

@@ -34,7 +34,21 @@ public class ChartXtdexTest {
 		gen.addVisibility(visibility);
 		gen.setPeriod("h");
 		gen.setRefresh(600);
-		System.out.println(gen.equalsLogically(chart));
+	}
+	
+	@Test
+	public void testFromXtext_3() {
+		final String expected = "Chart item=Weather_Chart visibility=[Weather_Chart_Period==0,Weather_Chart_Period==\"Uninitialized\"] period=h refresh=600";
+		NonNestableElementXtextKeeper keeper = new NonNestableElementXtextKeeper(expected);
+		Chart chart = ChartXtdex.fromXtext(keeper);
+		final String actual = ChartXtdex.toXtext(chart);
+		assertThat(actual, Matchers.equalTo(expected));
+		Chart gen = new ChartBuilder().build();
+		gen.setItem("Weather_Chart");
+		List<VisibilityRule> visibility = VisibilityRulesXtdex.fromXtext("visibility=[Weather_Chart_Period==0,Weather_Chart_Period==\"Uninitialized\"]");
+		gen.addVisibility(visibility);
+		gen.setPeriod("h");
+		gen.setRefresh(600);
 	}
 	
 }

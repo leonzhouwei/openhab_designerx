@@ -21,7 +21,7 @@ final class VisibilityRulesXtdex {
 			.add("<")
 			.build();
 	
-	public static List<VisibilityRule> fromXtext(String xtext) {
+	static List<VisibilityRule> fromXtext(String xtext) {
 		xtext = PreProcessor.preProcess(xtext);
 		List<VisibilityRule> visibility = Lists.newArrayList();
 		if (!xtext.matches(".*" + Constants.VISIBILITY + "\\s*=.*\\[.*\\].*")) {
@@ -40,7 +40,7 @@ final class VisibilityRulesXtdex {
 		return visibility;
 	}
 	
-	public static String toXtext(List<VisibilityRule> list) {
+	static String toXtext(List<VisibilityRule> list) {
 		StringBuilder sb = new StringBuilder();
 		sb.append(Constants.VISIBILITY);
 		sb.append(Constants.EQU_MARK);

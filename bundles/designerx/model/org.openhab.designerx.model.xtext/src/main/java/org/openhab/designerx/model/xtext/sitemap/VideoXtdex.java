@@ -13,9 +13,13 @@ import org.openhab.designerx.model.sitemap.impl.VideoBuilder;
  */
 public final class VideoXtdex {
 	
-	public static final String TARGET_TYPE_NAME = "Video";
+	static final String TARGET_TYPE_NAME = "Video";
 	
-	public static Video fromXtext(String xtext) {
+	static Video fromXtext(NonNestableElementXtextKeeper keeper) {
+		return fromXtext(keeper.getXtext());
+	}
+	
+	static Video fromXtext(String xtext) {
 		xtext = PreProcessor.preProcess(xtext);
 		if (!xtext.startsWith(TARGET_TYPE_NAME)) {
 			throw new RuntimeException(xtext + " is NOT a " + TARGET_TYPE_NAME);

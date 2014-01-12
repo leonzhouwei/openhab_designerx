@@ -13,12 +13,16 @@ import org.openhab.designerx.model.sitemap.impl.SliderBuilder;
  */
 public final class SliderXtdex {
 	
-	public static final String TARGET_TYPE_NAME = "Slider";
+	static final String TARGET_TYPE_NAME = "Slider";
 	
 	private static final String SWITCHSUPPORT = "switchSupport";
 	private static final String SWITCHENABLED = "switchEnabled";
 	
-	public static Slider fromXtext(String xtext) {
+	static Slider fromXtext(NonNestableElementXtextKeeper keeper) {
+		return fromXtext(keeper.getXtext());
+	}
+	
+	static Slider fromXtext(String xtext) {
 		xtext = PreProcessor.preProcess(xtext);
 		if (!xtext.startsWith(TARGET_TYPE_NAME)) {
 			throw new RuntimeException(xtext + " is NOT a " + TARGET_TYPE_NAME);

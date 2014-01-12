@@ -13,11 +13,15 @@ import org.openhab.designerx.model.sitemap.impl.WebviewBuilder;
  */
 public final class WebviewXtdex {
 	
-	public static final String TARGET_TYPE_NAME = "Webview";
+	static final String TARGET_TYPE_NAME = "Webview";
 	
 	private static final String HEIGHT = "height";
 	
-	public static Webview fromXtext(String xtext) {
+	static Webview fromXtext(NonNestableElementXtextKeeper keeper) {
+		return fromXtext(keeper.getXtext());
+	}
+	
+	static Webview fromXtext(String xtext) {
 		xtext = PreProcessor.preProcess(xtext);
 		if (!xtext.startsWith(TARGET_TYPE_NAME)) {
 			throw new RuntimeException(xtext + " is NOT a " + TARGET_TYPE_NAME);

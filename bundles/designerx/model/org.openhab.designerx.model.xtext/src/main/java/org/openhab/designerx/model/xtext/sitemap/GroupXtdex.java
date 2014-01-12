@@ -1,6 +1,7 @@
 package org.openhab.designerx.model.xtext.sitemap;
 
 import org.openhab.designerx.model.sitemap.Group;
+import org.openhab.designerx.model.sitemap.NestableElement;
 import org.openhab.designerx.model.sitemap.impl.GroupBuilder;
 
 /**
@@ -13,9 +14,9 @@ import org.openhab.designerx.model.sitemap.impl.GroupBuilder;
  */
 public final class GroupXtdex {
 	
-	public static final String TARGET_TYPE_NAME = "Group";
+	static final String TARGET_TYPE_NAME = "Group";
 	
-	public static Group fromXtext(String xtext) {
+	static Group fromXtextWithoutChildren(String xtext) {
 		xtext = PreProcessor.preProcess(xtext);
 		if (!xtext.startsWith(TARGET_TYPE_NAME)) {
 			throw new RuntimeException(xtext + " is NOT a " + TARGET_TYPE_NAME);
@@ -27,10 +28,14 @@ public final class GroupXtdex {
 	}
 	
 	public static String toXtext(Group e) {
-		return toXtextWithoutChildren(e);
+		return toXtext(e, "");
 	}
 	
-	public static String toXtextWithoutChildren(Group e) {
+	public static String toXtext(Group e, String indentation) {
+		return NestableElementXtdex.toXtext((NestableElement) e, indentation);
+	}
+	
+	static String toXtextWithoutChildren(Group e) {
 		StringBuilder sb = new StringBuilder();
 		sb.append(TARGET_TYPE_NAME);
 		sb.append(Constants.SPACE_MARK);

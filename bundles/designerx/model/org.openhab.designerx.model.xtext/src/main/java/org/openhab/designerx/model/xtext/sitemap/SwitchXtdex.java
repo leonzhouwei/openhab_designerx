@@ -16,9 +16,13 @@ import org.openhab.designerx.model.sitemap.impl.SwitchBuilder;
  */
 public final class SwitchXtdex {
 	
-	public static final String TARGET_TYPE_NAME = "Switch";
+	static final String TARGET_TYPE_NAME = "Switch";
 	
-	public static Switch fromXtext(String xtext) {
+	static Switch fromXtext(NonNestableElementXtextKeeper keeper) {
+		return fromXtext(keeper.getXtext());
+	}
+	
+	static Switch fromXtext(String xtext) {
 		xtext = PreProcessor.preProcess(xtext);
 		if (!xtext.startsWith(TARGET_TYPE_NAME)) {
 			throw new RuntimeException(xtext + " is NOT a " + TARGET_TYPE_NAME);

@@ -16,9 +16,13 @@ import org.openhab.designerx.model.sitemap.impl.SelectionBuilder;
  */
 public final class SelectionXtdex {
 	
-	public static final String TARGET_TYPE_NAME = "Selection";
+	static final String TARGET_TYPE_NAME = "Selection";
 	
-	public static Selection fromXtext(String xtext) {
+	static Selection fromXtext(NonNestableElementXtextKeeper keeper) {
+		return fromXtext(keeper.getXtext());
+	}
+	
+	static Selection fromXtext(String xtext) {
 		xtext = PreProcessor.preProcess(xtext);
 		if (!xtext.startsWith(TARGET_TYPE_NAME)) {
 			throw new RuntimeException(xtext + " is NOT a " + TARGET_TYPE_NAME);

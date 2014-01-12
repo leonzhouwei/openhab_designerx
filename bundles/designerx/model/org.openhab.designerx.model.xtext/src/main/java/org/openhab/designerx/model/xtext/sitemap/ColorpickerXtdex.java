@@ -12,9 +12,13 @@ import org.openhab.designerx.model.sitemap.impl.ColorpickerBuilder;
  */
 public final class ColorpickerXtdex {
 	
-	public static final String TARGET_TYPE_NAME = "Colorpicker";
+	static final String TARGET_TYPE_NAME = "Colorpicker";
 	
-	public static Colorpicker fromXtext(String xtext) {
+	public static Colorpicker fromXtext(NonNestableElementXtextKeeper keeper) {
+		return fromXtext(keeper.getXtext());
+	}
+	
+	static Colorpicker fromXtext(String xtext) {
 		xtext = PreProcessor.preProcess(xtext);
 		if (!xtext.startsWith(TARGET_TYPE_NAME)) {
 			throw new RuntimeException(xtext + " is NOT a " + TARGET_TYPE_NAME);

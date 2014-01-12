@@ -11,7 +11,7 @@ import org.openhab.designerx.model.xtext.sitemap.FrameXtdex;
 public class FrameXtdexTest {
 
 	@Test
-	public void testFromXtext() {
+	public void testFromXtextWithoutChildren() {
 		final String item = "anItem";
 		final String label = "aLabel";
 		final String icon = "anIcon";
@@ -20,7 +20,7 @@ public class FrameXtdexTest {
 		expected.setItem(item);
 		expected.setLabel(label);
 		expected.setIcon(icon);
-		final Frame actual = FrameXtdex.fromXtext(xtext);
+		final Frame actual = FrameXtdex.fromXtextWithoutChildren(xtext);
 		assertThat(expected.equalsLogically(actual), Matchers.equalTo(true));
 	}
 

@@ -16,9 +16,9 @@ import com.google.common.collect.Lists;
  */
 public final class MappingsXtdex {
 
-	public static final String TARGET_TYPE_NAME = "mappings";
-
-	public static List<Mapping> fromXtext(String xtext) {
+	static final String TARGET_TYPE_NAME = "mappings";
+	
+	static List<Mapping> fromXtext(String xtext) {
 		List<Mapping> mappings = Lists.newArrayList();
 		xtext = PreProcessor.preProcess(xtext);
 		if (!xtext.matches(".*" + TARGET_TYPE_NAME + "=\\[.*\\].*")) {
@@ -38,7 +38,7 @@ public final class MappingsXtdex {
 		return mappings;
 	}
 	
-	public static String toXtext(List<Mapping> mappings) {
+	static String toXtext(List<Mapping> mappings) {
 		StringBuilder sb = new StringBuilder();
 		sb.append(TARGET_TYPE_NAME);
 		sb.append(Constants.EQU_MARK);

@@ -2,7 +2,7 @@ package org.openhab.designerx.model.xtext.sitemap;
 
 final class PreProcessor {
 	
-	public static String preProcess(String xtext) {
+	static String preProcess(String xtext) {
 		xtext = xtext.trim().replaceAll("\\}", "");
 		int i = xtext.indexOf("{");
 		if (i != -1) {

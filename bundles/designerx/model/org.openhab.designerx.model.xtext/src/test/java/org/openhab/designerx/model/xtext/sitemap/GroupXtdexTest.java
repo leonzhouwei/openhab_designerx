@@ -11,7 +11,7 @@ import org.openhab.designerx.model.xtext.sitemap.GroupXtdex;
 public class GroupXtdexTest {
 
 	@Test
-	public void testFromXtext() {
+	public void testFromXtextWithoutChildren() {
 		final String item = "anItem";
 		final String label = "aLabel";
 		final String icon = "anIcon";
@@ -20,7 +20,7 @@ public class GroupXtdexTest {
 		expected.setItem(item);
 		expected.setLabel(label);
 		expected.setIcon(icon);
-		final Group actual = GroupXtdex.fromXtext(xtext);
+		final Group actual = GroupXtdex.fromXtextWithoutChildren(xtext);
 		assertThat(expected.equalsLogically(actual), Matchers.equalTo(true));
 	}
 

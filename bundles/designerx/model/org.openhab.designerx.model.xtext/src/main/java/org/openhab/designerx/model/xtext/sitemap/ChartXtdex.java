@@ -13,13 +13,17 @@ import org.openhab.designerx.model.sitemap.impl.ChartBuilder;
  */
 public final class ChartXtdex {
 	
-	public static final String TARGET_TYPE_NAME = "Chart";
+	static final String TARGET_TYPE_NAME = "Chart";
 
 	private static final String PERIOD = "period";
 	private static final String REFRESH = "refresh";
 	private static final String SERVICE = "service";
 	
-	public static Chart fromXtext(String xtext) {
+	public static Chart fromXtext(NonNestableElementXtextKeeper keeper) {
+		return fromXtext(keeper.getXtext());
+	}
+	
+	static Chart fromXtext(String xtext) {
 		xtext = PreProcessor.preProcess(xtext);
 		if (!xtext.startsWith(TARGET_TYPE_NAME)) {
 			throw new RuntimeException(xtext + " is NOT a " + TARGET_TYPE_NAME);

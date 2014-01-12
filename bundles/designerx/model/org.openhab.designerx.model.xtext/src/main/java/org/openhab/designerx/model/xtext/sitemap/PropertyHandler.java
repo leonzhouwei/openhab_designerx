@@ -9,7 +9,7 @@ final class PropertyHandler {
 	 * @param name
 	 * @return
 	 */
-	public static String getValue(String xtext, String name) {
+	static String getValue(String xtext, String name) {
 		if (!xtext.matches(".*" + name + "\\s*=.*")) {
 			return null;
 		}
@@ -20,7 +20,7 @@ final class PropertyHandler {
 		return value;
 	}
 	
-	public static String getValueBetweenBraces(String xtext, String name) {
+	static String getValueBetweenBraces(String xtext, String name) {
 		if (!xtext.matches(".*" + name + "\\s*=\\s*\\[.*\\].*")) {
 			return null;
 		}
@@ -42,7 +42,7 @@ final class PropertyHandler {
 	 * @param name
 	 * @return
 	 */
-	public static String getValueBetweenDoubleQuotes(String xtext, String name) {
+	static String getValueBetweenDoubleQuotes(String xtext, String name) {
 		if (!xtext.matches(".*" + name + "\\s*=\\s*" + Constants.DOUBLE_QUOTE_MARK + ".*" + Constants.DOUBLE_QUOTE_MARK + ".*")) {
 			return null;
 		}

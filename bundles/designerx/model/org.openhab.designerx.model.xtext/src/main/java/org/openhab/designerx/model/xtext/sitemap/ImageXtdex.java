@@ -1,6 +1,7 @@
 package org.openhab.designerx.model.xtext.sitemap;
 
 import org.openhab.designerx.model.sitemap.Image;
+import org.openhab.designerx.model.sitemap.NestableElement;
 import org.openhab.designerx.model.sitemap.impl.ImageBuilder;
 
 /**
@@ -13,9 +14,9 @@ import org.openhab.designerx.model.sitemap.impl.ImageBuilder;
  */
 public final class ImageXtdex {
 	
-	public static final String TARGET_TYPE_NAME = "Image";
+	static final String TARGET_TYPE_NAME = "Image";
 	
-	public static Image fromXtext(String xtext) {
+	static Image fromXtextWithoutChildren(String xtext) {
 		xtext = PreProcessor.preProcess(xtext);
 		if (!xtext.startsWith(TARGET_TYPE_NAME)) {
 			throw new RuntimeException(xtext + " is NOT a " + TARGET_TYPE_NAME);
@@ -38,10 +39,14 @@ public final class ImageXtdex {
 	}
 	
 	public static String toXtext(Image e) {
-		return toXtextWithoutChildren(e);
+		return toXtext(e, "");
 	}
 	
-	public static String toXtextWithoutChildren(Image e) {
+	public static String toXtext(Image e, String indentation) {
+		return NestableElementXtdex.toXtext((NestableElement) e, indentation);
+	}
+	
+	static String toXtextWithoutChildren(Image e) {
 		StringBuilder sb = new StringBuilder();
 		sb.append(TARGET_TYPE_NAME);
 		sb.append(Constants.SPACE_MARK);

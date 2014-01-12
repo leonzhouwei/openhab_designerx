@@ -21,7 +21,7 @@ final class ColorArrayXtdex {
 			.add("<")
 			.build();
 	
-	public static List<ColorArray> fromXtext(String xtext, String type) {
+	static List<ColorArray> fromXtext(String xtext, String type) {
 		List<ColorArray> ret = Lists.newArrayList();
 		xtext = PreProcessor.preProcess(xtext);
 		if (!xtext.matches(".*" + type + "=\\[.*\\]")) {
@@ -45,7 +45,7 @@ final class ColorArrayXtdex {
 		return ret;
 	}
 	
-	public static String toXtext(List<ColorArray> colorArray, String type) {
+	static String toXtext(List<ColorArray> colorArray, String type) {
 		StringBuilder sb = new StringBuilder();
 		sb.append(type);
 		sb.append(Constants.EQU_MARK);

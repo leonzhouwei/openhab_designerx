@@ -13,12 +13,12 @@ import org.openhab.designerx.model.xtext.sitemap.TextXtdex;
 public class TextXtdexTest {
 
 	@Test
-	public void testFromXtext() {
+	public void testFromXtextWithoutChildren() {
 		final String xtext = "Text item=Weather_Temperature valuecolor=[Weather_LastUpdate==\"Uninitialized\"=\"lightgray\",Weather_LastUpdate>90=\"lightgray\",>25=\"orange\",>15=\"green\",>5=\"orange\",<=5=\"blue\"] {";
 		final Text expected = new TextBuilder().build();
 		expected.setItem(PropertyHandler.getValue(xtext, "item"));
 		expected.addValueColor(ColorArrayXtdex.fromXtext(xtext, "valuecolor"));
-		final Text actual = TextXtdex.fromXtext(xtext);
+		final Text actual = TextXtdex.fromXtextWithoutChildren(xtext);
 		assertThat(expected.equalsLogically(actual), Matchers.equalTo(true));
 	}
 

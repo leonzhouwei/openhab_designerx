@@ -27,6 +27,10 @@ final class NonNestableElementXtdex {
 			.add(WebviewXtdex.TARGET_TYPE_NAME)
 			.build();
 	
+	static NonNestableElement fromXtext(NonNestableElementXtextKeeper keeper) {
+		return fromXtext(keeper.getXtext());
+	}
+	
 	static final NonNestableElement fromXtext(String xtext) {
 		xtext = xtext.trim();
 		if (xtext.startsWith(ChartXtdex.TARGET_TYPE_NAME)) {
