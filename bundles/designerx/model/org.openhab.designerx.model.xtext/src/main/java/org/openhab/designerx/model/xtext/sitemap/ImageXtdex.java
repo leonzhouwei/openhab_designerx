@@ -3,6 +3,7 @@ package org.openhab.designerx.model.xtext.sitemap;
 import org.openhab.designerx.model.sitemap.Image;
 import org.openhab.designerx.model.sitemap.NestableElement;
 import org.openhab.designerx.model.sitemap.impl.ImageBuilder;
+import org.openhab.designerx.model.xtext.Constants;
 
 /**
  * 

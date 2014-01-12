@@ -1,5 +1,7 @@
 package org.openhab.designerx.model.xtext.sitemap;
 
+import org.openhab.designerx.model.xtext.Constants;
+
 final class PropertyHandler {
 	
 	/**

@@ -7,8 +7,8 @@ import java.util.List;
 import org.hamcrest.Matchers;
 import org.junit.Test;
 import org.openhab.designerx.model.sitemap.ColorArray;
+import org.openhab.designerx.model.xtext.Constants;
 import org.openhab.designerx.model.xtext.sitemap.ColorArrayXtdex;
-import org.openhab.designerx.model.xtext.sitemap.Constants;
 
 public class ColorArrayXtdexTest {
 	

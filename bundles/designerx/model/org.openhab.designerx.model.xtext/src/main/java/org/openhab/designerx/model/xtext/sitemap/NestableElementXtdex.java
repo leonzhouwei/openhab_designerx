@@ -9,6 +9,7 @@ import org.openhab.designerx.model.sitemap.Image;
 import org.openhab.designerx.model.sitemap.NestableElement;
 import org.openhab.designerx.model.sitemap.NonNestableElement;
 import org.openhab.designerx.model.sitemap.Text;
+import org.openhab.designerx.model.xtext.Constants;
 
 import com.google.common.collect.ImmutableList;
 

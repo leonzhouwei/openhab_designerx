@@ -1,4 +1,4 @@
-package org.openhab.designerx.model.xtext.sitemap;
+package org.openhab.designerx.model.xtext;
 
 public final class Constants {
 	

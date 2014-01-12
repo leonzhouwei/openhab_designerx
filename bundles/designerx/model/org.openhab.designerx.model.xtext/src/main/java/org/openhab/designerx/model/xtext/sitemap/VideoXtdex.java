@@ -2,6 +2,7 @@ package org.openhab.designerx.model.xtext.sitemap;
 
 import org.openhab.designerx.model.sitemap.Video;
 import org.openhab.designerx.model.sitemap.impl.VideoBuilder;
+import org.openhab.designerx.model.xtext.Constants;
 
 /**
  * 

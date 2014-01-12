@@ -5,6 +5,7 @@ import java.util.List;
 import org.openhab.designerx.model.sitemap.Mapping;
 import org.openhab.designerx.model.sitemap.Selection;
 import org.openhab.designerx.model.sitemap.impl.SelectionBuilder;
+import org.openhab.designerx.model.xtext.Constants;
 
 /**
  * 

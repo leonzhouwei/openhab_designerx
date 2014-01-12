@@ -2,6 +2,7 @@ package org.openhab.designerx.model.xtext.sitemap;
 
 import org.openhab.designerx.model.sitemap.Colorpicker;
 import org.openhab.designerx.model.sitemap.impl.ColorpickerBuilder;
+import org.openhab.designerx.model.xtext.Constants;
 
 /**
  * 

@@ -3,6 +3,7 @@ package org.openhab.designerx.model.xtext.sitemap;
 import org.openhab.designerx.model.sitemap.Group;
 import org.openhab.designerx.model.sitemap.NestableElement;
 import org.openhab.designerx.model.sitemap.impl.GroupBuilder;
+import org.openhab.designerx.model.xtext.Constants;
 
 /**
  * 

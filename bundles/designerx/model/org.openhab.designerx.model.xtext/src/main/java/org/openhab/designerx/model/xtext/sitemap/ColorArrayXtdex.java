@@ -5,6 +5,7 @@ import java.util.Set;
 
 import org.openhab.designerx.model.sitemap.ColorArray;
 import org.openhab.designerx.model.sitemap.impl.ColorArrayBuilder;
+import org.openhab.designerx.model.xtext.Constants;
 
 import com.google.common.collect.ImmutableSet;
 import com.google.common.collect.Lists;

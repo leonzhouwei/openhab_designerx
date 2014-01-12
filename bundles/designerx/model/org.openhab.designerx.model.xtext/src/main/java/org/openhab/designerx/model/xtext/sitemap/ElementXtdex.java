@@ -6,6 +6,7 @@ import org.openhab.designerx.model.sitemap.ColorArray;
 import org.openhab.designerx.model.sitemap.Element;
 import org.openhab.designerx.model.sitemap.VisibilityRule;
 import org.openhab.designerx.model.sitemap.impl.ElementBuilder;
+import org.openhab.designerx.model.xtext.Constants;
 
 final class ElementXtdex {
 	

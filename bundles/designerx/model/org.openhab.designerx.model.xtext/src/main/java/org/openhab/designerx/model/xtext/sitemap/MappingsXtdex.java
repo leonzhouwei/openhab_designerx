@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.openhab.designerx.model.sitemap.Mapping;
 import org.openhab.designerx.model.sitemap.impl.MappingBuilder;
+import org.openhab.designerx.model.xtext.Constants;
 
 import com.google.common.collect.Lists;
 

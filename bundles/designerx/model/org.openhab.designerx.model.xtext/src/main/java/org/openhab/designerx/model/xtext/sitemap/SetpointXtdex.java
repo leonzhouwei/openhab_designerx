@@ -4,6 +4,7 @@ import java.math.BigDecimal;
 
 import org.openhab.designerx.model.sitemap.Setpoint;
 import org.openhab.designerx.model.sitemap.impl.SetpointBuilder;
+import org.openhab.designerx.model.xtext.Constants;
 
 /**
  * 

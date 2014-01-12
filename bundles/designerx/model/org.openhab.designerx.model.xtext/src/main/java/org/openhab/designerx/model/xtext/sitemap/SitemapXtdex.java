@@ -7,6 +7,7 @@ import org.openhab.designerx.model.sitemap.NestableElement;
 import org.openhab.designerx.model.sitemap.NonNestableElement;
 import org.openhab.designerx.model.sitemap.Sitemap;
 import org.openhab.designerx.model.sitemap.impl.SitemapBuilder;
+import org.openhab.designerx.model.xtext.Constants;
 import org.openhab.designerx.model.xtext.ModelXtextException;
 
 import com.google.common.collect.ImmutableList;

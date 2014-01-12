@@ -5,6 +5,7 @@ import java.util.Set;
 
 import org.openhab.designerx.model.sitemap.VisibilityRule;
 import org.openhab.designerx.model.sitemap.impl.VisibilityRuleBuilder;
+import org.openhab.designerx.model.xtext.Constants;
 
 import com.google.common.collect.ImmutableSet;
 import com.google.common.collect.Lists;

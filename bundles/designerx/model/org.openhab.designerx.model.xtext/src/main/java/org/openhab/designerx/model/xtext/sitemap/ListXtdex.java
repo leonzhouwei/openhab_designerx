@@ -2,6 +2,7 @@ package org.openhab.designerx.model.xtext.sitemap;
 
 import org.openhab.designerx.model.sitemap.List;
 import org.openhab.designerx.model.sitemap.impl.ListBuilder;
+import org.openhab.designerx.model.xtext.Constants;
 
 /**
  * 
