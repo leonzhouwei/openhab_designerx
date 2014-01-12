@@ -10,7 +10,7 @@ import com.google.common.collect.Lists;
 
 public final class NestableElementXtextKeeper {
 	
-	private ImmutableList.Builder<String> builder = ImmutableList.<String>builder();
+	private ImmutableList<String> xtext;
 	
 	public NestableElementXtextKeeper(List<String> list) throws ModelXtextException {
 		List<String> lines = Lists.newArrayList();
@@ -19,11 +19,12 @@ public final class NestableElementXtextKeeper {
 		checkBeforeFormat(lines);
 		format(lines);
 		checkAfterFormat(lines);
-		builder.addAll(lines);
+		ImmutableList.Builder<String> builder = ImmutableList.<String>builder();
+		xtext = builder.addAll(lines).build();
 	}
 	
 	public ImmutableList<String> getXtext() {
-		return builder.build();
+		return xtext;
 	}
 	
 	public void checkBraces(List<String> lines) throws ModelXtextException {

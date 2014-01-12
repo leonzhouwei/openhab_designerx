@@ -20,6 +20,7 @@ public final class SetpointXtdex {
 	private static final String MINVALUE = "minValue";
 	private static final String MAXVALUE = "maxValue";
 	private static final String STEP = "step";
+	private static final String MATCH_REGEX = "\\s" + TARGET_TYPE_NAME + "\\b.*";
 	
 	public static Setpoint fromXtext(NonNestableElementXtextKeeper keeper) {
 		return fromXtext(keeper.getXtext());
@@ -93,7 +94,7 @@ public final class SetpointXtdex {
 	
 	public static boolean isSetpoint(String xtext) {
 		boolean result = false;
-		if (xtext.trim().startsWith(TARGET_TYPE_NAME)) {
+		if (xtext.matches(MATCH_REGEX)) {
 			result = true;
 		}
 		return result;

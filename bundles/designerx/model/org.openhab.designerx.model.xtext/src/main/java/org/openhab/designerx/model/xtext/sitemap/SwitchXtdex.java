@@ -17,6 +17,7 @@ import org.openhab.designerx.model.sitemap.impl.SwitchBuilder;
 public final class SwitchXtdex {
 	
 	static final String TARGET_TYPE_NAME = "Switch";
+	private static final String MATCH_REGEX = "\\s" + TARGET_TYPE_NAME + "\\b.*";
 	
 	static Switch fromXtext(NonNestableElementXtextKeeper keeper) {
 		return fromXtext(keeper.getXtext());
@@ -58,7 +59,7 @@ public final class SwitchXtdex {
 	
 	public static boolean isSwitch(String xtext) {
 		boolean result = false;
-		if (xtext.trim().startsWith(TARGET_TYPE_NAME)) {
+		if (xtext.matches(MATCH_REGEX)) {
 			result = true;
 		}
 		return result;

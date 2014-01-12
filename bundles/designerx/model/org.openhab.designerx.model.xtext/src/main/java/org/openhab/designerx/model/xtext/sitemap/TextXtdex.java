@@ -15,6 +15,7 @@ import org.openhab.designerx.model.sitemap.impl.TextBuilder;
 public final class TextXtdex {
 	
 	static final String TARGET_TYPE_NAME = "Text";
+	private static final String MATCH_REGEX = "\\s" + TARGET_TYPE_NAME + "\\b.*";
 	
 	public static Text fromXtext(NestableElementXtextKeeper keeper) {
 		return (Text) NestableElementXtdex.fromXtext(keeper);
@@ -57,7 +58,7 @@ public final class TextXtdex {
 	
 	public static boolean isText(String xtext) {
 		boolean result = false;
-		if (xtext.trim().startsWith(TARGET_TYPE_NAME)) {
+		if (xtext.matches(MATCH_REGEX)) {
 			result = true;
 		}
 		return result;

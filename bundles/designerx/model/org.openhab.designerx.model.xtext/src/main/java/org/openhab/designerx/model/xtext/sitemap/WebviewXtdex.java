@@ -16,6 +16,7 @@ public final class WebviewXtdex {
 	static final String TARGET_TYPE_NAME = "Webview";
 	
 	private static final String HEIGHT = "height";
+	private static final String MATCH_REGEX = "\\s" + TARGET_TYPE_NAME + "\\b.*";
 	
 	static Webview fromXtext(NonNestableElementXtextKeeper keeper) {
 		return fromXtext(keeper.getXtext());
@@ -72,7 +73,7 @@ public final class WebviewXtdex {
 	
 	public static boolean isWebview(String xtext) {
 		boolean result = false;
-		if (xtext.trim().startsWith(TARGET_TYPE_NAME)) {
+		if (xtext.matches(MATCH_REGEX)) {
 			result = true;
 		}
 		return result;

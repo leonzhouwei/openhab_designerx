@@ -14,6 +14,7 @@ import org.openhab.designerx.model.sitemap.impl.ListBuilder;
 public final class ListXtdex {
 	
 	static final String TARGET_TYPE_NAME = "List";
+	private static final String MATCH_REGEX = "\\s" + TARGET_TYPE_NAME + "\\b.*";
 	
 	private static final String SEPARATOR = "separator";
 	
@@ -60,7 +61,7 @@ public final class ListXtdex {
 	
 	public static boolean isList(String xtext) {
 		boolean result = false;
-		if (xtext.trim().startsWith(TARGET_TYPE_NAME)) {
+		if (xtext.matches(MATCH_REGEX)) {
 			result = true;
 		}
 		return result;

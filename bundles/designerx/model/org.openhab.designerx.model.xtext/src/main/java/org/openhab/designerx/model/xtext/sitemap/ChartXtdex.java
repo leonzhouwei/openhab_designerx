@@ -18,6 +18,7 @@ public final class ChartXtdex {
 	private static final String PERIOD = "period";
 	private static final String REFRESH = "refresh";
 	private static final String SERVICE = "service";
+	private static final String MATCH_REGEX = "\\s" + TARGET_TYPE_NAME + "\\b.*";
 	
 	public static Chart fromXtext(NonNestableElementXtextKeeper keeper) {
 		return fromXtext(keeper.getXtext());
@@ -82,7 +83,7 @@ public final class ChartXtdex {
 	
 	public static boolean isChart(String xtext) {
 		boolean result = false;
-		if (xtext.trim().startsWith(TARGET_TYPE_NAME)) {
+		if (xtext.matches(MATCH_REGEX)) {
 			result = true;
 		}
 		return result;
