@@ -16,6 +16,10 @@ public final class GroupXtdex {
 	
 	static final String TARGET_TYPE_NAME = "Group";
 	
+	public static Group fromXtext(NestableElementXtextKeeper keeper) {
+		return (Group) NestableElementXtdex.fromXtext(keeper);
+	}
+	
 	static Group fromXtextWithoutChildren(String xtext) {
 		xtext = PreProcessor.preProcess(xtext);
 		if (!xtext.startsWith(TARGET_TYPE_NAME)) {

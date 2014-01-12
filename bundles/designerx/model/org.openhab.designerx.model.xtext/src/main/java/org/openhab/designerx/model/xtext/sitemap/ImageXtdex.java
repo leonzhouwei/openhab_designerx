@@ -16,6 +16,10 @@ public final class ImageXtdex {
 	
 	static final String TARGET_TYPE_NAME = "Image";
 	
+	public static Image fromXtext(NestableElementXtextKeeper keeper) {
+		return (Image) NestableElementXtdex.fromXtext(keeper);
+	}
+	
 	static Image fromXtextWithoutChildren(String xtext) {
 		xtext = PreProcessor.preProcess(xtext);
 		if (!xtext.startsWith(TARGET_TYPE_NAME)) {

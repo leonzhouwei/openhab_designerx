@@ -16,6 +16,10 @@ public final class TextXtdex {
 	
 	static final String TARGET_TYPE_NAME = "Text";
 	
+	public static Text fromXtext(NestableElementXtextKeeper keeper) {
+		return (Text) NestableElementXtdex.fromXtext(keeper);
+	}
+	
 	static Text fromXtextWithoutChildren(String xtext) {
 		xtext = PreProcessor.preProcess(xtext);
 		if (!xtext.startsWith(TARGET_TYPE_NAME)) {
