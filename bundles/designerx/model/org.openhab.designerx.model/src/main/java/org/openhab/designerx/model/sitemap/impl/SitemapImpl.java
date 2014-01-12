@@ -61,4 +61,9 @@ final class SitemapImpl implements Sitemap {
 		return false;
 	}
 
+	@Override
+	public void appendChild(Element e) {
+		children.add(e);
+	}
+
 }

@@ -39,7 +39,6 @@ final class ElementXtdex {
 	
 	static String toXtext(Element e) {
 		StringBuilder sb = new StringBuilder();
-		sb.append(Constants.SPACE_MARK);
 		//
 		String item = e.getItem();
 		if (e.getItem() != null) {

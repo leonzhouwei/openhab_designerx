@@ -29,13 +29,14 @@ public final class NestableElementXtextKeeper {
 	
 	public void checkBraces(List<String> lines) throws ModelXtextException {
 		// check if '{'s and '}'s have the same count
-		int count = 0;
+		int open = 0;
+		int close = 0;
 		for (String line : lines) {
-			count += StringHelper.count(line, "{");
-			count -= StringHelper.count(line, "}");
+			open += StringHelper.count(line, "{");
+			close += StringHelper.count(line, "}");
 		}
-		if (count != 0) {
-			throw new ModelXtextException("the number of '{'s is not equal to '}'s");
+		if (open != close) {
+			throw new ModelXtextException("the number of '{'s(" + open + ") is not equal to that of '}'s(" + close + ")");
 		}
 	}
 	

@@ -16,6 +16,8 @@ public interface Sitemap {
 	
 	public String getIcon();
 	
+	public void appendChild(Element e);
+	
 	public List<Element> getChildren();
 	
 	public String toXtext();
