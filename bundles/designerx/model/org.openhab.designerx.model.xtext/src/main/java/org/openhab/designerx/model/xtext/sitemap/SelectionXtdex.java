@@ -18,14 +18,14 @@ public final class SelectionXtdex {
 	
 	static final String TARGET_TYPE_NAME = "Selection";
 	
-	static Selection fromXtext(NonNestableElementXtextKeeper keeper) {
+	public static Selection fromXtext(NonNestableElementXtextKeeper keeper) {
 		return fromXtext(keeper.getXtext());
 	}
 	
 	static Selection fromXtext(String xtext) {
 		xtext = PreProcessor.preProcess(xtext);
 		if (!xtext.startsWith(TARGET_TYPE_NAME)) {
-			throw new RuntimeException(xtext + " is NOT a " + TARGET_TYPE_NAME);
+			return null;
 		}
 		Selection instance = new SelectionBuilder().build();
 		// set the elementary parameters
@@ -55,5 +55,13 @@ public final class SelectionXtdex {
 	}
 	
 	private SelectionXtdex() {}
+	
+	public static boolean isSelection(String xtext) {
+		boolean result = false;
+		if (xtext.trim().startsWith(TARGET_TYPE_NAME)) {
+			result = true;
+		}
+		return result;
+	}
 	
 }

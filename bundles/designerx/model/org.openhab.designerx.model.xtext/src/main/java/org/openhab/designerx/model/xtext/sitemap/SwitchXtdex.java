@@ -25,7 +25,7 @@ public final class SwitchXtdex {
 	static Switch fromXtext(String xtext) {
 		xtext = PreProcessor.preProcess(xtext);
 		if (!xtext.startsWith(TARGET_TYPE_NAME)) {
-			throw new RuntimeException(xtext + " is NOT a " + TARGET_TYPE_NAME);
+			return null;
 		}
 		Switch instance = new SwitchBuilder().build();
 		// set the elementary parameters
@@ -55,5 +55,13 @@ public final class SwitchXtdex {
 	}
 	
 	private SwitchXtdex() {}
+	
+	public static boolean isSwitch(String xtext) {
+		boolean result = false;
+		if (xtext.trim().startsWith(TARGET_TYPE_NAME)) {
+			result = true;
+		}
+		return result;
+	}
 	
 }

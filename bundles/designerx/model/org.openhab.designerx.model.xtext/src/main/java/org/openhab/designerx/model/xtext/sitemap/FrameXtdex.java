@@ -23,7 +23,7 @@ public final class FrameXtdex {
 	static Frame fromXtextWithoutChildren(String xtext) {
 		xtext = PreProcessor.preProcess(xtext);
 		if (!xtext.startsWith(TARGET_TYPE_NAME)) {
-			throw new RuntimeException(xtext + " is NOT a " + TARGET_TYPE_NAME);
+			return null;
 		}
 		Frame instance = new FrameBuilder().build();
 		// set the elementary parameters
@@ -53,5 +53,13 @@ public final class FrameXtdex {
 	}
 	
 	private FrameXtdex() {}
+	
+	public static boolean isFrame(String xtext) {
+		boolean result = false;
+		if (xtext.trim().startsWith(TARGET_TYPE_NAME)) {
+			result = true;
+		}
+		return result;
+	}
 
 }

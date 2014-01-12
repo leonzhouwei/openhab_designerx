@@ -21,7 +21,7 @@ public final class ColorpickerXtdex {
 	static Colorpicker fromXtext(String xtext) {
 		xtext = PreProcessor.preProcess(xtext);
 		if (!xtext.startsWith(TARGET_TYPE_NAME)) {
-			throw new RuntimeException(xtext + " is NOT a " + TARGET_TYPE_NAME);
+			return null;
 		}
 		Colorpicker instance = new ColorpickerBuilder().build();
 		// set the elementary parameters
@@ -54,5 +54,13 @@ public final class ColorpickerXtdex {
 	}
 	
 	private ColorpickerXtdex() {}
+	
+	public static boolean isColorpicker(String xtext) {
+		boolean result = false;
+		if (xtext.trim().startsWith(TARGET_TYPE_NAME)) {
+			result = true;
+		}
+		return result;
+	}
 
 }

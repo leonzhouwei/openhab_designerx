@@ -11,68 +11,75 @@ import org.openhab.designerx.model.sitemap.Switch;
 import org.openhab.designerx.model.sitemap.Video;
 import org.openhab.designerx.model.sitemap.Webview;
 
-import com.google.common.collect.ImmutableSet;
-
 final class NonNestableElementXtdex {
-	
-	private static ImmutableSet<String> validTypeNames = ImmutableSet.<String>builder()
-			.add(ChartXtdex.TARGET_TYPE_NAME)
-			.add(ColorpickerXtdex.TARGET_TYPE_NAME)
-			.add(ListXtdex.TARGET_TYPE_NAME)
-			.add(SelectionXtdex.TARGET_TYPE_NAME)
-			.add(SetpointXtdex.TARGET_TYPE_NAME)
-			.add(SliderXtdex.TARGET_TYPE_NAME)
-			.add(SwitchXtdex.TARGET_TYPE_NAME)
-			.add(VideoXtdex.TARGET_TYPE_NAME)
-			.add(WebviewXtdex.TARGET_TYPE_NAME)
-			.build();
 	
 	static NonNestableElement fromXtext(NonNestableElementXtextKeeper keeper) {
 		return fromXtext(keeper.getXtext());
 	}
 	
 	static final NonNestableElement fromXtext(String xtext) {
-		xtext = xtext.trim();
-		if (xtext.startsWith(ChartXtdex.TARGET_TYPE_NAME)) {
+		if (ChartXtdex.isChart(xtext)) {
 			return ChartXtdex.fromXtext(xtext);
 		}
-		if (xtext.startsWith(ColorpickerXtdex.TARGET_TYPE_NAME)) {
+		if (ColorpickerXtdex.isColorpicker(xtext)) {
 			return ColorpickerXtdex.fromXtext(xtext);
 		}
-		if (xtext.startsWith(ListXtdex.TARGET_TYPE_NAME)) {
+		if (ListXtdex.isList(xtext)) {
 			return ListXtdex.fromXtext(xtext);
 		}
-		if (xtext.startsWith(SelectionXtdex.TARGET_TYPE_NAME)) {
+		if (SelectionXtdex.isSelection(xtext)) {
 			return SelectionXtdex.fromXtext(xtext);
 		}
-		if (xtext.startsWith(SetpointXtdex.TARGET_TYPE_NAME)) {
+		if (SetpointXtdex.isSetpoint(xtext)) {
 			return SetpointXtdex.fromXtext(xtext);
 		}
-		if (xtext.startsWith(SliderXtdex.TARGET_TYPE_NAME)) {
+		if (SliderXtdex.isSlider(xtext)) {
 			return SliderXtdex.fromXtext(xtext);
 		}
-		if (xtext.startsWith(SwitchXtdex.TARGET_TYPE_NAME)) {
+		if (SwitchXtdex.isSwitch(xtext)) {
 			return SwitchXtdex.fromXtext(xtext);
 		}
-		if (xtext.startsWith(VideoXtdex.TARGET_TYPE_NAME)) {
+		if (VideoXtdex.isVideo(xtext)) {
 			return VideoXtdex.fromXtext(xtext);
 		}
-		if (xtext.startsWith(WebviewXtdex.TARGET_TYPE_NAME)) {
+		if (WebviewXtdex.isWebview(xtext)) {
 			return WebviewXtdex.fromXtext(xtext);
 		}
 		return null;
 	}
 	
 	static boolean isNonNestableElement(String xtext) {
-		boolean result = false;
-		xtext = xtext.trim();
-		for (String type : validTypeNames) {
-			if (xtext.startsWith(type)) {
-				result = true;
-				break;
-			}
+		if (ChartXtdex.isChart(xtext)) {
+			return true;
 		}
-		return result;
+		if (ColorpickerXtdex.isColorpicker(xtext)) {
+			return true;
+		}
+		if (ListXtdex.isList(xtext)) {
+			return true;
+		}
+		if (SelectionXtdex.isSelection(xtext)) {
+			return true;
+		}
+		if (SetpointXtdex.isSetpoint(xtext)) {
+			return true;
+		}
+		if (SliderXtdex.isSlider(xtext)) {
+			return true;
+		}
+		if (SwitchXtdex.isSwitch(xtext)) {
+			return true;
+		}
+		if (TextXtdex.isText(xtext)) {
+			return true;
+		}
+		if (VideoXtdex.isVideo(xtext)) {
+			return true;
+		}
+		if (WebviewXtdex.isWebview(xtext)) {
+			return true;
+		}
+		return false;
 	}
 	
 	static String toXtext(NonNestableElement e) {

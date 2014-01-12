@@ -23,7 +23,7 @@ public final class TextXtdex {
 	static Text fromXtextWithoutChildren(String xtext) {
 		xtext = PreProcessor.preProcess(xtext);
 		if (!xtext.startsWith(TARGET_TYPE_NAME)) {
-			throw new RuntimeException(xtext + " is NOT a " + TARGET_TYPE_NAME);
+			return null;
 		}
 		Text instance = new TextBuilder().build();
 		// set the elementary parameters
@@ -54,5 +54,13 @@ public final class TextXtdex {
 	}
 	
 	private TextXtdex() {}
+	
+	public static boolean isText(String xtext) {
+		boolean result = false;
+		if (xtext.trim().startsWith(TARGET_TYPE_NAME)) {
+			result = true;
+		}
+		return result;
+	}
 	
 }

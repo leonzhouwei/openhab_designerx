@@ -23,7 +23,7 @@ public final class ImageXtdex {
 	static Image fromXtextWithoutChildren(String xtext) {
 		xtext = PreProcessor.preProcess(xtext);
 		if (!xtext.startsWith(TARGET_TYPE_NAME)) {
-			throw new RuntimeException(xtext + " is NOT a " + TARGET_TYPE_NAME);
+			return null;
 		}
 		Image instance = new ImageBuilder().build();
 		// set the elementary parameters
@@ -79,4 +79,13 @@ public final class ImageXtdex {
 	}
 	
 	private ImageXtdex() {}
+	
+	public static boolean isImage(String xtext) {
+		boolean result = false;
+		if (xtext.trim().startsWith(TARGET_TYPE_NAME)) {
+			result = true;
+		}
+		return result;
+	}
+	
 }

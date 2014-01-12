@@ -21,14 +21,14 @@ public final class SetpointXtdex {
 	private static final String MAXVALUE = "maxValue";
 	private static final String STEP = "step";
 	
-	static Setpoint fromXtext(NonNestableElementXtextKeeper keeper) {
+	public static Setpoint fromXtext(NonNestableElementXtextKeeper keeper) {
 		return fromXtext(keeper.getXtext());
 	}
 	
 	static Setpoint fromXtext(String xtext) {
 		xtext = PreProcessor.preProcess(xtext);
 		if (!xtext.startsWith(TARGET_TYPE_NAME)) {
-			throw new RuntimeException(xtext + " is NOT a " + TARGET_TYPE_NAME);
+			return null;
 		}
 		Setpoint instance = new SetpointBuilder().build();
 		// set the elementary parameters
@@ -90,5 +90,13 @@ public final class SetpointXtdex {
 	}
 	
 	private SetpointXtdex() {}
+	
+	public static boolean isSetpoint(String xtext) {
+		boolean result = false;
+		if (xtext.trim().startsWith(TARGET_TYPE_NAME)) {
+			result = true;
+		}
+		return result;
+	}
 	
 }

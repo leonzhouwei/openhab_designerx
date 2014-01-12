@@ -10,16 +10,7 @@ import org.openhab.designerx.model.sitemap.NestableElement;
 import org.openhab.designerx.model.sitemap.NonNestableElement;
 import org.openhab.designerx.model.sitemap.Text;
 
-import com.google.common.collect.ImmutableSet;
-
 final class NestableElementXtdex {
-	
-	private static ImmutableSet<String> validTypeNames = ImmutableSet.<String>builder()
-			.add(FrameXtdex.TARGET_TYPE_NAME)
-			.add(GroupXtdex.TARGET_TYPE_NAME)
-			.add(ImageXtdex.TARGET_TYPE_NAME)
-			.add(TextXtdex.TARGET_TYPE_NAME)
-			.build();
 	
 	private static final String DEFAULT_INDENTATION = "    ";
 	
@@ -28,32 +19,35 @@ final class NestableElementXtdex {
 	}
 	
 	static NestableElement fromXtextWithoutChildren(String xtext) {
-		xtext = xtext.trim();
-		if (xtext.startsWith(FrameXtdex.TARGET_TYPE_NAME)) {
+		if (FrameXtdex.isFrame(xtext)) {
 			return FrameXtdex.fromXtextWithoutChildren(xtext);
 		}
-		if (xtext.startsWith(GroupXtdex.TARGET_TYPE_NAME)) {
+		if (GroupXtdex.isGroup(xtext)) {
 			return GroupXtdex.fromXtextWithoutChildren(xtext);
 		}
-		if (xtext.startsWith(ImageXtdex.TARGET_TYPE_NAME)) {
+		if (ImageXtdex.isImage(xtext)) {
 			return ImageXtdex.fromXtextWithoutChildren(xtext);
 		}
-		if (xtext.startsWith(TextXtdex.TARGET_TYPE_NAME)) {
+		if (TextXtdex.isText(xtext)) {
 			return TextXtdex.fromXtextWithoutChildren(xtext);
 		}
 		return null;
 	}
 	
 	static boolean isNestableElement(String xtext) {
-		boolean result = false;
-		xtext = xtext.trim();
-		for (String type : validTypeNames) {
-			if (xtext.startsWith(type)) {
-				result = true;
-				break;
-			}
+		if (FrameXtdex.isFrame(xtext)) {
+			return true;
 		}
-		return result;
+		if (GroupXtdex.isGroup(xtext)) {
+			return true;
+		}
+		if (ImageXtdex.isImage(xtext)) {
+			return true;
+		}
+		if (TextXtdex.isText(xtext)) {
+			return true;
+		}
+		return false;
 	}
 	
 	static NestableElement fromXtext(List<String> xtext) {

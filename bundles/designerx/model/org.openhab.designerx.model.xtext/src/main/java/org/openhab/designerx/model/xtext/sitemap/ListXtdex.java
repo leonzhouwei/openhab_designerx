@@ -24,7 +24,7 @@ public final class ListXtdex {
 	static List fromXtext(String xtext) {
 		xtext = PreProcessor.preProcess(xtext);
 		if (!xtext.startsWith(TARGET_TYPE_NAME)) {
-			throw new RuntimeException(xtext + " is NOT a " + TARGET_TYPE_NAME);
+			return null;
 		}
 		List instance = new ListBuilder().build();
 		// set the elementary parameters
@@ -57,5 +57,13 @@ public final class ListXtdex {
 	}
 	
 	private ListXtdex() {}
+	
+	public static boolean isList(String xtext) {
+		boolean result = false;
+		if (xtext.trim().startsWith(TARGET_TYPE_NAME)) {
+			result = true;
+		}
+		return result;
+	}
 	
 }

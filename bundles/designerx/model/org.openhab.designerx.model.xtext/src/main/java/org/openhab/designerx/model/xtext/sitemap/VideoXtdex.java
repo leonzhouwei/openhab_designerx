@@ -22,7 +22,7 @@ public final class VideoXtdex {
 	static Video fromXtext(String xtext) {
 		xtext = PreProcessor.preProcess(xtext);
 		if (!xtext.startsWith(TARGET_TYPE_NAME)) {
-			throw new RuntimeException(xtext + " is NOT a " + TARGET_TYPE_NAME);
+			return null;
 		}
 		Video instance = new VideoBuilder().build();
 		// set the elementary parameters
@@ -56,5 +56,13 @@ public final class VideoXtdex {
 	}
 	
 	private VideoXtdex() {}
+	
+	public static boolean isVideo(String xtext) {
+		boolean result = false;
+		if (xtext.trim().startsWith(TARGET_TYPE_NAME)) {
+			result = true;
+		}
+		return result;
+	}
 	
 }
