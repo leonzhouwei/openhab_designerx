@@ -70,9 +70,6 @@ final class NonNestableElementXtdex {
 		if (SwitchXtdex.isSwitch(xtext)) {
 			return true;
 		}
-		if (TextXtdex.isText(xtext)) {
-			return true;
-		}
 		if (VideoXtdex.isVideo(xtext)) {
 			return true;
 		}
