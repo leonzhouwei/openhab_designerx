@@ -5,8 +5,6 @@ import java.util.List;
 import org.openhab.designerx.model.items.SwitchItem;
 
 public final class SwitchItemBuilder {
-	
-	private static final String TARGET_TYPE_NAME = "Switch";
 	private String name;
 	
 	public SwitchItemBuilder(String name) {
@@ -15,21 +13,17 @@ public final class SwitchItemBuilder {
 	
 	public SwitchItem build() {
 		SwitchItemImpl instance = new SwitchItemImpl();
-		instance.setType(TARGET_TYPE_NAME);
 		instance.setName(name);
 		return instance;
 	}
 	
 	private class SwitchItemImpl implements SwitchItem {
+		private static final String TYPE_NAME = "Switch";
 		private ItemImpl item = new ItemImpl();
 		
-		public void setType(String type) {
-			item.setType(type);
-		}
-
 		@Override
-		public String getType() {
-			return item.getType();
+		public String getTypeName() {
+			return TYPE_NAME;
 		}
 
 		@Override
@@ -68,7 +62,7 @@ public final class SwitchItemBuilder {
 		}
 
 		@Override
-		public void addGroups(String[] groups) {
+		public void addGroups(List<String> groups) {
 			item.addGroups(groups);
 		}
 

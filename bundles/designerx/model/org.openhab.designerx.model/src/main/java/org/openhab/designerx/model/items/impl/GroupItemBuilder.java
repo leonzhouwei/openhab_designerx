@@ -5,8 +5,6 @@ import java.util.List;
 import org.openhab.designerx.model.items.GroupItem;
 
 public final class GroupItemBuilder {
-	
-	private static final String TARGET_TYPE_NAME = "Group";
 	private String name;
 	
 	public GroupItemBuilder(String name) {
@@ -15,21 +13,17 @@ public final class GroupItemBuilder {
 	
 	public GroupItem build() {
 		GroupItemImpl instance = new GroupItemImpl();
-		instance.setType(TARGET_TYPE_NAME);
 		instance.setName(name);
 		return instance;
 	}
 	
 	private class GroupItemImpl implements GroupItem {
+		private static final String TYPE_NAME = "Group";
 		private ItemImpl item = new ItemImpl();
 		
-		public void setType(String type) {
-			item.setType(type);
-		}
-
 		@Override
-		public String getType() {
-			return item.getType();
+		public String getTypeName() {
+			return TYPE_NAME;
 		}
 
 		@Override
@@ -68,7 +62,7 @@ public final class GroupItemBuilder {
 		}
 
 		@Override
-		public void addGroups(String[] groups) {
+		public void addGroups(List<String> groups) {
 			item.addGroups(groups);
 		}
 

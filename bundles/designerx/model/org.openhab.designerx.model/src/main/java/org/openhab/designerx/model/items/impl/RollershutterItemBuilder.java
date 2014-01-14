@@ -5,8 +5,6 @@ import java.util.List;
 import org.openhab.designerx.model.items.RollershutterItem;
 
 public final class RollershutterItemBuilder {
-	
-	private static final String TARGET_TYPE_NAME = "Rollershutter";
 	private String name;
 	
 	public RollershutterItemBuilder(String name) {
@@ -15,21 +13,17 @@ public final class RollershutterItemBuilder {
 	
 	public RollershutterItem build() {
 		RollershutterItemImpl instance = new RollershutterItemImpl();
-		instance.setType(TARGET_TYPE_NAME);
 		instance.setName(name);
 		return instance;
 	}
 	
 	private class RollershutterItemImpl implements RollershutterItem {
+		private static final String TYPE_NAME = "Rollershutter";
 		private ItemImpl item = new ItemImpl();
 		
-		public void setType(String type) {
-			item.setType(type);
-		}
-
 		@Override
-		public String getType() {
-			return item.getType();
+		public String getTypeName() {
+			return TYPE_NAME;
 		}
 
 		@Override
@@ -68,7 +62,7 @@ public final class RollershutterItemBuilder {
 		}
 
 		@Override
-		public void addGroups(String[] groups) {
+		public void addGroups(List<String> groups) {
 			item.addGroups(groups);
 		}
 

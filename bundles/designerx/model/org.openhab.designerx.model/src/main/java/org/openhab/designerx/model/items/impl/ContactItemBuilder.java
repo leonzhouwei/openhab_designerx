@@ -5,8 +5,6 @@ import java.util.List;
 import org.openhab.designerx.model.items.ContactItem;
 
 public final class ContactItemBuilder {
-	
-	private static final String TARGET_TYPE_NAME = "Contact";
 	private String name;
 	
 	public ContactItemBuilder(String name) {
@@ -15,21 +13,17 @@ public final class ContactItemBuilder {
 	
 	public ContactItem build() {
 		ContactItemImpl instance = new ContactItemImpl();
-		instance.setType(TARGET_TYPE_NAME);
 		instance.setName(name);
 		return instance;
 	}
 	
 	private class ContactItemImpl implements ContactItem {
+		private static final String TYPE_NAME = "Contact";
 		private ItemImpl item = new ItemImpl();
 		
-		public void setType(String type) {
-			item.setType(type);
-		}
-
 		@Override
-		public String getType() {
-			return item.getType();
+		public String getTypeName() {
+			return TYPE_NAME;
 		}
 
 		@Override
@@ -68,7 +62,7 @@ public final class ContactItemBuilder {
 		}
 
 		@Override
-		public void addGroups(String[] groups) {
+		public void addGroups(List<String> groups) {
 			item.addGroups(groups);
 		}
 

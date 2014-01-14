@@ -5,8 +5,6 @@ import java.util.List;
 import org.openhab.designerx.model.items.DimmerItem;
 
 public final class DimmerItemBuilder {
-	
-	private static final String TARGET_TYPE_NAME = "Dimmer";
 	private String name;
 	
 	public DimmerItemBuilder(String name) {
@@ -15,21 +13,17 @@ public final class DimmerItemBuilder {
 	
 	public DimmerItem build() {
 		DimmerItemImpl instance = new DimmerItemImpl();
-		instance.setType(TARGET_TYPE_NAME);
 		instance.setName(name);
 		return instance;
 	}
 	
 	private class DimmerItemImpl implements DimmerItem {
+		private static final String TYPE_NAME = "Dimmer";
 		private ItemImpl item = new ItemImpl();
 		
-		public void setType(String type) {
-			item.setType(type);
-		}
-
 		@Override
-		public String getType() {
-			return item.getType();
+		public String getTypeName() {
+			return TYPE_NAME;
 		}
 
 		@Override
@@ -68,7 +62,7 @@ public final class DimmerItemBuilder {
 		}
 
 		@Override
-		public void addGroups(String[] groups) {
+		public void addGroups(List<String> groups) {
 			item.addGroups(groups);
 		}
 

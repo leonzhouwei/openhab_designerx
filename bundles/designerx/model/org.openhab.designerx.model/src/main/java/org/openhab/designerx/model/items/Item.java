@@ -3,8 +3,8 @@ package org.openhab.designerx.model.items;
 import java.util.List;
 
 public interface Item {
-
-	public String getType();
+	
+	public String getTypeName();
 	
 	public void setName(String name);
 
@@ -20,7 +20,7 @@ public interface Item {
 	
 	public List<String> getGroups();
 
-	public void addGroups(String[] groups);
+	public void addGroups(List<String> groups);
 
 	public void addGroup(String group);
 

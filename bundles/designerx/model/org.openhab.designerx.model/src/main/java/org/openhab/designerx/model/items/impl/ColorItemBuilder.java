@@ -5,8 +5,6 @@ import java.util.List;
 import org.openhab.designerx.model.items.ColorItem;
 
 public final class ColorItemBuilder {
-	
-	private static final String TARGET_TYPE_NAME = "Color";
 	private String name;
 	
 	public ColorItemBuilder(String name) {
@@ -15,21 +13,17 @@ public final class ColorItemBuilder {
 	
 	public ColorItem build() {
 		ColorItemImpl instance = new ColorItemImpl();
-		instance.setType(TARGET_TYPE_NAME);
 		instance.setName(name);
 		return instance;
 	}
 	
 	private class ColorItemImpl implements ColorItem {
+		private static final String TYPE_NAME = "Color";
 		private ItemImpl item = new ItemImpl();
 		
-		public void setType(String type) {
-			item.setType(type);
-		}
-
 		@Override
-		public String getType() {
-			return item.getType();
+		public String getTypeName() {
+			return TYPE_NAME;
 		}
 
 		@Override
@@ -68,7 +62,7 @@ public final class ColorItemBuilder {
 		}
 
 		@Override
-		public void addGroups(String[] groups) {
+		public void addGroups(List<String> groups) {
 			item.addGroups(groups);
 		}
 

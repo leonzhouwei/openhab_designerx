@@ -5,8 +5,6 @@ import java.util.List;
 import org.openhab.designerx.model.items.NumberItem;
 
 public final class NumberItemBuilder {
-	
-	private static final String TARGET_TYPE_NAME = "Number";
 	private String name;
 	
 	public NumberItemBuilder(String name) {
@@ -15,21 +13,17 @@ public final class NumberItemBuilder {
 	
 	public NumberItem build() {
 		NumberItemImpl instance = new NumberItemImpl();
-		instance.setType(TARGET_TYPE_NAME);
 		instance.setName(name);
 		return instance;
 	}
 	
 	private class NumberItemImpl implements NumberItem {
+		private static final String TYPE_NAME = "Number";
 		private ItemImpl item = new ItemImpl();
 		
-		public void setType(String type) {
-			item.setType(type);
-		}
-
 		@Override
-		public String getType() {
-			return item.getType();
+		public String getTypeName() {
+			return TYPE_NAME;
 		}
 
 		@Override
@@ -68,7 +62,7 @@ public final class NumberItemBuilder {
 		}
 
 		@Override
-		public void addGroups(String[] groups) {
+		public void addGroups(List<String> groups) {
 			item.addGroups(groups);
 		}
 

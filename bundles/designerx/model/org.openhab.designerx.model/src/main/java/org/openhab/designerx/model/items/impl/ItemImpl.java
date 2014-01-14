@@ -8,7 +8,7 @@ import org.openhab.designerx.model.items.Item;
 import com.google.common.collect.Lists;
 
 final class ItemImpl implements Item {
-	private String type; // mandatory
+	private String typeName; // mandatory
 	private String name; // mandatory
 	private String labelText; // optional
 	private String iconName; // optional
@@ -16,8 +16,8 @@ final class ItemImpl implements Item {
 	private String bindingConfig; // optional
 
 	@Override
-	public String getType() {
-		return type;
+	public String getTypeName() {
+		return typeName;
 	}
 
 	@Override
@@ -45,8 +45,8 @@ final class ItemImpl implements Item {
 		return bindingConfig;
 	}
 
-	public void setType(String type) {
-		this.type = type;
+	public void setTypeName(String typeName) {
+		this.typeName = typeName;
 	}
 
 	@Override
@@ -65,10 +65,8 @@ final class ItemImpl implements Item {
 	}
 
 	@Override
-	public void addGroups(String[] groups) {
-		for (String group : groups) {
-			addGroup(group);
-		}
+	public void addGroups(List<String> groups) {
+		groups.addAll(groups);
 	}
 
 	@Override
@@ -84,7 +82,7 @@ final class ItemImpl implements Item {
 	@Override
 	public String toString() {
 		StringBuilder sb = new StringBuilder();
-		sb.append(type);
+		sb.append(typeName);
 		sb.append(Constants.SPACE_MARK);
 		sb.append(name);
 		sb.append(Constants.SPACE_MARK);

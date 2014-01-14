@@ -5,8 +5,6 @@ import java.util.List;
 import org.openhab.designerx.model.items.DateTimeItem;
 
 public final class DateTimeItemBuilder {
-	
-	private static final String TARGET_TYPE_NAME = "DateTime";
 	private String name;
 	
 	public DateTimeItemBuilder(String name) {
@@ -15,21 +13,17 @@ public final class DateTimeItemBuilder {
 	
 	public DateTimeItem build() {
 		DateTimeItemImpl instance = new DateTimeItemImpl();
-		instance.setType(TARGET_TYPE_NAME);
 		instance.setName(name);
 		return instance;
 	}
 	
 	private class DateTimeItemImpl implements DateTimeItem {
+		private static final String TYPE_NAME = "DateTime";
 		private ItemImpl item = new ItemImpl();
 		
-		public void setType(String type) {
-			item.setType(type);
-		}
-
 		@Override
-		public String getType() {
-			return item.getType();
+		public String getTypeName() {
+			return TYPE_NAME;
 		}
 
 		@Override
@@ -68,7 +62,7 @@ public final class DateTimeItemBuilder {
 		}
 
 		@Override
-		public void addGroups(String[] groups) {
+		public void addGroups(List<String> groups) {
 			item.addGroups(groups);
 		}
 
