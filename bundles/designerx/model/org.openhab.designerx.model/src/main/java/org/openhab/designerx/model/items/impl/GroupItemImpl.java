@@ -1,4 +1,4 @@
-package org.openhab.designerx.model.items.factory.impl;
+package org.openhab.designerx.model.items.impl;
 
 import java.util.List;
 

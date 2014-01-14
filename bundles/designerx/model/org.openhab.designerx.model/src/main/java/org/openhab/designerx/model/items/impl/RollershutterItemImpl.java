@@ -1,11 +1,11 @@
-package org.openhab.designerx.model.items.factory.impl;
+package org.openhab.designerx.model.items.impl;
 
 import java.util.List;
 
-import org.openhab.designerx.model.items.NumberItem;
+import org.openhab.designerx.model.items.RollershutterItem;
 
-final class NumberItemImpl implements NumberItem {
-	private ItemImpl item = new ItemImpl(NumberItem.TYPE_NAME);
+final class RollershutterItemImpl implements RollershutterItem {
+	private ItemImpl item = new ItemImpl(RollershutterItem.TYPE_NAME);
 
 	@Override
 	public String getTypeName() {

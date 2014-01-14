@@ -1,11 +1,11 @@
-package org.openhab.designerx.model.items.factory.impl;
+package org.openhab.designerx.model.items.impl;
 
 import java.util.List;
 
-import org.openhab.designerx.model.items.ColorItem;
+import org.openhab.designerx.model.items.SwitchItem;
 
-final class ColorItemImpl implements ColorItem {
-	private ItemImpl item = new ItemImpl(ColorItem.TYPE_NAME);
+final class SwitchItemImpl implements SwitchItem {
+	private ItemImpl item = new ItemImpl(SwitchItem.TYPE_NAME);
 
 	@Override
 	public String getTypeName() {
