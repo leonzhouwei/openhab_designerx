@@ -1,4 +1,4 @@
-package org.openhab.designerx.model.items.impl;
+package org.openhab.designerx.model.items.factory.impl;
 
 import java.util.List;
 
@@ -14,6 +14,10 @@ final class ItemImpl implements Item {
 	private String iconName; // optional
 	private List<String> groups = Lists.newArrayList(); // optional
 	private String bindingConfig; // optional
+	
+	public ItemImpl(String typeName) {
+		this.typeName = typeName;
+	}
 
 	@Override
 	public String getTypeName() {
@@ -43,10 +47,6 @@ final class ItemImpl implements Item {
 	@Override
 	public String getBindingConfig() {
 		return bindingConfig;
-	}
-
-	public void setTypeName(String typeName) {
-		this.typeName = typeName;
 	}
 
 	@Override
