@@ -44,11 +44,6 @@ public final class ItemXtdexImpl implements ItemXtdex {
 	}
 
 	@Override
-	public String toXtext(ColorItem item) {
-		return innerToXtext(item);
-	}
-
-	@Override
 	public ContactItem parseContactItemFromXext(String xtext) {
 		if (!xtext.matches(CONTACT_REGEX)) {
 			return null;
@@ -56,11 +51,6 @@ public final class ItemXtdexImpl implements ItemXtdex {
 		ContactItem instance = itemFactory.createContactItem();
 		extractAndFill(instance, xtext);
 		return instance;
-	}
-
-	@Override
-	public String toXtext(ContactItem item) {
-		return innerToXtext(item);
 	}
 
 	@Override
@@ -74,11 +64,6 @@ public final class ItemXtdexImpl implements ItemXtdex {
 	}
 
 	@Override
-	public String toXtext(DateTimeItem item) {
-		return innerToXtext(item);
-	}
-
-	@Override
 	public DimmerItem parseDimmerItemFromXext(String xtext) {
 		if (!xtext.matches(DIMMER_REGEX)) {
 			return null;
@@ -86,11 +71,6 @@ public final class ItemXtdexImpl implements ItemXtdex {
 		DimmerItem instance = itemFactory.createDimmerItem();
 		extractAndFill(instance, xtext);
 		return instance;
-	}
-
-	@Override
-	public String toXtext(DimmerItem item) {
-		return innerToXtext(item);
 	}
 
 	@Override
@@ -108,16 +88,6 @@ public final class ItemXtdexImpl implements ItemXtdex {
 	}
 
 	@Override
-	public String toXtext(GroupItem item) {
-		String result = innerToXtext(item);
-		String extra = item.getExtraTypeName();
-		if (extra != null) {
-			result = result.replace(GroupItem.TYPE_NAME, GroupItem.TYPE_NAME + extra);
-		}
-		return result;
-	}
-
-	@Override
 	public NumberItem parseNumberItemFromXext(String xtext) {
 		if (!xtext.matches(NUMBER_REGEX)) {
 			return null;
@@ -125,11 +95,6 @@ public final class ItemXtdexImpl implements ItemXtdex {
 		NumberItem instance = itemFactory.createNumberItem();
 		extractAndFill(instance, xtext);
 		return instance;
-	}
-
-	@Override
-	public String toXtext(NumberItem item) {
-		return innerToXtext(item);
 	}
 
 	@Override
@@ -143,11 +108,6 @@ public final class ItemXtdexImpl implements ItemXtdex {
 	}
 
 	@Override
-	public String toXtext(RollershutterItem item) {
-		return innerToXtext(item);
-	}
-
-	@Override
 	public StringItem parseStringItemFromXext(String xtext) {
 		if (!xtext.matches(STRING_REGEX)) {
 			return null;
@@ -155,11 +115,6 @@ public final class ItemXtdexImpl implements ItemXtdex {
 		StringItem instance = itemFactory.createStringItem();
 		extractAndFill(instance, xtext);
 		return instance;
-	}
-
-	@Override
-	public String toXtext(StringItem item) {
-		return innerToXtext(item);
 	}
 
 	@Override
@@ -172,11 +127,6 @@ public final class ItemXtdexImpl implements ItemXtdex {
 		return instance;
 	}
 
-	@Override
-	public String toXtext(SwitchItem item) {
-		return innerToXtext(item);
-	}
-	
 	private <T extends Item> String extractAndFill(T item, String line) {
 		String result = null;
 		line = line.trim();
@@ -259,7 +209,8 @@ public final class ItemXtdexImpl implements ItemXtdex {
 		return result;
 	}
 	
-	private <T extends Item> String innerToXtext(T item) {
+	@Override
+	public <T extends Item> String toXtext(T item) {
 		StringBuilder sb = new StringBuilder();
 		sb.append(item.getTypeName());
 		sb.append(Constants.SPACE_MARK);
