@@ -20,17 +20,17 @@ public class ItemXtdexImplTest {
 	private static final ItemXtdex xtdex = new ItemXtdexImpl();
 	
 	@Test
-	public void testParseColorItemFromXext() {
+	public void testParseColorItem() {
 		final String expected = "Color RGBLight \"RGB Light\" <slider>";
-		ColorItem item = xtdex.parseColorItemFromXext(expected);
+		ColorItem item = xtdex.parseColorItem(expected);
 		String actual = xtdex.toXtext(item);
 		assertThat(actual, Matchers.equalTo(expected));
 	}
 
 	@Test
-	public void testParseContactItemFromXext() {
+	public void testParseContactItem() {
 		final String expected = "Contact contact";
-		ContactItem item = xtdex.parseContactItemFromXext(expected);
+		ContactItem item = xtdex.parseContactItem(expected);
 		String actual = xtdex.toXtext(item);
 		assertThat(actual, Matchers.equalTo(expected));
 	}
@@ -38,7 +38,7 @@ public class ItemXtdexImplTest {
 	@Test
 	public void testParseDateTimeItemFromXext_1() {
 		final String expected = "DateTime Weather_LastUpdate \"Last Update [%1$ta %1$tR]\" <clock>";
-		DateTimeItem item = xtdex.parseDateTimeItemFromXext(expected);
+		DateTimeItem item = xtdex.parseDateTimeItem(expected);
 		String actual = xtdex.toXtext(item);
 		assertThat(actual, Matchers.equalTo(expected));
 	}
@@ -46,15 +46,15 @@ public class ItemXtdexImplTest {
 	@Test
 	public void testParseDateTimeItemFromXext_2() {
 		final String expected = "DateTime Date \"Date [%1$tA, %1$td.%1$tm.%1$tY]\" <calendar> {ntp=\"Europe/Berlin:de_DE\"}";
-		DateTimeItem item = xtdex.parseDateTimeItemFromXext(expected);
+		DateTimeItem item = xtdex.parseDateTimeItem(expected);
 		String actual = xtdex.toXtext(item);
 		assertThat(actual, Matchers.equalTo(expected));
 	}
 
 	@Test
-	public void testParseDimmerItemFromXext() {
+	public void testParseDimmerItem() {
 		final String expected = "Dimmer Light_GF_Living_Table \"Table\" (GF_Living,Lights)";
-		DimmerItem item = xtdex.parseDimmerItemFromXext(expected);
+		DimmerItem item = xtdex.parseDimmerItem(expected);
 		String actual = xtdex.toXtext(item);
 		assertThat(actual, Matchers.equalTo(expected));
 	}
@@ -62,7 +62,7 @@ public class ItemXtdexImplTest {
 	@Test
 	public void testParseGroupItemFromXext_1() {
 		final String expected = "Group All";
-		GroupItem item = xtdex.parseGroupItemFromXext(expected);
+		GroupItem item = xtdex.parseGroupItem(expected);
 		String actual = xtdex.toXtext(item);
 		assertThat(actual, Matchers.equalTo(expected));
 	}
@@ -70,39 +70,39 @@ public class ItemXtdexImplTest {
 	@Test
 	public void testParseGroupItemFromXext_2() {
 		final String expected = "Group:Switch:OR(ON, OFF) Lights \"All Lights [(%d)]\" (All)";
-		GroupItem item = xtdex.parseGroupItemFromXext(expected);
+		GroupItem item = xtdex.parseGroupItem(expected);
 		String actual = xtdex.toXtext(item);
 		assertThat(actual, Matchers.equalTo(expected));
 	}
 
 	@Test
-	public void testParseNumberItemFromXext() {
+	public void testParseNumberItem() {
 		final String expected = "Number Temperature_GF_Corridor \"Temperature [%.1f °C]\" <temperature> (Temperature,GF_Corridor)";
-		NumberItem item = xtdex.parseNumberItemFromXext(expected);
+		NumberItem item = xtdex.parseNumberItem(expected);
 		String actual = xtdex.toXtext(item);
 		assertThat(actual, Matchers.equalTo(expected));
 	}
 
 	@Test
-	public void testParseRollershutterItemFromXext() {
+	public void testParseRollershutterItem() {
 		final String expected = "Rollershutter DemoShutter \"Roller Shutter\"";
-		RollershutterItem item = xtdex.parseRollershutterItemFromXext(expected);
+		RollershutterItem item = xtdex.parseRollershutterItem(expected);
 		String actual = xtdex.toXtext(item);
 		assertThat(actual, Matchers.equalTo(expected));
 	}
 
 	@Test
-	public void testParseStringItemFromXext() {
+	public void testParseStringItem() {
 		final String expected = "String UnknownDevices \"Unknown Devices in Range: [%s]\" {bluetooth=\"?\"}";
-		StringItem item = xtdex.parseStringItemFromXext(expected);
+		StringItem item = xtdex.parseStringItem(expected);
 		String actual = xtdex.toXtext(item);
 		assertThat(actual, Matchers.equalTo(expected));
 	}
 
 	@Test
-	public void testParseSwitchItemFromXext() {
+	public void testParseSwitchItem() {
 		final String expected = "Switch Light_GF_Corridor_Ceiling \"Ceiling\" (GF_Corridor,Lights)";
-		SwitchItem item = xtdex.parseSwitchItemFromXext(expected);
+		SwitchItem item = xtdex.parseSwitchItem(expected);
 		String actual = xtdex.toXtext(item);
 		assertThat(actual, Matchers.equalTo(expected));
 	}

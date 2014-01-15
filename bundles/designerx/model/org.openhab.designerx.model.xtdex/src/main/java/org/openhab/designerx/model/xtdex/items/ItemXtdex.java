@@ -13,24 +13,26 @@ import org.openhab.designerx.model.items.SwitchItem;
 
 public interface ItemXtdex {
 	
-	public ColorItem parseColorItemFromXext(String xtext);
+	public ColorItem parseColorItem(String xtext);
 	
-	public ContactItem parseContactItemFromXext(String xtext);
+	public ContactItem parseContactItem(String xtext);
 	
-	public DateTimeItem parseDateTimeItemFromXext(String xtext);
+	public DateTimeItem parseDateTimeItem(String xtext);
 	
-	public DimmerItem parseDimmerItemFromXext(String xtext);
+	public DimmerItem parseDimmerItem(String xtext);
 	
-	public GroupItem parseGroupItemFromXext(String xtext);
+	public GroupItem parseGroupItem(String xtext);
 	
-	public NumberItem parseNumberItemFromXext(String xtext);
+	public NumberItem parseNumberItem(String xtext);
 	
-	public RollershutterItem parseRollershutterItemFromXext(String xtext);
+	public RollershutterItem parseRollershutterItem(String xtext);
 	
-	public StringItem parseStringItemFromXext(String xtext);
+	public StringItem parseStringItem(String xtext);
 	
-	public SwitchItem parseSwitchItemFromXext(String xtext);
+	public SwitchItem parseSwitchItem(String xtext);
 	
 	public <T extends Item> String toXtext(T item);
+	
+	public Item parseItem(String xtext);
 
 }

@@ -34,7 +34,7 @@ public final class ItemXtdexImpl implements ItemXtdex {
 	private ItemFactory itemFactory = new ItemFactoryImpl();
 	
 	@Override
-	public ColorItem parseColorItemFromXext(String xtext) {
+	public ColorItem parseColorItem(String xtext) {
 		if (!xtext.matches(COLOR_REGEX)) {
 			return null;
 		}
@@ -44,7 +44,7 @@ public final class ItemXtdexImpl implements ItemXtdex {
 	}
 
 	@Override
-	public ContactItem parseContactItemFromXext(String xtext) {
+	public ContactItem parseContactItem(String xtext) {
 		if (!xtext.matches(CONTACT_REGEX)) {
 			return null;
 		}
@@ -54,7 +54,7 @@ public final class ItemXtdexImpl implements ItemXtdex {
 	}
 
 	@Override
-	public DateTimeItem parseDateTimeItemFromXext(String xtext) {
+	public DateTimeItem parseDateTimeItem(String xtext) {
 		if (!xtext.matches(DATETIME_REGEX)) {
 			return null;
 		}
@@ -64,7 +64,7 @@ public final class ItemXtdexImpl implements ItemXtdex {
 	}
 
 	@Override
-	public DimmerItem parseDimmerItemFromXext(String xtext) {
+	public DimmerItem parseDimmerItem(String xtext) {
 		if (!xtext.matches(DIMMER_REGEX)) {
 			return null;
 		}
@@ -74,7 +74,7 @@ public final class ItemXtdexImpl implements ItemXtdex {
 	}
 
 	@Override
-	public GroupItem parseGroupItemFromXext(String xtext) {
+	public GroupItem parseGroupItem(String xtext) {
 		if (!xtext.matches(GROUP_REGEX)) {
 			return null;
 		}
@@ -88,7 +88,7 @@ public final class ItemXtdexImpl implements ItemXtdex {
 	}
 
 	@Override
-	public NumberItem parseNumberItemFromXext(String xtext) {
+	public NumberItem parseNumberItem(String xtext) {
 		if (!xtext.matches(NUMBER_REGEX)) {
 			return null;
 		}
@@ -98,7 +98,7 @@ public final class ItemXtdexImpl implements ItemXtdex {
 	}
 
 	@Override
-	public RollershutterItem parseRollershutterItemFromXext(String xtext) {
+	public RollershutterItem parseRollershutterItem(String xtext) {
 		if (!xtext.matches(ROLLERSHUTTER_REGEX)) {
 			return null;
 		}
@@ -108,7 +108,7 @@ public final class ItemXtdexImpl implements ItemXtdex {
 	}
 
 	@Override
-	public StringItem parseStringItemFromXext(String xtext) {
+	public StringItem parseStringItem(String xtext) {
 		if (!xtext.matches(STRING_REGEX)) {
 			return null;
 		}
@@ -118,7 +118,7 @@ public final class ItemXtdexImpl implements ItemXtdex {
 	}
 
 	@Override
-	public SwitchItem parseSwitchItemFromXext(String xtext) {
+	public SwitchItem parseSwitchItem(String xtext) {
 		if (!xtext.matches(SWITCH_REGEX)) {
 			return null;
 		}
@@ -247,6 +247,48 @@ public final class ItemXtdexImpl implements ItemXtdex {
 			sb.append("}");
 		}
 		return sb.toString().trim();
+	}
+	
+	@Override
+	public Item parseItem(String xtext) {
+		Item item = null;
+		item = parseColorItem(xtext);
+		if (item != null) {
+			return item;
+		}
+		item = parseContactItem(xtext);
+		if (item != null) {
+			return item;
+		}
+		item = parseDateTimeItem(xtext);
+		if (item != null) {
+			return item;
+		}
+		item = parseDimmerItem(xtext);
+		if (item != null) {
+			return item;
+		}
+		item = parseGroupItem(xtext);
+		if (item != null) {
+			return item;
+		}
+		item = parseNumberItem(xtext);
+		if (item != null) {
+			return item;
+		}
+		item = parseRollershutterItem(xtext);
+		if (item != null) {
+			return item;
+		}
+		item = parseStringItem(xtext);
+		if (item != null) {
+			return item;
+		}
+		item = parseSwitchItem(xtext);
+		if (item != null) {
+			return item;
+		}
+		return null;
 	}
 
 }
