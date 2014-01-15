@@ -1,6 +1,6 @@
 package org.openhab.designerx.model.xtext.sitemap;
 
-import org.openhab.designerx.model.xtext.Constants;
+import org.openhab.designerx.model.xtext.XtextConstants;
 
 final class PropertyHandler {
 	
@@ -28,8 +28,8 @@ final class PropertyHandler {
 		}
 		String[] split = xtext.split("\\b" + name + "\\s*=");
 		String post = split[1].trim();
-		int i = post.indexOf(Constants.OPEN_BRACE_MARK);
-		int j = post.indexOf(Constants.CLOSE_BRACE_MARK, i + Constants.OPEN_BRACE_MARK.length());
+		int i = post.indexOf(XtextConstants.OPEN_BRACE_MARK);
+		int j = post.indexOf(XtextConstants.CLOSE_BRACE_MARK, i + XtextConstants.OPEN_BRACE_MARK.length());
 		String value = post.substring(i + 1, j).trim();
 		return value;
 	}
@@ -45,13 +45,13 @@ final class PropertyHandler {
 	 * @return
 	 */
 	static String getValueBetweenDoubleQuotes(String xtext, String name) {
-		if (!xtext.matches(".*" + name + "\\s*=\\s*" + Constants.DOUBLE_QUOTE_MARK + ".*" + Constants.DOUBLE_QUOTE_MARK + ".*")) {
+		if (!xtext.matches(".*" + name + "\\s*=\\s*" + XtextConstants.DOUBLE_QUOTE_MARK + ".*" + XtextConstants.DOUBLE_QUOTE_MARK + ".*")) {
 			return null;
 		}
 		String[] split = xtext.split("\\b" + name + "\\s*=");
 		String post = split[1].trim();
-		int i = post.indexOf(Constants.DOUBLE_QUOTE_MARK);
-		int j = post.indexOf(Constants.DOUBLE_QUOTE_MARK, i + Constants.DOUBLE_QUOTE_MARK.length());
+		int i = post.indexOf(XtextConstants.DOUBLE_QUOTE_MARK);
+		int j = post.indexOf(XtextConstants.DOUBLE_QUOTE_MARK, i + XtextConstants.DOUBLE_QUOTE_MARK.length());
 		String value = post.substring(i + 1, j).trim();
 		return value;
 	}

@@ -7,7 +7,7 @@ import org.openhab.designerx.model.sitemap.NestableElement;
 import org.openhab.designerx.model.sitemap.NonNestableElement;
 import org.openhab.designerx.model.sitemap.Sitemap;
 import org.openhab.designerx.model.sitemap.impl.SitemapBuilder;
-import org.openhab.designerx.model.xtext.Constants;
+import org.openhab.designerx.model.xtext.XtextConstants;
 import org.openhab.designerx.model.xtext.ModelXtextException;
 
 import com.google.common.collect.ImmutableList;
@@ -34,11 +34,11 @@ public final class SitemapXtdex {
 		
 		Sitemap instance = new SitemapBuilder().build();
 		instance.setName(name);
-		String label = PropertyHandler.getValueBetweenDoubleQuotes(first, Constants.LABEL);
+		String label = PropertyHandler.getValueBetweenDoubleQuotes(first, XtextConstants.LABEL);
 		if (label != null && !label.trim().isEmpty()) {
 			instance.setLabel(label);
 		}
-		String icon = PropertyHandler.getValueBetweenDoubleQuotes(first, Constants.ICON);
+		String icon = PropertyHandler.getValueBetweenDoubleQuotes(first, XtextConstants.ICON);
 		if (icon != null && !icon.trim().isEmpty()) {
 			instance.setIcon(icon);
 		}
@@ -74,48 +74,48 @@ public final class SitemapXtdex {
 	
 	public static String toXtext(Sitemap sitemap) {
 		StringBuilder sb = new StringBuilder();
-		sb.append(Constants.SITEMAP);
+		sb.append(XtextConstants.SITEMAP);
 		String name = sitemap.getName();
 		if (name != null) {
-			sb.append(Constants.SPACE_MARK);
+			sb.append(XtextConstants.SPACE_MARK);
 			sb.append(name);
 		}
 		String label = sitemap.getLabel();
 		if (label != null) {
-			sb.append(Constants.SPACE_MARK);
-			sb.append(Constants.LABEL);
-			sb.append(Constants.EQU_MARK);
-			sb.append(Constants.DOUBLE_QUOTE_MARK);
+			sb.append(XtextConstants.SPACE_MARK);
+			sb.append(XtextConstants.LABEL);
+			sb.append(XtextConstants.EQU_MARK);
+			sb.append(XtextConstants.DOUBLE_QUOTE_MARK);
 			sb.append(label);
-			sb.append(Constants.DOUBLE_QUOTE_MARK);
+			sb.append(XtextConstants.DOUBLE_QUOTE_MARK);
 		}
 		String icon = sitemap.getIcon();
 		if (icon != null) {
-			sb.append(Constants.SPACE_MARK);
-			sb.append(Constants.ICON);
-			sb.append(Constants.EQU_MARK);
-			sb.append(Constants.DOUBLE_QUOTE_MARK);
+			sb.append(XtextConstants.SPACE_MARK);
+			sb.append(XtextConstants.ICON);
+			sb.append(XtextConstants.EQU_MARK);
+			sb.append(XtextConstants.DOUBLE_QUOTE_MARK);
 			sb.append(icon);
-			sb.append(Constants.DOUBLE_QUOTE_MARK);
+			sb.append(XtextConstants.DOUBLE_QUOTE_MARK);
 		}
 		List<Element> children = sitemap.getChildren();
 		if (!children.isEmpty()) {
-			sb.append(Constants.SPACE_MARK);
-			sb.append(Constants.OPEN_BRACE_MARK);
-			sb.append(Constants.LINE_SEPARATOR);
+			sb.append(XtextConstants.SPACE_MARK);
+			sb.append(XtextConstants.OPEN_BRACE_MARK);
+			sb.append(XtextConstants.LINE_SEPARATOR);
 			for (Element child : children) {
 				if (child instanceof NonNestableElement) {
 					String temp = NonNestableElementXtdex.toXtext((NonNestableElement) child);
 					sb.append(DEFAULT_INDENTATION);
 					sb.append(temp);
-					sb.append(Constants.LINE_SEPARATOR);
+					sb.append(XtextConstants.LINE_SEPARATOR);
 				} else if (child instanceof NestableElement) {
 					String temp = NestableElementXtdex.toXtext((NestableElement) child, DEFAULT_INDENTATION);
 					sb.append(temp);
-					sb.append(Constants.LINE_SEPARATOR);
+					sb.append(XtextConstants.LINE_SEPARATOR);
 				}
 			}
-			sb.append(Constants.CLOSE_BRACE_MARK);
+			sb.append(XtextConstants.CLOSE_BRACE_MARK);
 		}
 		return sb.toString();
 	}

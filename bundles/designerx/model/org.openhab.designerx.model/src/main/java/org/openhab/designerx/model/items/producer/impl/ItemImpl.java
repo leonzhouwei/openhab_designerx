@@ -2,7 +2,7 @@ package org.openhab.designerx.model.items.producer.impl;
 
 import java.util.List;
 
-import org.openhab.designerx.model.Constants;
+import org.openhab.designerx.model.ModelConstants;
 import org.openhab.designerx.model.items.Item;
 
 import com.google.common.collect.Lists;
@@ -83,27 +83,27 @@ final class ItemImpl implements Item {
 	public String toString() {
 		StringBuilder sb = new StringBuilder();
 		sb.append(typeName);
-		sb.append(Constants.SPACE_MARK);
+		sb.append(ModelConstants.SPACE_MARK);
 		sb.append(name);
-		sb.append(Constants.SPACE_MARK);
+		sb.append(ModelConstants.SPACE_MARK);
 		if (labelText != null) {
 			sb.append("\"");
 			sb.append(labelText);
 			sb.append("\"");
-			sb.append(Constants.SPACE_MARK);
+			sb.append(ModelConstants.SPACE_MARK);
 		}
 		if (iconName != null) {
 			sb.append("<");
 			sb.append(iconName);
 			sb.append(">");
-			sb.append(Constants.SPACE_MARK);
+			sb.append(ModelConstants.SPACE_MARK);
 		}
 		if (!groups.isEmpty()) {
 			sb.append("(");
 			for (String group : groups) {
 				sb.append(group);
-				sb.append(Constants.COMMA_MARK);
-				sb.append(Constants.SPACE_MARK);	
+				sb.append(ModelConstants.COMMA_MARK);
+				sb.append(ModelConstants.SPACE_MARK);	
 			}
 			sb.deleteCharAt(sb.length() - 1);
 			sb.deleteCharAt(sb.length() - 1);
@@ -112,7 +112,7 @@ final class ItemImpl implements Item {
 		if (bindingConfig != null) {
 			sb.append("{");
 			sb.append(bindingConfig);
-			sb.append(Constants.SPACE_MARK);
+			sb.append(ModelConstants.SPACE_MARK);
 			sb.append("}");
 		}
 		return sb.toString();

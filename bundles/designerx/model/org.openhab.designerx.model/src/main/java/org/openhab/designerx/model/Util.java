@@ -41,7 +41,7 @@ public class Util {
 		List<String> list = Lists.newArrayList();
 		try {
 			br = new BufferedReader(new InputStreamReader(new FileInputStream(
-					file), Constants.CHARSET_NAME_UTF_8));
+					file), ModelConstants.CHARSET_NAME_UTF_8));
 			String s = null;
 			while ((s = br.readLine()) != null) {
 				s = s.trim();

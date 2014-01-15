@@ -5,7 +5,7 @@ import java.util.Set;
 
 import org.openhab.designerx.model.sitemap.ColorArray;
 import org.openhab.designerx.model.sitemap.impl.ColorArrayBuilder;
-import org.openhab.designerx.model.xtext.Constants;
+import org.openhab.designerx.model.xtext.XtextConstants;
 
 import com.google.common.collect.ImmutableSet;
 import com.google.common.collect.Lists;
@@ -49,7 +49,7 @@ final class ColorArrayXtdex {
 	static String toXtext(List<ColorArray> colorArray, String type) {
 		StringBuilder sb = new StringBuilder();
 		sb.append(type);
-		sb.append(Constants.EQU_MARK);
+		sb.append(XtextConstants.EQU_MARK);
 		sb.append("[");
 		int count = 0;
 		for (ColorArray e : colorArray) {
@@ -64,9 +64,9 @@ final class ColorArrayXtdex {
 			String arg = e.getArg();
 			if (arg != null) {
 				count += 1;
-				sb.append(Constants.EQU_MARK);
+				sb.append(XtextConstants.EQU_MARK);
 				sb.append(arg);
-				sb.append(Constants.COMMA_MARK);	
+				sb.append(XtextConstants.COMMA_MARK);	
 			}
 		}
 		if (count > 0) {

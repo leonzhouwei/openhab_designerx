@@ -3,7 +3,7 @@ package org.openhab.designerx.model.internal.sitemap.node.atom;
 import java.util.Collection;
 
 import org.openhab.designerx.model.Atom;
-import org.openhab.designerx.model.Constants;
+import org.openhab.designerx.model.ModelConstants;
 import org.openhab.designerx.model.Properties;
 import org.openhab.designerx.model.Property;
 import org.openhab.designerx.model.internal.sitemap.node.atom.properties.PropertiesImpl;
@@ -65,10 +65,10 @@ public class AtomSitemap implements Atom {
 	public String toXtext() {
 		StringBuilder sb = new StringBuilder();
 		sb.append(TYPE);
-		sb.append(Constants.SPACE_MARK);
+		sb.append(ModelConstants.SPACE_MARK);
 		sb.append(name);
 		if (!properties.isEmpty()) {
-			sb.append(Constants.SPACE_MARK);
+			sb.append(ModelConstants.SPACE_MARK);
 			sb.append(properties.toXtext(ORDERED_PROPERTY_NAMES));	
 		}
 		return sb.toString();

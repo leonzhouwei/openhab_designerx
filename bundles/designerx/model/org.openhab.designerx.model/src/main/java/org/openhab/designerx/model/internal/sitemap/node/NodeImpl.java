@@ -4,7 +4,7 @@ import java.util.Collection;
 import java.util.List;
 
 import org.openhab.designerx.model.Atom;
-import org.openhab.designerx.model.Constants;
+import org.openhab.designerx.model.ModelConstants;
 import org.openhab.designerx.model.Node;
 import org.openhab.designerx.model.Properties;
 import org.openhab.designerx.model.Property;
@@ -15,8 +15,8 @@ import com.google.common.collect.Lists;
 
 public class NodeImpl implements Node {
 	
-	private static final String SPACE = Constants.SPACE_MARK;
-	private static final String LINE_SEPARATOR = Constants.LINE_SEPARATOR;
+	private static final String SPACE = ModelConstants.SPACE_MARK;
+	private static final String LINE_SEPARATOR = ModelConstants.LINE_SEPARATOR;
 	private static final String TAB = AtomSitemap.DEFAULT_INDENTATION;
 
 	private Atom atom;

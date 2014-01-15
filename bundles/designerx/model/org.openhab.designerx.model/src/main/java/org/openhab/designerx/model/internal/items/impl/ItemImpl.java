@@ -2,14 +2,14 @@ package org.openhab.designerx.model.internal.items.impl;
 
 import java.util.List;
 
-import org.openhab.designerx.model.Constants;
+import org.openhab.designerx.model.ModelConstants;
 
 import com.google.common.collect.Lists;
 
 public class ItemImpl {
 
-	private static final String COMMA = Constants.COMMA_MARK;
-	private static final String SPACE = Constants.SPACE_MARK;
+	private static final String COMMA = ModelConstants.COMMA_MARK;
+	private static final String SPACE = ModelConstants.SPACE_MARK;
 
 	private String type; // mandatory
 	private String name; // mandatory
@@ -168,22 +168,22 @@ public class ItemImpl {
 		StringBuilder sb = new StringBuilder();
 		sb.append("{\n");
 		sb.append(super.toString());
-		sb.append(Constants.LINE_SEPARATOR);
+		sb.append(ModelConstants.LINE_SEPARATOR);
 		sb.append("type: ");
 		sb.append(type);
-		sb.append(Constants.LINE_SEPARATOR);
+		sb.append(ModelConstants.LINE_SEPARATOR);
 		sb.append("name: ");
 		sb.append(name);
-		sb.append(Constants.LINE_SEPARATOR);
+		sb.append(ModelConstants.LINE_SEPARATOR);
 		if (labelText != null) {
 			sb.append("labeltext: ");
 			sb.append(labelText);
-			sb.append(Constants.LINE_SEPARATOR);
+			sb.append(ModelConstants.LINE_SEPARATOR);
 		}
 		if (iconName != null) {
 			sb.append("iconname: ");
 			sb.append(iconName);
-			sb.append(Constants.LINE_SEPARATOR);
+			sb.append(ModelConstants.LINE_SEPARATOR);
 		}
 		if (!groups.isEmpty()) {
 			sb.append("groups: ");
@@ -192,12 +192,12 @@ public class ItemImpl {
 				sb.append(",");
 			}
 			sb.deleteCharAt(sb.length() - 1);
-			sb.append(Constants.LINE_SEPARATOR);
+			sb.append(ModelConstants.LINE_SEPARATOR);
 		}
 		if (bindingConfig != null) {
 			sb.append("bindingconfig: ");
 			sb.append(bindingConfig);
-			sb.append(Constants.LINE_SEPARATOR);
+			sb.append(ModelConstants.LINE_SEPARATOR);
 		}
 		sb.append("}");
 		return sb.toString();

@@ -7,7 +7,7 @@ import java.util.List;
 import org.hamcrest.Matchers;
 import org.junit.Test;
 import org.openhab.designerx.model.Atom;
-import org.openhab.designerx.model.Constants;
+import org.openhab.designerx.model.ModelConstants;
 import org.openhab.designerx.model.internal.sitemap.node.NodeImpl;
 import org.openhab.designerx.model.internal.sitemap.node.atom.Frame;
 import org.openhab.designerx.model.internal.sitemap.node.atom.Group;
@@ -25,11 +25,11 @@ public class NodeImplTest {
 		sb.append(indentation);
 		sb.append(frame);
 		sb.append(" {");
-		sb.append(Constants.LINE_SEPARATOR);
+		sb.append(ModelConstants.LINE_SEPARATOR);
 		sb.append(indentation);
 		sb.append(indentation);
 		sb.append(group);
-		sb.append(Constants.LINE_SEPARATOR);
+		sb.append(ModelConstants.LINE_SEPARATOR);
 		sb.append(indentation);
 		sb.append("}");
 		final String expected = sb.toString();
@@ -82,10 +82,10 @@ public class NodeImplTest {
 		final String actual = root.toXtext();
 		StringBuilder sb = new StringBuilder();
 		sb.append(frame);
-		sb.append(Constants.LINE_SEPARATOR);
+		sb.append(ModelConstants.LINE_SEPARATOR);
 		sb.append("    ");
 		sb.append(group);
-		sb.append(Constants.LINE_SEPARATOR);
+		sb.append(ModelConstants.LINE_SEPARATOR);
 		sb.append(closeure);
 		final String expected = sb.toString();
 		assertThat(actual, Matchers.equalTo(expected));
@@ -104,7 +104,7 @@ public class NodeImplTest {
 		StringBuilder sb = new StringBuilder();
 		for (String line : lines) {
 			sb.append(line);
-			sb.append(Constants.LINE_SEPARATOR);
+			sb.append(ModelConstants.LINE_SEPARATOR);
 		}
 		final String expected = sb.toString().trim();
 		final String actual = node.toXtext().trim();
@@ -133,7 +133,7 @@ public class NodeImplTest {
 		StringBuilder sb = new StringBuilder();
 		for (String line : lines) {
 			sb.append(line);
-			sb.append(Constants.LINE_SEPARATOR);
+			sb.append(ModelConstants.LINE_SEPARATOR);
 		}
 		final String expected = sb.toString().trim();
 		final String actual = node.toXtext().trim();
@@ -155,7 +155,7 @@ public class NodeImplTest {
 		StringBuilder sb = new StringBuilder();
 		for (String line : lines) {
 			sb.append(line);
-			sb.append(Constants.LINE_SEPARATOR);
+			sb.append(ModelConstants.LINE_SEPARATOR);
 		}
 		final String expected = sb.toString().trim();
 		final String actual = node.toXtext().trim();

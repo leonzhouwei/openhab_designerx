@@ -5,7 +5,7 @@ import java.util.Set;
 
 import org.openhab.designerx.model.sitemap.VisibilityRule;
 import org.openhab.designerx.model.sitemap.impl.VisibilityRuleBuilder;
-import org.openhab.designerx.model.xtext.Constants;
+import org.openhab.designerx.model.xtext.XtextConstants;
 
 import com.google.common.collect.ImmutableSet;
 import com.google.common.collect.Lists;
@@ -25,11 +25,11 @@ final class VisibilityRulesXtdex {
 	static List<VisibilityRule> fromXtext(String xtext) {
 		xtext = PreProcessor.preProcess(xtext);
 		List<VisibilityRule> visibility = Lists.newArrayList();
-		if (!xtext.matches(".*" + Constants.VISIBILITY + "\\s*=.*\\[.*\\].*")) {
+		if (!xtext.matches(".*" + XtextConstants.VISIBILITY + "\\s*=.*\\[.*\\].*")) {
 			return visibility;
 		}
 		// extract the "[...]" part
-		xtext = PropertyHandler.getValueBetweenBraces(xtext, Constants.VISIBILITY);
+		xtext = PropertyHandler.getValueBetweenBraces(xtext, XtextConstants.VISIBILITY);
 		xtext = xtext.trim();
 		String[] rules = xtext.split(",");
 		// parse
@@ -43,8 +43,8 @@ final class VisibilityRulesXtdex {
 	
 	static String toXtext(List<VisibilityRule> list) {
 		StringBuilder sb = new StringBuilder();
-		sb.append(Constants.VISIBILITY);
-		sb.append(Constants.EQU_MARK);
+		sb.append(XtextConstants.VISIBILITY);
+		sb.append(XtextConstants.EQU_MARK);
 		sb.append("[");
 		int count = 0;
 		for (VisibilityRule e : list) {
@@ -56,7 +56,7 @@ final class VisibilityRulesXtdex {
 			if (condition != null) {
 				sb.append(condition);
 			}
-			sb.append(Constants.COMMA_MARK);
+			sb.append(XtextConstants.COMMA_MARK);
 			count += 1;
 		}
 		if (count > 0) {

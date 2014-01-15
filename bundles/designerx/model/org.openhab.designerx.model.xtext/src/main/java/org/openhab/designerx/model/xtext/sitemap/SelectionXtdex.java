@@ -5,7 +5,7 @@ import java.util.List;
 import org.openhab.designerx.model.sitemap.Mapping;
 import org.openhab.designerx.model.sitemap.Selection;
 import org.openhab.designerx.model.sitemap.impl.SelectionBuilder;
-import org.openhab.designerx.model.xtext.Constants;
+import org.openhab.designerx.model.xtext.XtextConstants;
 
 /**
  * 
@@ -40,18 +40,18 @@ public final class SelectionXtdex {
 	public static String toXtext(Selection e) {
 		StringBuilder sb = new StringBuilder();
 		sb.append(TARGET_TYPE_NAME);
-		sb.append(Constants.SPACE_MARK);
+		sb.append(XtextConstants.SPACE_MARK);
 		// element
 		String elemStr = ElementXtdex.toXtext(e);
 		if (!elemStr.isEmpty()) {
 			sb.append(elemStr);	
-			sb.append(Constants.SPACE_MARK);
+			sb.append(XtextConstants.SPACE_MARK);
 		}
 		// mappings
 		List<Mapping> mappings = e.getMappings();
 		if (!mappings.isEmpty()) {
 			sb.append(MappingsXtdex.toXtext(mappings));	
-			sb.append(Constants.SPACE_MARK);
+			sb.append(XtextConstants.SPACE_MARK);
 		}
 		return sb.toString().trim();
 	}

@@ -8,7 +8,7 @@ import java.util.Map;
 import java.util.Map.Entry;
 import java.util.Set;
 
-import org.openhab.designerx.model.Constants;
+import org.openhab.designerx.model.ModelConstants;
 import org.openhab.designerx.model.Properties;
 import org.openhab.designerx.model.Property;
 
@@ -56,7 +56,7 @@ public class PropertiesImpl implements Properties {
 					sb.append(name.trim());
 					sb.append("=");
 					sb.append(value.trim());
-					sb.append(Constants.SPACE_MARK);
+					sb.append(ModelConstants.SPACE_MARK);
 				} else {
 					if (name != null) {
 						sb.append(name.trim());

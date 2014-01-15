@@ -6,7 +6,7 @@ import org.openhab.designerx.model.items.Item;
 import org.openhab.designerx.model.items.ItemResource;
 import org.openhab.designerx.model.items.producer.ItemResourceBuilder;
 import org.openhab.designerx.model.items.producer.impl.ItemResourceBuilderImpl;
-import org.openhab.designerx.model.xtdex.Constants;
+import org.openhab.designerx.model.xtdex.XtdexConstants;
 import org.openhab.designerx.model.xtdex.items.ItemResourceXtdex;
 import org.openhab.designerx.model.xtdex.items.ItemXtdex;
 
@@ -18,7 +18,7 @@ public final class ItemResourceXtdexImpl implements ItemResourceXtdex {
 	@Override
 	public ItemResource fromXtext(String xtext) {
 		xtext = xtext.trim();
-		String[] split = xtext.split(Constants.LINE_SEPARATOR);
+		String[] split = xtext.split(XtdexConstants.LINE_SEPARATOR);
 		ItemResource ir = builder.build();
 		for (String string : split) {
 			String s = string.trim();
@@ -34,7 +34,7 @@ public final class ItemResourceXtdexImpl implements ItemResourceXtdex {
 		List<Item> items = itemResource.getAll();
 		for (Item item : items) {
 			sb.append(xtdex.toXtext(item));
-			sb.append(Constants.LINE_SEPARATOR);
+			sb.append(XtdexConstants.LINE_SEPARATOR);
 		}
 		return sb.toString();
 	}

@@ -3,7 +3,7 @@ package org.openhab.designerx.model.xtext.sitemap;
 import org.openhab.designerx.model.sitemap.Image;
 import org.openhab.designerx.model.sitemap.NestableElement;
 import org.openhab.designerx.model.sitemap.impl.ImageBuilder;
-import org.openhab.designerx.model.xtext.Constants;
+import org.openhab.designerx.model.xtext.XtextConstants;
 
 /**
  * 
@@ -31,15 +31,15 @@ public final class ImageXtdex {
 		// set the elementary parameters
 		ElementXtdex.set(instance, xtext);
 		// icon color
-		instance.addIconColor(ColorArrayXtdex.fromXtext(xtext, Constants.ICONCOLOR));
+		instance.addIconColor(ColorArrayXtdex.fromXtext(xtext, XtextConstants.ICONCOLOR));
 		// refresh
-		String refresh = PropertyHandler.getValue(xtext, Constants.REFRESH);
+		String refresh = PropertyHandler.getValue(xtext, XtextConstants.REFRESH);
 		if (refresh != null) {
 			int i = Integer.parseInt(refresh);
 			instance.setRefresh(i);
 		}
 		// url
-		String url = PropertyHandler.getValueBetweenDoubleQuotes(xtext, Constants.URL);
+		String url = PropertyHandler.getValueBetweenDoubleQuotes(xtext, XtextConstants.URL);
 		instance.setUrl(url);
 		return instance;
 	}
@@ -55,28 +55,28 @@ public final class ImageXtdex {
 	static String toXtextWithoutChildren(Image e) {
 		StringBuilder sb = new StringBuilder();
 		sb.append(TARGET_TYPE_NAME);
-		sb.append(Constants.SPACE_MARK);
+		sb.append(XtextConstants.SPACE_MARK);
 		// element
 		String elemStr = ElementXtdex.toXtext(e);
 		if (!elemStr.isEmpty()) {
 			sb.append(elemStr);	
-			sb.append(Constants.SPACE_MARK);
+			sb.append(XtextConstants.SPACE_MARK);
 		}
 		// url
 		String url = e.getUrl();
 		if (url != null) {
-			sb.append(Constants.URL);
-			sb.append(Constants.EQU_MARK);
-			sb.append(Constants.DOUBLE_QUOTE_MARK);
+			sb.append(XtextConstants.URL);
+			sb.append(XtextConstants.EQU_MARK);
+			sb.append(XtextConstants.DOUBLE_QUOTE_MARK);
 			sb.append(url);
-			sb.append(Constants.DOUBLE_QUOTE_MARK);
-			sb.append(Constants.SPACE_MARK);
+			sb.append(XtextConstants.DOUBLE_QUOTE_MARK);
+			sb.append(XtextConstants.SPACE_MARK);
 		}
 		// refresh
-		sb.append(Constants.REFRESH);
-		sb.append(Constants.EQU_MARK);
+		sb.append(XtextConstants.REFRESH);
+		sb.append(XtextConstants.EQU_MARK);
 		sb.append(e.getRefresh());
-		sb.append(Constants.SPACE_MARK);
+		sb.append(XtextConstants.SPACE_MARK);
 		return sb.toString().trim();
 	}
 	

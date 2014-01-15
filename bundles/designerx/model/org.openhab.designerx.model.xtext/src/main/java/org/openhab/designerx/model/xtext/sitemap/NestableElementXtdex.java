@@ -9,7 +9,7 @@ import org.openhab.designerx.model.sitemap.Image;
 import org.openhab.designerx.model.sitemap.NestableElement;
 import org.openhab.designerx.model.sitemap.NonNestableElement;
 import org.openhab.designerx.model.sitemap.Text;
-import org.openhab.designerx.model.xtext.Constants;
+import org.openhab.designerx.model.xtext.XtextConstants;
 
 import com.google.common.collect.ImmutableList;
 
@@ -122,17 +122,17 @@ final class NestableElementXtdex {
 		}
 		if (!e.getChildren().isEmpty()) {
 			sb.append(" {");
-			sb.append(Constants.LINE_SEPARATOR);
+			sb.append(XtextConstants.LINE_SEPARATOR);
 			List<Element> children = e.getChildren();
 			for (Element v : children) {
 				if (v instanceof NonNestableElement) {
 					String s = NonNestableElementXtdex.toXtext((NonNestableElement) v);
 					sb.append(indentation + DEFAULT_INDENTATION + s);
-					sb.append(Constants.LINE_SEPARATOR);
+					sb.append(XtextConstants.LINE_SEPARATOR);
 				} else if (v instanceof NestableElement) {
 					String s = toXtext((NestableElement) v, indentation + DEFAULT_INDENTATION);
 					sb.append(s);
-					sb.append(Constants.LINE_SEPARATOR);
+					sb.append(XtextConstants.LINE_SEPARATOR);
 				}
 			}
 			sb.append(indentation + "}");

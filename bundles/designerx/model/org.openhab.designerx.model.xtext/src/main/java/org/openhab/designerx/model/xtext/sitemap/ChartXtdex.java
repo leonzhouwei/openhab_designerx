@@ -2,7 +2,7 @@ package org.openhab.designerx.model.xtext.sitemap;
 
 import org.openhab.designerx.model.sitemap.Chart;
 import org.openhab.designerx.model.sitemap.impl.ChartBuilder;
-import org.openhab.designerx.model.xtext.Constants;
+import org.openhab.designerx.model.xtext.XtextConstants;
 
 /**
  * 
@@ -49,33 +49,33 @@ public final class ChartXtdex {
 	public static String toXtext(Chart e) {
 		StringBuilder sb = new StringBuilder();
 		sb.append(TARGET_TYPE_NAME);
-		sb.append(Constants.SPACE_MARK);
+		sb.append(XtextConstants.SPACE_MARK);
 		// element
 		String elemStr = ElementXtdex.toXtext(e);
 		if (!elemStr.isEmpty()) {
 			sb.append(elemStr);	
-			sb.append(Constants.SPACE_MARK);
+			sb.append(XtextConstants.SPACE_MARK);
 		}
 		// period
 		String period = e.getPeriod();
 		if (period != null) {
 			sb.append(PERIOD);
-			sb.append(Constants.EQU_MARK);
+			sb.append(XtextConstants.EQU_MARK);
 			sb.append(period);
-			sb.append(Constants.SPACE_MARK);
+			sb.append(XtextConstants.SPACE_MARK);
 		}
 		// refresh
 		sb.append(REFRESH);
-		sb.append(Constants.EQU_MARK);
+		sb.append(XtextConstants.EQU_MARK);
 		sb.append(e.getRefresh());
-		sb.append(Constants.SPACE_MARK);
+		sb.append(XtextConstants.SPACE_MARK);
 		// service
 		String service = e.getService();
 		if (service != null) {
 			sb.append(SERVICE);
-			sb.append(Constants.EQU_MARK);
+			sb.append(XtextConstants.EQU_MARK);
 			sb.append(service);
-			sb.append(Constants.SPACE_MARK);
+			sb.append(XtextConstants.SPACE_MARK);
 		}
 		return sb.toString().trim();
 	}

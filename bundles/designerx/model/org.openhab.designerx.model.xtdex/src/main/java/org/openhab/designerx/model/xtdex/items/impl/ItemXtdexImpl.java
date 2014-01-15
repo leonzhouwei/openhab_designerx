@@ -2,7 +2,7 @@ package org.openhab.designerx.model.xtdex.items.impl;
 
 import java.util.List;
 
-import org.openhab.designerx.model.Constants;
+import org.openhab.designerx.model.ModelConstants;
 import org.openhab.designerx.model.items.ColorItem;
 import org.openhab.designerx.model.items.ContactItem;
 import org.openhab.designerx.model.items.DateTimeItem;
@@ -213,29 +213,29 @@ public final class ItemXtdexImpl implements ItemXtdex {
 	public <T extends Item> String toXtext(T item) {
 		StringBuilder sb = new StringBuilder();
 		sb.append(item.getTypeName());
-		sb.append(Constants.SPACE_MARK);
+		sb.append(ModelConstants.SPACE_MARK);
 		sb.append(item.getName());
-		sb.append(Constants.SPACE_MARK);
+		sb.append(ModelConstants.SPACE_MARK);
 		String labelText = item.getLabelText();
 		if (labelText != null) {
 			sb.append("\"");
 			sb.append(labelText);
 			sb.append("\"");
-			sb.append(Constants.SPACE_MARK);
+			sb.append(ModelConstants.SPACE_MARK);
 		}
 		String iconName = item.getIconName();
 		if (iconName != null) {
 			sb.append("<");
 			sb.append(iconName);
 			sb.append(">");
-			sb.append(Constants.SPACE_MARK);
+			sb.append(ModelConstants.SPACE_MARK);
 		}
 		List<String> groups = item.getGroups();
 		if (!groups.isEmpty()) {
 			sb.append("(");
 			for (String group : groups) {
 				sb.append(group);
-				sb.append(Constants.COMMA_MARK);
+				sb.append(ModelConstants.COMMA_MARK);
 			}
 			sb.deleteCharAt(sb.length() - 1);
 			sb.append(")");

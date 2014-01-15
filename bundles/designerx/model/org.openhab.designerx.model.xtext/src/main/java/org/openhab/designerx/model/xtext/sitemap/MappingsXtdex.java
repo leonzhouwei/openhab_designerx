@@ -4,7 +4,7 @@ import java.util.List;
 
 import org.openhab.designerx.model.sitemap.Mapping;
 import org.openhab.designerx.model.sitemap.impl.MappingBuilder;
-import org.openhab.designerx.model.xtext.Constants;
+import org.openhab.designerx.model.xtext.XtextConstants;
 
 import com.google.common.collect.Lists;
 
@@ -28,9 +28,9 @@ public final class MappingsXtdex {
 		// set the parameters
 		String value = PropertyHandler.getValueBetweenBraces(xtext, TARGET_TYPE_NAME);
 		value = value.trim();
-		String[] split = value.trim().split(Constants.COMMA_MARK);
+		String[] split = value.trim().split(XtextConstants.COMMA_MARK);
 		for (String s : split) {
-			String[] a = s.split(Constants.EQU_MARK);
+			String[] a = s.split(XtextConstants.EQU_MARK);
 			Mapping instance = new MappingBuilder().build();
 			instance.setCmd(a[0].trim());
 			instance.setLabel(a[1].trim());
@@ -42,16 +42,16 @@ public final class MappingsXtdex {
 	static String toXtext(List<Mapping> mappings) {
 		StringBuilder sb = new StringBuilder();
 		sb.append(TARGET_TYPE_NAME);
-		sb.append(Constants.EQU_MARK);
+		sb.append(XtextConstants.EQU_MARK);
 		sb.append("[");
 		int count = 0;
 		for (Mapping e : mappings) {
 			String cmd = e.getCmd();
 			String label = e.getLabel();
 			sb.append(cmd);
-			sb.append(Constants.EQU_MARK);
+			sb.append(XtextConstants.EQU_MARK);
 			sb.append(label);
-			sb.append(Constants.COMMA_MARK);
+			sb.append(XtextConstants.COMMA_MARK);
 			count += 1;
 		}
 		if (count > 0) {

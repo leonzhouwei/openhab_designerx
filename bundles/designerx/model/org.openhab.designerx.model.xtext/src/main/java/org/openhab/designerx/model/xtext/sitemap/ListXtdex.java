@@ -2,7 +2,7 @@ package org.openhab.designerx.model.xtext.sitemap;
 
 import org.openhab.designerx.model.sitemap.List;
 import org.openhab.designerx.model.sitemap.impl.ListBuilder;
-import org.openhab.designerx.model.xtext.Constants;
+import org.openhab.designerx.model.xtext.XtextConstants;
 
 /**
  * 
@@ -40,20 +40,20 @@ public final class ListXtdex {
 	public static String toXtext(List e) {
 		StringBuilder sb = new StringBuilder();
 		sb.append(TARGET_TYPE_NAME);
-		sb.append(Constants.SPACE_MARK);
+		sb.append(XtextConstants.SPACE_MARK);
 		// element
 		String elemStr = ElementXtdex.toXtext(e);
 		if (!elemStr.isEmpty()) {
 			sb.append(elemStr);	
-			sb.append(Constants.SPACE_MARK);
+			sb.append(XtextConstants.SPACE_MARK);
 		}
 		// separator
 		String separator = e.getSeparator();
 		if (separator != null) {
 			sb.append(SEPARATOR);
-			sb.append(Constants.EQU_MARK);
+			sb.append(XtextConstants.EQU_MARK);
 			sb.append(separator);
-			sb.append(Constants.SPACE_MARK);
+			sb.append(XtextConstants.SPACE_MARK);
 		}
 		return sb.toString().trim();
 	}

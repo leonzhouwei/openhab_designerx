@@ -4,7 +4,7 @@ import java.math.BigDecimal;
 
 import org.openhab.designerx.model.sitemap.Setpoint;
 import org.openhab.designerx.model.sitemap.impl.SetpointBuilder;
-import org.openhab.designerx.model.xtext.Constants;
+import org.openhab.designerx.model.xtext.XtextConstants;
 
 /**
  * 
@@ -57,36 +57,36 @@ public final class SetpointXtdex {
 	public static String toXtext(Setpoint e) {
 		StringBuilder sb = new StringBuilder();
 		sb.append(TARGET_TYPE_NAME);
-		sb.append(Constants.SPACE_MARK);
+		sb.append(XtextConstants.SPACE_MARK);
 		// element
 		String elemStr = ElementXtdex.toXtext(e);
 		if (!elemStr.isEmpty()) {
 			sb.append(elemStr);	
-			sb.append(Constants.SPACE_MARK);
+			sb.append(XtextConstants.SPACE_MARK);
 		}
 		// minValue
 		BigDecimal minValue = e.getMinValue();
 		if (minValue != null) {
 			sb.append(MINVALUE);
-			sb.append(Constants.EQU_MARK);
+			sb.append(XtextConstants.EQU_MARK);
 			sb.append(minValue);
-			sb.append(Constants.SPACE_MARK);
+			sb.append(XtextConstants.SPACE_MARK);
 		}
 		// maxValue
 		BigDecimal maxValue = e.getMaxValue();
 		if (maxValue != null) {
 			sb.append(MAXVALUE);
-			sb.append(Constants.EQU_MARK);
+			sb.append(XtextConstants.EQU_MARK);
 			sb.append(maxValue);
-			sb.append(Constants.SPACE_MARK);
+			sb.append(XtextConstants.SPACE_MARK);
 		}
 		// step
 		BigDecimal step = e.getStep();
 		if (step != null) {
 			sb.append(STEP);
-			sb.append(Constants.EQU_MARK);
+			sb.append(XtextConstants.EQU_MARK);
 			sb.append(step);
-			sb.append(Constants.SPACE_MARK);
+			sb.append(XtextConstants.SPACE_MARK);
 		}
 		return sb.toString().trim();
 	}

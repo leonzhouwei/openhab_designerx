@@ -2,7 +2,7 @@ package org.openhab.designerx.model.xtext.sitemap;
 
 import org.openhab.designerx.model.sitemap.Colorpicker;
 import org.openhab.designerx.model.sitemap.impl.ColorpickerBuilder;
-import org.openhab.designerx.model.xtext.Constants;
+import org.openhab.designerx.model.xtext.XtextConstants;
 
 /**
  * 
@@ -29,7 +29,7 @@ public final class ColorpickerXtdex {
 		// set the elementary parameters
 		ElementXtdex.set(instance, xtext);
 		// set the specific parameters
-		String freq = PropertyHandler.getValue(xtext, Constants.SENDFREQUENCY);
+		String freq = PropertyHandler.getValue(xtext, XtextConstants.SENDFREQUENCY);
 		if (freq != null) {
 			int i = Integer.parseInt(freq);
 			instance.setFrequency(i);
@@ -40,18 +40,18 @@ public final class ColorpickerXtdex {
 	public static String toXtext(Colorpicker e) {
 		StringBuilder sb = new StringBuilder();
 		sb.append(TARGET_TYPE_NAME);
-		sb.append(Constants.SPACE_MARK);
+		sb.append(XtextConstants.SPACE_MARK);
 		// element
 		String elemStr = ElementXtdex.toXtext(e);
 		if (!elemStr.isEmpty()) {
 			sb.append(elemStr);	
-			sb.append(Constants.SPACE_MARK);
+			sb.append(XtextConstants.SPACE_MARK);
 		}
 		// frequency
-		sb.append(Constants.SENDFREQUENCY);
-		sb.append(Constants.EQU_MARK);
+		sb.append(XtextConstants.SENDFREQUENCY);
+		sb.append(XtextConstants.EQU_MARK);
 		sb.append(e.getFrequency());
-		sb.append(Constants.SPACE_MARK);
+		sb.append(XtextConstants.SPACE_MARK);
 		return sb.toString().trim();
 	}
 	

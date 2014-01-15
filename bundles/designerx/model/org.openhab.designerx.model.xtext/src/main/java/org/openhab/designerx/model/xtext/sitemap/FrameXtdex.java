@@ -3,7 +3,7 @@ package org.openhab.designerx.model.xtext.sitemap;
 import org.openhab.designerx.model.sitemap.Frame;
 import org.openhab.designerx.model.sitemap.NestableElement;
 import org.openhab.designerx.model.sitemap.impl.FrameBuilder;
-import org.openhab.designerx.model.xtext.Constants;
+import org.openhab.designerx.model.xtext.XtextConstants;
 
 /**
  * 
@@ -44,12 +44,12 @@ public final class FrameXtdex {
 	static String toXtextWithoutChildren(Frame e) {
 		StringBuilder sb = new StringBuilder();
 		sb.append(TARGET_TYPE_NAME);
-		sb.append(Constants.SPACE_MARK);
+		sb.append(XtextConstants.SPACE_MARK);
 		// element
 		String elemStr = ElementXtdex.toXtext(e);
 		if (!elemStr.isEmpty()) {
 			sb.append(elemStr);	
-			sb.append(Constants.SPACE_MARK);
+			sb.append(XtextConstants.SPACE_MARK);
 		}
 		return sb.toString().trim();
 	}
