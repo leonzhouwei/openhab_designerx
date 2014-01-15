@@ -22,7 +22,7 @@ public final class ItemResourceXtdexImpl implements ItemResourceXtdex {
 		ItemResource ir = builder.build();
 		for (String string : split) {
 			String s = string.trim();
-			if (s.isEmpty() || s.startsWith("/\\*")) {
+			if (s.isEmpty() || s.startsWith("/*")) {
 				continue;
 			}
 			Item item = xtdex.parseItem(s);
