@@ -1,11 +1,11 @@
-package org.openhab.designerx.model.items.impl;
+package org.openhab.designerx.model.items.producer.impl;
 
 import java.util.List;
 
-import org.openhab.designerx.model.items.DimmerItem;
+import org.openhab.designerx.model.items.SwitchItem;
 
-final class DimmerItemImpl implements DimmerItem {
-	private ItemImpl item = new ItemImpl(DimmerItem.TYPE_NAME);
+final class SwitchItemImpl implements SwitchItem {
+	private ItemImpl item = new ItemImpl(SwitchItem.TYPE_NAME);
 
 	@Override
 	public String getTypeName() {

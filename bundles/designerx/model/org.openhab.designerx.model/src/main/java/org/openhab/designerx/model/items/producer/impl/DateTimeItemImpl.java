@@ -1,11 +1,11 @@
-package org.openhab.designerx.model.items.impl;
+package org.openhab.designerx.model.items.producer.impl;
 
 import java.util.List;
 
-import org.openhab.designerx.model.items.NumberItem;
+import org.openhab.designerx.model.items.DateTimeItem;
 
-final class NumberItemImpl implements NumberItem {
-	private ItemImpl item = new ItemImpl(NumberItem.TYPE_NAME);
+final class DateTimeItemImpl implements DateTimeItem {
+	private ItemImpl item = new ItemImpl(DateTimeItem.TYPE_NAME);
 
 	@Override
 	public String getTypeName() {

@@ -1,4 +1,4 @@
-package org.openhab.designerx.model.items.impl;
+package org.openhab.designerx.model.items.producer.impl;
 
 import org.openhab.designerx.model.items.ColorItem;
 import org.openhab.designerx.model.items.ContactItem;
@@ -9,54 +9,62 @@ import org.openhab.designerx.model.items.NumberItem;
 import org.openhab.designerx.model.items.RollershutterItem;
 import org.openhab.designerx.model.items.StringItem;
 import org.openhab.designerx.model.items.SwitchItem;
+import org.openhab.designerx.model.items.producer.ItemFactory;
 
-public final class ItemFactory {
+public final class ItemFactoryImpl implements ItemFactory {
 
-	public static ColorItem createColorItem() {
+	@Override
+	public ColorItem createColorItem() {
 		ColorItem item = new ColorItemImpl();
 		return item;
 	}
 
-	public static ContactItem createContactItem() {
+	@Override
+	public ContactItem createContactItem() {
 		ContactItem item = new ContactItemImpl();
 		return item;
 	}
 
-	public static DateTimeItem createDateTimeItem() {
+	@Override
+	public DateTimeItem createDateTimeItem() {
 		DateTimeItem item = new DateTimeItemImpl();
 		return item;
 	}
 
-	public static DimmerItem createDimmerItem() {
+	@Override
+	public DimmerItem createDimmerItem() {
 		DimmerItem item = new DimmerItemImpl();
 		return item;
 	}
 
-	public static GroupItem createGroupItem() {
+	@Override
+	public GroupItem createGroupItem() {
 		GroupItem item = new GroupItemImpl();
 		return item;
 	}
 
-	public static NumberItem createNumberItem() {
+	@Override
+	public NumberItem createNumberItem() {
 		NumberItem item = new NumberItemImpl();
 		return item;
 	}
 
-	public static RollershutterItem createRollershutterItem() {
+	@Override
+	public RollershutterItem createRollershutterItem() {
 		RollershutterItem item = new RollershutterItemImpl();
 		return item;
 	}
 
-	public static StringItem createStringItem() {
+	@Override
+	public StringItem createStringItem() {
 		StringItem item = new StringItemImpl();
 		return item;
 	}
 
-	public static SwitchItem createSwitchItem() {
+	@Override
+	public SwitchItem createSwitchItem() {
 		SwitchItem item = new SwitchItemImpl();
 		return item;
 	}
 	
-	private ItemFactory() {}
-
 }

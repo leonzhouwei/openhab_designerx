@@ -1,11 +1,11 @@
-package org.openhab.designerx.model.items.impl;
+package org.openhab.designerx.model.items.producer.impl;
 
 import java.util.List;
 
-import org.openhab.designerx.model.items.GroupItem;
+import org.openhab.designerx.model.items.NumberItem;
 
-final class GroupItemImpl implements GroupItem {
-	private ItemImpl item = new ItemImpl(GroupItem.TYPE_NAME);
+final class NumberItemImpl implements NumberItem {
+	private ItemImpl item = new ItemImpl(NumberItem.TYPE_NAME);
 
 	@Override
 	public String getTypeName() {
