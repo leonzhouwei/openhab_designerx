@@ -5,17 +5,12 @@ import org.openhab.designerx.model.items.ContactItem;
 import org.openhab.designerx.model.items.DateTimeItem;
 import org.openhab.designerx.model.items.DimmerItem;
 import org.openhab.designerx.model.items.GroupItem;
-import org.openhab.designerx.model.items.Item;
 import org.openhab.designerx.model.items.NumberItem;
 import org.openhab.designerx.model.items.RollershutterItem;
 import org.openhab.designerx.model.items.StringItem;
 import org.openhab.designerx.model.items.SwitchItem;
 
 public interface ItemXtdex {
-	
-	public Item parseItemFromXext(String xtext);
-	
-	public String toXtext(Item item);
 	
 	public ColorItem parseColorItemFromXext(String xtext);
 	

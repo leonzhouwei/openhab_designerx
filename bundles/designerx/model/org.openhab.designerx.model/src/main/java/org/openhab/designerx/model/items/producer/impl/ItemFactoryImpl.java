@@ -66,5 +66,5 @@ public final class ItemFactoryImpl implements ItemFactory {
 		SwitchItem item = new SwitchItemImpl();
 		return item;
 	}
-	
+
 }

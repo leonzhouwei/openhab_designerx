@@ -6,6 +6,7 @@ import org.openhab.designerx.model.items.GroupItem;
 
 final class GroupItemImpl implements GroupItem {
 	private ItemImpl item = new ItemImpl(GroupItem.TYPE_NAME);
+	private String extraType;
 
 	@Override
 	public String getTypeName() {
@@ -65,6 +66,16 @@ final class GroupItemImpl implements GroupItem {
 	@Override
 	public void setBindingConfig(String bindingConfig) {
 		item.setBindingConfig(bindingConfig);
+	}
+
+	@Override
+	public void setExtraTypeName(String extraType) {
+		this.extraType = extraType;
+	}
+
+	@Override
+	public String getExtraTypeName() {
+		return extraType;
 	}
 
 }
