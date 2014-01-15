@@ -196,7 +196,7 @@ public final class ItemXtdexImpl implements ItemXtdex {
 				groups = s.split(",");
 			}
 			for (String group : groups) {
-				item.addGroup(group);
+				item.addGroup(group.trim());
 			}
 			line = line.substring(end + 1, line.length()).trim();
 		}
