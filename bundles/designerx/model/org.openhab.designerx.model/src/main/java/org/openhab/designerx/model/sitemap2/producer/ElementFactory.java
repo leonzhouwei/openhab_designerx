@@ -40,6 +40,6 @@ public interface ElementFactory {
 	
 	public Video createVideo();
 	
-	public Webview createWebviewWebview();
+	public Webview createWebview();
 
 }

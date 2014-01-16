@@ -1,8 +1,9 @@
 package org.openhab.designerx.model.xtdex.sitemap.producer.impl;
 
-import org.openhab.designerx.model.sitemap.Video;
-import org.openhab.designerx.model.sitemap.impl.VideoBuilder;
-import org.openhab.designerx.model.xtext.XtextConstants;
+import org.openhab.designerx.model.sitemap2.Video;
+import org.openhab.designerx.model.sitemap2.producer.ElementFactory;
+import org.openhab.designerx.model.sitemap2.producer.impl.ElementFactoryImpl;
+import org.openhab.designerx.model.xtdex.ModelXtdexConstants;
 
 /**
  * 
@@ -13,48 +14,21 @@ import org.openhab.designerx.model.xtext.XtextConstants;
  *
  */
 public final class VideoXtdex {
-	
-	static final String TARGET_TYPE_NAME = "Video";
-	private static final String MATCH_REGEX = "\\s*" + TARGET_TYPE_NAME + "\\b.*";
+	private static final String MATCH_REGEX = "\\s*" + Video.TYPE_NAME + "\\b.*";
+	private static final ElementFactory factory = new ElementFactoryImpl();
 	
 	static Video fromXtext(NonNestableElementXtextKeeper keeper) {
-		return fromXtext(keeper.getXtext());
-	}
-	
-	static Video fromXtext(String xtext) {
-		xtext = PreProcessor.preProcess(xtext);
-		if (!xtext.startsWith(TARGET_TYPE_NAME)) {
+		String xtext = keeper.getXtext();
+		if (!xtext.startsWith(Video.TYPE_NAME)) {
 			return null;
 		}
-		Video instance = new VideoBuilder().build();
+		Video instance = factory.createVideo();
 		// set the elementary parameters
-		ElementXtdex.set(instance, xtext);
+		ElementXtdexImpl.fillWithoutChildren(instance, keeper);
 		// set the specific parameters
-		String url = PropertyHandler.getValueBetweenDoubleQuotes(xtext, XtextConstants.URL);
+		String url = PropertyHandler.getValueBetweenDoubleQuotes(xtext, ModelXtdexConstants.URL);
 		instance.setUrl(url);
 		return instance;
-	}
-	
-	public static String toXtext(Video e) {
-		StringBuilder sb = new StringBuilder();
-		sb.append(TARGET_TYPE_NAME);
-		sb.append(XtextConstants.SPACE_MARK);
-		// element
-		String elemStr = ElementXtdex.toXtext(e);
-		if (!elemStr.isEmpty()) {
-			sb.append(elemStr);	
-			sb.append(XtextConstants.SPACE_MARK);
-		}
-		// url
-		if (e.getUrl() != null) {
-			sb.append(XtextConstants.URL);
-			sb.append(XtextConstants.EQU_MARK);
-			sb.append(XtextConstants.DOUBLE_QUOTE_MARK);
-			sb.append(e.getUrl());
-			sb.append(XtextConstants.DOUBLE_QUOTE_MARK);
-			sb.append(XtextConstants.SPACE_MARK);
-		}
-		return sb.toString().trim();
 	}
 	
 	private VideoXtdex() {}

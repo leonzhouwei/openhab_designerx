@@ -1,9 +1,13 @@
 package org.openhab.designerx.model.xtdex.sitemap.producer.impl;
 
-import org.openhab.designerx.model.sitemap.Image;
-import org.openhab.designerx.model.sitemap.NestableElement;
-import org.openhab.designerx.model.sitemap.impl.ImageBuilder;
-import org.openhab.designerx.model.xtext.XtextConstants;
+import org.openhab.designerx.model.sitemap2.Element;
+import org.openhab.designerx.model.sitemap2.Image;
+import org.openhab.designerx.model.sitemap2.producer.ElementFactory;
+import org.openhab.designerx.model.sitemap2.producer.impl.ElementFactoryImpl;
+import org.openhab.designerx.model.xtdex.ModelXtdexConstants;
+import org.openhab.designerx.model.xtdex.ModelXtdexException;
+
+import com.google.common.collect.ImmutableList;
 
 /**
  * 
@@ -14,70 +18,30 @@ import org.openhab.designerx.model.xtext.XtextConstants;
  *
  */
 public final class ImageXtdex {
+	private static final String MATCH_REGEX = "\\s*" + Image.TYPE_NAME + "\\b.*";
+	private static final ElementFactory factory = new ElementFactoryImpl();
 	
-	static final String TARGET_TYPE_NAME = "Image";
-	private static final String MATCH_REGEX = "\\s*" + TARGET_TYPE_NAME + "\\b.*";
-	
-	public static Image fromXtext(NestableElementXtextKeeper keeper) {
-		return (Image) NestableElementXtdex.fromXtext(keeper);
-	}
-	
-	static Image fromXtextWithoutChildren(String xtext) {
-		xtext = PreProcessor.preProcess(xtext);
-		if (!xtext.startsWith(TARGET_TYPE_NAME)) {
+	public static Image fromXtext(NestableElementXtextKeeper keeper) throws ModelXtdexException {
+		ImmutableList<String> xtext = keeper.getXtext();
+		String firstLine = xtext.get(0);
+		if (!firstLine.startsWith(Image.TYPE_NAME)) {
 			return null;
 		}
-		Image instance = new ImageBuilder().build();
+		Image instance = factory.createImage();
 		// set the elementary parameters
-		ElementXtdex.set(instance, xtext);
+		ElementXtdexImpl.fillWithoutChildren(instance, new NonNestableElementXtextKeeper(firstLine));
 		// icon color
-		instance.addIconColor(ColorArrayXtdex.fromXtext(xtext, XtextConstants.ICONCOLOR));
+		instance.addIconColor(ColorArrayXtdex.fromXtext(firstLine, ModelXtdexConstants.ICONCOLOR));
 		// refresh
-		String refresh = PropertyHandler.getValue(xtext, XtextConstants.REFRESH);
+		String refresh = PropertyHandler.getValue(firstLine, ModelXtdexConstants.REFRESH);
 		if (refresh != null) {
 			int i = Integer.parseInt(refresh);
 			instance.setRefresh(i);
 		}
 		// url
-		String url = PropertyHandler.getValueBetweenDoubleQuotes(xtext, XtextConstants.URL);
+		String url = PropertyHandler.getValueBetweenDoubleQuotes(firstLine, ModelXtdexConstants.URL);
 		instance.setUrl(url);
 		return instance;
-	}
-	
-	public static String toXtext(Image e) {
-		return toXtext(e, "");
-	}
-	
-	public static String toXtext(Image e, String indentation) {
-		return NestableElementXtdex.toXtext((NestableElement) e, indentation);
-	}
-	
-	static String toXtextWithoutChildren(Image e) {
-		StringBuilder sb = new StringBuilder();
-		sb.append(TARGET_TYPE_NAME);
-		sb.append(XtextConstants.SPACE_MARK);
-		// element
-		String elemStr = ElementXtdex.toXtext(e);
-		if (!elemStr.isEmpty()) {
-			sb.append(elemStr);	
-			sb.append(XtextConstants.SPACE_MARK);
-		}
-		// url
-		String url = e.getUrl();
-		if (url != null) {
-			sb.append(XtextConstants.URL);
-			sb.append(XtextConstants.EQU_MARK);
-			sb.append(XtextConstants.DOUBLE_QUOTE_MARK);
-			sb.append(url);
-			sb.append(XtextConstants.DOUBLE_QUOTE_MARK);
-			sb.append(XtextConstants.SPACE_MARK);
-		}
-		// refresh
-		sb.append(XtextConstants.REFRESH);
-		sb.append(XtextConstants.EQU_MARK);
-		sb.append(e.getRefresh());
-		sb.append(XtextConstants.SPACE_MARK);
-		return sb.toString().trim();
 	}
 	
 	private ImageXtdex() {}
@@ -88,6 +52,12 @@ public final class ImageXtdex {
 			result = true;
 		}
 		return result;
+	}
+	
+	static Element parseIgnoringChildren(NonNestableElementXtextKeeper keeper) {
+		Element e = null;
+		
+		return e;
 	}
 	
 }

@@ -1,11 +1,8 @@
 package org.openhab.designerx.model.xtdex.sitemap.producer.impl;
 
-import java.util.List;
-
-import org.openhab.designerx.model.sitemap.Mapping;
-import org.openhab.designerx.model.sitemap.Selection;
-import org.openhab.designerx.model.sitemap.impl.SelectionBuilder;
-import org.openhab.designerx.model.xtext.XtextConstants;
+import org.openhab.designerx.model.sitemap2.Selection;
+import org.openhab.designerx.model.sitemap2.producer.ElementFactory;
+import org.openhab.designerx.model.sitemap2.producer.impl.ElementFactoryImpl;
 
 /**
  * 
@@ -16,44 +13,20 @@ import org.openhab.designerx.model.xtext.XtextConstants;
  *
  */
 public final class SelectionXtdex {
-	
-	static final String TARGET_TYPE_NAME = "Selection";
-	private static final String MATCH_REGEX = "\\s*" + TARGET_TYPE_NAME + "\\b.*";
+	private static final String MATCH_REGEX = "\\s*" + Selection.TYPE_NAME + "\\b.*";
+	private static final ElementFactory factory = new ElementFactoryImpl();
 	
 	public static Selection fromXtext(NonNestableElementXtextKeeper keeper) {
-		return fromXtext(keeper.getXtext());
-	}
-	
-	static Selection fromXtext(String xtext) {
-		xtext = PreProcessor.preProcess(xtext);
-		if (!xtext.startsWith(TARGET_TYPE_NAME)) {
+		String xtext = keeper.getXtext();
+		if (!xtext.startsWith(Selection.TYPE_NAME)) {
 			return null;
 		}
-		Selection instance = new SelectionBuilder().build();
+		Selection instance = factory.createSelection();
 		// set the elementary parameters
-		ElementXtdex.set(instance, xtext);
+		ElementXtdexImpl.fillWithoutChildren(instance, keeper);
 		// mappings
 		instance.addMappings(MappingsXtdex.fromXtext(xtext));
 		return instance;
-	}
-	
-	public static String toXtext(Selection e) {
-		StringBuilder sb = new StringBuilder();
-		sb.append(TARGET_TYPE_NAME);
-		sb.append(XtextConstants.SPACE_MARK);
-		// element
-		String elemStr = ElementXtdex.toXtext(e);
-		if (!elemStr.isEmpty()) {
-			sb.append(elemStr);	
-			sb.append(XtextConstants.SPACE_MARK);
-		}
-		// mappings
-		List<Mapping> mappings = e.getMappings();
-		if (!mappings.isEmpty()) {
-			sb.append(MappingsXtdex.toXtext(mappings));	
-			sb.append(XtextConstants.SPACE_MARK);
-		}
-		return sb.toString().trim();
 	}
 	
 	private SelectionXtdex() {}

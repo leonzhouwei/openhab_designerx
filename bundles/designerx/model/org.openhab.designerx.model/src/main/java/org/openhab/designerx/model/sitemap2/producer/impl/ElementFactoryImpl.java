@@ -78,7 +78,7 @@ public final class ElementFactoryImpl implements ElementFactory {
 	}
 
 	@Override
-	public Webview createWebviewWebview() {
+	public Webview createWebview() {
 		return new WebviewImpl();
 	}
 

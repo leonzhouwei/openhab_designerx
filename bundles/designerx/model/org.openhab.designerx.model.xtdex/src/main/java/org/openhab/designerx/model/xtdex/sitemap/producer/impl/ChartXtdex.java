@@ -1,8 +1,8 @@
 package org.openhab.designerx.model.xtdex.sitemap.producer.impl;
 
-import org.openhab.designerx.model.sitemap.Chart;
-import org.openhab.designerx.model.sitemap.impl.ChartBuilder;
-import org.openhab.designerx.model.xtext.XtextConstants;
+import org.openhab.designerx.model.sitemap2.Chart;
+import org.openhab.designerx.model.sitemap2.producer.ElementFactory;
+import org.openhab.designerx.model.sitemap2.producer.impl.ElementFactoryImpl;
 
 /**
  * 
@@ -12,27 +12,21 @@ import org.openhab.designerx.model.xtext.XtextConstants;
  * @author zhouwei
  * 
  */
-public final class ChartXtdex {
-	
-	static final String TARGET_TYPE_NAME = "Chart";
-
+final class ChartXtdex {
 	private static final String PERIOD = "period";
 	private static final String REFRESH = "refresh";
 	private static final String SERVICE = "service";
-	private static final String MATCH_REGEX = "\\s*" + TARGET_TYPE_NAME + "\\b.*";
+	private static final String MATCH_REGEX = "\\s*" + Chart.TYPE_NAME + "\\b.*";
+	private static final ElementFactory factory = new ElementFactoryImpl();
 	
-	public static Chart fromXtext(NonNestableElementXtextKeeper keeper) {
-		return fromXtext(keeper.getXtext());
-	}
-	
-	static Chart fromXtext(String xtext) {
-		xtext = PreProcessor.preProcess(xtext);
-		if (!xtext.startsWith(TARGET_TYPE_NAME)) {
+	static Chart fromXtext(NonNestableElementXtextKeeper keeper) {
+		String xtext = keeper.getXtext();
+		if (!xtext.startsWith(Chart.TYPE_NAME)) {
 			return null;
 		}
-		Chart instance = new ChartBuilder().build();
+		Chart instance = factory.createChart();
 		// set the elementary parameters
-		ElementXtdex.set(instance, xtext);
+		ElementXtdexImpl.fillWithoutChildren(instance, keeper);
 		// set the specific parameters
 		String period = PropertyHandler.getValue(xtext, PERIOD);
 		instance.setPeriod(period);
@@ -46,43 +40,9 @@ public final class ChartXtdex {
 		return instance;
 	}
 	
-	public static String toXtext(Chart e) {
-		StringBuilder sb = new StringBuilder();
-		sb.append(TARGET_TYPE_NAME);
-		sb.append(XtextConstants.SPACE_MARK);
-		// element
-		String elemStr = ElementXtdex.toXtext(e);
-		if (!elemStr.isEmpty()) {
-			sb.append(elemStr);	
-			sb.append(XtextConstants.SPACE_MARK);
-		}
-		// period
-		String period = e.getPeriod();
-		if (period != null) {
-			sb.append(PERIOD);
-			sb.append(XtextConstants.EQU_MARK);
-			sb.append(period);
-			sb.append(XtextConstants.SPACE_MARK);
-		}
-		// refresh
-		sb.append(REFRESH);
-		sb.append(XtextConstants.EQU_MARK);
-		sb.append(e.getRefresh());
-		sb.append(XtextConstants.SPACE_MARK);
-		// service
-		String service = e.getService();
-		if (service != null) {
-			sb.append(SERVICE);
-			sb.append(XtextConstants.EQU_MARK);
-			sb.append(service);
-			sb.append(XtextConstants.SPACE_MARK);
-		}
-		return sb.toString().trim();
-	}
-	
 	private ChartXtdex() {}
 	
-	public static boolean isChart(String xtext) {
+	static boolean isChart(String xtext) {
 		boolean result = false;
 		if (xtext.matches(MATCH_REGEX)) {
 			result = true;

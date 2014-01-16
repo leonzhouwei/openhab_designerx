@@ -17,13 +17,12 @@ import com.google.common.collect.Lists;
  *
  */
 public final class MappingsXtdex {
-
 	static final String TARGET_TYPE_NAME = "mappings";
 	private static final MappingBuilder builder = new MappingBuilderImpl();
 	
 	static List<Mapping> fromXtext(String xtext) {
 		List<Mapping> mappings = Lists.newArrayList();
-		xtext = PreProcessor.preProcess(xtext);
+		xtext = xtext.trim();
 		if (!xtext.matches(".*" + TARGET_TYPE_NAME + "=\\[.*\\].*")) {
 			return mappings;
 		}

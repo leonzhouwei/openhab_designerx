@@ -1,8 +1,9 @@
 package org.openhab.designerx.model.xtdex.sitemap.producer.impl;
 
-import org.openhab.designerx.model.sitemap.Colorpicker;
-import org.openhab.designerx.model.sitemap.impl.ColorpickerBuilder;
-import org.openhab.designerx.model.xtext.XtextConstants;
+import org.openhab.designerx.model.sitemap2.Colorpicker;
+import org.openhab.designerx.model.sitemap2.producer.ElementFactory;
+import org.openhab.designerx.model.sitemap2.producer.impl.ElementFactoryImpl;
+import org.openhab.designerx.model.xtdex.ModelXtdexConstants;
 
 /**
  * 
@@ -12,47 +13,24 @@ import org.openhab.designerx.model.xtext.XtextConstants;
  * 
  */
 public final class ColorpickerXtdex {
-	
-	static final String TARGET_TYPE_NAME = "Colorpicker";
-	private static final String MATCH_REGEX = "\\s*" + TARGET_TYPE_NAME + "\\b.*";
+	private static final String MATCH_REGEX = "\\s*" + Colorpicker.TYPE_NAME + "\\b.*";
+	private static final ElementFactory factory = new ElementFactoryImpl();
 	
 	public static Colorpicker fromXtext(NonNestableElementXtextKeeper keeper) {
-		return fromXtext(keeper.getXtext());
-	}
-	
-	static Colorpicker fromXtext(String xtext) {
-		xtext = PreProcessor.preProcess(xtext);
-		if (!xtext.startsWith(TARGET_TYPE_NAME)) {
+		String xtext = keeper.getXtext();
+		if (!xtext.startsWith(Colorpicker.TYPE_NAME)) {
 			return null;
 		}
-		Colorpicker instance = new ColorpickerBuilder().build();
+		Colorpicker instance = factory.createColorpicker();
 		// set the elementary parameters
-		ElementXtdex.set(instance, xtext);
+		ElementXtdexImpl.fillWithoutChildren(instance, keeper);
 		// set the specific parameters
-		String freq = PropertyHandler.getValue(xtext, XtextConstants.SENDFREQUENCY);
+		String freq = PropertyHandler.getValue(xtext, ModelXtdexConstants.SENDFREQUENCY);
 		if (freq != null) {
 			int i = Integer.parseInt(freq);
 			instance.setFrequency(i);
 		}
 		return instance;
-	}
-	
-	public static String toXtext(Colorpicker e) {
-		StringBuilder sb = new StringBuilder();
-		sb.append(TARGET_TYPE_NAME);
-		sb.append(XtextConstants.SPACE_MARK);
-		// element
-		String elemStr = ElementXtdex.toXtext(e);
-		if (!elemStr.isEmpty()) {
-			sb.append(elemStr);	
-			sb.append(XtextConstants.SPACE_MARK);
-		}
-		// frequency
-		sb.append(XtextConstants.SENDFREQUENCY);
-		sb.append(XtextConstants.EQU_MARK);
-		sb.append(e.getFrequency());
-		sb.append(XtextConstants.SPACE_MARK);
-		return sb.toString().trim();
 	}
 	
 	private ColorpickerXtdex() {}

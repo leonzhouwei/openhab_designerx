@@ -1,8 +1,9 @@
 package org.openhab.designerx.model.xtdex.sitemap.producer.impl;
 
-import org.openhab.designerx.model.sitemap.Slider;
-import org.openhab.designerx.model.sitemap.impl.SliderBuilder;
-import org.openhab.designerx.model.xtext.XtextConstants;
+import org.openhab.designerx.model.sitemap2.Slider;
+import org.openhab.designerx.model.sitemap2.producer.ElementFactory;
+import org.openhab.designerx.model.sitemap2.producer.impl.ElementFactoryImpl;
+import org.openhab.designerx.model.xtdex.ModelXtdexConstants;
 
 /**
  * 
@@ -13,27 +14,21 @@ import org.openhab.designerx.model.xtext.XtextConstants;
  *
  */
 public final class SliderXtdex {
-	
-	static final String TARGET_TYPE_NAME = "Slider";
-	
 	private static final String SWITCHSUPPORT = "switchSupport";
 	private static final String SWITCHENABLED = "switchEnabled";
-	private static final String MATCH_REGEX = "\\s*" + TARGET_TYPE_NAME + "\\b.*";
+	private static final String MATCH_REGEX = "\\s*" + Slider.TYPE_NAME + "\\b.*";
+	private static final ElementFactory factory = new ElementFactoryImpl();
 	
 	static Slider fromXtext(NonNestableElementXtextKeeper keeper) {
-		return fromXtext(keeper.getXtext());
-	}
-	
-	static Slider fromXtext(String xtext) {
-		xtext = PreProcessor.preProcess(xtext);
-		if (!xtext.startsWith(TARGET_TYPE_NAME)) {
+		String xtext = keeper.getXtext();
+		if (!xtext.startsWith(Slider.TYPE_NAME)) {
 			return null;
 		}
-		Slider instance = new SliderBuilder().build();
+		Slider instance = factory.createSlider();
 		// set the elementary parameters
-		ElementXtdex.set(instance, xtext);
+		ElementXtdexImpl.fillWithoutChildren(instance, keeper);
 		// set the specific parameters
-		String freq = PropertyHandler.getValueBetweenDoubleQuotes(xtext, XtextConstants.SENDFREQUENCY);
+		String freq = PropertyHandler.getValueBetweenDoubleQuotes(xtext, ModelXtdexConstants.SENDFREQUENCY);
 		if (freq != null) {
 			int i = Integer.parseInt(freq);
 			instance.setFrequency(i);
@@ -44,29 +39,6 @@ public final class SliderXtdex {
 			instance.setSwitchEnabled(false);
 		}
 		return instance;
-	}
-	
-	public static String toXtext(Slider e) {
-		StringBuilder sb = new StringBuilder();
-		sb.append(TARGET_TYPE_NAME);
-		sb.append(XtextConstants.SPACE_MARK);
-		// element
-		String elemStr = ElementXtdex.toXtext(e);
-		if (!elemStr.isEmpty()) {
-			sb.append(elemStr);	
-			sb.append(XtextConstants.SPACE_MARK);
-		}
-		// frequency
-		sb.append(XtextConstants.SENDFREQUENCY);
-		sb.append(XtextConstants.EQU_MARK);
-		sb.append(e.getFrequency());
-		sb.append(XtextConstants.SPACE_MARK);
-		// switchEnabled
-		if (e.isSwitchEnabled()) {
-			sb.append(SWITCHSUPPORT);
-			sb.append(XtextConstants.SPACE_MARK);
-		}
-		return sb.toString().trim();
 	}
 	
 	private SliderXtdex() {}

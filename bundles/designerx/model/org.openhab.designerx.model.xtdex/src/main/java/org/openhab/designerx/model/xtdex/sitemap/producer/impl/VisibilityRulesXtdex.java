@@ -12,7 +12,6 @@ import com.google.common.collect.ImmutableSet;
 import com.google.common.collect.Lists;
 
 final class VisibilityRulesXtdex {
-	
 	//  Valid operators are the ==, >=, <=, !=, >, <.
 	private static Set<String> VALIDE_OPERATORS = ImmutableSet.<String>builder()
 			.add("==")
@@ -25,7 +24,7 @@ final class VisibilityRulesXtdex {
 	private static final VisibilityRuleBuilder builder = new VisibilityRuleBuilderImpl();
 	
 	static List<VisibilityRule> fromXtext(String xtext) {
-		xtext = PreProcessor.preProcess(xtext);
+		xtext = xtext.trim();
 		List<VisibilityRule> visibility = Lists.newArrayList();
 		if (!xtext.matches(".*" + ModelXtdexConstants.VISIBILITY + "\\s*=.*\\[.*\\].*")) {
 			return visibility;
@@ -69,6 +68,7 @@ final class VisibilityRulesXtdex {
 	}
 	
 	private static VisibilityRule parseRule(String rule) {
+		rule = rule.trim();
 		VisibilityRule e = builder.build();
 		//  Valid operators are the ==, >=, <=, !=, >, <.
 		for (String operator : VALIDE_OPERATORS) {

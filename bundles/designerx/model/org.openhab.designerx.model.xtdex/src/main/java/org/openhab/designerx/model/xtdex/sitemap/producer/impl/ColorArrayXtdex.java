@@ -25,8 +25,9 @@ final class ColorArrayXtdex {
 	private static final ColorArrayBuilder builder = new ColorArrayBuilderImpl();
 	
 	static List<ColorArray> fromXtext(String xtext, String type) {
+		xtext = xtext.trim();
+		type = type.trim();
 		List<ColorArray> ret = Lists.newArrayList();
-		xtext = PreProcessor.preProcess(xtext);
 		if (!xtext.matches(".*" + type + "=\\[.*\\]")) {
 			return ret;
 		}
@@ -49,6 +50,7 @@ final class ColorArrayXtdex {
 	}
 	
 	static String toXtext(List<ColorArray> colorArray, String type) {
+		type = type.trim();
 		StringBuilder sb = new StringBuilder();
 		sb.append(type);
 		sb.append(ModelXtdexConstants.EQU_MARK);
@@ -79,6 +81,7 @@ final class ColorArrayXtdex {
 	}
 	
 	private static ColorArray parseRule(String rule) {
+		rule = rule.trim();
 		ColorArray e = builder.build();
 		int equ = rule.lastIndexOf("=");
 		String pre = rule.substring(0, equ).trim();

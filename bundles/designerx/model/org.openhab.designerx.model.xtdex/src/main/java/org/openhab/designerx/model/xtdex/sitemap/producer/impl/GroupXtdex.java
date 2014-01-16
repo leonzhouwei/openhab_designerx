@@ -1,9 +1,12 @@
 package org.openhab.designerx.model.xtdex.sitemap.producer.impl;
 
-import org.openhab.designerx.model.sitemap.Group;
-import org.openhab.designerx.model.sitemap.NestableElement;
-import org.openhab.designerx.model.sitemap.impl.GroupBuilder;
-import org.openhab.designerx.model.xtext.XtextConstants;
+import org.openhab.designerx.model.sitemap2.Element;
+import org.openhab.designerx.model.sitemap2.Group;
+import org.openhab.designerx.model.sitemap2.producer.ElementFactory;
+import org.openhab.designerx.model.sitemap2.producer.impl.ElementFactoryImpl;
+import org.openhab.designerx.model.xtdex.ModelXtdexException;
+
+import com.google.common.collect.ImmutableList;
 
 /**
  * 
@@ -14,44 +17,19 @@ import org.openhab.designerx.model.xtext.XtextConstants;
  *
  */
 public final class GroupXtdex {
+	private static final String MATCH_REGEX = "\\s*" + Group.TYPE_NAME + "\\b.*";
+	private static final ElementFactory factory = new ElementFactoryImpl();
 	
-	static final String TARGET_TYPE_NAME = "Group";
-	private static final String MATCH_REGEX = "\\s*" + TARGET_TYPE_NAME + "\\b.*";
-	
-	public static Group fromXtext(NestableElementXtextKeeper keeper) {
-		return (Group) NestableElementXtdex.fromXtext(keeper);
-	}
-	
-	static Group fromXtextWithoutChildren(String xtext) {
-		xtext = PreProcessor.preProcess(xtext);
-		if (!xtext.startsWith(TARGET_TYPE_NAME)) {
+	public static Group fromXtext(NestableElementXtextKeeper keeper) throws ModelXtdexException {
+		ImmutableList<String> xtext = keeper.getXtext();
+		String firstLine = xtext.get(0);
+		if (!firstLine.startsWith(Group.TYPE_NAME)) {
 			return null;
 		}
-		Group instance = new GroupBuilder().build();
+		Group instance = factory.createGroup();
 		// set the elementary parameters
-		ElementXtdex.set(instance, xtext);
+		ElementXtdexImpl.fillWithoutChildren(instance, new NonNestableElementXtextKeeper(firstLine));
 		return instance;
-	}
-	
-	public static String toXtext(Group e) {
-		return toXtext(e, "");
-	}
-	
-	public static String toXtext(Group e, String indentation) {
-		return NestableElementXtdex.toXtext((NestableElement) e, indentation);
-	}
-	
-	static String toXtextWithoutChildren(Group e) {
-		StringBuilder sb = new StringBuilder();
-		sb.append(TARGET_TYPE_NAME);
-		sb.append(XtextConstants.SPACE_MARK);
-		// element
-		String elemStr = ElementXtdex.toXtext(e);
-		if (!elemStr.isEmpty()) {
-			sb.append(elemStr);	
-			sb.append(XtextConstants.SPACE_MARK);
-		}
-		return sb.toString().trim();
 	}
 	
 	private GroupXtdex() {}
@@ -62,6 +40,12 @@ public final class GroupXtdex {
 			result = true;
 		}
 		return result;
+	}
+	
+	static Element parseIgnoringChildren(NonNestableElementXtextKeeper keeper) {
+		Element e = null;
+		
+		return e;
 	}
 	
 }

@@ -2,7 +2,8 @@ package org.openhab.designerx.model.xtdex.sitemap.producer.impl;
 
 import java.util.List;
 
-import org.openhab.designerx.model.xtext.ModelXtextException;
+import org.openhab.designerx.model.xtdex.ModelXtdexConstants;
+import org.openhab.designerx.model.xtdex.ModelXtdexException;
 import org.openhab.designerx.util.StringHelper;
 
 import com.google.common.collect.ImmutableList;
@@ -12,7 +13,21 @@ public final class NestableElementXtextKeeper {
 	
 	private ImmutableList<String> xtext;
 	
-	public NestableElementXtextKeeper(List<String> list) throws ModelXtextException {
+	public NestableElementXtextKeeper(String string) throws ModelXtdexException {
+		String[] split = string.split(ModelXtdexConstants.LINE_SEPARATOR);
+		List<String> lines = Lists.newArrayList();
+		for (String s : split) {
+			lines.add(s);
+		}
+		checkBraces(lines);
+		checkBeforeFormat(lines);
+		format(lines);
+		checkAfterFormat(lines);
+		ImmutableList.Builder<String> builder = ImmutableList.<String>builder();
+		xtext = builder.addAll(lines).build();
+	}
+	
+	public NestableElementXtextKeeper(List<String> list) throws ModelXtdexException {
 		List<String> lines = Lists.newArrayList();
 		lines.addAll(list);
 		checkBraces(lines);
@@ -27,7 +42,7 @@ public final class NestableElementXtextKeeper {
 		return xtext;
 	}
 	
-	public void checkBraces(List<String> lines) throws ModelXtextException {
+	public void checkBraces(List<String> lines) throws ModelXtdexException {
 		// check if '{'s and '}'s have the same count
 		int open = 0;
 		int close = 0;
@@ -36,11 +51,11 @@ public final class NestableElementXtextKeeper {
 			close += StringHelper.count(line, "}");
 		}
 		if (open != close) {
-			throw new ModelXtextException("the number of '{'s(" + open + ") is not equal to that of '}'s(" + close + ")");
+			throw new ModelXtdexException("the number of '{'s(" + open + ") is not equal to that of '}'s(" + close + ")");
 		}
 	}
 	
-	public void checkBeforeFormat(List<String> lines) throws ModelXtextException {
+	public void checkBeforeFormat(List<String> lines) throws ModelXtdexException {
 		final int size = lines.size();
 		checkBraces(lines);
 		for (int i = 0; i < size; ++i) {
@@ -50,57 +65,57 @@ public final class NestableElementXtextKeeper {
 			}
 			final int openBraceCount = StringHelper.count(line, "{");
 			if (openBraceCount > 1) {
-				throw new ModelXtextException("more than 1 '{' found in '" + line + "'");
+				throw new ModelXtdexException("more than 1 '{' found in '" + line + "'");
 			}
 			final int closeBraceCount = StringHelper.count(line, "}");
 			if (closeBraceCount > 1) {
-				throw new ModelXtextException("more than 1 '}' found in '" + line + "'");
+				throw new ModelXtdexException("more than 1 '}' found in '" + line + "'");
 			}
 			if (line.startsWith("{") && line.endsWith("}")) {
 				String sub = line.substring(1, line.length() - 1).trim();
 				if (sub.isEmpty()) {
-					throw new ModelXtextException("no content found in '" + line + "'");
+					throw new ModelXtdexException("no content found in '" + line + "'");
 				}
 			}
 		}
 	}
 	
-	public void checkAfterFormat(List<String> formatted) throws ModelXtextException {
+	public void checkAfterFormat(List<String> formatted) throws ModelXtdexException {
 		checkBraces(formatted);
 		final int size = formatted.size();
 		// check the formatted lines
 		for (int i = 0; i < size; ++i) {
 			String line = formatted.get(i).trim();
 			if (line.isEmpty()) {
-				throw new ModelXtextException("an empty line has bee found");
+				throw new ModelXtdexException("an empty line has bee found");
 			}
 			final int openBraceCount = StringHelper.count(line, "{");
 			if (openBraceCount > 1) {
-				throw new ModelXtextException("more than 1 '{' found in '" + line + "'");
+				throw new ModelXtdexException("more than 1 '{' found in '" + line + "'");
 			}
 			final int closeBraceCount = StringHelper.count(line, "}");
 			if (closeBraceCount > 1) {
-				throw new ModelXtextException("more than 1 '}' found in '" + line + "'");
+				throw new ModelXtdexException("more than 1 '}' found in '" + line + "'");
 			}
 			if (line.startsWith("{") && line.endsWith("}")) {
-				throw new ModelXtextException("'{' and '}' should not be in the same line in '" + line + "'");
+				throw new ModelXtdexException("'{' and '}' should not be in the same line in '" + line + "'");
 			}
 			if (line.startsWith("{") && !line.endsWith("}")) {
 				String sub = line.substring(1, line.length()).trim();
 				if (sub.isEmpty()) {
-					throw new ModelXtextException("no content found in '" + line + "'");
+					throw new ModelXtdexException("no content found in '" + line + "'");
 				}
 			}
 			if (!line.startsWith("{") && line.endsWith("}")) {
 				String sub = line.substring(0, line.length() - 1).trim();
 				if (!sub.isEmpty()) {
-					throw new ModelXtextException("content found before '}' in '" + line + "'");
+					throw new ModelXtdexException("content found before '}' in '" + line + "'");
 				}
 			}
 		}
 	}
 	
-	public void format(List<String> lines) throws ModelXtextException {
+	public void format(List<String> lines) throws ModelXtdexException {
 		StringHelper.trim(lines);
 		checkBeforeFormat(lines);
 		List<String> formatted = Lists.newArrayList();

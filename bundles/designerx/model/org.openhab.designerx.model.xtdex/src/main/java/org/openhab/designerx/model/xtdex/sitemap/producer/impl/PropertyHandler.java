@@ -1,6 +1,6 @@
 package org.openhab.designerx.model.xtdex.sitemap.producer.impl;
 
-import org.openhab.designerx.model.xtext.XtextConstants;
+import org.openhab.designerx.model.xtdex.ModelXtdexConstants;
 
 final class PropertyHandler {
 	
@@ -12,6 +12,8 @@ final class PropertyHandler {
 	 * @return
 	 */
 	static String getValue(String xtext, String name) {
+		xtext = xtext.trim();
+		name = name.trim();
 		if (!xtext.matches(".*" + name + "\\s*=.*")) {
 			return null;
 		}
@@ -23,13 +25,15 @@ final class PropertyHandler {
 	}
 	
 	static String getValueBetweenBraces(String xtext, String name) {
+		xtext = xtext.trim();
+		name = name.trim();
 		if (!xtext.matches(".*" + name + "\\s*=\\s*\\[.*\\].*")) {
 			return null;
 		}
 		String[] split = xtext.split("\\b" + name + "\\s*=");
 		String post = split[1].trim();
-		int i = post.indexOf(XtextConstants.OPEN_BRACE_MARK);
-		int j = post.indexOf(XtextConstants.CLOSE_BRACE_MARK, i + XtextConstants.OPEN_BRACE_MARK.length());
+		int i = post.indexOf(ModelXtdexConstants.OPEN_BRACE_MARK);
+		int j = post.indexOf(ModelXtdexConstants.CLOSE_BRACE_MARK, i + ModelXtdexConstants.OPEN_BRACE_MARK.length());
 		String value = post.substring(i + 1, j).trim();
 		return value;
 	}
@@ -45,13 +49,15 @@ final class PropertyHandler {
 	 * @return
 	 */
 	static String getValueBetweenDoubleQuotes(String xtext, String name) {
-		if (!xtext.matches(".*" + name + "\\s*=\\s*" + XtextConstants.DOUBLE_QUOTE_MARK + ".*" + XtextConstants.DOUBLE_QUOTE_MARK + ".*")) {
+		xtext = xtext.trim();
+		name = name.trim();
+		if (!xtext.matches(".*" + name + "\\s*=\\s*" + ModelXtdexConstants.DOUBLE_QUOTE_MARK + ".*" + ModelXtdexConstants.DOUBLE_QUOTE_MARK + ".*")) {
 			return null;
 		}
 		String[] split = xtext.split("\\b" + name + "\\s*=");
 		String post = split[1].trim();
-		int i = post.indexOf(XtextConstants.DOUBLE_QUOTE_MARK);
-		int j = post.indexOf(XtextConstants.DOUBLE_QUOTE_MARK, i + XtextConstants.DOUBLE_QUOTE_MARK.length());
+		int i = post.indexOf(ModelXtdexConstants.DOUBLE_QUOTE_MARK);
+		int j = post.indexOf(ModelXtdexConstants.DOUBLE_QUOTE_MARK, i + ModelXtdexConstants.DOUBLE_QUOTE_MARK.length());
 		String value = post.substring(i + 1, j).trim();
 		return value;
 	}

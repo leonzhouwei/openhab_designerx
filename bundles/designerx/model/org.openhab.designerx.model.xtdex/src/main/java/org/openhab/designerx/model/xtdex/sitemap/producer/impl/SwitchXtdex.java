@@ -1,11 +1,8 @@
 package org.openhab.designerx.model.xtdex.sitemap.producer.impl;
 
-import java.util.List;
-
-import org.openhab.designerx.model.sitemap.Mapping;
-import org.openhab.designerx.model.sitemap.Switch;
-import org.openhab.designerx.model.sitemap.impl.SwitchBuilder;
-import org.openhab.designerx.model.xtext.XtextConstants;
+import org.openhab.designerx.model.sitemap2.Switch;
+import org.openhab.designerx.model.sitemap2.producer.ElementFactory;
+import org.openhab.designerx.model.sitemap2.producer.impl.ElementFactoryImpl;
 
 /**
  * 
@@ -16,44 +13,20 @@ import org.openhab.designerx.model.xtext.XtextConstants;
  *
  */
 public final class SwitchXtdex {
-	
-	static final String TARGET_TYPE_NAME = "Switch";
-	private static final String MATCH_REGEX = "\\s*" + TARGET_TYPE_NAME + "\\b.*";
+	private static final String MATCH_REGEX = "\\s*" + Switch.TYPE_NAME + "\\b.*";
+	private static final ElementFactory factory = new ElementFactoryImpl();
 	
 	static Switch fromXtext(NonNestableElementXtextKeeper keeper) {
-		return fromXtext(keeper.getXtext());
-	}
-	
-	static Switch fromXtext(String xtext) {
-		xtext = PreProcessor.preProcess(xtext);
-		if (!xtext.startsWith(TARGET_TYPE_NAME)) {
+		String xtext = keeper.getXtext();
+		if (!xtext.startsWith(Switch.TYPE_NAME)) {
 			return null;
 		}
-		Switch instance = new SwitchBuilder().build();
+		Switch instance = factory.createSwitch();
 		// set the elementary parameters
-		ElementXtdex.set(instance, xtext);
+		ElementXtdexImpl.fillWithoutChildren(instance, keeper);
 		// set the specific parameters
 		instance.addMappings(MappingsXtdex.fromXtext(xtext));
 		return instance;
-	}
-	
-	public static String toXtext(Switch e) {
-		StringBuilder sb = new StringBuilder();
-		sb.append(TARGET_TYPE_NAME);
-		sb.append(XtextConstants.SPACE_MARK);
-		// element
-		String elemStr = ElementXtdex.toXtext(e);
-		if (!elemStr.isEmpty()) {
-			sb.append(elemStr);	
-			sb.append(XtextConstants.SPACE_MARK);
-		}
-		// mappings
-		List<Mapping> mappings= e.getMappings();
-		if (!mappings.isEmpty()) {
-			sb.append(MappingsXtdex.toXtext(mappings));
-			sb.append(XtextConstants.SPACE_MARK);
-		}
-		return sb.toString().trim();
 	}
 	
 	private SwitchXtdex() {}

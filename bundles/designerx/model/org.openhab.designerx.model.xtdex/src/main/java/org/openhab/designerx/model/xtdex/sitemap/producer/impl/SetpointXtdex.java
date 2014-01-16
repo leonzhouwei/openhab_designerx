@@ -2,9 +2,9 @@ package org.openhab.designerx.model.xtdex.sitemap.producer.impl;
 
 import java.math.BigDecimal;
 
-import org.openhab.designerx.model.sitemap.Setpoint;
-import org.openhab.designerx.model.sitemap.impl.SetpointBuilder;
-import org.openhab.designerx.model.xtext.XtextConstants;
+import org.openhab.designerx.model.sitemap2.Setpoint;
+import org.openhab.designerx.model.sitemap2.producer.ElementFactory;
+import org.openhab.designerx.model.sitemap2.producer.impl.ElementFactoryImpl;
 
 /**
  * 
@@ -15,26 +15,20 @@ import org.openhab.designerx.model.xtext.XtextConstants;
  * 
  */
 public final class SetpointXtdex {
-	
-	static final String TARGET_TYPE_NAME = "Setpoint";
-	
 	private static final String MINVALUE = "minValue";
 	private static final String MAXVALUE = "maxValue";
 	private static final String STEP = "step";
-	private static final String MATCH_REGEX = "\\s*" + TARGET_TYPE_NAME + "\\b.*";
+	private static final String MATCH_REGEX = "\\s*" + Setpoint.TYPE_NAME + "\\b.*";
+	private static final ElementFactory factory = new ElementFactoryImpl();
 	
 	public static Setpoint fromXtext(NonNestableElementXtextKeeper keeper) {
-		return fromXtext(keeper.getXtext());
-	}
-	
-	static Setpoint fromXtext(String xtext) {
-		xtext = PreProcessor.preProcess(xtext);
-		if (!xtext.startsWith(TARGET_TYPE_NAME)) {
+		String xtext = keeper.getXtext();
+		if (!xtext.startsWith(Setpoint.TYPE_NAME)) {
 			return null;
 		}
-		Setpoint instance = new SetpointBuilder().build();
+		Setpoint instance = factory.createSetpoint();
 		// set the elementary parameters
-		ElementXtdex.set(instance, xtext);
+		ElementXtdexImpl.fillWithoutChildren(instance, keeper);
 		// set the specific parameters
 		String min = PropertyHandler.getValue(xtext, MINVALUE);
 		if (min != null) {
@@ -52,43 +46,6 @@ public final class SetpointXtdex {
 			instance.setStep(bd);
 		}
 		return instance;
-	}
-	
-	public static String toXtext(Setpoint e) {
-		StringBuilder sb = new StringBuilder();
-		sb.append(TARGET_TYPE_NAME);
-		sb.append(XtextConstants.SPACE_MARK);
-		// element
-		String elemStr = ElementXtdex.toXtext(e);
-		if (!elemStr.isEmpty()) {
-			sb.append(elemStr);	
-			sb.append(XtextConstants.SPACE_MARK);
-		}
-		// minValue
-		BigDecimal minValue = e.getMinValue();
-		if (minValue != null) {
-			sb.append(MINVALUE);
-			sb.append(XtextConstants.EQU_MARK);
-			sb.append(minValue);
-			sb.append(XtextConstants.SPACE_MARK);
-		}
-		// maxValue
-		BigDecimal maxValue = e.getMaxValue();
-		if (maxValue != null) {
-			sb.append(MAXVALUE);
-			sb.append(XtextConstants.EQU_MARK);
-			sb.append(maxValue);
-			sb.append(XtextConstants.SPACE_MARK);
-		}
-		// step
-		BigDecimal step = e.getStep();
-		if (step != null) {
-			sb.append(STEP);
-			sb.append(XtextConstants.EQU_MARK);
-			sb.append(step);
-			sb.append(XtextConstants.SPACE_MARK);
-		}
-		return sb.toString().trim();
 	}
 	
 	private SetpointXtdex() {}
