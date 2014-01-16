@@ -6,6 +6,4 @@ public interface Property {
 
 	public String getValue();
 	
-	public String toXtext();
-
 }
