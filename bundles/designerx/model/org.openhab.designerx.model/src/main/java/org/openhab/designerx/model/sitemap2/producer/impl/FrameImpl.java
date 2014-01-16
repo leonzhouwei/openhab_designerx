@@ -1,16 +1,16 @@
 package org.openhab.designerx.model.sitemap2.producer.impl;
 
+import java.util.Collection;
 import java.util.List;
 
-import org.openhab.designerx.model.sitemap.ColorArray;
-import org.openhab.designerx.model.sitemap.Element;
-import org.openhab.designerx.model.sitemap.Frame;
-import org.openhab.designerx.model.sitemap.NestableElement;
-import org.openhab.designerx.model.sitemap.VisibilityRule;
+import org.openhab.designerx.model.sitemap2.ColorArray;
+import org.openhab.designerx.model.sitemap2.Element;
+import org.openhab.designerx.model.sitemap2.Frame;
+import org.openhab.designerx.model.sitemap2.Property;
+import org.openhab.designerx.model.sitemap2.VisibilityRule;
 
 final class FrameImpl implements Frame {
-	
-	private NestableElement element = new NestableElementImpl(); 
+	private Element element = new ElementImpl(Frame.TYPE_NAME, true);
 	
 	@Override
 	public void setItem(String item) {
@@ -88,8 +88,13 @@ final class FrameImpl implements Frame {
 	}
 	
 	@Override
-	public void appendChild(Element child) {
-		element.appendChild(child);
+	public String getTypeName() {
+		return element.getTypeName();
+	}
+
+	@Override
+	public boolean canHaveChildren() {
+		return element.canHaveChildren();
 	}
 
 	@Override
@@ -98,27 +103,28 @@ final class FrameImpl implements Frame {
 	}
 
 	@Override
-	public boolean equalsLogically(NestableElement another) {
-		return element.equalsLogically(another);
+	public void addChild(Element child) {
+		element.addChild(child);
 	}
 
 	@Override
-	public boolean equalsLogically(Element another) {
-		return element.equalsLogically(another);
+	public void addChildren(Collection<? extends Element> children) {
+		element.addChildren(children);
 	}
 
 	@Override
-	public boolean equalsLogically(Frame another) {
-		if (!(another instanceof Frame)) {
-			return false;
-		}
-		if (this == another) {
-			return true;
-		}
-		if (!element.equalsLogically(another)) {
-			return false;
-		}
-		return true;
+	public List<Property> getExtraProperties() {
+		return element.getExtraProperties();
+	}
+
+	@Override
+	public void addExtraProperty(Property property) {
+		element.addExtraProperty(property);
+	}
+
+	@Override
+	public void addExtraProperties(Collection<? extends Property> properties) {
+		element.addExtraProperties(properties);
 	}
 	
 }

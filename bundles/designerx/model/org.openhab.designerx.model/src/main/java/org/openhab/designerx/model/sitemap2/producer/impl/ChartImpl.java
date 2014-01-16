@@ -1,16 +1,16 @@
 package org.openhab.designerx.model.sitemap2.producer.impl;
 
+import java.util.Collection;
 import java.util.List;
 
-import org.openhab.designerx.model.sitemap.Chart;
-import org.openhab.designerx.model.sitemap.ColorArray;
-import org.openhab.designerx.model.sitemap.Element;
-import org.openhab.designerx.model.sitemap.NonNestableElement;
-import org.openhab.designerx.model.sitemap.VisibilityRule;
-import org.openhab.designerx.util.Comparer;
+import org.openhab.designerx.model.sitemap2.Chart;
+import org.openhab.designerx.model.sitemap2.ColorArray;
+import org.openhab.designerx.model.sitemap2.Element;
+import org.openhab.designerx.model.sitemap2.Property;
+import org.openhab.designerx.model.sitemap2.VisibilityRule;
 
 final class ChartImpl implements Chart {
-	private NonNestableElement element = new NonNestableElementImpl();
+	private Element element = new ElementImpl(Chart.TYPE_NAME);
 	private String period;
 	private int refresh;
 	private String service;
@@ -126,36 +126,43 @@ final class ChartImpl implements Chart {
 	}
 
 	@Override
-	public boolean equalsLogically(NonNestableElement another) {
-		return element.equalsLogically(another);
+	public String getTypeName() {
+		return element.getTypeName();
 	}
 
 	@Override
-	public boolean equalsLogically(Element another) {
-		return element.equalsLogically(another);
+	public boolean canHaveChildren() {
+		return element.canHaveChildren();
 	}
 
 	@Override
-	public boolean equalsLogically(Chart another) {
-		if (!(another instanceof Chart)) {
-			return false;
-		}
-		if (this == another) {
-			return true;
-		}
-		final String anotherPeriod = another.getPeriod();
-		if (Comparer.notEqual(period, anotherPeriod)) {
-			return false;
-		}
-		final int anotherRefresh = another.getRefresh();
-		if (refresh != anotherRefresh) {
-			return false;
-		}
-		final String anotherService = another.getService();
-		if (Comparer.notEqual(service, anotherService)) {
-			return false;
-		}
-		return true;
+	public List<Element> getChildren() {
+		return element.getChildren();
 	}
-	
+
+	@Override
+	public void addChild(Element child) {
+		element.addChild(child);
+	}
+
+	@Override
+	public void addChildren(Collection<? extends Element> children) {
+		element.addChildren(children);
+	}
+
+	@Override
+	public List<Property> getExtraProperties() {
+		return element.getExtraProperties();
+	}
+
+	@Override
+	public void addExtraProperty(Property property) {
+		element.addExtraProperty(property);
+	}
+
+	@Override
+	public void addExtraProperties(Collection<? extends Property> properties) {
+		element.addExtraProperties(properties);
+	}
+
 }

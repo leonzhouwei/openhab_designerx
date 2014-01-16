@@ -1,16 +1,16 @@
 package org.openhab.designerx.model.sitemap2.producer.impl;
 
+import java.util.Collection;
 import java.util.List;
 
-import org.openhab.designerx.model.sitemap.ColorArray;
-import org.openhab.designerx.model.sitemap.Colorpicker;
-import org.openhab.designerx.model.sitemap.Element;
-import org.openhab.designerx.model.sitemap.NonNestableElement;
-import org.openhab.designerx.model.sitemap.VisibilityRule;
+import org.openhab.designerx.model.sitemap2.ColorArray;
+import org.openhab.designerx.model.sitemap2.Colorpicker;
+import org.openhab.designerx.model.sitemap2.Element;
+import org.openhab.designerx.model.sitemap2.Property;
+import org.openhab.designerx.model.sitemap2.VisibilityRule;
 
 final class ColorpickerImpl implements Colorpicker {
-
-	private NonNestableElement element = new NonNestableElementImpl();
+	private Element element = new ElementImpl(Colorpicker.TYPE_NAME);
 	private int frequency = 0;
 
 	@Override
@@ -104,30 +104,43 @@ final class ColorpickerImpl implements Colorpicker {
 	}
 
 	@Override
-	public boolean equalsLogically(NonNestableElement another) {
-		return element.equalsLogically(another);
+	public String getTypeName() {
+		return element.getTypeName();
 	}
 
 	@Override
-	public boolean equalsLogically(Element another) {
-		return element.equalsLogically(another);
+	public boolean canHaveChildren() {
+		return element.canHaveChildren();
 	}
 
 	@Override
-	public boolean equalsLogically(Colorpicker another) {
-		if (!(another instanceof Colorpicker)) {
-			return false;
-		}
-		if (this == another) {
-			return true;
-		}
-		if (!element.equalsLogically(another)) {
-			return false;
-		}
-		if (frequency != another.getFrequency()) {
-			return false;
-		}
-		return true;
+	public List<Element> getChildren() {
+		return element.getChildren();
+	}
+
+	@Override
+	public void addChild(Element child) {
+		element.addChild(child);
+	}
+
+	@Override
+	public void addChildren(Collection<? extends Element> children) {
+		element.addChildren(children);
+	}
+
+	@Override
+	public List<Property> getExtraProperties() {
+		return element.getExtraProperties();
+	}
+
+	@Override
+	public void addExtraProperty(Property property) {
+		element.addExtraProperty(property);
+	}
+
+	@Override
+	public void addExtraProperties(Collection<? extends Property> properties) {
+		element.addExtraProperties(properties);
 	}
 
 }

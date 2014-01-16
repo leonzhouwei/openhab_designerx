@@ -2,8 +2,8 @@ package org.openhab.designerx.model.sitemap2.producer.impl;
 
 import java.util.List;
 
-import org.openhab.designerx.model.sitemap.Element;
-import org.openhab.designerx.model.sitemap.Sitemap;
+import org.openhab.designerx.model.sitemap2.Element;
+import org.openhab.designerx.model.sitemap2.Sitemap;
 
 import com.google.common.collect.Lists;
 

@@ -1,18 +1,17 @@
 package org.openhab.designerx.model.sitemap2.producer.impl;
 
 import java.math.BigDecimal;
+import java.util.Collection;
 import java.util.List;
 
-import org.openhab.designerx.model.sitemap.ColorArray;
-import org.openhab.designerx.model.sitemap.Element;
-import org.openhab.designerx.model.sitemap.NonNestableElement;
-import org.openhab.designerx.model.sitemap.Setpoint;
-import org.openhab.designerx.model.sitemap.VisibilityRule;
-import org.openhab.designerx.util.Comparer;
+import org.openhab.designerx.model.sitemap2.ColorArray;
+import org.openhab.designerx.model.sitemap2.Element;
+import org.openhab.designerx.model.sitemap2.Property;
+import org.openhab.designerx.model.sitemap2.Setpoint;
+import org.openhab.designerx.model.sitemap2.VisibilityRule;
 
 final class SetpointImpl implements Setpoint {
-	
-	private NonNestableElement element = new NonNestableElementImpl();
+	private Element element = new ElementImpl(Setpoint.TYPE_NAME);
 	private BigDecimal minValue;
 	private BigDecimal maxValue;
 	private BigDecimal step;
@@ -138,42 +137,43 @@ final class SetpointImpl implements Setpoint {
 	}
 
 	@Override
-	public boolean equalsLogically(NonNestableElement another) {
-		return element.equalsLogically(another);
+	public String getTypeName() {
+		return element.getTypeName();
 	}
 
 	@Override
-	public boolean equalsLogically(Element another) {
-		return element.equalsLogically(another);
+	public boolean canHaveChildren() {
+		return element.canHaveChildren();
 	}
 
 	@Override
-	public boolean equalsLogically(Setpoint another) {
-		if (!(another instanceof Setpoint)) {
-			return false;
-		}
-		if (this == another) {
-			return true;
-		}
-		// minValue
-		BigDecimal anotherMinValue = another.getMinValue();
-		if (Comparer.notEqual(minValue, anotherMinValue)) {
-			return false;
-		}
-		// maxValue
-		BigDecimal anotherMaxValue = another.getMaxValue();
-		if (Comparer.notEqual(maxValue, anotherMaxValue)) {
-			return false;
-		}
-		// step
-		BigDecimal anotherStep = another.getStep();
-		if (Comparer.notEqual(step, anotherStep)) {
-			return false;
-		}
-		if (!element.equalsLogically(another)) {
-			return false;
-		}
-		return true;
+	public List<Element> getChildren() {
+		return element.getChildren();
+	}
+
+	@Override
+	public void addChild(Element child) {
+		element.addChild(child);
+	}
+
+	@Override
+	public void addChildren(Collection<? extends Element> children) {
+		element.addChildren(children);
+	}
+
+	@Override
+	public List<Property> getExtraProperties() {
+		return element.getExtraProperties();
+	}
+
+	@Override
+	public void addExtraProperty(Property property) {
+		element.addExtraProperty(property);
+	}
+
+	@Override
+	public void addExtraProperties(Collection<? extends Property> properties) {
+		element.addExtraProperties(properties);
 	}
 
 }

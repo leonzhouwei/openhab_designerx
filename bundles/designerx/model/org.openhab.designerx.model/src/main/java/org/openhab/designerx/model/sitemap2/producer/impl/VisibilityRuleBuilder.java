@@ -1,6 +1,6 @@
 package org.openhab.designerx.model.sitemap2.producer.impl;
 
-import org.openhab.designerx.model.sitemap.VisibilityRule;
+import org.openhab.designerx.model.sitemap2.VisibilityRule;
 
 public final class VisibilityRuleBuilder {
 	

@@ -2,7 +2,6 @@ package org.openhab.designerx.model.sitemap2.producer;
 
 import org.openhab.designerx.model.sitemap2.Chart;
 import org.openhab.designerx.model.sitemap2.Colorpicker;
-import org.openhab.designerx.model.sitemap2.Element;
 import org.openhab.designerx.model.sitemap2.Frame;
 import org.openhab.designerx.model.sitemap2.Group;
 import org.openhab.designerx.model.sitemap2.Image;
@@ -20,8 +19,6 @@ public interface ElementFactory {
 	public Chart createChart();
 	
 	public Colorpicker createColorpicker();
-	
-	public Element createElement();
 	
 	public Frame createFrame();
 	

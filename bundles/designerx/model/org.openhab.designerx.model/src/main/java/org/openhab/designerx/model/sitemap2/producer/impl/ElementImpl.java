@@ -22,8 +22,12 @@ final class ElementImpl implements Element {
 	private List<Element> children = Lists.newArrayList();
 	private List<Property> extraProperties = Lists.newArrayList();
 	
-	public void setTypeName(String typeName) {
-		this.typeName = typeName;
+	public ElementImpl(String typeName) {
+		init(typeName, false);
+	}
+	
+	public ElementImpl(String typeName, boolean canHaveChildren) {
+		init(typeName, canHaveChildren);
 	}
 	
 	@Override
@@ -106,10 +110,6 @@ final class ElementImpl implements Element {
 		return visibility;
 	}
 
-	public void setCanHaveChildren(boolean bool) {
-		this.canHaveChildren = bool;
-	}
-	
 	@Override
 	public boolean canHaveChildren() {
 		return this.canHaveChildren;
@@ -147,6 +147,11 @@ final class ElementImpl implements Element {
 	@Override
 	public void addExtraProperties(Collection<? extends Property> properties) {
 		this.extraProperties.addAll(properties);
+	}
+	
+	private void init(String typeName, boolean canHaveChildren) {
+		this.typeName = typeName;
+		this.canHaveChildren = canHaveChildren;
 	}
 
 }

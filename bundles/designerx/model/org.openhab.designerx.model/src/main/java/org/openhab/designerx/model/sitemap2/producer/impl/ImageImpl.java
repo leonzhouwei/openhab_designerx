@@ -1,19 +1,18 @@
 package org.openhab.designerx.model.sitemap2.producer.impl;
 
+import java.util.Collection;
 import java.util.List;
 
-import org.openhab.designerx.model.sitemap.ColorArray;
-import org.openhab.designerx.model.sitemap.Element;
-import org.openhab.designerx.model.sitemap.Image;
-import org.openhab.designerx.model.sitemap.NestableElement;
-import org.openhab.designerx.model.sitemap.VisibilityRule;
-import org.openhab.designerx.util.Comparer;
+import org.openhab.designerx.model.sitemap2.ColorArray;
+import org.openhab.designerx.model.sitemap2.Element;
+import org.openhab.designerx.model.sitemap2.Image;
+import org.openhab.designerx.model.sitemap2.Property;
+import org.openhab.designerx.model.sitemap2.VisibilityRule;
 
 import com.google.common.collect.Lists;
 
 final class ImageImpl implements Image {
-
-	private NestableElement element = new NestableElementImpl(); 
+	private Element element = new ElementImpl(Image.TYPE_NAME, true);
 	private int refresh = 0;
 	private String url;
 	private List<ColorArray> iconColor = Lists.newArrayList();
@@ -94,16 +93,6 @@ final class ImageImpl implements Image {
 	}
 
 	@Override
-	public void appendChild(Element child) {
-		element.appendChild(child);
-	}
-
-	@Override
-	public List<Element> getChildren() {
-		return element.getChildren();
-	}
-
-	@Override
 	public String getUrl() {
 		return url;
 	}
@@ -139,53 +128,43 @@ final class ImageImpl implements Image {
 	}
 
 	@Override
-	public boolean equalsLogically(NestableElement another) {
-		return element.equalsLogically(another);
+	public String getTypeName() {
+		return element.getTypeName();
 	}
 
 	@Override
-	public boolean equalsLogically(Element another) {
-		return element.equalsLogically(another);
+	public boolean canHaveChildren() {
+		return element.canHaveChildren();
 	}
 
 	@Override
-	public boolean equalsLogically(Image another) {
-		if (!(another instanceof Image)) {
-			return false;
-		}
-		if (this == another) {
-			return true;
-		}
-		if (!element.equalsLogically(another)) {
-			return false;
-		}
-		// refresh
-		if (refresh != another.getRefresh()) {
-			return false;
-		}
-		// url
-		final String anotherUrl = another.getUrl();
-		if (Comparer.notEqual(url, anotherUrl)) {
-			return false;
-		}
-		// icon color
-		final List<ColorArray> anotherIconColor = another.getIconColor();
-		if (iconColor.size() != anotherIconColor.size()) {
-			return false;
-		}
-		for (ColorArray outer : iconColor) {
-			boolean findEqual = false;
-			for (ColorArray inner : anotherIconColor) {
-				if (outer.equalsLogically(inner)) {
-					findEqual = true;
-					break;
-				}
-			}
-			if (findEqual == false) {
-				return false;
-			}
-		}
-		return true;
+	public List<Element> getChildren() {
+		return element.getChildren();
+	}
+
+	@Override
+	public void addChild(Element child) {
+		element.addChild(child);
+	}
+
+	@Override
+	public void addChildren(Collection<? extends Element> children) {
+		element.addChildren(children);
+	}
+
+	@Override
+	public List<Property> getExtraProperties() {
+		return element.getExtraProperties();
+	}
+
+	@Override
+	public void addExtraProperty(Property property) {
+		element.addExtraProperty(property);
+	}
+
+	@Override
+	public void addExtraProperties(Collection<? extends Property> properties) {
+		element.addExtraProperties(properties);
 	}
 
 }

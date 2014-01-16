@@ -1,6 +1,6 @@
 package org.openhab.designerx.model.sitemap2.producer.impl;
 
-import org.openhab.designerx.model.sitemap.ColorArray;
+import org.openhab.designerx.model.sitemap2.ColorArray;
 
 public final class ColorArrayBuilder {
 	
