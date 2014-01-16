@@ -1,6 +1,6 @@
 package org.openhab.designerx.model.xtdex;
 
-public class XtdexConstants {
+public class ModelXtdexConstants {
 	
 	// System
 	public static final String CURRENT_WORKING_DIR = System.getProperty("user.dir");
@@ -24,9 +24,9 @@ public class XtdexConstants {
 	public static final String OPENHAB_RULES_DIR_BASE_NAME = "rules";
 	public static final String OPENHAB_SCRIPTS_DIR_BASE_NAME = "scripts";
 	public static final String OPENHAB_SITEMAPS_DIR_BASE_NAME = "sitemaps";
-	public static final String OPENHAB_SITEMAPS_DIR_RELATIVE_PATH = XtdexConstants.FILE_SEPARATOR + OPENHAB_CONFIG_DIR_BASE_NAME + FILE_SEPARATOR + OPENHAB_SITEMAPS_DIR_BASE_NAME;
+	public static final String OPENHAB_SITEMAPS_DIR_RELATIVE_PATH = ModelXtdexConstants.FILE_SEPARATOR + OPENHAB_CONFIG_DIR_BASE_NAME + FILE_SEPARATOR + OPENHAB_SITEMAPS_DIR_BASE_NAME;
 	public static final String OPENHAB_TRANSFORM_DIR_BASE_NAME = "transform";
-	public static final String OPENHAB_ITEMS_DIR_RELATIVE_PATH = XtdexConstants.FILE_SEPARATOR + OPENHAB_CONFIG_DIR_BASE_NAME + FILE_SEPARATOR + OPENHAB_ITEMS_DIR_BASE_NAME;
+	public static final String OPENHAB_ITEMS_DIR_RELATIVE_PATH = ModelXtdexConstants.FILE_SEPARATOR + OPENHAB_CONFIG_DIR_BASE_NAME + FILE_SEPARATOR + OPENHAB_ITEMS_DIR_BASE_NAME;
 	public static final String SITEMAP = "sitemap";
 	public static final String SITEMAP_FILE_EXTENSION = ".sitemap";
 	
