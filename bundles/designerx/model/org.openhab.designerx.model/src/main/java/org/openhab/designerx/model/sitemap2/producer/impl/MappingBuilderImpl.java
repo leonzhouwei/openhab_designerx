@@ -3,7 +3,7 @@ package org.openhab.designerx.model.sitemap2.producer.impl;
 import org.openhab.designerx.model.sitemap2.Mapping;
 import org.openhab.designerx.model.sitemap2.producer.MappingBuilder;
 
-final class MappingBuilderImpl implements MappingBuilder {
+public final class MappingBuilderImpl implements MappingBuilder {
 	
 	@Override
 	public Mapping build() {
