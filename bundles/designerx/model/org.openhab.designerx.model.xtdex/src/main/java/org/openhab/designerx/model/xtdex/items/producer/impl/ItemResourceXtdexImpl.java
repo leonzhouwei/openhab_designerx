@@ -1,4 +1,4 @@
-package org.openhab.designerx.model.xtdex.items.impl;
+package org.openhab.designerx.model.xtdex.items.producer.impl;
 
 import java.util.List;
 
@@ -10,7 +10,7 @@ import org.openhab.designerx.model.xtdex.ModelXtdexConstants;
 import org.openhab.designerx.model.xtdex.items.ItemResourceXtdex;
 import org.openhab.designerx.model.xtdex.items.ItemXtdex;
 
-public final class ItemResourceXtdexImpl implements ItemResourceXtdex {
+final class ItemResourceXtdexImpl implements ItemResourceXtdex {
 	
 	private ItemResourceBuilder builder = new ItemResourceBuilderImpl();
 	private ItemXtdex xtdex = new ItemXtdexImpl();

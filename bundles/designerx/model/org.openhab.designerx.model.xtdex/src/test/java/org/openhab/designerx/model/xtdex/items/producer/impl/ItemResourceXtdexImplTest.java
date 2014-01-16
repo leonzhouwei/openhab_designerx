@@ -1,8 +1,9 @@
-package org.openhab.designerx.model.xtdex.items.impl;
+package org.openhab.designerx.model.xtdex.items.producer.impl;
 
 import org.junit.Test;
 import org.openhab.designerx.model.items.ItemResource;
 import org.openhab.designerx.model.xtdex.ModelXtdexConstants;
+import org.openhab.designerx.model.xtdex.items.producer.impl.ItemResourceXtdexImpl;
 
 public class ItemResourceXtdexImplTest {
 	private static final ItemResourceXtdexImpl xtdex = new ItemResourceXtdexImpl();

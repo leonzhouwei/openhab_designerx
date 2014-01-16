@@ -1,4 +1,4 @@
-package org.openhab.designerx.model.xtdex.items.impl;
+package org.openhab.designerx.model.xtdex.items.producer.impl;
 
 import static org.hamcrest.MatcherAssert.assertThat;
 
@@ -14,6 +14,7 @@ import org.openhab.designerx.model.items.RollershutterItem;
 import org.openhab.designerx.model.items.StringItem;
 import org.openhab.designerx.model.items.SwitchItem;
 import org.openhab.designerx.model.xtdex.items.ItemXtdex;
+import org.openhab.designerx.model.xtdex.items.producer.impl.ItemXtdexImpl;
 
 public class ItemXtdexImplTest {
 	

@@ -1,4 +1,4 @@
-package org.openhab.designerx.model.xtdex.items.impl;
+package org.openhab.designerx.model.xtdex.items.producer.impl;
 
 import java.util.List;
 
@@ -17,7 +17,7 @@ import org.openhab.designerx.model.items.producer.ItemFactory;
 import org.openhab.designerx.model.items.producer.impl.ItemFactoryImpl;
 import org.openhab.designerx.model.xtdex.items.ItemXtdex;
 
-public final class ItemXtdexImpl implements ItemXtdex {
+final class ItemXtdexImpl implements ItemXtdex {
 	
 	private static final String SPACE_REGEX = "\\s*";
 	private static final String POST = "\\b.*";
