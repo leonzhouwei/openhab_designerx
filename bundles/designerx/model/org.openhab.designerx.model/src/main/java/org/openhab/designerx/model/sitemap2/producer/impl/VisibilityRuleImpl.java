@@ -1,14 +1,13 @@
 package org.openhab.designerx.model.sitemap2.producer.impl;
 
-import org.openhab.designerx.model.sitemap2.ColorArray;
+import org.openhab.designerx.model.sitemap2.VisibilityRule;
 
-final class ColorArrayImpl implements ColorArray {
-	private String arg;
+final class VisibilityRuleImpl implements VisibilityRule {
 	private String condition;
 	private String item;
 	private String sign;
 	private String state;
-
+	
 	@Override
 	public String getItem() {
 		return item;
@@ -49,14 +48,4 @@ final class ColorArrayImpl implements ColorArray {
 		this.state = state;
 	}
 
-	@Override
-	public String getArg() {
-		return arg;
-	}
-
-	@Override
-	public void setArg(String arg) {
-		this.arg = arg;
-	}
-	
 }
