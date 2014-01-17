@@ -24,7 +24,7 @@ final class PropertyHandler {
 		return value;
 	}
 	
-	static String getValueBetweenBraces(String xtext, String name) {
+	static String getValueBetweenSquareBrackets(String xtext, String name) {
 		xtext = xtext.trim();
 		name = name.trim();
 		if (!xtext.matches(".*" + name + "\\s*=\\s*\\[.*\\].*")) {
@@ -32,8 +32,8 @@ final class PropertyHandler {
 		}
 		String[] split = xtext.split("\\b" + name + "\\s*=");
 		String post = split[1].trim();
-		int i = post.indexOf(ModelXtdexConstants.OPEN_BRACE_MARK);
-		int j = post.indexOf(ModelXtdexConstants.CLOSE_BRACE_MARK, i + ModelXtdexConstants.OPEN_BRACE_MARK.length());
+		int i = post.indexOf(ModelXtdexConstants.OPEN_SQUARE_BRACKET_MARK);
+		int j = post.indexOf(ModelXtdexConstants.CLOSE_SQUARE_BRACKET_MARK, i + ModelXtdexConstants.OPEN_SQUARE_BRACKET_MARK.length());
 		String value = post.substring(i + 1, j).trim();
 		return value;
 	}

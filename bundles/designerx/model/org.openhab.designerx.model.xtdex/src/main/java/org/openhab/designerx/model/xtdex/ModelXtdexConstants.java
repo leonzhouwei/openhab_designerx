@@ -15,8 +15,8 @@ public class ModelXtdexConstants {
 	public static final String COMMA_MARK = ",";
 	public static final String DOUBLE_QUOTE_MARK = "\"";
 	public static final String EQU_MARK = "=";
-	public static final String OPEN_BRACE_MARK = "{";
-	public static final String CLOSE_BRACE_MARK = "}";
+	public static final String OPEN_SQUARE_BRACKET_MARK = "[";
+	public static final String CLOSE_SQUARE_BRACKET_MARK = "]";
 	public static final String SPACE_MARK = " ";
 	
 	// openHAB

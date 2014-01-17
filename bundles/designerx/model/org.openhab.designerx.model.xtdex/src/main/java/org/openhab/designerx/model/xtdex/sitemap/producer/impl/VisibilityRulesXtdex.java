@@ -30,7 +30,7 @@ final class VisibilityRulesXtdex {
 			return visibility;
 		}
 		// extract the "[...]" part
-		xtext = PropertyHandler.getValueBetweenBraces(xtext, ModelXtdexConstants.VISIBILITY);
+		xtext = PropertyHandler.getValueBetweenSquareBrackets(xtext, ModelXtdexConstants.VISIBILITY);
 		xtext = xtext.trim();
 		String[] rules = xtext.split(",");
 		// parse

@@ -27,7 +27,7 @@ public final class MappingsXtdex {
 			return mappings;
 		}
 		// set the parameters
-		String value = PropertyHandler.getValueBetweenBraces(xtext, TARGET_TYPE_NAME);
+		String value = PropertyHandler.getValueBetweenSquareBrackets(xtext, TARGET_TYPE_NAME);
 		value = value.trim();
 		String[] split = value.trim().split(ModelXtdexConstants.COMMA_MARK);
 		for (String s : split) {

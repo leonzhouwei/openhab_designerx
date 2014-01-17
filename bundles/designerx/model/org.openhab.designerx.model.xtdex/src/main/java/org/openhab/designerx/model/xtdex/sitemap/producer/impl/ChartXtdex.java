@@ -3,6 +3,7 @@ package org.openhab.designerx.model.xtdex.sitemap.producer.impl;
 import org.openhab.designerx.model.sitemap.Chart;
 import org.openhab.designerx.model.sitemap.producer.ElementFactory;
 import org.openhab.designerx.model.sitemap.producer.impl.ElementFactoryImpl;
+import org.openhab.designerx.model.xtdex.ModelXtdexConstants;
 
 final class ChartXtdex {
 	private static final String PERIOD = "period";
@@ -11,7 +12,7 @@ final class ChartXtdex {
 	private static final String MATCH_REGEX = "\\s*" + Chart.TYPE_NAME + "\\b.*";
 	private static final ElementFactory factory = new ElementFactoryImpl();
 
-	static boolean isValid(String xtext) {
+	static boolean isChart(String xtext) {
 		boolean result = false;
 		if (xtext.matches(MATCH_REGEX)) {
 			result = true;
@@ -40,12 +41,33 @@ final class ChartXtdex {
 		return instance;
 	}
 
-	static String toXtextIgnoringChildren(Chart element) {
+	static String toXtextIgnoringChildren(Chart e) {
 		StringBuilder sb = new StringBuilder();
-		sb.append(ElementXtextualizer.toXtextIgnoringChildren(element));
+		sb.append(ElementXtextualizer.toXtextIgnoringChildren(e));
+		// period
+		String period = e.getPeriod();
+		if (period != null) {
+			sb.append(PERIOD);
+			sb.append(ModelXtdexConstants.EQU_MARK);
+			sb.append(period);
+			sb.append(ModelXtdexConstants.SPACE_MARK);
+		}
+		// refresh
+		sb.append(REFRESH);
+		sb.append(ModelXtdexConstants.EQU_MARK);
+		sb.append(e.getRefresh());
+		sb.append(ModelXtdexConstants.SPACE_MARK);
+		// service
+		String service = e.getService();
+		if (service != null) {
+			sb.append(SERVICE);
+			sb.append(ModelXtdexConstants.EQU_MARK);
+			sb.append(service);
+			sb.append(ModelXtdexConstants.SPACE_MARK);
+		}
 		return sb.toString();
 	}
-	
+
 	private ChartXtdex() {}
 
 }
