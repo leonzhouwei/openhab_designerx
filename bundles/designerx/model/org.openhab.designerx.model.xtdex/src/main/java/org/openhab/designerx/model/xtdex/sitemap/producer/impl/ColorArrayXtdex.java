@@ -12,7 +12,6 @@ import com.google.common.collect.ImmutableSet;
 import com.google.common.collect.Lists;
 
 final class ColorArrayXtdex {
-	
 	//  Valid operators are the ==, >=, <=, !=, >, <.
 	private static Set<String> VALIDE_OPERATORS = ImmutableSet.<String>builder()
 			.add("==")
