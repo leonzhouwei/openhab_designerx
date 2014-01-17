@@ -20,8 +20,9 @@ final class WebviewXtdex {
 	
 	private static final ElementFactory factory = new ElementFactoryImpl();
 
-	static boolean isWebview(String xtext) {
+	static boolean isWebview(ChildlessElementXtextKeeper keeper) {
 		boolean result = false;
+		String xtext = keeper.getXtext();
 		if (xtext.matches(MATCH_REGEX)) {
 			result = true;
 		}

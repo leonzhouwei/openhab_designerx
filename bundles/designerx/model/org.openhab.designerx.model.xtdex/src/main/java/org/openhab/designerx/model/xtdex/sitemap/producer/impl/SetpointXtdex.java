@@ -24,8 +24,9 @@ final class SetpointXtdex {
 	
 	private static final ElementFactory factory = new ElementFactoryImpl();
 
-	static boolean isSetpoint(String xtext) {
+	static boolean isSetpoint(ChildlessElementXtextKeeper keeper) {
 		boolean result = false;
+		String xtext = keeper.getXtext();
 		if (xtext.matches(MATCH_REGEX)) {
 			result = true;
 		}

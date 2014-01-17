@@ -18,8 +18,9 @@ final class GroupXtdex {
 	private static final String MATCH_REGEX = "\\s*" + Group.TYPE_NAME + "\\b.*";
 	
 	private static final ElementFactory factory = new ElementFactoryImpl();
-
-	static boolean isGroup(String xtext) {
+	
+	static boolean isGroup(ChildfulElementXtextKeeper keeper) {
+		String xtext = keeper.getXtext().get(0);
 		boolean result = false;
 		if (xtext.matches(MATCH_REGEX)) {
 			result = true;

@@ -5,24 +5,23 @@ import static org.hamcrest.MatcherAssert.assertThat;
 import org.hamcrest.Matchers;
 import org.junit.Test;
 import org.openhab.designerx.model.sitemap.Chart;
-import org.openhab.designerx.model.sitemap.producer.ElementFactory;
-import org.openhab.designerx.model.sitemap.producer.impl.ElementFactoryImpl;
 import org.openhab.designerx.model.xtdex.ModelXtdexException;
 
 public class ChartXtdexTest {
-	private static ElementFactory factory = new ElementFactoryImpl();
-
+	
 	@Test
-	public void testIsChart_1() {
+	public void testIsChart_1() throws ModelXtdexException {
 		final String xtext = "Chart";
-		boolean actual = ChartXtdex.isChart(xtext);
+		ChildlessElementXtextKeeper keeper = new ChildlessElementXtextKeeper(xtext);
+		boolean actual = ChartXtdex.isChart(keeper);
 		assertThat(actual, Matchers.equalTo(true));
 	}
 	
 	@Test
 	public void testIsChart_2() throws ModelXtdexException {
 		final String xtext = "Cha";
-		boolean actual = ChartXtdex.isChart(xtext);
+		ChildlessElementXtextKeeper keeper = new ChildlessElementXtextKeeper(xtext);
+		boolean actual = ChartXtdex.isChart(keeper);
 		assertThat(actual, Matchers.equalTo(false));
 	}
 

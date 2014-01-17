@@ -21,15 +21,16 @@ final class ChartXtdex {
 	private static final String MATCH_REGEX = "\\s*" + Chart.TYPE_NAME + "\\b.*";
 	
 	private static final ElementFactory factory = new ElementFactoryImpl();
-
-	static boolean isChart(String xtext) {
+	
+	static boolean isChart(ChildlessElementXtextKeeper keeper) {
 		boolean result = false;
+		String xtext = keeper.getXtext();
 		if (xtext.matches(MATCH_REGEX)) {
 			result = true;
 		}
 		return result;
 	}
-	
+
 	static <T extends Element> boolean isChart(T e) {
 		boolean result = false;
 		if (e instanceof Chart) {
@@ -40,7 +41,7 @@ final class ChartXtdex {
 
 	static Chart parseIgnoringChildren(ChildlessElementXtextKeeper keeper) {
 		String xtext = keeper.getXtext();
-		if (!xtext.startsWith(Chart.TYPE_NAME)) {
+		if (!xtext.matches(MATCH_REGEX)) {
 			return null;
 		}
 		Chart instance = factory.createChart();

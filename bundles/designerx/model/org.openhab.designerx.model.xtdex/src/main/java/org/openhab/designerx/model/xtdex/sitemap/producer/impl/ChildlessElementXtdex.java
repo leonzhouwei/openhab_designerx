@@ -14,25 +14,25 @@ import org.openhab.designerx.model.xtdex.ModelXtdexException;
 
 final class ChildlessElementXtdex {
 	
-	static boolean isChildlessElement(String xtext) {
+	static boolean isChildlessElement(ChildlessElementXtextKeeper keeper) {
 		boolean result = false;
-		if (ChartXtdex.isChart(xtext)) {
+		if (ChartXtdex.isChart(keeper)) {
 			result = true;
-		} else if (ColorpickerXtdex.isColorpicker(xtext)) {
+		} else if (ColorpickerXtdex.isColorpicker(keeper)) {
 			result = true;
-		} else if (ListXtdex.isList(xtext)) {
+		} else if (ListXtdex.isList(keeper)) {
 			result = true;
-		} else if (SelectionXtdex.isSelection(xtext)) {
+		} else if (SelectionXtdex.isSelection(keeper)) {
 			result = true;
-		} else if (SetpointXtdex.isSetpoint(xtext)) {
+		} else if (SetpointXtdex.isSetpoint(keeper)) {
 			result = true;
-		} else if (SliderXtdex.isSlider(xtext)) {
+		} else if (SliderXtdex.isSlider(keeper)) {
 			result = true;
-		} else if (SwitchXtdex.isSwitch(xtext)) {
+		} else if (SwitchXtdex.isSwitch(keeper)) {
 			result = true;
-		} else if (VideoXtdex.isVideo(xtext)) {
+		} else if (VideoXtdex.isVideo(keeper)) {
 			result = true;
-		} else if (WebviewXtdex.isWebview(xtext)) {
+		} else if (WebviewXtdex.isWebview(keeper)) {
 			result = true;
 		} else {
 			result = false;
@@ -40,26 +40,25 @@ final class ChildlessElementXtdex {
 		return result;
 	}
 	
-	static Element parse(String xtext) throws ModelXtdexException {
+	static Element parse(ChildlessElementXtextKeeper keeper) throws ModelXtdexException {
 		Element result = null;
-		ChildlessElementXtextKeeper keeper = new ChildlessElementXtextKeeper(xtext);
-		if (ChartXtdex.isChart(xtext)) {
+		if (ChartXtdex.isChart(keeper)) {
 			result = ChartXtdex.parseIgnoringChildren(keeper);
-		} else if (ColorpickerXtdex.isColorpicker(xtext)) {
+		} else if (ColorpickerXtdex.isColorpicker(keeper)) {
 			result = ColorpickerXtdex.parseIgnoringChildren(keeper);
-		} else if (ListXtdex.isList(xtext)) {
+		} else if (ListXtdex.isList(keeper)) {
 			result = ListXtdex.parseIgnoringChildren(keeper);
-		} else if (SelectionXtdex.isSelection(xtext)) {
+		} else if (SelectionXtdex.isSelection(keeper)) {
 			result = SelectionXtdex.parseIgnoringChildren(keeper);
-		} else if (SetpointXtdex.isSetpoint(xtext)) {
+		} else if (SetpointXtdex.isSetpoint(keeper)) {
 			result = SetpointXtdex.parseIgnoringChildren(keeper);
-		} else if (SliderXtdex.isSlider(xtext)) {
+		} else if (SliderXtdex.isSlider(keeper)) {
 			result = SliderXtdex.parseIgnoringChildren(keeper);
-		} else if (SwitchXtdex.isSwitch(xtext)) {
+		} else if (SwitchXtdex.isSwitch(keeper)) {
 			result = SwitchXtdex.parseIgnoringChildren(keeper);
-		} else if (VideoXtdex.isVideo(xtext)) {
+		} else if (VideoXtdex.isVideo(keeper)) {
 			result = SwitchXtdex.parseIgnoringChildren(keeper);
-		} else if (WebviewXtdex.isWebview(xtext)) {
+		} else if (WebviewXtdex.isWebview(keeper)) {
 			result = WebviewXtdex.parseIgnoringChildren(keeper);
 		} else {
 			result = null;

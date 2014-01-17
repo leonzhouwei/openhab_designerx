@@ -18,7 +18,7 @@ final class ChildfulElementXtextKeeper {
 		for (String s : split) {
 			lines.add(s);
 		}
-		checkBraces(lines);
+		checkBrackets(lines);
 		checkBeforeFormat(lines);
 		format(lines);
 		checkAfterFormat(lines);
@@ -29,9 +29,10 @@ final class ChildfulElementXtextKeeper {
 	ChildfulElementXtextKeeper(List<String> list) throws ModelXtdexException {
 		List<String> lines = Lists.newArrayList();
 		lines.addAll(list);
-		checkBraces(lines);
+		checkBrackets(lines);
 		checkBeforeFormat(lines);
 		format(lines);
+		checkBrackets(lines);
 		checkAfterFormat(lines);
 		ImmutableList.Builder<String> builder = ImmutableList.<String>builder();
 		xtext = builder.addAll(lines).build();
@@ -41,7 +42,7 @@ final class ChildfulElementXtextKeeper {
 		return xtext;
 	}
 	
-	void checkBraces(List<String> lines) throws ModelXtdexException {
+	void checkBrackets(List<String> lines) throws ModelXtdexException {
 		// check if '{'s and '}'s have the same count
 		int open = 0;
 		int close = 0;
@@ -56,7 +57,6 @@ final class ChildfulElementXtextKeeper {
 	
 	void checkBeforeFormat(List<String> lines) throws ModelXtdexException {
 		final int size = lines.size();
-		checkBraces(lines);
 		for (int i = 0; i < size; ++i) {
 			String line = lines.get(i).trim();
 			if (line.isEmpty()) {
@@ -80,7 +80,6 @@ final class ChildfulElementXtextKeeper {
 	}
 	
 	void checkAfterFormat(List<String> formatted) throws ModelXtdexException {
-		checkBraces(formatted);
 		final int size = formatted.size();
 		// check the formatted lines
 		for (int i = 0; i < size; ++i) {
@@ -116,7 +115,6 @@ final class ChildfulElementXtextKeeper {
 	
 	void format(List<String> lines) throws ModelXtdexException {
 		StringHelper.trim(lines);
-		checkBeforeFormat(lines);
 		List<String> formatted = Lists.newArrayList();
 		final int size = lines.size();
 		for (int i = 0; i < size; ++i) {

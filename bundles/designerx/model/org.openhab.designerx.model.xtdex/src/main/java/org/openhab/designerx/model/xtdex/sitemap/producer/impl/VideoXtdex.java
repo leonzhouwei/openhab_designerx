@@ -19,8 +19,9 @@ final class VideoXtdex {
 	
 	private static final ElementFactory factory = new ElementFactoryImpl();
 
-	static boolean isVideo(String xtext) {
+	static boolean isVideo(ChildlessElementXtextKeeper keeper) {
 		boolean result = false;
+		String xtext = keeper.getXtext();
 		if (xtext.matches(MATCH_REGEX)) {
 			result = true;
 		}

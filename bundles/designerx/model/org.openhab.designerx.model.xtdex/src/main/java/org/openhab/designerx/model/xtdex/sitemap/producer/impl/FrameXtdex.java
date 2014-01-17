@@ -18,15 +18,16 @@ final class FrameXtdex {
 	private static final String MATCH_REGEX = "\\s*" + Frame.TYPE_NAME + "\\b.*";
 	
 	private static final ElementFactory factory = new ElementFactoryImpl();
-
-	static boolean isFrame(String xtext) {
+	
+	static boolean isFrame(ChildfulElementXtextKeeper keeper) {
+		String xtext = keeper.getXtext().get(0);
 		boolean result = false;
 		if (xtext.matches(MATCH_REGEX)) {
 			result = true;
 		}
 		return result;
 	}
-	
+
 	static <T extends Element> boolean isFrame(T e) {
 		boolean result = false;
 		if (e instanceof Frame) {
@@ -37,7 +38,7 @@ final class FrameXtdex {
 
 	static Frame parseIgnoringChildren(ChildlessElementXtextKeeper keeper) {
 		String xtext = keeper.getXtext();
-		if (!xtext.startsWith(Frame.TYPE_NAME)) {
+		if (!xtext.matches(MATCH_REGEX)) {
 			return null;
 		}
 		Frame instance = factory.createFrame();

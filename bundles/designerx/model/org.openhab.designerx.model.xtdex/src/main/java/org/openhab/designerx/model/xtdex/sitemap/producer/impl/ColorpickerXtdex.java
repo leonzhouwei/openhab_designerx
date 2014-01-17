@@ -17,15 +17,16 @@ final class ColorpickerXtdex {
 	private static final String MATCH_REGEX = "\\s*" + Colorpicker.TYPE_NAME + "\\b.*";
 	
 	private static final ElementFactory factory = new ElementFactoryImpl();
-
-	static boolean isColorpicker(String xtext) {
+	
+	static boolean isColorpicker(ChildlessElementXtextKeeper keeper) {
 		boolean result = false;
+		String xtext = keeper.getXtext();
 		if (xtext.matches(MATCH_REGEX)) {
 			result = true;
 		}
 		return result;
 	}
-	
+
 	static <T extends Element> boolean isColorpicker(T e) {
 		boolean result = false;
 		if (e instanceof Colorpicker) {
@@ -36,7 +37,7 @@ final class ColorpickerXtdex {
 
 	static Colorpicker parseIgnoringChildren(ChildlessElementXtextKeeper keeper) {
 		String xtext = keeper.getXtext();
-		if (!xtext.startsWith(Colorpicker.TYPE_NAME)) {
+		if (!xtext.matches(MATCH_REGEX)) {
 			return null;
 		}
 		Colorpicker instance = factory.createColorpicker();

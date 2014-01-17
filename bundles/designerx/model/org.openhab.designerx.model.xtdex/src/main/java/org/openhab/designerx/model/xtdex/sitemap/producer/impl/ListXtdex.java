@@ -21,8 +21,9 @@ final class ListXtdex {
 	
 	private static final ElementFactory factory = new ElementFactoryImpl();
 
-	static boolean isList(String xtext) {
+	static boolean isList(ChildlessElementXtextKeeper keeper) {
 		boolean result = false;
+		String xtext = keeper.getXtext();
 		if (xtext.matches(MATCH_REGEX)) {
 			result = true;
 		}

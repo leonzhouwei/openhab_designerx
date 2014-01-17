@@ -18,8 +18,9 @@ final class TextXtdex {
 	private static final String MATCH_REGEX = "\\s*" + Text.TYPE_NAME + "\\b.*";
 	
 	private static final ElementFactory factory = new ElementFactoryImpl();
-
-	static boolean isText(String xtext) {
+	
+	static boolean isText(ChildfulElementXtextKeeper keeper) {
+		String xtext = keeper.getXtext().get(0);
 		boolean result = false;
 		if (xtext.matches(MATCH_REGEX)) {
 			result = true;

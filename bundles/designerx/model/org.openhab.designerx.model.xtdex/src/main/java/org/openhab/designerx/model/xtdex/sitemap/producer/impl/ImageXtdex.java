@@ -18,8 +18,9 @@ final class ImageXtdex {
 	private static final String MATCH_REGEX = "\\s*" + Image.TYPE_NAME + "\\b.*";
 	
 	private static final ElementFactory factory = new ElementFactoryImpl();
-
-	static boolean isImage(String xtext) {
+	
+	static boolean isImage(ChildfulElementXtextKeeper keeper) {
+		String xtext = keeper.getXtext().get(0);
 		boolean result = false;
 		if (xtext.matches(MATCH_REGEX)) {
 			result = true;

@@ -22,8 +22,9 @@ final class SelectionXtdex {
 	
 	private static final ElementFactory factory = new ElementFactoryImpl();
 
-	static boolean isSelection(String xtext) {
+	static boolean isSelection(ChildlessElementXtextKeeper keeper) {
 		boolean result = false;
+		String xtext = keeper.getXtext();
 		if (xtext.matches(MATCH_REGEX)) {
 			result = true;
 		}
