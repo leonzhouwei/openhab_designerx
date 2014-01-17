@@ -7,10 +7,10 @@ import org.openhab.designerx.model.xtdex.ModelXtdexException;
 import com.google.common.collect.ImmutableList;
 
 public final class SitemapXtextKeeper {
-	private ChildlessElementXtextKeeper keeper;
+	private ChildfulElementXtextKeeper keeper;
 	
 	SitemapXtextKeeper(List<String> list) throws ModelXtdexException {
-		keeper = new ChildlessElementXtextKeeper(list);
+		keeper = new ChildfulElementXtextKeeper(list);
 		if (keeper.getXtext().isEmpty()) {
 			throw new ModelXtdexException("could not find 'sitemap'");
 		}

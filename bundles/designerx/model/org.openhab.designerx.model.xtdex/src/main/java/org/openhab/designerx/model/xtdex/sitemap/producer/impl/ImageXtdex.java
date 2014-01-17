@@ -35,7 +35,7 @@ final class ImageXtdex {
 		return result;
 	}
 
-	static Image parseIgnoringChildren(ChildfulElementXtextKeeper keeper) {
+	static Image parseIgnoringChildren(ChildlessElementXtextKeeper keeper) {
 		String xtext = keeper.getXtext();
 		if (!xtext.startsWith(Image.TYPE_NAME)) {
 			return null;

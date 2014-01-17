@@ -9,7 +9,7 @@ import org.openhab.designerx.model.xtdex.ModelXtdexConstants;
 
 final class ElementFiller {
 	
-	static void fillWithoutChildren(Element e, ChildfulElementXtextKeeper keeper) {
+	static void fillWithoutChildren(Element e, ChildlessElementXtextKeeper keeper) {
 		String xtext = keeper.getXtext();
 		String item = PropertyHandler.getValue(xtext, ModelXtdexConstants.ITEM);
 		e.setItem(item);

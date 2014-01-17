@@ -37,7 +37,7 @@ final class ListXtdex {
 		return result;
 	}
 
-	static List parseIgnoringChildren(ChildfulElementXtextKeeper keeper) {
+	static List parseIgnoringChildren(ChildlessElementXtextKeeper keeper) {
 		String xtext = keeper.getXtext();
 		if (!xtext.startsWith(List.TYPE_NAME)) {
 			return null;

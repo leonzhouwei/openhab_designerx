@@ -38,7 +38,7 @@ final class SwitchXtdex {
 		return result;
 	}
 
-	static Switch parseIgnoringChildren(ChildfulElementXtextKeeper keeper) {
+	static Switch parseIgnoringChildren(ChildlessElementXtextKeeper keeper) {
 		String xtext = keeper.getXtext();
 		if (!xtext.startsWith(Switch.TYPE_NAME)) {
 			return null;

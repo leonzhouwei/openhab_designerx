@@ -42,7 +42,7 @@ final class ChildlessElementXtdex {
 	
 	static Element parse(String xtext) throws ModelXtdexException {
 		Element result = null;
-		ChildfulElementXtextKeeper keeper = new ChildfulElementXtextKeeper(xtext);
+		ChildlessElementXtextKeeper keeper = new ChildlessElementXtextKeeper(xtext);
 		if (ChartXtdex.isChart(xtext)) {
 			result = ChartXtdex.parseIgnoringChildren(keeper);
 		} else if (ColorpickerXtdex.isColorpicker(xtext)) {

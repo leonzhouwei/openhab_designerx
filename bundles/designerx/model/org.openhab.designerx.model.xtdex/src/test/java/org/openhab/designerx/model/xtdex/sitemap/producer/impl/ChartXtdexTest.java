@@ -29,7 +29,7 @@ public class ChartXtdexTest {
 	@Test
 	public void testParseIgnoringChildren_1() throws ModelXtdexException {
 		final String xtext = "Chart item=Weather_Chart refresh=0";
-		ChildfulElementXtextKeeper keeper = new ChildfulElementXtextKeeper(xtext);
+		ChildlessElementXtextKeeper keeper = new ChildlessElementXtextKeeper(xtext);
 		Chart e = ChartXtdex.parseIgnoringChildren(keeper);
 		String actual = ChartXtdex.toXtextIgnoringChildren(e);
 		assertThat(actual, Matchers.equalTo(xtext));
@@ -38,7 +38,7 @@ public class ChartXtdexTest {
 	@Test
 	public void testParseIgnoringChildren() throws ModelXtdexException {
 		final String xtext = "Chart item=Weather_Chart period=h refresh=600";
-		ChildfulElementXtextKeeper keeper = new ChildfulElementXtextKeeper(xtext);
+		ChildlessElementXtextKeeper keeper = new ChildlessElementXtextKeeper(xtext);
 		Chart e = ChartXtdex.parseIgnoringChildren(keeper);
 		String actual = ChartXtdex.toXtextIgnoringChildren(e);
 		assertThat(actual, Matchers.equalTo(xtext));

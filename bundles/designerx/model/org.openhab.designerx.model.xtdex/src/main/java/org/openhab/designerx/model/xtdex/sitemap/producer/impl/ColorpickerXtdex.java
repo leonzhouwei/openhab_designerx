@@ -34,7 +34,7 @@ final class ColorpickerXtdex {
 		return result;
 	}
 
-	static Colorpicker parseIgnoringChildren(ChildfulElementXtextKeeper keeper) {
+	static Colorpicker parseIgnoringChildren(ChildlessElementXtextKeeper keeper) {
 		String xtext = keeper.getXtext();
 		if (!xtext.startsWith(Colorpicker.TYPE_NAME)) {
 			return null;

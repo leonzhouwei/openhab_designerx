@@ -37,7 +37,7 @@ final class SliderXtdex {
 		return result;
 	}
 
-	static Slider parseIgnoringChildren(ChildfulElementXtextKeeper keeper) {
+	static Slider parseIgnoringChildren(ChildlessElementXtextKeeper keeper) {
 		String xtext = keeper.getXtext();
 		if (!xtext.startsWith(Slider.TYPE_NAME)) {
 			return null;

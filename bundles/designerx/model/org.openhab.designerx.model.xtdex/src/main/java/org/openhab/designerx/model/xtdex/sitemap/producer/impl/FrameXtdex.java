@@ -35,7 +35,7 @@ final class FrameXtdex {
 		return result;
 	}
 
-	static Frame parseIgnoringChildren(ChildfulElementXtextKeeper keeper) {
+	static Frame parseIgnoringChildren(ChildlessElementXtextKeeper keeper) {
 		String xtext = keeper.getXtext();
 		if (!xtext.startsWith(Frame.TYPE_NAME)) {
 			return null;
