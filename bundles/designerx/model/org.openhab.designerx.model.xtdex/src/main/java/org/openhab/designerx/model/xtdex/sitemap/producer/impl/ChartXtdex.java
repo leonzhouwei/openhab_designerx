@@ -41,8 +41,9 @@ final class ChartXtdex {
 	}
 
 	static String toXtextIgnoringChildren(Chart element) {
-		// TODO Auto-generated method stub
-		return null;
+		StringBuilder sb = new StringBuilder();
+		sb.append(ElementXtextualizer.toXtextIgnoringChildren(element));
+		return sb.toString();
 	}
 	
 	private ChartXtdex() {}

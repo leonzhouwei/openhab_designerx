@@ -12,6 +12,8 @@ final class ElementXtextualizer {
 	static <T extends Element> String toXtextIgnoringChildren(T e) {
 		StringBuilder sb = new StringBuilder();
 		String item = e.getItem();
+		sb.append(e.getTypeName());
+		sb.append(ModelXtdexConstants.SPACE_MARK);
 		if (e.getItem() != null) {
 			sb.append(ModelXtdexConstants.ITEM);
 			sb.append(ModelXtdexConstants.EQU_MARK);
