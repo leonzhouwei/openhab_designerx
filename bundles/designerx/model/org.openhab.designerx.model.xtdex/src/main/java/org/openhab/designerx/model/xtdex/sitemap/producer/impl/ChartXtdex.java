@@ -5,6 +5,14 @@ import org.openhab.designerx.model.sitemap.producer.ElementFactory;
 import org.openhab.designerx.model.sitemap.producer.impl.ElementFactoryImpl;
 import org.openhab.designerx.model.xtdex.ModelXtdexConstants;
 
+/**
+ * 
+ * Syntax: 
+ * Chart [item="<itemname>"] [icon="<iconname>"] [label="<labelname>"] [service="<service>"] [period=xxxx] [refresh=xxxx] [visibility=xxxx]
+ * 
+ * @author zhouwei
+ * 
+ */
 final class ChartXtdex {
 	private static final String PERIOD = "period";
 	private static final String REFRESH = "refresh";
