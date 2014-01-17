@@ -57,7 +57,7 @@ final class ChildlessElementXtdex {
 		} else if (SwitchXtdex.isSwitch(keeper)) {
 			result = SwitchXtdex.parseIgnoringChildren(keeper);
 		} else if (VideoXtdex.isVideo(keeper)) {
-			result = SwitchXtdex.parseIgnoringChildren(keeper);
+			result = VideoXtdex.parseIgnoringChildren(keeper);
 		} else if (WebviewXtdex.isWebview(keeper)) {
 			result = WebviewXtdex.parseIgnoringChildren(keeper);
 		} else {

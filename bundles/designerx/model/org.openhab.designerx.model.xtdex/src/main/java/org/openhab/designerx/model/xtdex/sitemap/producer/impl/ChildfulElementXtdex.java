@@ -1,15 +1,19 @@
 package org.openhab.designerx.model.xtdex.sitemap.producer.impl;
 
+import java.util.List;
+
 import org.openhab.designerx.model.sitemap.Element;
 import org.openhab.designerx.model.sitemap.Frame;
 import org.openhab.designerx.model.sitemap.Group;
 import org.openhab.designerx.model.sitemap.Image;
 import org.openhab.designerx.model.sitemap.Text;
+import org.openhab.designerx.model.xtdex.ModelXtdexConstants;
 import org.openhab.designerx.model.xtdex.ModelXtdexException;
 
 import com.google.common.collect.ImmutableList;
 
 final class ChildfulElementXtdex {
+	private static final String DEFAULT_INDENTATION = "    ";
 	
 	static boolean isChildfulElement(ChildfulElementXtextKeeper keeper) {
 		boolean result = false;
@@ -90,12 +94,39 @@ final class ChildfulElementXtdex {
 		return result;
 	}
 	
-	static <T extends Element> String toXtext(T e) {
-		String result = null;
-		if (isChildfulElement(e)) {
-			
+	static String toXtext(Element e, String indentation) {
+		StringBuilder sb = new StringBuilder();
+		if (e instanceof Frame) {
+			sb.append(indentation + FrameXtdex.toXtextIgnoringChildren((Frame) e));
+		} else if (e instanceof Group) {
+			sb.append(indentation + GroupXtdex.toXtextIgnoringChildren((Group) e));
+		} else if (e instanceof Image) {
+			sb.append(indentation + ImageXtdex.toXtextIgnoringChildren((Image) e));
+		} else if (e instanceof Text) {
+			sb.append(indentation + TextXtdex.toXtextIgnoringChildren((Text) e));
+		} else {
+			return null;
 		}
-		return result;
+		if (!e.getChildren().isEmpty()) {
+			sb.append(" {");
+			sb.append(ModelXtdexConstants.LINE_SEPARATOR);
+			List<Element> children = e.getChildren();
+			for (Element v : children) {
+				if (ChildlessElementXtdex.isChildlessElement(v)) {
+					String s = ChildlessElementXtdex.toXtext(v);
+					sb.append(indentation + DEFAULT_INDENTATION + s);
+					sb.append(ModelXtdexConstants.LINE_SEPARATOR);
+				} else if (ChildfulElementXtdex.isChildfulElement(v)) {
+					String s = toXtext(v, indentation + DEFAULT_INDENTATION);
+					sb.append(s);
+					sb.append(ModelXtdexConstants.LINE_SEPARATOR);
+				} else {
+					// no operations
+				}
+			}
+			sb.append(indentation + "}");
+		}
+		return sb.toString();
 	}
 	
 	static Element parseIgnoringChildren(ChildfulElementXtextKeeper keeper) throws ModelXtdexException {
