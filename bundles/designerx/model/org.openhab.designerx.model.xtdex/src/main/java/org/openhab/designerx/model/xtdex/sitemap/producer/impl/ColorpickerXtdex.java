@@ -1,6 +1,7 @@
 package org.openhab.designerx.model.xtdex.sitemap.producer.impl;
 
 import org.openhab.designerx.model.sitemap.Colorpicker;
+import org.openhab.designerx.model.sitemap.Element;
 import org.openhab.designerx.model.sitemap.producer.ElementFactory;
 import org.openhab.designerx.model.sitemap.producer.impl.ElementFactoryImpl;
 import org.openhab.designerx.model.xtdex.ModelXtdexConstants;
@@ -20,6 +21,14 @@ final class ColorpickerXtdex {
 	static boolean isColorpicker(String xtext) {
 		boolean result = false;
 		if (xtext.matches(MATCH_REGEX)) {
+			result = true;
+		}
+		return result;
+	}
+	
+	static <T extends Element> boolean isColorpicker(T e) {
+		boolean result = false;
+		if (e instanceof Colorpicker) {
 			result = true;
 		}
 		return result;

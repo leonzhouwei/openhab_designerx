@@ -2,6 +2,7 @@ package org.openhab.designerx.model.xtdex.sitemap.producer.impl;
 
 import java.util.List;
 
+import org.openhab.designerx.model.sitemap.Element;
 import org.openhab.designerx.model.sitemap.Mapping;
 import org.openhab.designerx.model.sitemap.Selection;
 import org.openhab.designerx.model.sitemap.producer.ElementFactory;
@@ -24,6 +25,14 @@ final class SelectionXtdex {
 	static boolean isSelection(String xtext) {
 		boolean result = false;
 		if (xtext.matches(MATCH_REGEX)) {
+			result = true;
+		}
+		return result;
+	}
+	
+	static <T extends Element> boolean isSelection(T e) {
+		boolean result = false;
+		if (e instanceof Selection) {
 			result = true;
 		}
 		return result;

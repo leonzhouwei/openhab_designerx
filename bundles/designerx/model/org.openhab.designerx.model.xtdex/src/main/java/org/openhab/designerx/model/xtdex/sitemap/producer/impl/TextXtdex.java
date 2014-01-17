@@ -1,5 +1,6 @@
 package org.openhab.designerx.model.xtdex.sitemap.producer.impl;
 
+import org.openhab.designerx.model.sitemap.Element;
 import org.openhab.designerx.model.sitemap.Text;
 import org.openhab.designerx.model.sitemap.producer.ElementFactory;
 import org.openhab.designerx.model.sitemap.producer.impl.ElementFactoryImpl;
@@ -21,6 +22,14 @@ final class TextXtdex {
 	static boolean isText(String xtext) {
 		boolean result = false;
 		if (xtext.matches(MATCH_REGEX)) {
+			result = true;
+		}
+		return result;
+	}
+	
+	static <T extends Element> boolean isText(T e) {
+		boolean result = false;
+		if (e instanceof Text) {
 			result = true;
 		}
 		return result;

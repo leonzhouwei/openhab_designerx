@@ -1,5 +1,6 @@
 package org.openhab.designerx.model.xtdex.sitemap.producer.impl;
 
+import org.openhab.designerx.model.sitemap.Element;
 import org.openhab.designerx.model.sitemap.List;
 import org.openhab.designerx.model.sitemap.producer.ElementFactory;
 import org.openhab.designerx.model.sitemap.producer.impl.ElementFactoryImpl;
@@ -23,6 +24,14 @@ final class ListXtdex {
 	static boolean isList(String xtext) {
 		boolean result = false;
 		if (xtext.matches(MATCH_REGEX)) {
+			result = true;
+		}
+		return result;
+	}
+	
+	static <T extends Element> boolean isList(T e) {
+		boolean result = false;
+		if (e instanceof List) {
 			result = true;
 		}
 		return result;
