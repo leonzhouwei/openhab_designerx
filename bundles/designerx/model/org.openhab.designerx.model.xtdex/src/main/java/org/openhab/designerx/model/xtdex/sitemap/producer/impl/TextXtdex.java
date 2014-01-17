@@ -35,7 +35,7 @@ final class TextXtdex {
 		return result;
 	}
 
-	static Text parseIgnoringChildren(NonNestableElementXtextKeeper keeper) {
+	static Text parseIgnoringChildren(ChildfulElementXtextKeeper keeper) {
 		String xtext = keeper.getXtext();
 		if (!xtext.startsWith(Text.TYPE_NAME)) {
 			return null;

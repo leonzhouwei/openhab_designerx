@@ -36,7 +36,7 @@ final class WebviewXtdex {
 		return result;
 	}
 
-	static Webview parseIgnoringChildren(NonNestableElementXtextKeeper keeper) {
+	static Webview parseIgnoringChildren(ChildfulElementXtextKeeper keeper) {
 		String xtext = keeper.getXtext();
 		if (!xtext.startsWith(Webview.TYPE_NAME)) {
 			return null;

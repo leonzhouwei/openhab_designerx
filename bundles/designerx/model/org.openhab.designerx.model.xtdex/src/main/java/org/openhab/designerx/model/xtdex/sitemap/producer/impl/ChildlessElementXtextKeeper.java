@@ -9,10 +9,10 @@ import org.openhab.designerx.util.StringHelper;
 import com.google.common.collect.ImmutableList;
 import com.google.common.collect.Lists;
 
-final class NestableElementXtextKeeper {
+final class ChildlessElementXtextKeeper {
 	private ImmutableList<String> xtext;
 	
-	NestableElementXtextKeeper(String string) throws ModelXtdexException {
+	ChildlessElementXtextKeeper(String string) throws ModelXtdexException {
 		String[] split = string.split(ModelXtdexConstants.LINE_SEPARATOR);
 		List<String> lines = Lists.newArrayList();
 		for (String s : split) {
@@ -26,7 +26,7 @@ final class NestableElementXtextKeeper {
 		xtext = builder.addAll(lines).build();
 	}
 	
-	NestableElementXtextKeeper(List<String> list) throws ModelXtdexException {
+	ChildlessElementXtextKeeper(List<String> list) throws ModelXtdexException {
 		List<String> lines = Lists.newArrayList();
 		lines.addAll(list);
 		checkBraces(lines);

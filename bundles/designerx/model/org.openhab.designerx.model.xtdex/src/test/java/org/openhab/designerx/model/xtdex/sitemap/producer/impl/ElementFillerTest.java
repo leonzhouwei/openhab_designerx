@@ -15,7 +15,7 @@ public class ElementFillerTest {
 	@Test
 	public void testFillWithoutChildren_1() throws ModelXtdexException {
 		final String expected = "Chart";
-		NonNestableElementXtextKeeper keeper = new NonNestableElementXtextKeeper(expected);
+		ChildfulElementXtextKeeper keeper = new ChildfulElementXtextKeeper(expected);
 		Chart e = factory.createChart();
 		ElementFiller.fillWithoutChildren(e, keeper);
 		final String actual = ElementXtextualizer.toXtextIgnoringChildren(e);
@@ -25,7 +25,7 @@ public class ElementFillerTest {
 	@Test
 	public void testFillWithoutChildren_2() throws ModelXtdexException {
 		final String expected = "Chart item=Weather_Chart";
-		NonNestableElementXtextKeeper keeper = new NonNestableElementXtextKeeper(expected);
+		ChildfulElementXtextKeeper keeper = new ChildfulElementXtextKeeper(expected);
 		Chart e = factory.createChart();
 		ElementFiller.fillWithoutChildren(e, keeper);
 		final String actual = ElementXtextualizer.toXtextIgnoringChildren(e);
@@ -35,7 +35,7 @@ public class ElementFillerTest {
 	@Test
 	public void testFillWithoutChildren_3() throws ModelXtdexException {
 		final String expected = "Chart item=Weather_Chart valuecolor=[Weather_LastUpdate==\"Uninitialized\"=\"lightgray\",Weather_LastUpdate>90=\"lightgray\",>25=\"orange\",>15=\"green\",>5=\"orange\",<=5=\"blue\"]";
-		NonNestableElementXtextKeeper keeper = new NonNestableElementXtextKeeper(expected);
+		ChildfulElementXtextKeeper keeper = new ChildfulElementXtextKeeper(expected);
 		Chart e = factory.createChart();
 		ElementFiller.fillWithoutChildren(e, keeper);
 		final String actual = ElementXtextualizer.toXtextIgnoringChildren(e);
@@ -45,7 +45,7 @@ public class ElementFillerTest {
 	@Test
 	public void testFillWithoutChildren_4() throws ModelXtdexException {
 		final String expected = "Chart item=Weather_Chart valuecolor=[Weather_LastUpdate==\"Uninitialized\"=\"lightgray\",Weather_LastUpdate>90=\"lightgray\",>25=\"orange\",>15=\"green\",>5=\"orange\",<=5=\"blue\"] visibility=[Weather_Chart_Period==0,Weather_Chart_Period==\"Uninitialized\"]";
-		NonNestableElementXtextKeeper keeper = new NonNestableElementXtextKeeper(expected);
+		ChildfulElementXtextKeeper keeper = new ChildfulElementXtextKeeper(expected);
 		Chart e = factory.createChart();
 		ElementFiller.fillWithoutChildren(e, keeper);
 		final String actual = ElementXtextualizer.toXtextIgnoringChildren(e);

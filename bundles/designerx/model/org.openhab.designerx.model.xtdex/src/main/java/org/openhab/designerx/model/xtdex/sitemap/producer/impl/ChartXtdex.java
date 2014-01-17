@@ -38,7 +38,7 @@ final class ChartXtdex {
 		return result;
 	}
 
-	static Chart parseIgnoringChildren(NonNestableElementXtextKeeper keeper) {
+	static Chart parseIgnoringChildren(ChildfulElementXtextKeeper keeper) {
 		String xtext = keeper.getXtext();
 		if (!xtext.startsWith(Chart.TYPE_NAME)) {
 			return null;

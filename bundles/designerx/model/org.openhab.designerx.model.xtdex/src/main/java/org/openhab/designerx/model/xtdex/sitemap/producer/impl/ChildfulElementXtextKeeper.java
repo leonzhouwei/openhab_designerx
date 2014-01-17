@@ -2,10 +2,10 @@ package org.openhab.designerx.model.xtdex.sitemap.producer.impl;
 
 import org.openhab.designerx.model.xtdex.ModelXtdexException;
 
-final class NonNestableElementXtextKeeper {
+final class ChildfulElementXtextKeeper {
 	private String xtext;
 	
-	NonNestableElementXtextKeeper(String xtext) throws ModelXtdexException {
+	ChildfulElementXtextKeeper(String xtext) throws ModelXtdexException {
 		xtext = xtext.trim().replaceAll("\\}", "");
 		int i = xtext.indexOf("{");
 		if (i != -1) {

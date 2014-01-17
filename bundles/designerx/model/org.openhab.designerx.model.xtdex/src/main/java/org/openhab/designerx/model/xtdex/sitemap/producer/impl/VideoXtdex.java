@@ -35,7 +35,7 @@ final class VideoXtdex {
 		return result;
 	}
 
-	static Video parseIgnoringChildren(NonNestableElementXtextKeeper keeper) {
+	static Video parseIgnoringChildren(ChildfulElementXtextKeeper keeper) {
 		String xtext = keeper.getXtext();
 		if (!xtext.startsWith(Video.TYPE_NAME)) {
 			return null;

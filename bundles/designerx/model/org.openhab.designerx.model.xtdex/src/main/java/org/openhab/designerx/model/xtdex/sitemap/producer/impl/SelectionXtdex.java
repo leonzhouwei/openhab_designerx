@@ -38,7 +38,7 @@ final class SelectionXtdex {
 		return result;
 	}
 
-	static Selection parseIgnoringChildren(NonNestableElementXtextKeeper keeper) {
+	static Selection parseIgnoringChildren(ChildfulElementXtextKeeper keeper) {
 		String xtext = keeper.getXtext();
 		if (!xtext.startsWith(Selection.TYPE_NAME)) {
 			return null;

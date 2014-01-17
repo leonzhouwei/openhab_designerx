@@ -35,7 +35,7 @@ final class GroupXtdex {
 		return result;
 	}
 
-	static Group parseIgnoringChildren(NonNestableElementXtextKeeper keeper) {
+	static Group parseIgnoringChildren(ChildfulElementXtextKeeper keeper) {
 		String xtext = keeper.getXtext();
 		if (!xtext.startsWith(Group.TYPE_NAME)) {
 			return null;

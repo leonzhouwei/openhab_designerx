@@ -40,7 +40,7 @@ final class SetpointXtdex {
 		return result;
 	}
 
-	static Setpoint parseIgnoringChildren(NonNestableElementXtextKeeper keeper) {
+	static Setpoint parseIgnoringChildren(ChildfulElementXtextKeeper keeper) {
 		String xtext = keeper.getXtext();
 		if (!xtext.startsWith(Setpoint.TYPE_NAME)) {
 			return null;
