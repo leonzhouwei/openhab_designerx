@@ -15,6 +15,7 @@ import org.openhab.designerx.model.xtdex.ModelXtdexConstants;
  */
 final class VideoXtdex {
 	private static final String MATCH_REGEX = "\\s*" + Video.TYPE_NAME + "\\b.*";
+	
 	private static final ElementFactory factory = new ElementFactoryImpl();
 
 	static boolean isVideo(String xtext) {
@@ -34,6 +35,8 @@ final class VideoXtdex {
 		// set the elementary parameters
 		ElementFiller.fillWithoutChildren(instance, keeper);
 		// set the specific parameters
+		String url = PropertyHandler.getValueBetweenDoubleQuotes(xtext, ModelXtdexConstants.URL);
+		instance.setUrl(url);
 		return instance;
 	}
 
@@ -43,6 +46,15 @@ final class VideoXtdex {
 		sb.append(ElementXtextualizer.toXtextIgnoringChildren(e));
 		sb.append(ModelXtdexConstants.SPACE_MARK);
 		// convert the specific parameters below
+		// url
+		if (e.getUrl() != null) {
+			sb.append(ModelXtdexConstants.URL);
+			sb.append(ModelXtdexConstants.EQU_MARK);
+			sb.append(ModelXtdexConstants.DOUBLE_QUOTE_MARK);
+			sb.append(e.getUrl());
+			sb.append(ModelXtdexConstants.DOUBLE_QUOTE_MARK);
+			sb.append(ModelXtdexConstants.SPACE_MARK);
+		}
 		return sb.toString().trim();
 	}
 

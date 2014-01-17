@@ -15,6 +15,9 @@ import org.openhab.designerx.model.xtdex.ModelXtdexConstants;
  */
 final class ListXtdex {
 	private static final String MATCH_REGEX = "\\s*" + List.TYPE_NAME + "\\b.*";
+	
+	private static final String SEPARATOR = "separator";
+	
 	private static final ElementFactory factory = new ElementFactoryImpl();
 
 	static boolean isList(String xtext) {
@@ -34,6 +37,9 @@ final class ListXtdex {
 		// set the elementary parameters
 		ElementFiller.fillWithoutChildren(instance, keeper);
 		// set the specific parameters
+		// separator
+		String separator = PropertyHandler.getValue(xtext, SEPARATOR);
+		instance.setSeparator(separator);
 		return instance;
 	}
 
@@ -43,6 +49,14 @@ final class ListXtdex {
 		sb.append(ElementXtextualizer.toXtextIgnoringChildren(e));
 		sb.append(ModelXtdexConstants.SPACE_MARK);
 		// convert the specific parameters below
+		// separator
+		String separator = e.getSeparator();
+		if (separator != null) {
+			sb.append(SEPARATOR);
+			sb.append(ModelXtdexConstants.EQU_MARK);
+			sb.append(separator);
+			sb.append(ModelXtdexConstants.SPACE_MARK);
+		}
 		return sb.toString().trim();
 	}
 

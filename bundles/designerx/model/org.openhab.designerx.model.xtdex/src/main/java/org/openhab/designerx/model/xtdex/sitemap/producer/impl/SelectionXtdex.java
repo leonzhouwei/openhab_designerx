@@ -1,5 +1,8 @@
 package org.openhab.designerx.model.xtdex.sitemap.producer.impl;
 
+import java.util.List;
+
+import org.openhab.designerx.model.sitemap.Mapping;
 import org.openhab.designerx.model.sitemap.Selection;
 import org.openhab.designerx.model.sitemap.producer.ElementFactory;
 import org.openhab.designerx.model.sitemap.producer.impl.ElementFactoryImpl;
@@ -15,6 +18,7 @@ import org.openhab.designerx.model.xtdex.ModelXtdexConstants;
  */
 final class SelectionXtdex {
 	private static final String MATCH_REGEX = "\\s*" + Selection.TYPE_NAME + "\\b.*";
+	
 	private static final ElementFactory factory = new ElementFactoryImpl();
 
 	static boolean isSelection(String xtext) {
@@ -34,6 +38,8 @@ final class SelectionXtdex {
 		// set the elementary parameters
 		ElementFiller.fillWithoutChildren(instance, keeper);
 		// set the specific parameters
+		// mappings
+		instance.addMappings(MappingsXtdex.fromXtext(xtext));
 		return instance;
 	}
 
@@ -43,6 +49,12 @@ final class SelectionXtdex {
 		sb.append(ElementXtextualizer.toXtextIgnoringChildren(e));
 		sb.append(ModelXtdexConstants.SPACE_MARK);
 		// convert the specific parameters below
+		// mappings
+		List<Mapping> mappings = e.getMappings();
+		if (!mappings.isEmpty()) {
+			sb.append(MappingsXtdex.toXtext(mappings));	
+			sb.append(ModelXtdexConstants.SPACE_MARK);
+		}
 		return sb.toString().trim();
 	}
 

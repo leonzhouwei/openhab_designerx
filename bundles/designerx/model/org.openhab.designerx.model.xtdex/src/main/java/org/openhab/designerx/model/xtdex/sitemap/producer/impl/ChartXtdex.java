@@ -18,6 +18,7 @@ final class ChartXtdex {
 	private static final String REFRESH = "refresh";
 	private static final String SERVICE = "service";
 	private static final String MATCH_REGEX = "\\s*" + Chart.TYPE_NAME + "\\b.*";
+	
 	private static final ElementFactory factory = new ElementFactoryImpl();
 
 	static boolean isChart(String xtext) {

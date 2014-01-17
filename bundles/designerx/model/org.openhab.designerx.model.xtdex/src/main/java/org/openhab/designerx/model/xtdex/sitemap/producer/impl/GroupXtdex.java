@@ -15,6 +15,7 @@ import org.openhab.designerx.model.xtdex.ModelXtdexConstants;
  */
 final class GroupXtdex {
 	private static final String MATCH_REGEX = "\\s*" + Group.TYPE_NAME + "\\b.*";
+	
 	private static final ElementFactory factory = new ElementFactoryImpl();
 
 	static boolean isGroup(String xtext) {

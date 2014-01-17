@@ -14,6 +14,7 @@ import org.openhab.designerx.model.xtdex.ModelXtdexConstants;
  */
 final class ColorpickerXtdex {
 	private static final String MATCH_REGEX = "\\s*" + Colorpicker.TYPE_NAME + "\\b.*";
+	
 	private static final ElementFactory factory = new ElementFactoryImpl();
 
 	static boolean isColorpicker(String xtext) {
@@ -33,6 +34,11 @@ final class ColorpickerXtdex {
 		// set the elementary parameters
 		ElementFiller.fillWithoutChildren(instance, keeper);
 		// set the specific parameters
+		String freq = PropertyHandler.getValue(xtext, ModelXtdexConstants.SENDFREQUENCY);
+		if (freq != null) {
+			int i = Integer.parseInt(freq);
+			instance.setFrequency(i);
+		}
 		return instance;
 	}
 
@@ -42,6 +48,11 @@ final class ColorpickerXtdex {
 		sb.append(ElementXtextualizer.toXtextIgnoringChildren(e));
 		sb.append(ModelXtdexConstants.SPACE_MARK);
 		// convert the specific parameters below
+		// frequency
+		sb.append(ModelXtdexConstants.SENDFREQUENCY);
+		sb.append(ModelXtdexConstants.EQU_MARK);
+		sb.append(e.getFrequency());
+		sb.append(ModelXtdexConstants.SPACE_MARK);
 		return sb.toString().trim();
 	}
 

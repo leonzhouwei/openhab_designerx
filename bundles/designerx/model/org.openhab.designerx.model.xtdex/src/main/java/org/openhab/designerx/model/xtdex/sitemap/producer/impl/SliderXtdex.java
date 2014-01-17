@@ -15,6 +15,9 @@ import org.openhab.designerx.model.xtdex.ModelXtdexConstants;
  */
 final class SliderXtdex {
 	private static final String MATCH_REGEX = "\\s*" + Slider.TYPE_NAME + "\\b.*";
+	private static final String SWITCHSUPPORT = "switchSupport";
+	private static final String SWITCHENABLED = "switchEnabled";
+	
 	private static final ElementFactory factory = new ElementFactoryImpl();
 
 	static boolean isSlider(String xtext) {
@@ -34,6 +37,16 @@ final class SliderXtdex {
 		// set the elementary parameters
 		ElementFiller.fillWithoutChildren(instance, keeper);
 		// set the specific parameters
+		String freq = PropertyHandler.getValueBetweenDoubleQuotes(xtext, ModelXtdexConstants.SENDFREQUENCY);
+		if (freq != null) {
+			int i = Integer.parseInt(freq);
+			instance.setFrequency(i);
+		}
+		if (xtext.contains(SWITCHENABLED) || xtext.contains(SWITCHSUPPORT)) {
+			instance.setSwitchEnabled(true);
+		} else {
+			instance.setSwitchEnabled(false);
+		}
 		return instance;
 	}
 
@@ -43,6 +56,16 @@ final class SliderXtdex {
 		sb.append(ElementXtextualizer.toXtextIgnoringChildren(e));
 		sb.append(ModelXtdexConstants.SPACE_MARK);
 		// convert the specific parameters below
+		// frequency
+		sb.append(ModelXtdexConstants.SENDFREQUENCY);
+		sb.append(ModelXtdexConstants.EQU_MARK);
+		sb.append(e.getFrequency());
+		sb.append(ModelXtdexConstants.SPACE_MARK);
+		// switchEnabled
+		if (e.isSwitchEnabled()) {
+			sb.append(SWITCHSUPPORT);
+			sb.append(ModelXtdexConstants.SPACE_MARK);
+		}
 		return sb.toString().trim();
 	}
 

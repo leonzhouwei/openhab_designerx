@@ -21,6 +21,7 @@ final class VisibilityRulesXtdex {
 			.add(">")
 			.add("<")
 			.build();
+	
 	private static final VisibilityRuleBuilder builder = new VisibilityRuleBuilderImpl();
 	
 	static List<VisibilityRule> fromXtext(String xtext) {

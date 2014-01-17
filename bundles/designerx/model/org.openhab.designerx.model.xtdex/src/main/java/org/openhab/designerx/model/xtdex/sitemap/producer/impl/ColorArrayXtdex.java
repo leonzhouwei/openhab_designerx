@@ -21,6 +21,7 @@ final class ColorArrayXtdex {
 			.add(">")
 			.add("<")
 			.build();
+	
 	private static final ColorArrayBuilder builder = new ColorArrayBuilderImpl();
 	
 	static List<ColorArray> fromXtext(String xtext, String type) {

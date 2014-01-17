@@ -15,6 +15,7 @@ import org.openhab.designerx.model.xtdex.ModelXtdexConstants;
  */
 final class TextXtdex {
 	private static final String MATCH_REGEX = "\\s*" + Text.TYPE_NAME + "\\b.*";
+	
 	private static final ElementFactory factory = new ElementFactoryImpl();
 
 	static boolean isText(String xtext) {

@@ -15,6 +15,7 @@ import org.openhab.designerx.model.xtdex.ModelXtdexConstants;
  */
 final class FrameXtdex {
 	private static final String MATCH_REGEX = "\\s*" + Frame.TYPE_NAME + "\\b.*";
+	
 	private static final ElementFactory factory = new ElementFactoryImpl();
 
 	static boolean isFrame(String xtext) {

@@ -18,6 +18,7 @@ import com.google.common.collect.Lists;
  */
 public final class MappingsXtdex {
 	static final String TARGET_TYPE_NAME = "mappings";
+	
 	private static final MappingBuilder builder = new MappingBuilderImpl();
 	
 	static List<Mapping> fromXtext(String xtext) {
