@@ -2,7 +2,9 @@ package org.openhab.designerx.model.sitemap;
 
 import java.math.BigDecimal;
 
-public interface Setpoint extends NonNestableElement {
+public interface Setpoint extends Element {
+	
+	public final String TYPE_NAME = "Setpoint";
 	 
 	public BigDecimal getMinValue();
 
@@ -16,6 +18,4 @@ public interface Setpoint extends NonNestableElement {
 
 	public void setStep(BigDecimal step);
 	
-	public boolean equalsLogically(Setpoint another);
-
 }

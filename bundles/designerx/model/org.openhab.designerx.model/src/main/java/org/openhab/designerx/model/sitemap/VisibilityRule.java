@@ -18,6 +18,4 @@ public interface VisibilityRule {
 
 	public void setState(String state);
 	
-	public boolean equalsLogically(VisibilityRule another);
-
 }

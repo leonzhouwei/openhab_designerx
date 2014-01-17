@@ -1,6 +1,8 @@
 package org.openhab.designerx.model.sitemap;
 
-public interface Slider extends NonNestableElement {
+public interface Slider extends Element {
+	
+	public final String TYPE_NAME = "Slider";
 	 
 	public int getFrequency();
 
@@ -10,6 +12,4 @@ public interface Slider extends NonNestableElement {
 
 	public void setSwitchEnabled(boolean switchEnabled);
 	
-	public boolean equalsLogically(Slider another);
-
 }

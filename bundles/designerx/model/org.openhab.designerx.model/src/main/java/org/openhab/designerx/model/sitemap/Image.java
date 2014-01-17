@@ -2,7 +2,9 @@ package org.openhab.designerx.model.sitemap;
 
 import java.util.List;
 
-public interface Image extends NestableElement {
+public interface Image extends Element {
+	
+	public final String TYPE_NAME = "Image";
 
 	public String getUrl();
 
@@ -15,7 +17,5 @@ public interface Image extends NestableElement {
 	public List<ColorArray> getIconColor();
 	
 	public void addIconColor(List<ColorArray> iconColor);
-	
-	public boolean equalsLogically(Image another);
 	
 }

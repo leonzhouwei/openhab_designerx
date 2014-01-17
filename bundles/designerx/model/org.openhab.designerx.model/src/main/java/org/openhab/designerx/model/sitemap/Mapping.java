@@ -10,6 +10,4 @@ public interface Mapping {
 
 	public void setLabel(String label);
 	
-	public boolean equalsLogically(Mapping another);
-
 }

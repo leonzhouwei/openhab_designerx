@@ -2,9 +2,9 @@ package org.openhab.designerx.model.xtdex.sitemap.producer.impl;
 
 import java.util.List;
 
-import org.openhab.designerx.model.sitemap2.Mapping;
-import org.openhab.designerx.model.sitemap2.producer.MappingBuilder;
-import org.openhab.designerx.model.sitemap2.producer.impl.MappingBuilderImpl;
+import org.openhab.designerx.model.sitemap.Mapping;
+import org.openhab.designerx.model.sitemap.producer.MappingBuilder;
+import org.openhab.designerx.model.sitemap.producer.impl.MappingBuilderImpl;
 import org.openhab.designerx.model.xtdex.ModelXtdexConstants;
 
 import com.google.common.collect.Lists;

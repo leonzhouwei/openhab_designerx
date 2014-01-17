@@ -3,9 +3,9 @@ package org.openhab.designerx.model.xtdex.sitemap.producer.impl;
 import java.util.List;
 import java.util.Set;
 
-import org.openhab.designerx.model.sitemap2.ColorArray;
-import org.openhab.designerx.model.sitemap2.producer.ColorArrayBuilder;
-import org.openhab.designerx.model.sitemap2.producer.impl.ColorArrayBuilderImpl;
+import org.openhab.designerx.model.sitemap.ColorArray;
+import org.openhab.designerx.model.sitemap.producer.ColorArrayBuilder;
+import org.openhab.designerx.model.sitemap.producer.impl.ColorArrayBuilderImpl;
 import org.openhab.designerx.model.xtdex.ModelXtdexConstants;
 
 import com.google.common.collect.ImmutableSet;

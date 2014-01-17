@@ -1,6 +1,6 @@
 package org.openhab.designerx.model.xtdex.sitemap;
 
-import org.openhab.designerx.model.sitemap2.Sitemap;
+import org.openhab.designerx.model.sitemap.Sitemap;
 import org.openhab.designerx.model.xtdex.ModelXtdexException;
 
 public interface SitemapXtdex {

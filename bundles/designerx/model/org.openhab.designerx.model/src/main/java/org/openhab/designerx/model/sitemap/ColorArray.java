@@ -22,6 +22,4 @@ public interface ColorArray {
 
 	public void setArg(String arg);
 	
-	public boolean equalsLogically(ColorArray another);
-
 }

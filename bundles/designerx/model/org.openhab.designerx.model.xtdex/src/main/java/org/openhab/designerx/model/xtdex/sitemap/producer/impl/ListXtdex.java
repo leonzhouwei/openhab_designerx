@@ -1,45 +1,25 @@
 package org.openhab.designerx.model.xtdex.sitemap.producer.impl;
 
-import org.openhab.designerx.model.sitemap2.List;
-import org.openhab.designerx.model.sitemap2.producer.ElementFactory;
-import org.openhab.designerx.model.sitemap2.producer.impl.ElementFactoryImpl;
+import org.openhab.designerx.model.sitemap.Element;
 
-/**
- * 
- * Syntax:
- * List item="<itemname>" [label="<labelname>"] [icon="<iconname>"] [separator=""]
- * 
- * @author zhouwei
- *
- */
-public final class ListXtdex {
-	private static final String MATCH_REGEX = "\\s*" + List.TYPE_NAME + "\\b.*";
-	private static final ElementFactory factory = new ElementFactoryImpl();
-	
-	private static final String SEPARATOR = "separator";
-	
-	static List fromXtext(NonNestableElementXtextKeeper keeper) {
-		String xtext = keeper.getXtext();
-		if (!xtext.startsWith(List.TYPE_NAME)) {
-			return null;
-		}
-		List instance = factory.createList();
-		// set the elementary parameters
-		ElementXtdexImpl.fillWithoutChildren(instance, keeper);
-		// separator
-		String separator = PropertyHandler.getValue(xtext, SEPARATOR);
-		instance.setSeparator(separator);
-		return instance;
+final class ListXtdex implements ConcreteXtdex {
+
+	@Override
+	public boolean isValid(String xtext) {
+		// TODO Auto-generated method stub
+		return false;
 	}
-	
-	private ListXtdex() {}
-	
-	public static boolean isList(String xtext) {
-		boolean result = false;
-		if (xtext.matches(MATCH_REGEX)) {
-			result = true;
-		}
-		return result;
+
+	@Override
+	public Element parseIgnoringChildren(NonNestableElementXtextKeeper keeper) {
+		// TODO Auto-generated method stub
+		return null;
 	}
-	
+
+	@Override
+	public <T extends Element> String toXtextIgnoringChildren(T element) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
 }

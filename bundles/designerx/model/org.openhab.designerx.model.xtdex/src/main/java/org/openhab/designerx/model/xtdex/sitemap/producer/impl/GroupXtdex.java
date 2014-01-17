@@ -1,51 +1,25 @@
 package org.openhab.designerx.model.xtdex.sitemap.producer.impl;
 
-import org.openhab.designerx.model.sitemap2.Element;
-import org.openhab.designerx.model.sitemap2.Group;
-import org.openhab.designerx.model.sitemap2.producer.ElementFactory;
-import org.openhab.designerx.model.sitemap2.producer.impl.ElementFactoryImpl;
-import org.openhab.designerx.model.xtdex.ModelXtdexException;
+import org.openhab.designerx.model.sitemap.Element;
 
-import com.google.common.collect.ImmutableList;
+final class GroupXtdex implements ConcreteXtdex {
 
-/**
- * 
- * Syntax:
- * Group [item="<itemname>"] [label="<labelname>"] [icon="<iconname>"]
- * 
- * @author zhouwei
- *
- */
-public final class GroupXtdex {
-	private static final String MATCH_REGEX = "\\s*" + Group.TYPE_NAME + "\\b.*";
-	private static final ElementFactory factory = new ElementFactoryImpl();
-	
-	public static Group fromXtext(NestableElementXtextKeeper keeper) throws ModelXtdexException {
-		ImmutableList<String> xtext = keeper.getXtext();
-		String firstLine = xtext.get(0);
-		if (!firstLine.startsWith(Group.TYPE_NAME)) {
-			return null;
-		}
-		Group instance = factory.createGroup();
-		// set the elementary parameters
-		ElementXtdexImpl.fillWithoutChildren(instance, new NonNestableElementXtextKeeper(firstLine));
-		return instance;
+	@Override
+	public boolean isValid(String xtext) {
+		// TODO Auto-generated method stub
+		return false;
 	}
-	
-	private GroupXtdex() {}
-	
-	public static boolean isGroup(String xtext) {
-		boolean result = false;
-		if (xtext.matches(MATCH_REGEX)) {
-			result = true;
-		}
-		return result;
+
+	@Override
+	public Element parseIgnoringChildren(NonNestableElementXtextKeeper keeper) {
+		// TODO Auto-generated method stub
+		return null;
 	}
-	
-	static Element parseIgnoringChildren(NonNestableElementXtextKeeper keeper) {
-		Element e = null;
-		
-		return e;
+
+	@Override
+	public <T extends Element> String toXtextIgnoringChildren(T element) {
+		// TODO Auto-generated method stub
+		return null;
 	}
-	
+
 }

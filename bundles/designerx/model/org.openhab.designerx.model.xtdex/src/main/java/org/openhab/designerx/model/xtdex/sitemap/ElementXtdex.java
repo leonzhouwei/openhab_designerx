@@ -1,19 +1,19 @@
 package org.openhab.designerx.model.xtdex.sitemap;
 
-import org.openhab.designerx.model.sitemap2.Chart;
-import org.openhab.designerx.model.sitemap2.Colorpicker;
-import org.openhab.designerx.model.sitemap2.Element;
-import org.openhab.designerx.model.sitemap2.Frame;
-import org.openhab.designerx.model.sitemap2.Group;
-import org.openhab.designerx.model.sitemap2.Image;
-import org.openhab.designerx.model.sitemap2.List;
-import org.openhab.designerx.model.sitemap2.Selection;
-import org.openhab.designerx.model.sitemap2.Setpoint;
-import org.openhab.designerx.model.sitemap2.Slider;
-import org.openhab.designerx.model.sitemap2.Switch;
-import org.openhab.designerx.model.sitemap2.Text;
-import org.openhab.designerx.model.sitemap2.Video;
-import org.openhab.designerx.model.sitemap2.Webview;
+import org.openhab.designerx.model.sitemap.Chart;
+import org.openhab.designerx.model.sitemap.Colorpicker;
+import org.openhab.designerx.model.sitemap.Element;
+import org.openhab.designerx.model.sitemap.Frame;
+import org.openhab.designerx.model.sitemap.Group;
+import org.openhab.designerx.model.sitemap.Image;
+import org.openhab.designerx.model.sitemap.List;
+import org.openhab.designerx.model.sitemap.Selection;
+import org.openhab.designerx.model.sitemap.Setpoint;
+import org.openhab.designerx.model.sitemap.Slider;
+import org.openhab.designerx.model.sitemap.Switch;
+import org.openhab.designerx.model.sitemap.Text;
+import org.openhab.designerx.model.sitemap.Video;
+import org.openhab.designerx.model.sitemap.Webview;
 import org.openhab.designerx.model.xtdex.ModelXtdexException;
 
 public interface ElementXtdex {

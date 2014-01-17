@@ -1,44 +1,25 @@
 package org.openhab.designerx.model.xtdex.sitemap.producer.impl;
 
-import org.openhab.designerx.model.sitemap2.Video;
-import org.openhab.designerx.model.sitemap2.producer.ElementFactory;
-import org.openhab.designerx.model.sitemap2.producer.impl.ElementFactoryImpl;
-import org.openhab.designerx.model.xtdex.ModelXtdexConstants;
+import org.openhab.designerx.model.sitemap.Element;
 
-/**
- * 
- * Syntax:
- * Video item="<itemname>"  [icon="<iconname>"] url="<url of video to embed>"
- * 
- * @author zhouwei
- *
- */
-public final class VideoXtdex {
-	private static final String MATCH_REGEX = "\\s*" + Video.TYPE_NAME + "\\b.*";
-	private static final ElementFactory factory = new ElementFactoryImpl();
-	
-	static Video fromXtext(NonNestableElementXtextKeeper keeper) {
-		String xtext = keeper.getXtext();
-		if (!xtext.startsWith(Video.TYPE_NAME)) {
-			return null;
-		}
-		Video instance = factory.createVideo();
-		// set the elementary parameters
-		ElementXtdexImpl.fillWithoutChildren(instance, keeper);
-		// set the specific parameters
-		String url = PropertyHandler.getValueBetweenDoubleQuotes(xtext, ModelXtdexConstants.URL);
-		instance.setUrl(url);
-		return instance;
+final class VideoXtdex implements ConcreteXtdex {
+
+	@Override
+	public boolean isValid(String xtext) {
+		// TODO Auto-generated method stub
+		return false;
 	}
-	
-	private VideoXtdex() {}
-	
-	public static boolean isVideo(String xtext) {
-		boolean result = false;
-		if (xtext.matches(MATCH_REGEX)) {
-			result = true;
-		}
-		return result;
+
+	@Override
+	public Element parseIgnoringChildren(NonNestableElementXtextKeeper keeper) {
+		// TODO Auto-generated method stub
+		return null;
 	}
-	
+
+	@Override
+	public <T extends Element> String toXtextIgnoringChildren(T element) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
 }

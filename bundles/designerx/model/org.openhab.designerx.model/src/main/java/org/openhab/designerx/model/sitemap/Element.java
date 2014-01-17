@@ -1,8 +1,11 @@
 package org.openhab.designerx.model.sitemap;
 
+import java.util.Collection;
 import java.util.List;
 
 public interface Element {
+	
+	public String getTypeName();
 	
 	public void setItem(String item);
 	
@@ -34,6 +37,18 @@ public interface Element {
 	
 	public List<VisibilityRule> getVisibility();
 	
-	public boolean equalsLogically(Element another);
+	public boolean canHaveChildren();
+	
+	public List<Element> getChildren();
+	
+	public void addChild(Element child);
+	
+	public void addChildren(Collection<? extends Element> children);
+	
+	public List<Property> getExtraProperties();
+	
+	public void addExtraProperty(Property property);
+	
+	public void addExtraProperties(Collection<? extends Property> properties);
 	
 }

@@ -3,9 +3,9 @@ package org.openhab.designerx.model.xtdex.sitemap.producer.impl;
 import java.util.List;
 import java.util.Set;
 
-import org.openhab.designerx.model.sitemap2.VisibilityRule;
-import org.openhab.designerx.model.sitemap2.producer.VisibilityRuleBuilder;
-import org.openhab.designerx.model.sitemap2.producer.impl.VisibilityRuleBuilderImpl;
+import org.openhab.designerx.model.sitemap.VisibilityRule;
+import org.openhab.designerx.model.sitemap.producer.VisibilityRuleBuilder;
+import org.openhab.designerx.model.sitemap.producer.impl.VisibilityRuleBuilderImpl;
 import org.openhab.designerx.model.xtdex.ModelXtdexConstants;
 
 import com.google.common.collect.ImmutableSet;

@@ -1,7 +1,7 @@
 package org.openhab.designerx.model.sitemap;
 
-public interface Text extends NestableElement {
+public interface Text extends Element {
 	
-	public boolean equalsLogically(Text another);
+	public final String TYPE_NAME = "Text";
 	
 }

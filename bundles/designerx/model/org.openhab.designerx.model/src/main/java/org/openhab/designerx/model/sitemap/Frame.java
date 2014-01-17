@@ -1,7 +1,7 @@
 package org.openhab.designerx.model.sitemap;
 
-public interface Frame extends NestableElement {
+public interface Frame extends Element {
 	
-	public boolean equalsLogically(Frame another);
+	public final String TYPE_NAME = "Frame";
 	
 }

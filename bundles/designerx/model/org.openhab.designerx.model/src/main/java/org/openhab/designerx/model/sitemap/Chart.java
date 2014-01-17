@@ -1,6 +1,8 @@
 package org.openhab.designerx.model.sitemap;
 
-public interface Chart extends NonNestableElement {
+public interface Chart extends Element {
+	
+	public final String TYPE_NAME = "Chart";
 	
 	public String getService();
 
@@ -14,6 +16,4 @@ public interface Chart extends NonNestableElement {
 
 	public void setPeriod(String period);
 	
-	public boolean equalsLogically(Chart another);
-
 }
