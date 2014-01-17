@@ -44,6 +44,7 @@ final class ChartXtdex {
 	static String toXtextIgnoringChildren(Chart e) {
 		StringBuilder sb = new StringBuilder();
 		sb.append(ElementXtextualizer.toXtextIgnoringChildren(e));
+		sb.append(ModelXtdexConstants.SPACE_MARK);
 		// period
 		String period = e.getPeriod();
 		if (period != null) {
@@ -65,7 +66,7 @@ final class ChartXtdex {
 			sb.append(service);
 			sb.append(ModelXtdexConstants.SPACE_MARK);
 		}
-		return sb.toString();
+		return sb.toString().trim();
 	}
 
 	private ChartXtdex() {}
