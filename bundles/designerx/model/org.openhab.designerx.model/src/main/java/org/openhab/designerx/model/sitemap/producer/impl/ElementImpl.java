@@ -5,7 +5,6 @@ import java.util.List;
 
 import org.openhab.designerx.model.sitemap.ColorArray;
 import org.openhab.designerx.model.sitemap.Element;
-import org.openhab.designerx.model.sitemap.Property;
 import org.openhab.designerx.model.sitemap.VisibilityRule;
 
 import com.google.common.collect.Lists;
@@ -20,7 +19,6 @@ final class ElementImpl implements Element {
 	private List<VisibilityRule> visibility = Lists.newArrayList();
 	private boolean canHaveChildren = false;
 	private List<Element> children = Lists.newArrayList();
-	private List<Property> extraProperties = Lists.newArrayList();
 	
 	public ElementImpl(String typeName) {
 		init(typeName, false);
@@ -134,21 +132,6 @@ final class ElementImpl implements Element {
 		}
 	}
 
-	@Override
-	public List<Property> getExtraProperties() {
-		return extraProperties;
-	}
-
-	@Override
-	public void addExtraProperty(Property property) {
-		extraProperties.add(property);
-	}
-
-	@Override
-	public void addExtraProperties(Collection<? extends Property> properties) {
-		this.extraProperties.addAll(properties);
-	}
-	
 	private void init(String typeName, boolean canHaveChildren) {
 		this.typeName = typeName;
 		this.canHaveChildren = canHaveChildren;

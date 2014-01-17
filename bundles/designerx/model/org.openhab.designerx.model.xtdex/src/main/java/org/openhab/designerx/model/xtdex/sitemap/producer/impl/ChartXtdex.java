@@ -44,5 +44,7 @@ final class ChartXtdex {
 		// TODO Auto-generated method stub
 		return null;
 	}
+	
+	private ChartXtdex() {}
 
 }

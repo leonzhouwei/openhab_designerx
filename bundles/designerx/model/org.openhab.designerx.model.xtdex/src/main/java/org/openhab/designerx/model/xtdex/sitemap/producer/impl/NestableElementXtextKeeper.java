@@ -9,11 +9,10 @@ import org.openhab.designerx.util.StringHelper;
 import com.google.common.collect.ImmutableList;
 import com.google.common.collect.Lists;
 
-public final class NestableElementXtextKeeper {
-	
+final class NestableElementXtextKeeper {
 	private ImmutableList<String> xtext;
 	
-	public NestableElementXtextKeeper(String string) throws ModelXtdexException {
+	NestableElementXtextKeeper(String string) throws ModelXtdexException {
 		String[] split = string.split(ModelXtdexConstants.LINE_SEPARATOR);
 		List<String> lines = Lists.newArrayList();
 		for (String s : split) {
@@ -27,7 +26,7 @@ public final class NestableElementXtextKeeper {
 		xtext = builder.addAll(lines).build();
 	}
 	
-	public NestableElementXtextKeeper(List<String> list) throws ModelXtdexException {
+	NestableElementXtextKeeper(List<String> list) throws ModelXtdexException {
 		List<String> lines = Lists.newArrayList();
 		lines.addAll(list);
 		checkBraces(lines);
@@ -38,11 +37,11 @@ public final class NestableElementXtextKeeper {
 		xtext = builder.addAll(lines).build();
 	}
 	
-	public ImmutableList<String> getXtext() {
+	ImmutableList<String> getXtext() {
 		return xtext;
 	}
 	
-	public void checkBraces(List<String> lines) throws ModelXtdexException {
+	void checkBraces(List<String> lines) throws ModelXtdexException {
 		// check if '{'s and '}'s have the same count
 		int open = 0;
 		int close = 0;
@@ -55,7 +54,7 @@ public final class NestableElementXtextKeeper {
 		}
 	}
 	
-	public void checkBeforeFormat(List<String> lines) throws ModelXtdexException {
+	void checkBeforeFormat(List<String> lines) throws ModelXtdexException {
 		final int size = lines.size();
 		checkBraces(lines);
 		for (int i = 0; i < size; ++i) {
@@ -80,7 +79,7 @@ public final class NestableElementXtextKeeper {
 		}
 	}
 	
-	public void checkAfterFormat(List<String> formatted) throws ModelXtdexException {
+	void checkAfterFormat(List<String> formatted) throws ModelXtdexException {
 		checkBraces(formatted);
 		final int size = formatted.size();
 		// check the formatted lines
@@ -115,7 +114,7 @@ public final class NestableElementXtextKeeper {
 		}
 	}
 	
-	public void format(List<String> lines) throws ModelXtdexException {
+	void format(List<String> lines) throws ModelXtdexException {
 		StringHelper.trim(lines);
 		checkBeforeFormat(lines);
 		List<String> formatted = Lists.newArrayList();

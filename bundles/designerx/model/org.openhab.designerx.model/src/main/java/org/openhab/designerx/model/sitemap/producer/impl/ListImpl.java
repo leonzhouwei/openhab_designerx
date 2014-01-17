@@ -5,7 +5,6 @@ import java.util.Collection;
 import org.openhab.designerx.model.sitemap.ColorArray;
 import org.openhab.designerx.model.sitemap.Element;
 import org.openhab.designerx.model.sitemap.List;
-import org.openhab.designerx.model.sitemap.Property;
 import org.openhab.designerx.model.sitemap.VisibilityRule;
 
 final class ListImpl implements List {
@@ -120,21 +119,6 @@ final class ListImpl implements List {
 	@Override
 	public void addChildren(Collection<? extends Element> children) {
 		element.addChildren(children);
-	}
-
-	@Override
-	public java.util.List<Property> getExtraProperties() {
-		return element.getExtraProperties();
-	}
-
-	@Override
-	public void addExtraProperty(Property property) {
-		element.addExtraProperty(property);
-	}
-
-	@Override
-	public void addExtraProperties(Collection<? extends Property> properties) {
-		element.addExtraProperties(properties);
 	}
 
 }

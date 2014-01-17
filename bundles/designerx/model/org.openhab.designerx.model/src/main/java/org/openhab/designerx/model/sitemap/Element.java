@@ -45,10 +45,4 @@ public interface Element {
 	
 	public void addChildren(Collection<? extends Element> children);
 	
-	public List<Property> getExtraProperties();
-	
-	public void addExtraProperty(Property property);
-	
-	public void addExtraProperties(Collection<? extends Property> properties);
-	
 }

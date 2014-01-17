@@ -6,7 +6,6 @@ import java.util.List;
 import org.openhab.designerx.model.sitemap.ColorArray;
 import org.openhab.designerx.model.sitemap.Element;
 import org.openhab.designerx.model.sitemap.Image;
-import org.openhab.designerx.model.sitemap.Property;
 import org.openhab.designerx.model.sitemap.VisibilityRule;
 
 import com.google.common.collect.Lists;
@@ -150,21 +149,6 @@ final class ImageImpl implements Image {
 	@Override
 	public void addChildren(Collection<? extends Element> children) {
 		element.addChildren(children);
-	}
-
-	@Override
-	public List<Property> getExtraProperties() {
-		return element.getExtraProperties();
-	}
-
-	@Override
-	public void addExtraProperty(Property property) {
-		element.addExtraProperty(property);
-	}
-
-	@Override
-	public void addExtraProperties(Collection<? extends Property> properties) {
-		element.addExtraProperties(properties);
 	}
 
 }

@@ -5,7 +5,6 @@ import java.util.List;
 
 import org.openhab.designerx.model.sitemap.ColorArray;
 import org.openhab.designerx.model.sitemap.Element;
-import org.openhab.designerx.model.sitemap.Property;
 import org.openhab.designerx.model.sitemap.Slider;
 import org.openhab.designerx.model.sitemap.VisibilityRule;
 
@@ -144,19 +143,4 @@ final class SliderImpl implements Slider {
 		element.addChildren(children);
 	}
 
-	@Override
-	public List<Property> getExtraProperties() {
-		return element.getExtraProperties();
-	}
-
-	@Override
-	public void addExtraProperty(Property property) {
-		element.addExtraProperty(property);
-	}
-
-	@Override
-	public void addExtraProperties(Collection<? extends Property> properties) {
-		element.addExtraProperties(properties);
-	}
-	
 }
