@@ -9,7 +9,7 @@ import org.openhab.designerx.model.xtdex.ModelXtdexConstants;
 
 final class ElementXtextualizer {
 
-	<T extends Element> String toXtextIgnoringChildren(T e) {
+	static <T extends Element> String toXtextIgnoringChildren(T e) {
 		StringBuilder sb = new StringBuilder();
 		String item = e.getItem();
 		if (e.getItem() != null) {
