@@ -23,6 +23,7 @@ public final class ConfigBuilder {
 		private boolean loaded = false;
 		private String openHABHomeFolderPath;
 		private String sitemapsFolderPath;
+		private String itemsFolerPath;
 		
 		private static final String[] HOME_FOLDER_CHILDREN_NAMES = {
 			ConfigConstants.ADDONS,
@@ -65,6 +66,7 @@ public final class ConfigBuilder {
 			listAsc(homeFolder);
 			openHABHomeFolderPath = homeFolder.getPath();
 			sitemapsFolderPath = configFolder.getPath() + ConfigConstants.FILE_SEPARATOR + ConfigConstants.SITEMAPS;
+			itemsFolerPath = configFolder.getPath() + ConfigConstants.FILE_SEPARATOR + ConfigConstants.ITEMS;
 		}
 		
 		@Override
@@ -168,6 +170,11 @@ public final class ConfigBuilder {
 					throw new ConfigException("'" + name + "' folder not found in '" + configFolder.getPath() + "'");
 				}
 			}
+		}
+
+		@Override
+		public String getItemsFolderPath() {
+			return itemsFolerPath;
 		}
 	}
 	

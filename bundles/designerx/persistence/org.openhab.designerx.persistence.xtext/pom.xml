@@ -45,5 +45,20 @@
 			<artifactId>org.openhab.designerx.model</artifactId>
 			<version>${project.version}</version>
 		</dependency>
+		<dependency>
+			<groupId>org.openhab.designerx</groupId>
+			<artifactId>org.openhab.designerx.util</artifactId>
+			<version>${project.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.openhab.designerx</groupId>
+			<artifactId>org.openhab.designerx.config</artifactId>
+			<version>${project.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.openhab.designerx.model</groupId>
+			<artifactId>org.openhab.designerx.model.xtdex</artifactId>
+			<version>${project.version}</version>
+		</dependency>
 	</dependencies>
 </project>

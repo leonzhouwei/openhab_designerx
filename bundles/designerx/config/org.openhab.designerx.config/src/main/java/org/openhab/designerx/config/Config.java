@@ -6,4 +6,6 @@ public interface Config {
 	
 	public String getSitemapsFolderPath();
 
+	public String getItemsFolderPath();
+
 }
