@@ -211,7 +211,7 @@ public final class ItemXtdexBuilderImpl implements ItemXtdexBuilder {
 			if (line.startsWith("{")) {
 				final int start = line.indexOf("{");
 				final int end = line.indexOf("}");
-				item.setBindingConfig(line.substring(start + 1, end));
+				item.setBindingConfig(line.substring(start + 1, end).trim());
 			}
 			return result;
 		}
@@ -246,6 +246,7 @@ public final class ItemXtdexBuilderImpl implements ItemXtdexBuilder {
 				}
 				sb.deleteCharAt(sb.length() - 1);
 				sb.append(")");
+				sb.append(ModelConstants.SPACE_MARK);
 			}
 			String bindingConfig = item.getBindingConfig();
 			if (bindingConfig != null) {
