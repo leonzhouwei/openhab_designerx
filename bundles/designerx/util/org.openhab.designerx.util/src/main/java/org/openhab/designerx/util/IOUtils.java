@@ -38,9 +38,12 @@ public final class IOUtils {
 	public static void append(File file, String line) throws IOException {
 		Closer closer = Closer.create();
 		try {
-			OutputStream in = closer.register(new FileOutputStream(file));
-			BufferedWriter br = new BufferedWriter(new OutputStreamWriter(in, UtilConstants.UTF8));
-			br.append(line);
+			OutputStream in = closer.register(new FileOutputStream(file, true));
+			BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(in, UtilConstants.UTF8));
+			bw.append(UtilConstants.LINE_SEPARATOR);
+			bw.append(line);
+			bw.flush();
+			bw.close();
 		} catch (Throwable e) { // must catch Throwable
 			throw closer.rethrow(e);
 		} finally {
@@ -52,8 +55,10 @@ public final class IOUtils {
 		Closer closer = Closer.create();
 		try {
 			OutputStream in = closer.register(new FileOutputStream(file));
-			BufferedWriter br = new BufferedWriter(new OutputStreamWriter(in, UtilConstants.UTF8));
-			br.write(string);
+			BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(in, UtilConstants.UTF8));
+			bw.write(string);
+			bw.flush();
+			bw.close();
 		} catch (Throwable e) { // must catch Throwable
 			throw closer.rethrow(e);
 		} finally {
