@@ -47,5 +47,7 @@ public interface ElementXtdex {
 	public Element parse(String xtext) throws ModelXtdexException;
 	
 	public <T extends Element> String toXtext(T e);
+	
+	public <T extends Element> String toXtext(T e, String indentation);
 
 }

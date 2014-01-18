@@ -6,7 +6,7 @@ import org.openhab.designerx.model.xtdex.ModelXtdexException;
 
 import com.google.common.collect.ImmutableList;
 
-public final class SitemapXtextKeeper {
+final class SitemapXtextKeeper {
 	private ChildfulElementXtextKeeper keeper;
 	
 	SitemapXtextKeeper(List<String> list) throws ModelXtdexException {
