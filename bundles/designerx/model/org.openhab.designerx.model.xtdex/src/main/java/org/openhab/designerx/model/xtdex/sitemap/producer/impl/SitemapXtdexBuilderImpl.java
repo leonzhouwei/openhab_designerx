@@ -56,23 +56,23 @@ public final class SitemapXtdexBuilderImpl implements SitemapXtdexBuilder {
 				instance.setIcon(icon);
 			}
 			//
-//			final int size = il.size();
-//			for (int i = 1; i >= 1 && i < size - 1;) {
-//				String s = new ChildlessElementXtextKeeper(il.get(i)).getXtext();
-//				if (xtdex.isChildlessElement(s)) {
-//					Element e = xtdex.parse(s);
-//					i += 1;
-//					instance.appendChild(e);
-//				} else if (xtdex.isChildfulElement(s)) {
-//					int end = ChildfulElementXtdex.endIndexOf(il, i);
-//					ImmutableList<String> subList = il.subList(i, end + 1);
-//					Element e = xtdex.parseChildfulElement(subList);
-//					instance.appendChild(e);
-//					i = end + 1;
-//				} else {
-//					i += 1;
-//				}
-//			}
+			final int size = il.size();
+			for (int i = 1; i >= 1 && i < size - 1;) {
+				String s = new ChildlessElementXtextKeeper(il.get(i)).getXtext();
+				if (xtdex.isChildlessElement(s)) {
+					Element e = xtdex.parse(s);
+					i += 1;
+					instance.appendChild(e);
+				} else if (xtdex.isChildfulElement(s)) {
+					int end = ChildfulElementXtdex.endIndexOf(il, i);
+					ImmutableList<String> subList = il.subList(i, end + 1);
+					Element e = xtdex.parseChildfulElement(subList);
+					instance.appendChild(e);
+					i = end + 1;
+				} else {
+					i += 1;
+				}
+			}
 			return instance;
 		}
 
