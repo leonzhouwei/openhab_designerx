@@ -133,13 +133,13 @@ public final class ElementXtdexBuilderImpl implements ElementXtdexBuilder {
 
 		@Override
 		public Element parse(String xtext) throws ModelXtdexException {
-			ChildlessElementXtextKeeper childlessKeeper = new ChildlessElementXtextKeeper(xtext);
-			if (ChildlessElementXtdex.isChildlessElement(childlessKeeper)) {
+			if (isChildlessElement(xtext)) {
+				ChildlessElementXtextKeeper childlessKeeper = new ChildlessElementXtextKeeper(xtext);
 				return ChildlessElementXtdex.parse(childlessKeeper);
 			} 
 			
-			ChildfulElementXtextKeeper childfulKeeper = new ChildfulElementXtextKeeper(xtext);
-			if (ChildfulElementXtdex.isChildfulElement(childfulKeeper)) {
+			if (isChildfulElement(xtext)) {
+				ChildfulElementXtextKeeper childfulKeeper = new ChildfulElementXtextKeeper(xtext);
 				return ChildfulElementXtdex.parse(childfulKeeper);
 			} 
 			
@@ -162,6 +162,44 @@ public final class ElementXtdexBuilderImpl implements ElementXtdexBuilder {
 			} 
 			
 			return null;
+		}
+		
+		public boolean isChildlessElement(String xtext) throws ModelXtdexException {
+			boolean result = false;
+			ChildlessElementXtextKeeper childlessKeeper = new ChildlessElementXtextKeeper(xtext);
+			if (ChildlessElementXtdex.isChildlessElement(childlessKeeper)) {
+				result = true;
+			} 
+			return result;
+		}
+		
+		public boolean isChildfulElement(String xtext) throws ModelXtdexException {
+			boolean result = false;
+			ChildfulElementXtextKeeper childfulKeeper = new ChildfulElementXtextKeeper(xtext);
+			if (ChildfulElementXtdex.isChildfulElement(childfulKeeper)) {
+				result = true;
+			} 
+			return result;
+		}
+		
+		@Override
+		public Element parseChildfulElement(java.util.List<String> xtext) throws ModelXtdexException {
+			Element result = null;
+			ChildfulElementXtextKeeper childfulKeeper = new ChildfulElementXtextKeeper(xtext);
+			if (ChildfulElementXtdex.isChildfulElement(childfulKeeper)) {
+				result = ChildfulElementXtdex.parse(childfulKeeper);
+			} 
+			return result;
+		}
+		
+		@Override
+		public Element parseChildlessElement(String xtext) throws ModelXtdexException {
+			Element result = null;
+			if (isChildlessElement(xtext)) {
+				ChildlessElementXtextKeeper childlessKeeper = new ChildlessElementXtextKeeper(xtext);
+				result = ChildlessElementXtdex.parse(childlessKeeper);
+			} 
+			return result;
 		}
 	}
 

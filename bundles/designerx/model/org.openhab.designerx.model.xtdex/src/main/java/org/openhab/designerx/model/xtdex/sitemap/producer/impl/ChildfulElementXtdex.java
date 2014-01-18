@@ -146,7 +146,7 @@ final class ChildfulElementXtdex {
 		return result;
 	}
 	
-	private static int endIndexOf(ImmutableList<String> list, final int start) {
+	static int endIndexOf(ImmutableList<String> list, final int start) {
 		if (!list.get(start).trim().endsWith("{")) {
 			return start;
 		}

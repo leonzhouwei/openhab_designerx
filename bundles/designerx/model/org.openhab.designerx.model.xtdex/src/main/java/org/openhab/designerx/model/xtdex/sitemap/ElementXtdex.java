@@ -49,5 +49,13 @@ public interface ElementXtdex {
 	public <T extends Element> String toXtext(T e);
 	
 	public <T extends Element> String toXtext(T e, String indentation);
-
+	
+	public boolean isChildlessElement(String xtext) throws ModelXtdexException;
+	
+	public boolean isChildfulElement(String xtext) throws ModelXtdexException;
+	
+	public Element parseChildfulElement(java.util.List<String> xtext) throws ModelXtdexException;
+	
+	public Element parseChildlessElement(String xtext) throws ModelXtdexException;
+	
 }

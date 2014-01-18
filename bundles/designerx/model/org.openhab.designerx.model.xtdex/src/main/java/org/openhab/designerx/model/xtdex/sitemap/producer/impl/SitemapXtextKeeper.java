@@ -9,6 +9,10 @@ import com.google.common.collect.ImmutableList;
 final class SitemapXtextKeeper {
 	private ChildfulElementXtextKeeper keeper;
 	
+	SitemapXtextKeeper(String xtext) throws ModelXtdexException {
+		keeper = new ChildfulElementXtextKeeper(xtext);
+	}
+	
 	SitemapXtextKeeper(List<String> list) throws ModelXtdexException {
 		keeper = new ChildfulElementXtextKeeper(list);
 		if (keeper.getXtext().isEmpty()) {
