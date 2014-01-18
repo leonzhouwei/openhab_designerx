@@ -8,7 +8,6 @@ import org.openhab.designerx.model.sitemap.Sitemap;
 import com.google.common.collect.Lists;
 
 final class SitemapImpl implements Sitemap {
-
 	private String name;
 	private String label;
 	private String icon;
@@ -47,18 +46,6 @@ final class SitemapImpl implements Sitemap {
 	@Override
 	public List<Element> getChildren() {
 		return children;
-	}
-
-	@Override
-	public String toXtext() {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public boolean equalsLogically(Sitemap another) {
-		// TODO Auto-generated method stub
-		return false;
 	}
 
 	@Override
