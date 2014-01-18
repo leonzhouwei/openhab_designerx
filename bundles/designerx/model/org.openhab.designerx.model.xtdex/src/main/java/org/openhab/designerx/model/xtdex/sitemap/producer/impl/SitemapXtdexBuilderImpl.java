@@ -32,48 +32,7 @@ public final class SitemapXtdexBuilderImpl implements SitemapXtdexBuilder {
 		public Sitemap parse(String xtext) throws ModelXtdexException {
 			SitemapXtextKeeper keeper = new SitemapXtextKeeper(xtext);
 			ImmutableList<String> il = keeper.getXtext();
-			if (!isSitemap(il.get(0))) {
-				throw new ModelXtdexException(il.get(0) + " is NOT a sitemap");
-			}
-			final String first = il.get(0);
-			String[] split = first.split("\\s");
-			if (split.length < 2) {
-				throw new ModelXtdexException(first + " is NOT a sitemap");
-			}
-			String name = split[1].trim();
-			if (name.startsWith("label=") || name.startsWith("icon=")) {
-				throw new ModelXtdexException("sitemap name NOT found in '" + first + "'");
-			}
-			//
-			Sitemap instance = builder.build();
-			instance.setName(name);
-			String label = PropertyHandler.getValueBetweenDoubleQuotes(first, ModelXtdexConstants.LABEL);
-			if (label != null && !label.trim().isEmpty()) {
-				instance.setLabel(label);
-			}
-			String icon = PropertyHandler.getValueBetweenDoubleQuotes(first, ModelXtdexConstants.ICON);
-			if (icon != null && !icon.trim().isEmpty()) {
-				instance.setIcon(icon);
-			}
-			//
-			final int size = il.size();
-			for (int i = 1; i >= 1 && i < size - 1;) {
-				String s = new ChildlessElementXtextKeeper(il.get(i)).getXtext();
-				if (xtdex.isChildlessElement(s)) {
-					Element e = xtdex.parse(s);
-					i += 1;
-					instance.appendChild(e);
-				} else if (xtdex.isChildfulElement(s)) {
-					int end = ChildfulElementXtdex.endIndexOf(il, i);
-					ImmutableList<String> subList = il.subList(i, end + 1);
-					Element e = xtdex.parseChildfulElement(subList);
-					instance.appendChild(e);
-					i = end + 1;
-				} else {
-					i += 1;
-				}
-			}
-			return instance;
+			return parse(il);
 		}
 
 		@Override
@@ -125,11 +84,62 @@ public final class SitemapXtdexBuilderImpl implements SitemapXtdexBuilder {
 			return sb.toString();
 		}
 		
-		boolean isSitemap(String xtext) {
+		private boolean isSitemap(String xtext) {
 			if (xtext.matches(MATCH_REGEX)) {
 				return true;
 			}
 			return false;
+		}
+		
+		public Sitemap parse(List<String> xtext) throws ModelXtdexException {
+			SitemapXtextKeeper keeper = new SitemapXtextKeeper(xtext);
+			ImmutableList<String> il = keeper.getXtext();
+			return parse(il);
+		}
+		
+		private Sitemap parse(ImmutableList<String> il) throws ModelXtdexException {
+			if (!isSitemap(il.get(0))) {
+				throw new ModelXtdexException(il.get(0) + " is NOT a sitemap");
+			}
+			final String first = il.get(0);
+			String[] split = first.split("\\s");
+			if (split.length < 2) {
+				throw new ModelXtdexException(first + " is NOT a sitemap");
+			}
+			String name = split[1].trim();
+			if (name.startsWith("label=") || name.startsWith("icon=")) {
+				throw new ModelXtdexException("sitemap name NOT found in '" + first + "'");
+			}
+			//
+			Sitemap instance = builder.build();
+			instance.setName(name);
+			String label = PropertyHandler.getValueBetweenDoubleQuotes(first, ModelXtdexConstants.LABEL);
+			if (label != null && !label.trim().isEmpty()) {
+				instance.setLabel(label);
+			}
+			String icon = PropertyHandler.getValueBetweenDoubleQuotes(first, ModelXtdexConstants.ICON);
+			if (icon != null && !icon.trim().isEmpty()) {
+				instance.setIcon(icon);
+			}
+			//
+			final int size = il.size();
+			for (int i = 1; i >= 1 && i < size - 1;) {
+				String s = new ChildlessElementXtextKeeper(il.get(i)).getXtext();
+				if (xtdex.isChildlessElement(s)) {
+					Element e = xtdex.parse(s);
+					i += 1;
+					instance.appendChild(e);
+				} else if (xtdex.isChildfulElement(s)) {
+					int end = ChildfulElementXtdex.endIndexOf(il, i);
+					ImmutableList<String> subList = il.subList(i, end + 1);
+					Element e = xtdex.parseChildfulElement(subList);
+					instance.appendChild(e);
+					i = end + 1;
+				} else {
+					i += 1;
+				}
+			}
+			return instance;
 		}
 		
 	}

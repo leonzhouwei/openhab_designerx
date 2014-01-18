@@ -1,10 +1,13 @@
 package org.openhab.designerx.model.xtdex.sitemap.producer.impl;
 
+import java.util.List;
+
 import org.junit.Test;
 import org.openhab.designerx.model.sitemap.Sitemap;
-import org.openhab.designerx.model.xtdex.ModelXtdexConstants;
 import org.openhab.designerx.model.xtdex.ModelXtdexException;
 import org.openhab.designerx.model.xtdex.sitemap.SitemapXtdex;
+
+import com.google.common.collect.Lists;
 
 public class SitemapXtdexBuilderImplTest {
 	private static final SitemapXtdex xtdex = new SitemapXtdexBuilderImpl().build();
@@ -18,16 +21,16 @@ public class SitemapXtdexBuilderImplTest {
 	
 	@Test
 	public void test_2() throws ModelXtdexException {
-		StringBuilder sb = new StringBuilder();
-		sb.append("sitemap demo label=\"Main Menu\" {");
-		sb.append(ModelXtdexConstants.LINE_SEPARATOR);
-		sb.append("    Frame");
-		sb.append(ModelXtdexConstants.LINE_SEPARATOR);
-		sb.append("}");
-		sb.append(ModelXtdexConstants.LINE_SEPARATOR);
-		final String xtext = sb.toString();
-		Sitemap sitemap = xtdex.parse(xtext);
-		System.out.println(sitemap.getChildren().size());
+		List<String> list = Lists.newArrayList();
+		list.add("sitemap demo label=\"Main Menu\" {");
+		list.add("    Frame {");
+		list.add("        Group item=gFF label=\"First Floor\" icon=\"firstfloor\"");
+		list.add("        Group item=gGF label=\"Ground Floor\" icon=\"groundfloor\"");
+		list.add("        Group item=gC label=\"Cellar\" icon=\"cellar\"");
+		list.add("        Group item=Outdoor icon=\"garden\"");
+		list.add("    }");
+		list.add("}");
+		Sitemap sitemap = xtdex.parse(list);
 		System.out.println(xtdex.toXtext(sitemap));
 	}
 
