@@ -8,4 +8,7 @@
   <artifactId>persistence</artifactId>
   <packaging>pom</packaging>
   <groupId>org.openhab.bundles.designerx</groupId>
+  <modules>
+  	<module>org.openhab.designerx.persistence.xtext</module>
+  </modules>
 </project>
