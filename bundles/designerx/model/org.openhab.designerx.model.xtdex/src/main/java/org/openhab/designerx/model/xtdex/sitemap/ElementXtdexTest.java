@@ -7,12 +7,15 @@ import org.junit.Test;
 import org.openhab.designerx.model.sitemap.Chart;
 import org.openhab.designerx.model.sitemap.Colorpicker;
 import org.openhab.designerx.model.sitemap.Element;
+import org.openhab.designerx.model.sitemap.Frame;
+import org.openhab.designerx.model.sitemap.Group;
+import org.openhab.designerx.model.sitemap.Image;
 import org.openhab.designerx.model.sitemap.List;
 import org.openhab.designerx.model.sitemap.Selection;
 import org.openhab.designerx.model.sitemap.Setpoint;
 import org.openhab.designerx.model.sitemap.Slider;
 import org.openhab.designerx.model.sitemap.Switch;
-import org.openhab.designerx.model.sitemap.Video;
+import org.openhab.designerx.model.sitemap.Text;
 import org.openhab.designerx.model.sitemap.Webview;
 import org.openhab.designerx.model.xtdex.ModelXtdexException;
 import org.openhab.designerx.model.xtdex.sitemap.producer.impl.ElementXtdexBuilderImpl;
@@ -38,17 +41,26 @@ public class ElementXtdexTest {
 
 	@Test
 	public void testParseFrame() throws ModelXtdexException {
-		
+		final String xtext = "Frame label=\"Weather\"";
+		Frame e = (Frame) xtdex.parse(xtext);
+		final String actual = xtdex.toXtext(e);
+		assertThat(actual, Matchers.equalTo(xtext));
 	}
 
 	@Test
 	public void testParseGroup() throws ModelXtdexException {
-		
+		final String xtext = "Group item=Heating";
+		Group e = (Group) xtdex.parse(xtext);
+		final String actual = xtdex.toXtext(e);
+		assertThat(actual, Matchers.equalTo(xtext));
 	}
 
 	@Test
 	public void testParseImage() throws ModelXtdexException {
-		
+		final String xtext = "Image label=\"openHAB\" url=\"http://localhost:8080/images/splash-ipad-h.png\" refresh=0";
+		Image e = (Image) xtdex.parse(xtext);
+		final String actual = xtdex.toXtext(e);
+		assertThat(actual, Matchers.equalTo(xtext));
 	}
 
 	@Test
@@ -93,13 +105,16 @@ public class ElementXtdexTest {
 
 	@Test
 	public void testParseText() throws ModelXtdexException {
-		
+		final String xtext = "Image label=\"openHAB\" url=\"http://localhost:8080/images/splash-ipad-h.png\" refresh=0";
+		Image e = (Image) xtdex.parse(xtext);
+		final String actual = xtdex.toXtext(e);
+		assertThat(actual, Matchers.equalTo(xtext));
 	}
 
 	@Test
 	public void testParseVideo() throws ModelXtdexException {
-		final String xtext = "Video url=\"http://demo.openhab.org/Hue.m4v\"";
-		Video e = (Video) xtdex.parse(xtext);
+		final String xtext = "Text item=Weather_Temperature valuecolor=[Weather_LastUpdate==\"Uninitialized\"=\"lightgray\",Weather_LastUpdate>90=\"lightgray\",>25=\"orange\",>15=\"green\",>5=\"orange\",<=5=\"blue\"]";
+		Text e = (Text) xtdex.parse(xtext);
 		final String actual = xtdex.toXtext(e);
 		assertThat(actual, Matchers.equalTo(xtext));
 	}
@@ -128,11 +143,20 @@ public class ElementXtdexTest {
 		actual = xtdex.toXtext(e);
 		assertThat(actual, Matchers.equalTo(xtext));
 		//
-		
+		xtext = "Frame label=\"Weather\"";
+		e = (Frame) xtdex.parse(xtext);
+		actual = xtdex.toXtext(e);
+		assertThat(actual, Matchers.equalTo(xtext));
 		//
-		
+		xtext = "Group item=Heating";
+		e = (Group) xtdex.parse(xtext);
+		actual = xtdex.toXtext(e);
+		assertThat(actual, Matchers.equalTo(xtext));
 		//
-		
+		xtext = "Image label=\"openHAB\" url=\"http://localhost:8080/images/splash-ipad-h.png\" refresh=0";
+		e = (Image) xtdex.parse(xtext);
+		actual = xtdex.toXtext(e);
+		assertThat(actual, Matchers.equalTo(xtext));
 		//
 		xtext = "List item=what";
 		e = xtdex.parse(xtext);
@@ -159,7 +183,10 @@ public class ElementXtdexTest {
 		actual = xtdex.toXtext(e);
 		assertThat(actual, Matchers.equalTo(xtext));
 		//
-		
+		xtext = "Image label=\"openHAB\" url=\"http://localhost:8080/images/splash-ipad-h.png\" refresh=0";
+		e = (Image) xtdex.parse(xtext);
+		actual = xtdex.toXtext(e);
+		assertThat(actual, Matchers.equalTo(xtext));
 		//
 		xtext = "Video url=\"http://demo.openhab.org/Hue.m4v\"";
 		e = xtdex.parse(xtext);
