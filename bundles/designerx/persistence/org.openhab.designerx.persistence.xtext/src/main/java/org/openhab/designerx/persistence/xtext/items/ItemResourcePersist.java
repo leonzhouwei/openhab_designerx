@@ -9,8 +9,8 @@ public interface ItemResourcePersist {
 	
 	public ItemResource get() throws IOException;
 	
-	public void append(Item item);
+	public void append(Item item) throws IOException;
 	
-	public void save(ItemResource ir);
+	public void save(ItemResource ir) throws IOException;
 	
 }

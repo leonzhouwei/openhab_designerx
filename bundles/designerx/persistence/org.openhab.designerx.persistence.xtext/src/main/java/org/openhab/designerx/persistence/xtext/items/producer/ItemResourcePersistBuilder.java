@@ -7,7 +7,7 @@ public interface ItemResourcePersistBuilder {
 	
 	/**
 	 * 
-	 * @param name  e.g. 'demo' for $OPENHAB_HOME/configurations/sitemaps/demo.sitemap
+	 * @param name  e.g. 'demo' for $OPENHAB_HOME/configurations/sitemaps/demo.items
 	 * @return
 	 */
 	public ItemResourcePersist build(String name) throws ConfigException;
