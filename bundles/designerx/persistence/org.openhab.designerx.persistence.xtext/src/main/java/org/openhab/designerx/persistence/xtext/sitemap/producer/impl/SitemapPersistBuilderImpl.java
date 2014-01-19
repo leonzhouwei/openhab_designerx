@@ -23,19 +23,23 @@ public final class SitemapPersistBuilderImpl implements SitemapPersistBuilder {
 		return new SitemapPersistImpl(name);
 	}
 	
+	@Override
+	public SitemapPersist build(File file) {
+		return new SitemapPersistImpl(file);
+	}
+	
 	private class SitemapPersistImpl implements SitemapPersist {
-		private String name;
+		private File file;
 		private Config config = ConfigBuilder.build();
 		private SitemapXtdexBuilder xtdexBuilder = new SitemapXtdexBuilderImpl();
 		private SitemapXtdex xtdex = xtdexBuilder.build();
 		
 		public SitemapPersistImpl(String name) {
-			this.name = name;
+			file = new File(config.getSitemapsFolderPath() + PersistenceXtextConstants.FILE_SEPARATOR + name + PersistenceXtextConstants.SITEMAP_FILE_EXTENSION);
 		}
 
 		@Override
 		public Sitemap get() throws IOException, ModelXtdexException {
-			File file = new File(config.getSitemapsFolderPath() + PersistenceXtextConstants.FILE_SEPARATOR + name + PersistenceXtextConstants.SITEMAP_FILE_EXTENSION);
 			List<String> list = IOUtils.readAll(file);
 			Sitemap result = xtdex.parse(list);
 			return result;
@@ -44,8 +48,11 @@ public final class SitemapPersistBuilderImpl implements SitemapPersistBuilder {
 		@Override
 		public void save(Sitemap sitemap) throws IOException {
 			String xtext = xtdex.toXtext(sitemap);
-			File file = new File(config.getSitemapsFolderPath() + PersistenceXtextConstants.FILE_SEPARATOR + name + PersistenceXtextConstants.SITEMAP_FILE_EXTENSION);
 			IOUtils.write(file, xtext);
+		}
+		
+		public SitemapPersistImpl(File file) {
+			this.file = file;
 		}
 		
 	}

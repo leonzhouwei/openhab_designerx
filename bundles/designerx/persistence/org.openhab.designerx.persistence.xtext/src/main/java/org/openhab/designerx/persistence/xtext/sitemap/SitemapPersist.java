@@ -10,5 +10,5 @@ public interface SitemapPersist {
 	public Sitemap get() throws IOException, ModelXtdexException;
 	
 	public void save(Sitemap sitemap) throws IOException;
-
+	
 }

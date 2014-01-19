@@ -1,5 +1,7 @@
 package org.openhab.designerx.persistence.xtext.sitemap.producer;
 
+import java.io.File;
+
 import org.openhab.designerx.persistence.xtext.sitemap.SitemapPersist;
 
 public interface SitemapPersistBuilder {
@@ -10,5 +12,7 @@ public interface SitemapPersistBuilder {
 	 * @return
 	 */
 	public SitemapPersist build(String name);
+	
+	public SitemapPersist build(File file);
 
 }
