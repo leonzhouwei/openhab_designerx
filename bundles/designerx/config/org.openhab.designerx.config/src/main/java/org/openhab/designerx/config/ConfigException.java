@@ -1,11 +1,11 @@
 package org.openhab.designerx.config;
 
-public class ConfigException extends Exception {
+public final class ConfigException extends RuntimeException {
 
 	/**
 	 * 
 	 */
-	private static final long serialVersionUID = 668609736298870322L;
+	private static final long serialVersionUID = -7897884717408616357L;
 	
 	public ConfigException(String msg) {
 		super(msg);

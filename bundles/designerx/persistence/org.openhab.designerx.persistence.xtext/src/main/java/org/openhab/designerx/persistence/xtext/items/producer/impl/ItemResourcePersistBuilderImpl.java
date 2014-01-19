@@ -6,7 +6,6 @@ import java.util.List;
 
 import org.openhab.designerx.config.Config;
 import org.openhab.designerx.config.ConfigBuilder;
-import org.openhab.designerx.config.ConfigException;
 import org.openhab.designerx.model.items.Item;
 import org.openhab.designerx.model.items.ItemResource;
 import org.openhab.designerx.model.xtdex.items.ItemResourceXtdex;
@@ -23,7 +22,7 @@ import org.openhab.designerx.util.IOUtils;
 public final class ItemResourcePersistBuilderImpl implements ItemResourcePersistBuilder {
 
 	@Override
-	public ItemResourcePersist build(String name) throws ConfigException {
+	public ItemResourcePersist build(String name) {
 		return new ItemResourcePersistImpl(name);
 	}
 	
@@ -35,7 +34,7 @@ public final class ItemResourcePersistBuilderImpl implements ItemResourcePersist
 		private ItemXtdexBuilder itemXtdexBuilder = new ItemXtdexBuilderImpl();
 		private ItemXtdex itemXtdex = itemXtdexBuilder.build();
 		
-		public ItemResourcePersistImpl(String name) throws ConfigException {
+		public ItemResourcePersistImpl(String name) {
 			config = ConfigBuilder.build();
 			this.name = name;
 		}

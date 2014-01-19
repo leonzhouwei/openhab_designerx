@@ -2,7 +2,6 @@ package org.openhab.designerx.persistence.xtext.sitemap.producer.impl;
 
 import org.openhab.designerx.config.Config;
 import org.openhab.designerx.config.ConfigBuilder;
-import org.openhab.designerx.config.ConfigException;
 import org.openhab.designerx.model.sitemap.Sitemap;
 import org.openhab.designerx.persistence.xtext.sitemap.SitemapPersist;
 import org.openhab.designerx.persistence.xtext.sitemap.producer.SitemapPersistBuilder;
@@ -10,7 +9,7 @@ import org.openhab.designerx.persistence.xtext.sitemap.producer.SitemapPersistBu
 public final class SitemapPersistBuilderImpl implements SitemapPersistBuilder {
 
 	@Override
-	public SitemapPersist build(String name) throws ConfigException {
+	public SitemapPersist build(String name) {
 		return new SitemapPersistImpl(name);
 	}
 	
@@ -18,7 +17,7 @@ public final class SitemapPersistBuilderImpl implements SitemapPersistBuilder {
 		private Config config;
 		private String name;
 		
-		public SitemapPersistImpl(String name) throws ConfigException {
+		public SitemapPersistImpl(String name) {
 			config = ConfigBuilder.build();
 			this.name = name;
 		}

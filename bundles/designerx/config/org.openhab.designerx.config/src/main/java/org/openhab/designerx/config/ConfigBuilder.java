@@ -14,7 +14,7 @@ public final class ConfigBuilder {
 	
 	private static ConfigImpl config = new ConfigImpl();
 	
-	public synchronized static Config build() throws ConfigException {
+	public synchronized static Config build() {
 		config.load();
 		return config;
 	}
@@ -45,7 +45,7 @@ public final class ConfigBuilder {
 			ConfigConstants.TRANSFORM
 		};
 
-		public void load() throws ConfigException {
+		public void load() {
 			if (loaded) {
 				return;
 			}
@@ -146,7 +146,7 @@ public final class ConfigBuilder {
 			}
 		}
 		
-		private void verifyHomeFolder(File homeFolder) throws ConfigException {
+		private void verifyHomeFolder(File homeFolder) {
 			Set<String> set = Sets.newHashSet();
 			File[] files = homeFolder.listFiles();
 			for (File f : files) {
@@ -159,7 +159,7 @@ public final class ConfigBuilder {
 			}
 		}
 		
-		private void verifyConfigFolder(File configFolder) throws ConfigException {
+		private void verifyConfigFolder(File configFolder) {
 			Set<String> set = Sets.newHashSet();
 			File[] files = configFolder.listFiles();
 			for (File f : files) {

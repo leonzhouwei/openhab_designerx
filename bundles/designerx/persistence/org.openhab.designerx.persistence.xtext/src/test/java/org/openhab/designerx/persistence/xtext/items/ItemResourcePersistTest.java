@@ -3,7 +3,6 @@ package org.openhab.designerx.persistence.xtext.items;
 import java.io.IOException;
 
 import org.junit.Test;
-import org.openhab.designerx.config.ConfigException;
 import org.openhab.designerx.model.items.ItemResource;
 import org.openhab.designerx.model.xtdex.items.ItemResourceXtdex;
 import org.openhab.designerx.model.xtdex.items.producer.ItemResourceXtdexBuilder;
@@ -16,7 +15,7 @@ public class ItemResourcePersistTest {
 	private static final ItemResourceXtdexBuilder xtdexBuilder = new  ItemResourceXtdexBuilderImpl();
 
 	@Test
-	public void testGet() throws ConfigException, IOException {
+	public void testGet() throws IOException {
 		final String name = "demo";
 		ItemResourcePersist persist = persistBuilder.build(name);
 		ItemResource ir = persist.get();
