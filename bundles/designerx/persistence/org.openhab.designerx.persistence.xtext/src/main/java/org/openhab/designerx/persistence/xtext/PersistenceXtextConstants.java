@@ -17,7 +17,6 @@ public final class PersistenceXtextConstants {
 	public static final String SPACE_MARK = " ";
 	
 	// openHAB
-	public static final String DOT_ITEMS = ".items";
 	public static final String ICON = "icon";
 	public static final String ITEMS_FILE_EXTENSION = ".items";
 	public static final String LABEL = "label";
