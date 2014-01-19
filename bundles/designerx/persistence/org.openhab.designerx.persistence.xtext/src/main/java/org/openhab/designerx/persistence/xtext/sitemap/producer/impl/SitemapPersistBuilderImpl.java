@@ -14,11 +14,10 @@ public final class SitemapPersistBuilderImpl implements SitemapPersistBuilder {
 	}
 	
 	private class SitemapPersistImpl implements SitemapPersist {
-		private Config config;
+		private Config config = ConfigBuilder.build();
 		private String name;
 		
 		public SitemapPersistImpl(String name) {
-			config = ConfigBuilder.build();
 			this.name = name;
 		}
 

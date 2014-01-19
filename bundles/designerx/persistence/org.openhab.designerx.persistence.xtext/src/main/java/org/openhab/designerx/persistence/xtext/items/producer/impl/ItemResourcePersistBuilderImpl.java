@@ -28,14 +28,13 @@ public final class ItemResourcePersistBuilderImpl implements ItemResourcePersist
 	
 	private class ItemResourcePersistImpl implements ItemResourcePersist {
 		private String name;
-		private Config config;
+		private Config config = ConfigBuilder.build();
 		private ItemResourceXtdexBuilder builder = new ItemResourceXtdexBuilderImpl();
 		private ItemResourceXtdex xtdex = builder.build();
 		private ItemXtdexBuilder itemXtdexBuilder = new ItemXtdexBuilderImpl();
 		private ItemXtdex itemXtdex = itemXtdexBuilder.build();
 		
 		public ItemResourcePersistImpl(String name) {
-			config = ConfigBuilder.build();
 			this.name = name;
 		}
 
@@ -60,7 +59,6 @@ public final class ItemResourcePersistBuilderImpl implements ItemResourcePersist
 			File file = new File(config.getItemsFolderPath() + PersistenceXtextConstants.FILE_SEPARATOR + name + PersistenceXtextConstants.DOT_ITEMS);
 			IOUtils.write(file, xtext);
 		}
-		
 	}
 
 }
