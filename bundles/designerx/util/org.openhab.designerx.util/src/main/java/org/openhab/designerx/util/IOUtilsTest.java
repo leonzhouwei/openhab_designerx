@@ -12,7 +12,7 @@ class IOUtilsTest {
 		testWrite();
 	}
 
-	static void testReadAll() throws IOException {
+	private static void testReadAll() throws IOException {
 		File file = new File("demo.items");
 		List<String> lines = IOUtils.readAll(file);
 		for (String s : lines) {
@@ -20,12 +20,12 @@ class IOUtilsTest {
 		}
 	}
 
-	static void testAppend() throws IOException {
+	private static void testAppend() throws IOException {
 		File file = new File("to_be_appended.items");
 		IOUtils.append(file, "lalala");
 	}
 
-	static void testWrite() throws IOException {
+	private static void testWrite() throws IOException {
 		File file = new File("to_be_overwritten.items");
 		IOUtils.write(file, "hohoho");
 	}
