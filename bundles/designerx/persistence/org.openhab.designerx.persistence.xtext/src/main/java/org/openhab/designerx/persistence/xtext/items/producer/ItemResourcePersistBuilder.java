@@ -1,5 +1,7 @@
 package org.openhab.designerx.persistence.xtext.items.producer;
 
+import java.io.File;
+
 import org.openhab.designerx.persistence.xtext.items.ItemResourcePersist;
 
 public interface ItemResourcePersistBuilder {
@@ -10,5 +12,7 @@ public interface ItemResourcePersistBuilder {
 	 * @return
 	 */
 	public ItemResourcePersist build(String name);
+	
+	public ItemResourcePersist build(File file);
 
 }

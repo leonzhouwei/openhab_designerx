@@ -2,10 +2,15 @@ package org.openhab.designerx.model.items.producer.impl;
 
 import java.util.List;
 
+import org.openhab.designerx.model.ModelException;
 import org.openhab.designerx.model.items.StringItem;
 
 final class StringItemImpl implements StringItem {
-	private ItemImpl item = new ItemImpl(StringItem.TYPE_NAME);
+	private ItemImpl item;
+	
+	public StringItemImpl(String name) throws ModelException {
+		item = new ItemImpl(StringItem.TYPE_NAME, name);
+	}
 
 	@Override
 	public String getTypeName() {
@@ -13,7 +18,7 @@ final class StringItemImpl implements StringItem {
 	}
 
 	@Override
-	public void setName(String name) {
+	public void setName(String name) throws ModelException {
 		item.setName(name);
 	}
 

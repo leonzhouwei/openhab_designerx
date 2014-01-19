@@ -2,11 +2,13 @@ package org.openhab.designerx.model.items;
 
 import java.util.List;
 
+import org.openhab.designerx.model.ModelException;
+
 public interface Item {
 	
 	public String getTypeName();
 	
-	public void setName(String name);
+	public void setName(String name) throws ModelException;
 
 	public String getName();
 	

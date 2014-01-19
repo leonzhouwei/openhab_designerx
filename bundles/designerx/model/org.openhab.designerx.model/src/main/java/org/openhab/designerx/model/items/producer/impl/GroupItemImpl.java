@@ -2,11 +2,16 @@ package org.openhab.designerx.model.items.producer.impl;
 
 import java.util.List;
 
+import org.openhab.designerx.model.ModelException;
 import org.openhab.designerx.model.items.GroupItem;
 
 final class GroupItemImpl implements GroupItem {
-	private ItemImpl item = new ItemImpl(GroupItem.TYPE_NAME);
+	private ItemImpl item;
 	private String extraType;
+	
+	public GroupItemImpl(String name) throws ModelException {
+		item = new ItemImpl(GroupItem.TYPE_NAME, name);
+	}
 
 	@Override
 	public String getTypeName() {
@@ -18,7 +23,7 @@ final class GroupItemImpl implements GroupItem {
 	}
 
 	@Override
-	public void setName(String name) {
+	public void setName(String name) throws ModelException {
 		item.setName(name);
 	}
 

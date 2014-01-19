@@ -6,14 +6,12 @@ import java.util.List;
 
 import org.openhab.designerx.config.Config;
 import org.openhab.designerx.config.ConfigBuilder;
-import org.openhab.designerx.model.items.Item;
+import org.openhab.designerx.model.ModelException;
 import org.openhab.designerx.model.items.ItemResource;
+import org.openhab.designerx.model.xtdex.ModelXtdexException;
 import org.openhab.designerx.model.xtdex.items.ItemResourceXtdex;
-import org.openhab.designerx.model.xtdex.items.ItemXtdex;
 import org.openhab.designerx.model.xtdex.items.producer.ItemResourceXtdexBuilder;
-import org.openhab.designerx.model.xtdex.items.producer.ItemXtdexBuilder;
 import org.openhab.designerx.model.xtdex.items.producer.impl.ItemResourceXtdexBuilderImpl;
-import org.openhab.designerx.model.xtdex.items.producer.impl.ItemXtdexBuilderImpl;
 import org.openhab.designerx.persistence.xtext.PersistenceXtextConstants;
 import org.openhab.designerx.persistence.xtext.items.ItemResourcePersist;
 import org.openhab.designerx.persistence.xtext.items.producer.ItemResourcePersistBuilder;
@@ -26,37 +24,35 @@ public final class ItemResourcePersistBuilderImpl implements ItemResourcePersist
 		return new ItemResourcePersistImpl(name);
 	}
 	
+	@Override
+	public ItemResourcePersist build(File file) {
+		return new ItemResourcePersistImpl(file);
+	}
+	
 	private class ItemResourcePersistImpl implements ItemResourcePersist {
-		private String name;
+		private File file;
 		private Config config = ConfigBuilder.build();
 		private ItemResourceXtdexBuilder builder = new ItemResourceXtdexBuilderImpl();
 		private ItemResourceXtdex xtdex = builder.build();
-		private ItemXtdexBuilder itemXtdexBuilder = new ItemXtdexBuilderImpl();
-		private ItemXtdex itemXtdex = itemXtdexBuilder.build();
 		
 		public ItemResourcePersistImpl(String name) {
-			this.name = name;
+			file = new File(config.getItemsFolderPath() + PersistenceXtextConstants.FILE_SEPARATOR + name + PersistenceXtextConstants.ITEMS_FILE_EXTENSION);
+		}
+		
+		public ItemResourcePersistImpl(File file) {
+			this.file = file;
 		}
 
 		@Override
-		public ItemResource get() throws IOException {
-			File file = new File(config.getItemsFolderPath() + PersistenceXtextConstants.FILE_SEPARATOR + name + PersistenceXtextConstants.ITEMS_FILE_EXTENSION);
+		public ItemResource get() throws IOException, ModelXtdexException, ModelException {
 			List<String> list = IOUtils.readAll(file);
 			ItemResource result = xtdex.fromXtext(list);
 			return result;
 		}
 
 		@Override
-		public void append(Item item) throws IOException {
-			String string = itemXtdex.toXtext(item);
-			File file = new File(config.getItemsFolderPath() + PersistenceXtextConstants.FILE_SEPARATOR + name + PersistenceXtextConstants.ITEMS_FILE_EXTENSION);
-			IOUtils.append(file, string);
-		}
-
-		@Override
-		public void save(ItemResource ir) throws IOException {
+		public void save(ItemResource ir) throws IOException, ModelException {
 			String xtext = xtdex.toXtext(ir);
-			File file = new File(config.getItemsFolderPath() + PersistenceXtextConstants.FILE_SEPARATOR + name + PersistenceXtextConstants.ITEMS_FILE_EXTENSION);
 			IOUtils.write(file, xtext);
 		}
 	}

@@ -2,10 +2,15 @@ package org.openhab.designerx.model.items.producer.impl;
 
 import java.util.List;
 
+import org.openhab.designerx.model.ModelException;
 import org.openhab.designerx.model.items.ColorItem;
 
 final class ColorItemImpl implements ColorItem {
-	private ItemImpl item = new ItemImpl(ColorItem.TYPE_NAME);
+	private ItemImpl item;
+	
+	public ColorItemImpl(String name) throws ModelException {
+		item = new ItemImpl(ColorItem.TYPE_NAME, name);
+	}
 
 	@Override
 	public String getTypeName() {
@@ -13,7 +18,7 @@ final class ColorItemImpl implements ColorItem {
 	}
 
 	@Override
-	public void setName(String name) {
+	public void setName(String name) throws ModelException {
 		item.setName(name);
 	}
 

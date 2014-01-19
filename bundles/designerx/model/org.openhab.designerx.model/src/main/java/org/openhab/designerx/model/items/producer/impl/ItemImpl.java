@@ -3,11 +3,34 @@ package org.openhab.designerx.model.items.producer.impl;
 import java.util.List;
 
 import org.openhab.designerx.model.ModelConstants;
+import org.openhab.designerx.model.ModelException;
+import org.openhab.designerx.model.items.ColorItem;
+import org.openhab.designerx.model.items.ContactItem;
+import org.openhab.designerx.model.items.DateTimeItem;
+import org.openhab.designerx.model.items.DimmerItem;
+import org.openhab.designerx.model.items.GroupItem;
 import org.openhab.designerx.model.items.Item;
+import org.openhab.designerx.model.items.NumberItem;
+import org.openhab.designerx.model.items.RollershutterItem;
+import org.openhab.designerx.model.items.StringItem;
+import org.openhab.designerx.model.items.SwitchItem;
 
+import com.google.common.collect.ImmutableSet;
 import com.google.common.collect.Lists;
 
 final class ItemImpl implements Item {
+	private static ImmutableSet<String> validTypeNames = ImmutableSet.<String>builder()
+			.add(ColorItem.TYPE_NAME)
+			.add(ContactItem.TYPE_NAME)
+			.add(DateTimeItem.TYPE_NAME)
+			.add(DimmerItem.TYPE_NAME)
+			.add(GroupItem.TYPE_NAME)
+			.add(NumberItem.TYPE_NAME)
+			.add(RollershutterItem.TYPE_NAME)
+			.add(StringItem.TYPE_NAME)
+			.add(SwitchItem.TYPE_NAME)
+			.build();
+	
 	private String typeName; // mandatory
 	private String name; // mandatory
 	private String labelText; // optional
@@ -15,8 +38,14 @@ final class ItemImpl implements Item {
 	private List<String> groups = Lists.newArrayList(); // optional
 	private String bindingConfig; // optional
 	
-	public ItemImpl(String typeName) {
-		this.typeName = typeName;
+	public ItemImpl(String typeName, String name) throws ModelException {
+		if (typeName == null) {
+			throw new ModelException("item type name can not be null");
+		}
+		if (!validTypeNames.contains(typeName)) {
+			throw new ModelException("'" + typeName + "' is not a valid item type name");
+		}
+		setName(name);
 	}
 
 	@Override
@@ -50,7 +79,10 @@ final class ItemImpl implements Item {
 	}
 
 	@Override
-	public void setName(String name) {
+	public void setName(String name) throws ModelException {
+		if (name == null || name.trim().isEmpty()) {
+			throw new ModelException("item name can not be null or empty");
+		}
 		this.name = name;
 	}
 

@@ -2,6 +2,7 @@ package org.openhab.designerx.model.xtdex.items.producer.impl;
 
 import java.util.List;
 
+import org.openhab.designerx.model.ModelException;
 import org.openhab.designerx.model.items.Item;
 import org.openhab.designerx.model.items.ItemResource;
 import org.openhab.designerx.model.items.producer.ItemResourceBuilder;
@@ -26,7 +27,7 @@ public final class ItemResourceXtdexBuilderImpl implements ItemResourceXtdexBuil
 		private ItemXtdex xtdex = new ItemXtdexBuilderImpl().build();
 
 		@Override
-		public ItemResource fromXtext(String xtext) throws ModelXtdexException {
+		public ItemResource fromXtext(String xtext) throws ModelXtdexException, ModelException {
 			xtext = xtext.trim();
 			String[] split = xtext.split(ModelXtdexConstants.LINE_SEPARATOR);
 			List<String> list = Lists.newArrayList();
@@ -37,7 +38,7 @@ public final class ItemResourceXtdexBuilderImpl implements ItemResourceXtdexBuil
 		}
 
 		@Override
-		public String toXtext(ItemResource itemResource) {
+		public String toXtext(ItemResource itemResource) throws ModelException {
 			StringBuilder sb = new StringBuilder();
 			List<Item> items = itemResource.getAll();
 			for (Item item : items) {
@@ -48,7 +49,7 @@ public final class ItemResourceXtdexBuilderImpl implements ItemResourceXtdexBuil
 		}
 		
 		@Override
-		public ItemResource fromXtext(List<String> xtext) throws ModelXtdexException {
+		public ItemResource fromXtext(List<String> xtext) throws ModelXtdexException, ModelException {
 			ItemResource ir = builder.build();
 			for (String string : xtext) {
 				String s = string.trim();

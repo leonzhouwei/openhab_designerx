@@ -12,6 +12,7 @@ public class ModelXtdexConstants {
 	public static final String CHARSET_NAME_UTF_8 = "utf-8";
 	
 	// marks
+	public static final String COLON_MARK = ":";
 	public static final String COMMA_MARK = ",";
 	public static final String DOUBLE_QUOTE_MARK = "\"";
 	public static final String EQU_MARK = "=";

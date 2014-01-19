@@ -3,6 +3,7 @@ package org.openhab.designerx.model.xtdex.items.producer.impl;
 import java.util.List;
 
 import org.openhab.designerx.model.ModelConstants;
+import org.openhab.designerx.model.ModelException;
 import org.openhab.designerx.model.items.ColorItem;
 import org.openhab.designerx.model.items.ContactItem;
 import org.openhab.designerx.model.items.DateTimeItem;
@@ -15,6 +16,7 @@ import org.openhab.designerx.model.items.StringItem;
 import org.openhab.designerx.model.items.SwitchItem;
 import org.openhab.designerx.model.items.producer.ItemFactory;
 import org.openhab.designerx.model.items.producer.impl.ItemFactoryImpl;
+import org.openhab.designerx.model.xtdex.ModelXtdexConstants;
 import org.openhab.designerx.model.xtdex.items.ItemXtdex;
 import org.openhab.designerx.model.xtdex.items.producer.ItemXtdexBuilder;
 
@@ -37,117 +39,100 @@ public final class ItemXtdexBuilderImpl implements ItemXtdexBuilder {
 		private static final String ROLLERSHUTTER_REGEX = SPACE_REGEX + RollershutterItem.TYPE_NAME + POST;
 		private static final String STRING_REGEX = SPACE_REGEX + StringItem.TYPE_NAME + POST;
 		private static final String SWITCH_REGEX = SPACE_REGEX + SwitchItem.TYPE_NAME + POST;
-
+		private static final String ACTIVE_GROUPS_REGEX = "\\s*Group\\s*:\\s*.*?\\s*:\\s*.*?\\(.*?\\)\\s.*";
+		
 		private ItemFactory itemFactory = new ItemFactoryImpl();
 		
 		@Override
-		public ColorItem parseColorItem(String xtext) {
+		public ColorItem parseColorItem(String xtext) throws ModelException {
 			if (!xtext.matches(COLOR_REGEX)) {
 				return null;
 			}
-			ColorItem instance = itemFactory.createColorItem();
-			extractAndFill(instance, xtext);
+			ColorItem instance = (ColorItem) createItem(xtext);
 			return instance;
 		}
 
 		@Override
-		public ContactItem parseContactItem(String xtext) {
+		public ContactItem parseContactItem(String xtext) throws ModelException {
 			if (!xtext.matches(CONTACT_REGEX)) {
 				return null;
 			}
-			ContactItem instance = itemFactory.createContactItem();
-			extractAndFill(instance, xtext);
+			ContactItem instance = (ContactItem) createItem(xtext);
 			return instance;
 		}
 
 		@Override
-		public DateTimeItem parseDateTimeItem(String xtext) {
+		public DateTimeItem parseDateTimeItem(String xtext) throws ModelException {
 			if (!xtext.matches(DATETIME_REGEX)) {
 				return null;
 			}
-			DateTimeItem instance = itemFactory.createDateTimeItem();
-			extractAndFill(instance, xtext);
+			DateTimeItem instance = (DateTimeItem) createItem(xtext);
 			return instance;
 		}
 
 		@Override
-		public DimmerItem parseDimmerItem(String xtext) {
+		public DimmerItem parseDimmerItem(String xtext) throws ModelException {
 			if (!xtext.matches(DIMMER_REGEX)) {
 				return null;
 			}
-			DimmerItem instance = itemFactory.createDimmerItem();
-			extractAndFill(instance, xtext);
+			DimmerItem instance = (DimmerItem) createItem(xtext);
 			return instance;
 		}
 
 		@Override
-		public GroupItem parseGroupItem(String xtext) {
+		public GroupItem parseGroupItem(String xtext) throws ModelException {
 			if (!xtext.matches(GROUP_REGEX)) {
 				return null;
 			}
-			GroupItem instance = itemFactory.createGroupItem();
-			String ret = extractAndFill(instance, xtext);
-			if (ret != null && ret.trim().length() > GroupItem.TYPE_NAME.length()) {
-				String extraType = ret.replace(GroupItem.TYPE_NAME, "").trim();
-				instance.setExtraTypeName(extraType);
-			}
+			GroupItem instance = (GroupItem) createItem(xtext);
 			return instance;
 		}
 
 		@Override
-		public NumberItem parseNumberItem(String xtext) {
+		public NumberItem parseNumberItem(String xtext) throws ModelException {
 			if (!xtext.matches(NUMBER_REGEX)) {
 				return null;
 			}
-			NumberItem instance = itemFactory.createNumberItem();
-			extractAndFill(instance, xtext);
+			NumberItem instance = (NumberItem) createItem(xtext);
 			return instance;
 		}
 
 		@Override
-		public RollershutterItem parseRollershutterItem(String xtext) {
+		public RollershutterItem parseRollershutterItem(String xtext) throws ModelException {
 			if (!xtext.matches(ROLLERSHUTTER_REGEX)) {
 				return null;
 			}
-			RollershutterItem instance = itemFactory.createRollershutterItem();
-			extractAndFill(instance, xtext);
+			RollershutterItem instance = (RollershutterItem) createItem(xtext);
 			return instance;
 		}
 
 		@Override
-		public StringItem parseStringItem(String xtext) {
+		public StringItem parseStringItem(String xtext) throws ModelException {
 			if (!xtext.matches(STRING_REGEX)) {
 				return null;
 			}
-			StringItem instance = itemFactory.createStringItem();
-			extractAndFill(instance, xtext);
+			StringItem instance = (StringItem) createItem(xtext);
 			return instance;
 		}
 
 		@Override
-		public SwitchItem parseSwitchItem(String xtext) {
+		public SwitchItem parseSwitchItem(String xtext) throws ModelException {
 			if (!xtext.matches(SWITCH_REGEX)) {
 				return null;
 			}
-			SwitchItem instance = itemFactory.createSwitchItem();
-			extractAndFill(instance, xtext);
+			SwitchItem instance = (SwitchItem) createItem(xtext);
 			return instance;
 		}
 
-		private <T extends Item> String extractAndFill(T item, String line) {
-			String result = null;
+		public Item createItem(String line) throws ModelException {
 			line = line.trim();
-			if (line.startsWith("Group:")) {
-				String[] temp = line.split("\\s");
-				String type = null;
-				if (!temp[0].contains("(")) {
-					type = temp[0];
-				} else {
-					final int endIndex = line.indexOf(")");
-					type = line.substring(0, endIndex + 1);
-				}
-				result = type;
-				line = line.substring(type.length(), line.length()).trim();
+			String type = null;
+			if (line.matches(ACTIVE_GROUPS_REGEX)) {
+				String[] temp = line.split("Group\\s*:\\s*.*?\\s*:\\s*.*?\\(.*?\\)");
+				String post = temp[0];
+				final int index = line.indexOf(post);
+				type = line.substring(0, index).trim();
+				line = post;
 			} else {
 				// parse the type
 				String[] forType = line.split("\\s");
@@ -164,12 +149,13 @@ public final class ItemXtdexBuilderImpl implements ItemXtdexBuilder {
 				}
 			}
 			// parse the name
+			String name = null;
 			if (!line.isEmpty()) {
 				String[] array = line.split("\\b");
 				if (array.length > 0) {
 					for (String s : array) {
 						if (!s.trim().isEmpty()) {
-							item.setName(s);
+							name = s;
 							final int index = line.indexOf(s);
 							line = line
 									.substring(index + s.length(), line.length())
@@ -179,6 +165,8 @@ public final class ItemXtdexBuilderImpl implements ItemXtdexBuilder {
 					}
 				}
 			}
+			// create the item
+			Item item = createItem(type, name);
 			// parse the label text
 			if (line.startsWith("\"")) {
 				final int start = line.indexOf("\"");
@@ -213,7 +201,7 @@ public final class ItemXtdexBuilderImpl implements ItemXtdexBuilder {
 				final int end = line.indexOf("}");
 				item.setBindingConfig(line.substring(start + 1, end).trim());
 			}
-			return result;
+			return item;
 		}
 		
 		@Override
@@ -258,7 +246,7 @@ public final class ItemXtdexBuilderImpl implements ItemXtdexBuilder {
 		}
 		
 		@Override
-		public Item parseItem(String xtext) {
+		public Item parseItem(String xtext) throws ModelException {
 			Item item = null;
 			item = parseColorItem(xtext);
 			if (item != null) {
@@ -299,6 +287,38 @@ public final class ItemXtdexBuilderImpl implements ItemXtdexBuilder {
 			return null;
 		}
 
+		private Item createItem(String type, String name) throws ModelException {
+			Item item = null;
+			type = type.trim();
+			name = name.trim();
+			if (type.matches("Group\\s*:.*")) {
+				GroupItem groupItem = itemFactory.createGroupItem(name);
+				item = groupItem;
+				final int index = type.indexOf(ModelXtdexConstants.COLON_MARK);
+				groupItem.setExtraTypeName(type.substring(index+1).trim());
+			} else if (type.compareTo(ColorItem.TYPE_NAME) == 0) {
+				item = itemFactory.createColorItem(name);
+			} else if (type.compareTo(ContactItem.TYPE_NAME) == 0) {
+				item = itemFactory.createContactItem(name);
+			} else if (type.compareTo(DateTimeItem.TYPE_NAME) == 0) {
+				item = itemFactory.createDateTimeItem(name);
+			} else if (type.compareTo(DimmerItem.TYPE_NAME) == 0) {
+				item = itemFactory.createDimmerItem(name);
+			} else if (type.compareTo(GroupItem.TYPE_NAME) == 0) {
+				item = itemFactory.createGroupItem(name);
+			} else if (type.compareTo(NumberItem.TYPE_NAME) == 0) {
+				item = itemFactory.createNumberItem(name);
+			} else if (type.compareTo(RollershutterItem.TYPE_NAME) == 0) {
+				item = itemFactory.createRollershutterItem(name);
+			} else if (type.compareTo(StringItem.TYPE_NAME) == 0) {
+				item = itemFactory.createStringItem(name);
+			} else if (type.compareTo(SwitchItem.TYPE_NAME) == 0) {
+				item = itemFactory.createSwitchItem(name);
+			} else {
+				item = null;
+			}
+			return item;
+		}
 	}
 
 

@@ -3,7 +3,9 @@ package org.openhab.designerx.model.xtdex.items;
 import java.util.List;
 
 import org.junit.Test;
+import org.openhab.designerx.model.ModelException;
 import org.openhab.designerx.model.items.ItemResource;
+import org.openhab.designerx.model.xtdex.ModelXtdexException;
 import org.openhab.designerx.model.xtdex.items.producer.ItemResourceXtdexBuilder;
 import org.openhab.designerx.model.xtdex.items.producer.impl.ItemResourceXtdexBuilderImpl;
 
@@ -12,9 +14,9 @@ import com.google.common.collect.Lists;
 public class ItemResourceXtdexTest {
 	private static final ItemResourceXtdexBuilder builder = new ItemResourceXtdexBuilderImpl();
 	private static final ItemResourceXtdex xtdex = builder.build();
-
+	
 	@Test
-	public void testFromXtextListOfString_1() {
+	public void testFromXtextListOfString_1() throws ModelXtdexException, ModelException {
 		List<String> list = Lists.newArrayList();
 		list.add("Group All");
 		list.add("Group gGF 		(All)");
@@ -40,7 +42,7 @@ public class ItemResourceXtdexTest {
 	}
 	
 	@Test
-	public void testFromXtextListOfString_2() {
+	public void testFromXtextListOfString_2() throws ModelXtdexException, ModelException {
 		List<String> list = Lists.newArrayList();
 		list.add("/* active groups */");
 		list.add("Group:Switch:OR(ON, OFF) 		Lights 		\"All Lights [(%d)]\" 								(All)");
@@ -52,7 +54,7 @@ public class ItemResourceXtdexTest {
 	}
 	
 	@Test
-	public void testFromXtextListOfString_3() {
+	public void testFromXtextListOfString_3() throws ModelXtdexException, ModelException {
 		List<String> list = Lists.newArrayList();
 		list.add("/* Lights */");
 		list.add("Dimmer Light_GF_Living_Table 		\"Table\" 		(GF_Living, Lights)");
@@ -83,7 +85,7 @@ public class ItemResourceXtdexTest {
 	}
 	
 	@Test
-	public void testFromXtextListOfString_4() {
+	public void testFromXtextListOfString_4() throws ModelXtdexException, ModelException {
 		List<String> list = Lists.newArrayList();
 		list.add("/* Heating */");
 		list.add("Switch Heating_GF_Corridor 	\"GF Corridor\" 	<heating>	(GF_Corridor, Heating)");
@@ -100,7 +102,7 @@ public class ItemResourceXtdexTest {
 	}
 	
 	@Test
-	public void testFromXtextListOfString_5() {
+	public void testFromXtextListOfString_5() throws ModelXtdexException, ModelException {
 		List<String> list = Lists.newArrayList();
 		list.add("/* Rollershutters */");
 		list.add("Switch Shutter_all (Shutters)");
@@ -118,7 +120,7 @@ public class ItemResourceXtdexTest {
 	}
 	
 	@Test
-	public void testFromXtextListOfString_6() {
+	public void testFromXtextListOfString_6() throws ModelXtdexException, ModelException {
 		List<String> list = Lists.newArrayList();
 		list.add("/* Indoor Temperatures */");
 		list.add("Number Temperature_GF_Corridor 	\"Temperature [%.1f °C]\"	<temperature>	(Temperature, GF_Corridor)");
@@ -134,7 +136,7 @@ public class ItemResourceXtdexTest {
 	}
 	
 	@Test
-	public void testFromXtextListOfString_7() {
+	public void testFromXtextListOfString_7() throws ModelXtdexException, ModelException {
 		List<String> list = Lists.newArrayList();
 		list.add("/* Windows */");
 		list.add("Contact Window_GF_Frontdoor 	\"Frontdoor [MAP(en.map):%s]\"		(GF_Corridor, Windows)");
@@ -160,7 +162,7 @@ public class ItemResourceXtdexTest {
 	}
 	
 	@Test
-	public void testFromXtextListOfString_8() {
+	public void testFromXtextListOfString_8() throws ModelXtdexException, ModelException {
 		List<String> list = Lists.newArrayList();
 		list.add("/* NTP binding demo item */");
 		list.add("DateTime		Date			\"Date [%1$tA, %1$td.%1$tm.%1$tY]\"	<calendar>	{ ntp=\"Europe/Berlin:de_DE\" }");
@@ -169,7 +171,7 @@ public class ItemResourceXtdexTest {
 	}
 	
 	@Test
-	public void testFromXtextListOfString_9() {
+	public void testFromXtextListOfString_9() throws ModelXtdexException, ModelException {
 		List<String> list = Lists.newArrayList();
 		list.add("/* Demo items */");
 		list.add("Switch DemoSwitch				\"Switch\"");

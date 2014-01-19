@@ -2,10 +2,15 @@ package org.openhab.designerx.model.items.producer.impl;
 
 import java.util.List;
 
+import org.openhab.designerx.model.ModelException;
 import org.openhab.designerx.model.items.DateTimeItem;
 
 final class DateTimeItemImpl implements DateTimeItem {
-	private ItemImpl item = new ItemImpl(DateTimeItem.TYPE_NAME);
+	private ItemImpl item;
+	
+	public DateTimeItemImpl(String name) throws ModelException {
+		item = new ItemImpl(DateTimeItem.TYPE_NAME, name);
+	}
 
 	@Override
 	public String getTypeName() {
@@ -13,7 +18,7 @@ final class DateTimeItemImpl implements DateTimeItem {
 	}
 
 	@Override
-	public void setName(String name) {
+	public void setName(String name) throws ModelException {
 		item.setName(name);
 	}
 
