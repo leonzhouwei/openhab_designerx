@@ -7,6 +7,7 @@ import org.openhab.designerx.model.items.ItemResource;
 import org.openhab.designerx.model.items.producer.ItemResourceBuilder;
 import org.openhab.designerx.model.items.producer.impl.ItemResourceBuilderImpl;
 import org.openhab.designerx.model.xtdex.ModelXtdexConstants;
+import org.openhab.designerx.model.xtdex.ModelXtdexException;
 import org.openhab.designerx.model.xtdex.items.ItemResourceXtdex;
 import org.openhab.designerx.model.xtdex.items.ItemXtdex;
 import org.openhab.designerx.model.xtdex.items.producer.ItemResourceXtdexBuilder;
@@ -25,7 +26,7 @@ public final class ItemResourceXtdexBuilderImpl implements ItemResourceXtdexBuil
 		private ItemXtdex xtdex = new ItemXtdexBuilderImpl().build();
 
 		@Override
-		public ItemResource fromXtext(String xtext) {
+		public ItemResource fromXtext(String xtext) throws ModelXtdexException {
 			xtext = xtext.trim();
 			String[] split = xtext.split(ModelXtdexConstants.LINE_SEPARATOR);
 			List<String> list = Lists.newArrayList();
@@ -47,7 +48,7 @@ public final class ItemResourceXtdexBuilderImpl implements ItemResourceXtdexBuil
 		}
 		
 		@Override
-		public ItemResource fromXtext(List<String> xtext) {
+		public ItemResource fromXtext(List<String> xtext) throws ModelXtdexException {
 			ItemResource ir = builder.build();
 			for (String string : xtext) {
 				String s = string.trim();
@@ -55,6 +56,10 @@ public final class ItemResourceXtdexBuilderImpl implements ItemResourceXtdexBuil
 					continue;
 				}
 				Item item = xtdex.parseItem(s);
+				String name = item.getName();
+				if (ir.findByName(name) != null) {
+					throw new ModelXtdexException("item name '" + name + "' has been used for more than once at '" + string + "'");
+				}
 				ir.append(item);
 			}
 			return ir;
