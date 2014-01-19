@@ -40,7 +40,7 @@ public final class ItemResourcePersistBuilderImpl implements ItemResourcePersist
 
 		@Override
 		public ItemResource get() throws IOException {
-			File file = new File(config.getItemsFolderPath() + PersistenceXtextConstants.FILE_SEPARATOR + name + PersistenceXtextConstants.DOT_ITEMS);
+			File file = new File(config.getItemsFolderPath() + PersistenceXtextConstants.FILE_SEPARATOR + name + PersistenceXtextConstants.ITEMS_FILE_EXTENSION);
 			List<String> list = IOUtils.readAll(file);
 			ItemResource result = xtdex.fromXtext(list);
 			return result;
@@ -49,14 +49,14 @@ public final class ItemResourcePersistBuilderImpl implements ItemResourcePersist
 		@Override
 		public void append(Item item) throws IOException {
 			String string = itemXtdex.toXtext(item);
-			File file = new File(config.getItemsFolderPath() + PersistenceXtextConstants.FILE_SEPARATOR + name + PersistenceXtextConstants.DOT_ITEMS);
+			File file = new File(config.getItemsFolderPath() + PersistenceXtextConstants.FILE_SEPARATOR + name + PersistenceXtextConstants.ITEMS_FILE_EXTENSION);
 			IOUtils.append(file, string);
 		}
 
 		@Override
 		public void save(ItemResource ir) throws IOException {
 			String xtext = xtdex.toXtext(ir);
-			File file = new File(config.getItemsFolderPath() + PersistenceXtextConstants.FILE_SEPARATOR + name + PersistenceXtextConstants.DOT_ITEMS);
+			File file = new File(config.getItemsFolderPath() + PersistenceXtextConstants.FILE_SEPARATOR + name + PersistenceXtextConstants.ITEMS_FILE_EXTENSION);
 			IOUtils.write(file, xtext);
 		}
 	}
