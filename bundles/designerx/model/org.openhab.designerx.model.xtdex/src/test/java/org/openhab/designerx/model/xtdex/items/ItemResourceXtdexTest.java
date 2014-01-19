@@ -15,7 +15,7 @@ public class ItemResourceXtdexTest {
 	private static final ItemResourceXtdexBuilder builder = new ItemResourceXtdexBuilderImpl();
 	private static final ItemResourceXtdex xtdex = builder.build();
 	
-	@Test
+//	@Test
 	public void testFromXtextListOfString_1() throws ModelXtdexException, ModelException {
 		List<String> list = Lists.newArrayList();
 		list.add("Group All");
@@ -41,7 +41,7 @@ public class ItemResourceXtdexTest {
 		System.out.println(xtdex.toXtext(ir));
 	}
 	
-	@Test
+//	@Test
 	public void testFromXtextListOfString_2() throws ModelXtdexException, ModelException {
 		List<String> list = Lists.newArrayList();
 		list.add("/* active groups */");
@@ -53,7 +53,7 @@ public class ItemResourceXtdexTest {
 		System.out.println(xtdex.toXtext(ir));
 	}
 	
-	@Test
+//	@Test
 	public void testFromXtextListOfString_3() throws ModelXtdexException, ModelException {
 		List<String> list = Lists.newArrayList();
 		list.add("/* Lights */");
@@ -84,7 +84,7 @@ public class ItemResourceXtdexTest {
 		System.out.println(xtdex.toXtext(ir));
 	}
 	
-	@Test
+//	@Test
 	public void testFromXtextListOfString_4() throws ModelXtdexException, ModelException {
 		List<String> list = Lists.newArrayList();
 		list.add("/* Heating */");
@@ -101,7 +101,7 @@ public class ItemResourceXtdexTest {
 		System.out.println(xtdex.toXtext(ir));
 	}
 	
-	@Test
+//	@Test
 	public void testFromXtextListOfString_5() throws ModelXtdexException, ModelException {
 		List<String> list = Lists.newArrayList();
 		list.add("/* Rollershutters */");
@@ -119,7 +119,7 @@ public class ItemResourceXtdexTest {
 		System.out.println(xtdex.toXtext(ir));
 	}
 	
-	@Test
+//	@Test
 	public void testFromXtextListOfString_6() throws ModelXtdexException, ModelException {
 		List<String> list = Lists.newArrayList();
 		list.add("/* Indoor Temperatures */");
@@ -135,7 +135,7 @@ public class ItemResourceXtdexTest {
 		System.out.println(xtdex.toXtext(ir));
 	}
 	
-	@Test
+//	@Test
 	public void testFromXtextListOfString_7() throws ModelXtdexException, ModelException {
 		List<String> list = Lists.newArrayList();
 		list.add("/* Windows */");
@@ -161,7 +161,7 @@ public class ItemResourceXtdexTest {
 		System.out.println(xtdex.toXtext(ir));
 	}
 	
-	@Test
+//	@Test
 	public void testFromXtextListOfString_8() throws ModelXtdexException, ModelException {
 		List<String> list = Lists.newArrayList();
 		list.add("/* NTP binding demo item */");

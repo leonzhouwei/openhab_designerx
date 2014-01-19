@@ -45,6 +45,7 @@ final class ItemImpl implements Item {
 		if (!validTypeNames.contains(typeName)) {
 			throw new ModelException("'" + typeName + "' is not a valid item type name");
 		}
+		this.typeName = typeName;
 		setName(name);
 	}
 

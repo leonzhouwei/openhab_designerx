@@ -129,15 +129,16 @@ public final class ItemXtdexBuilderImpl implements ItemXtdexBuilder {
 			String type = null;
 			if (line.matches(ACTIVE_GROUPS_REGEX)) {
 				String[] temp = line.split("Group\\s*:\\s*.*?\\s*:\\s*.*?\\(.*?\\)");
-				String post = temp[0];
+				String post = temp[1];
 				final int index = line.indexOf(post);
 				type = line.substring(0, index).trim();
-				line = post;
+				line = post.trim();
 			} else {
 				// parse the type
 				String[] forType = line.split("\\s");
 				if (forType.length > 0) {
 					for (String s : forType) {
+						type = s;
 						if (!s.trim().isEmpty()) {
 							final int index = line.indexOf(s);
 							line = line
@@ -291,7 +292,7 @@ public final class ItemXtdexBuilderImpl implements ItemXtdexBuilder {
 			Item item = null;
 			type = type.trim();
 			name = name.trim();
-			if (type.matches("Group\\s*:.*")) {
+			if (type.matches("Group\\s*?:.*")) {
 				GroupItem groupItem = itemFactory.createGroupItem(name);
 				item = groupItem;
 				final int index = type.indexOf(ModelXtdexConstants.COLON_MARK);

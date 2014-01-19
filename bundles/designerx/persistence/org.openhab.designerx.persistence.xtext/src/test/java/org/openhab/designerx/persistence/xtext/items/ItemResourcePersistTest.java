@@ -18,11 +18,12 @@ public class ItemResourcePersistTest {
 	private static final ItemResourcePersistBuilder persistBuilder = new ItemResourcePersistBuilderImpl();
 	private static final ItemResourceXtdexBuilder xtdexBuilder = new  ItemResourceXtdexBuilderImpl();
 
-//	@Test
+	@Test
 	public void testGet() throws IOException, ModelXtdexException, ModelException {
 		File file = new File("_test/resources/demo.items");
 		ItemResourcePersist persist = persistBuilder.build(file);
 		ItemResource ir = persist.get();
+		StringHelper.printSeparateLine();
 		ItemResourceXtdex irx = xtdexBuilder.build();
 		StringHelper.printSeparateLine();
 		System.out.println(irx.toXtext(ir));
