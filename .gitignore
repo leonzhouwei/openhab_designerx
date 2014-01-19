@@ -13,3 +13,4 @@ distribution/openhabhome/etc/rrd4j/*.rrd
 
 push.sh
 googlecode_push.sh
+test/
