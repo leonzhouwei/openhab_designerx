@@ -28,4 +28,13 @@ public class SitemapPersistTest {
 		System.out.println(xtext);
 	}
 	
+//	@Test
+	public void testSave() throws IOException, ModelXtdexException {
+		File file = new File("_test/resources/demo.sitemap");
+		SitemapPersist persist = persistBuilder.build(file);
+		Sitemap sitemap = persist.get();
+		StringHelper.printSeparateLine();
+		persist.save(sitemap);
+	}
+	
 }

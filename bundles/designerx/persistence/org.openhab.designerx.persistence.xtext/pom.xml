@@ -82,7 +82,7 @@
 							<outputDirectory>${basedir}/target</outputDirectory>
 							<resources>
 								<resource>
-									<directory>${basedir}/test</directory>
+									<directory>${basedir}/_test</directory>
 								</resource>
 							</resources>
 						</configuration>
