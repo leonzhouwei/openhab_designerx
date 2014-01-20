@@ -45,7 +45,7 @@ final class ItemImpl implements Item {
 		if (!validTypeNames.contains(typeName)) {
 			throw new ModelException("'" + typeName + "' is not a valid item type name");
 		}
-		this.typeName = typeName;
+		this.typeName = typeName.trim();
 		setName(name);
 	}
 
@@ -84,7 +84,7 @@ final class ItemImpl implements Item {
 		if (name == null || name.trim().isEmpty()) {
 			throw new ModelException("item name can not be null or empty");
 		}
-		this.name = name;
+		this.name = name.trim();
 	}
 
 	@Override
