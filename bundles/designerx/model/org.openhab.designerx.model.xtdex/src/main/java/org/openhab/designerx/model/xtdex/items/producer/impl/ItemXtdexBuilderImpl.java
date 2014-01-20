@@ -391,6 +391,10 @@ public final class ItemXtdexBuilderImpl implements ItemXtdexBuilder {
 				result = toXtext((StringItem) item);
 			} else if (item instanceof SwitchItem) {
 				result = toXtext((SwitchItem) item);
+			} else if (item instanceof Item) {
+				result = xtextualize(item);
+			} else {
+				result = null;
 			}
 			return result;
 		}
