@@ -16,9 +16,6 @@ final class GroupItemImpl implements GroupItem {
 	@Override
 	public String getTypeName() {
 		String result = item.getTypeName();
-		if (extraType != null) {
-			result += extraType;
-		}
 		return result;
 	}
 

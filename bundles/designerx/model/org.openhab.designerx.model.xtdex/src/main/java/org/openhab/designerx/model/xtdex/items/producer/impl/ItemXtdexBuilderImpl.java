@@ -205,8 +205,7 @@ public final class ItemXtdexBuilderImpl implements ItemXtdexBuilder {
 			return item;
 		}
 		
-		@Override
-		public <T extends Item> String toXtext(T item) {
+		private String xtextualize(Item item) {
 			StringBuilder sb = new StringBuilder();
 			sb.append(item.getTypeName());
 			sb.append(ModelConstants.SPACE_MARK);
@@ -296,7 +295,7 @@ public final class ItemXtdexBuilderImpl implements ItemXtdexBuilder {
 				GroupItem groupItem = itemFactory.createGroupItem(name);
 				item = groupItem;
 				final int index = type.indexOf(ModelXtdexConstants.COLON_MARK);
-				groupItem.setExtraTypeName(type.substring(index+1).trim());
+				groupItem.setExtraTypeName(type.substring(index).trim());
 			} else if (type.compareTo(ColorItem.TYPE_NAME) == 0) {
 				item = itemFactory.createColorItem(name);
 			} else if (type.compareTo(ContactItem.TYPE_NAME) == 0) {
@@ -320,7 +319,81 @@ public final class ItemXtdexBuilderImpl implements ItemXtdexBuilder {
 			}
 			return item;
 		}
-	}
 
+		@Override
+		public String toXtext(ColorItem item) throws ModelException {
+			return xtextualize(item);
+		}
+
+		@Override
+		public String toXtext(ContactItem item) throws ModelException {
+			return xtextualize(item);
+		}
+
+		@Override
+		public String toXtext(DateTimeItem item) throws ModelException {
+			return xtextualize(item);
+		}
+
+		@Override
+		public String toXtext(DimmerItem item) throws ModelException {
+			return xtextualize(item);
+		}
+
+		@Override
+		public String toXtext(GroupItem item) throws ModelException {
+			String result = xtextualize(item);
+			String extraTypeName = item.getExtraTypeName();
+			if (extraTypeName != null) {
+				result = result.replace(GroupItem.TYPE_NAME, GroupItem.TYPE_NAME + extraTypeName);
+			}
+			return result;
+		}
+
+		@Override
+		public String toXtext(NumberItem item) throws ModelException {
+			return xtextualize(item);
+		}
+
+		@Override
+		public String toXtext(RollershutterItem item) throws ModelException {
+			return xtextualize(item);
+		}
+
+		@Override
+		public String toXtext(StringItem item) throws ModelException {
+			return xtextualize(item);
+		}
+
+		@Override
+		public String toXtext(SwitchItem item) throws ModelException {
+			return xtextualize(item);
+		}
+
+		@Override
+		public <T extends Item> String toXtext(T item) throws ModelException {
+			String result = null;
+			if (item instanceof ColorItem) {
+				result = toXtext((ColorItem) item);
+			} else if (item instanceof ContactItem) {
+				result = toXtext((ContactItem) item);
+			} else if (item instanceof DateTimeItem) {
+				result = toXtext((DateTimeItem) item);
+			} else if (item instanceof DimmerItem) {
+				result = toXtext((DimmerItem) item);
+			} else if (item instanceof GroupItem) {
+				result = toXtext((GroupItem) item);
+			} else if (item instanceof NumberItem) {
+				result = toXtext((NumberItem) item);
+			} else if (item instanceof RollershutterItem) {
+				result = toXtext((RollershutterItem) item);
+			} else if (item instanceof StringItem) {
+				result = toXtext((StringItem) item);
+			} else if (item instanceof SwitchItem) {
+				result = toXtext((SwitchItem) item);
+			}
+			return result;
+		}
+	}
 
 }

@@ -35,5 +35,23 @@ public interface ItemXtdex {
 	public <T extends Item> String toXtext(T item) throws ModelException;
 	
 	public Item parseItem(String xtext) throws ModelException;
+	
+	public String toXtext(ColorItem item) throws ModelException;
+	
+	public String toXtext(ContactItem item) throws ModelException;
+	
+	public String toXtext(DateTimeItem item) throws ModelException;
+	
+	public String toXtext(DimmerItem item) throws ModelException;
+	
+	public String toXtext(GroupItem item) throws ModelException;
+	
+	public String toXtext(NumberItem item) throws ModelException;
+	
+	public String toXtext(RollershutterItem item) throws ModelException;
+	
+	public String toXtext(StringItem item) throws ModelException;
+	
+	public String toXtext(SwitchItem item) throws ModelException;
 
 }
