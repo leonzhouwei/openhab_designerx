@@ -112,6 +112,8 @@ final class ChildlessElementXtdex {
 			result = VideoXtdex.toXtextIgnoringChildren((Video) e);
 		} else if (WebviewXtdex.isWebview(e)) {
 			result = WebviewXtdex.toXtextIgnoringChildren((Webview) e);
+		} else if (!e.canHaveChildren()) {
+			result = ElementXtextualizer.toXtextIgnoringChildren(e);
 		} else {
 			result = null;
 		}

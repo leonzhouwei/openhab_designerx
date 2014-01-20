@@ -104,6 +104,8 @@ final class ChildfulElementXtdex {
 			sb.append(indentation + ImageXtdex.toXtextIgnoringChildren((Image) e));
 		} else if (e instanceof Text) {
 			sb.append(indentation + TextXtdex.toXtextIgnoringChildren((Text) e));
+		} else if (e.canHaveChildren()) {
+			sb.append(indentation + ElementXtextualizer.toXtextIgnoringChildren(e));
 		} else {
 			return null;
 		}
