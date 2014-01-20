@@ -25,10 +25,11 @@ public final class ItemResourceBuilderImpl implements ItemResourceBuilder {
 		@Override
 		public Item append(Item item) {
 			Item old = null;
-			Integer index = map.get(item.getName());
+			final String name = item.getName().trim();
+			Integer index = map.get(name);
 			if (index == null) {
 				items.add(item);
-				map.put(item.getName(), items.size() - 1);
+				map.put(name, items.size() - 1);
 			} else {
 				old = items.get(index);
 				items.set(index, item);
