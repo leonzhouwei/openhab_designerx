@@ -1,4 +1,4 @@
-package org.openhab.designerx.persistence.xtext.sitemap.producer.impl;
+package org.openhab.designerx.persistence.xtext.sitemap.repo.impl;
 
 import java.io.File;
 import java.io.IOException;
@@ -12,29 +12,29 @@ import org.openhab.designerx.model.xtdex.sitemap.SitemapXtdex;
 import org.openhab.designerx.model.xtdex.sitemap.producer.SitemapXtdexBuilder;
 import org.openhab.designerx.model.xtdex.sitemap.producer.impl.SitemapXtdexBuilderImpl;
 import org.openhab.designerx.persistence.xtext.PersistenceXtextConstants;
-import org.openhab.designerx.persistence.xtext.sitemap.SitemapPersist;
-import org.openhab.designerx.persistence.xtext.sitemap.producer.SitemapPersistBuilder;
+import org.openhab.designerx.persistence.xtext.sitemap.XtextSitemap;
+import org.openhab.designerx.persistence.xtext.sitemap.repo.XtextSitemapRepository;
 import org.openhab.designerx.util.IOUtils;
 
-public final class SitemapPersistBuilderImpl implements SitemapPersistBuilder {
+public final class XtextSitemapRepositoryImpl implements XtextSitemapRepository {
 
 	@Override
-	public SitemapPersist build(String name) {
-		return new SitemapPersistImpl(name);
+	public XtextSitemap find(String name) {
+		return new XtextSitemapImpl(name);
 	}
 	
 	@Override
-	public SitemapPersist build(File file) {
-		return new SitemapPersistImpl(file);
+	public XtextSitemap find(File file) {
+		return new XtextSitemapImpl(file);
 	}
 	
-	private class SitemapPersistImpl implements SitemapPersist {
+	private class XtextSitemapImpl implements XtextSitemap {
 		private File file;
 		private Config config = ConfigBuilder.build();
 		private SitemapXtdexBuilder xtdexBuilder = new SitemapXtdexBuilderImpl();
 		private SitemapXtdex xtdex = xtdexBuilder.build();
 		
-		public SitemapPersistImpl(String name) {
+		public XtextSitemapImpl(String name) {
 			file = new File(config.getSitemapsFolderPath() + PersistenceXtextConstants.FILE_SEPARATOR + name + PersistenceXtextConstants.SITEMAP_FILE_EXTENSION);
 		}
 
@@ -51,7 +51,7 @@ public final class SitemapPersistBuilderImpl implements SitemapPersistBuilder {
 			IOUtils.write(file, xtext);
 		}
 		
-		public SitemapPersistImpl(File file) {
+		public XtextSitemapImpl(File file) {
 			this.file = file;
 		}
 		

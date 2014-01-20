@@ -1,4 +1,4 @@
-package org.openhab.designerx.persistence.xtext.items.producer.impl;
+package org.openhab.designerx.persistence.xtext.items.repo.impl;
 
 import java.io.File;
 import java.io.IOException;
@@ -13,33 +13,33 @@ import org.openhab.designerx.model.xtdex.items.ItemResourceXtdex;
 import org.openhab.designerx.model.xtdex.items.producer.ItemResourceXtdexBuilder;
 import org.openhab.designerx.model.xtdex.items.producer.impl.ItemResourceXtdexBuilderImpl;
 import org.openhab.designerx.persistence.xtext.PersistenceXtextConstants;
-import org.openhab.designerx.persistence.xtext.items.ItemResourcePersist;
-import org.openhab.designerx.persistence.xtext.items.producer.ItemResourcePersistBuilder;
+import org.openhab.designerx.persistence.xtext.items.XtextItemResource;
+import org.openhab.designerx.persistence.xtext.items.repo.XtextItemResourceRepository;
 import org.openhab.designerx.util.IOUtils;
 
-public final class ItemResourcePersistBuilderImpl implements ItemResourcePersistBuilder {
+public final class XtextItemResourceRepositoryImpl implements XtextItemResourceRepository {
 
 	@Override
-	public ItemResourcePersist build(String name) {
-		return new ItemResourcePersistImpl(name);
+	public XtextItemResource find(String name) {
+		return new XtextItemResourceImpl(name);
 	}
 	
 	@Override
-	public ItemResourcePersist build(File file) {
-		return new ItemResourcePersistImpl(file);
+	public XtextItemResource find(File file) {
+		return new XtextItemResourceImpl(file);
 	}
 	
-	private class ItemResourcePersistImpl implements ItemResourcePersist {
+	private class XtextItemResourceImpl implements XtextItemResource {
 		private File file;
 		private Config config = ConfigBuilder.build();
 		private ItemResourceXtdexBuilder builder = new ItemResourceXtdexBuilderImpl();
 		private ItemResourceXtdex xtdex = builder.build();
 		
-		public ItemResourcePersistImpl(String name) {
+		public XtextItemResourceImpl(String name) {
 			file = new File(config.getItemsFolderPath() + PersistenceXtextConstants.FILE_SEPARATOR + name + PersistenceXtextConstants.ITEMS_FILE_EXTENSION);
 		}
 		
-		public ItemResourcePersistImpl(File file) {
+		public XtextItemResourceImpl(File file) {
 			this.file = file;
 		}
 

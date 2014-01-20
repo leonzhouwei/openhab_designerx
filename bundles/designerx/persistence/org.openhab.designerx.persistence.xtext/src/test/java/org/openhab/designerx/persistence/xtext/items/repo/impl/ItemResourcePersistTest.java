@@ -1,4 +1,4 @@
-package org.openhab.designerx.persistence.xtext.items.producer.impl;
+package org.openhab.designerx.persistence.xtext.items.repo.impl;
 
 import java.io.File;
 import java.io.IOException;
@@ -10,18 +10,18 @@ import org.openhab.designerx.model.xtdex.ModelXtdexException;
 import org.openhab.designerx.model.xtdex.items.ItemResourceXtdex;
 import org.openhab.designerx.model.xtdex.items.producer.ItemResourceXtdexBuilder;
 import org.openhab.designerx.model.xtdex.items.producer.impl.ItemResourceXtdexBuilderImpl;
-import org.openhab.designerx.persistence.xtext.items.ItemResourcePersist;
-import org.openhab.designerx.persistence.xtext.items.producer.ItemResourcePersistBuilder;
+import org.openhab.designerx.persistence.xtext.items.XtextItemResource;
+import org.openhab.designerx.persistence.xtext.items.repo.XtextItemResourceRepository;
 import org.openhab.designerx.util.StringHelper;
 
 public class ItemResourcePersistTest {
-	private static final ItemResourcePersistBuilder persistBuilder = new ItemResourcePersistBuilderImpl();
+	private static final XtextItemResourceRepository persistBuilder = new XtextItemResourceRepositoryImpl();
 	private static final ItemResourceXtdexBuilder xtdexBuilder = new  ItemResourceXtdexBuilderImpl();
 
 	@Test
 	public void testGet() throws IOException, ModelXtdexException, ModelException {
 		File file = new File("_test/resources/demo.items");
-		ItemResourcePersist persist = persistBuilder.build(file);
+		XtextItemResource persist = persistBuilder.find(file);
 		ItemResource ir = persist.get();
 		StringHelper.printSeparateLine();
 		ItemResourceXtdex irx = xtdexBuilder.build();

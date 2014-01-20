@@ -1,4 +1,4 @@
-package org.openhab.designerx.persistence.xtext.sitemap.producer.impl;
+package org.openhab.designerx.persistence.xtext.sitemap.repo.impl;
 
 import java.io.File;
 import java.io.IOException;
@@ -9,19 +9,19 @@ import org.openhab.designerx.model.xtdex.ModelXtdexException;
 import org.openhab.designerx.model.xtdex.sitemap.SitemapXtdex;
 import org.openhab.designerx.model.xtdex.sitemap.producer.SitemapXtdexBuilder;
 import org.openhab.designerx.model.xtdex.sitemap.producer.impl.SitemapXtdexBuilderImpl;
-import org.openhab.designerx.persistence.xtext.sitemap.SitemapPersist;
-import org.openhab.designerx.persistence.xtext.sitemap.producer.SitemapPersistBuilder;
+import org.openhab.designerx.persistence.xtext.sitemap.XtextSitemap;
+import org.openhab.designerx.persistence.xtext.sitemap.repo.XtextSitemapRepository;
 import org.openhab.designerx.util.StringHelper;
 
 public class SitemapPersistTest {
-	private SitemapPersistBuilder persistBuilder = new SitemapPersistBuilderImpl();
+	private XtextSitemapRepository persistBuilder = new XtextSitemapRepositoryImpl();
 	private SitemapXtdexBuilder xtdexBuilder = new SitemapXtdexBuilderImpl();
 	private SitemapXtdex xtdex = xtdexBuilder.build();
 
 	@Test
 	public void testGet() throws IOException, ModelXtdexException {
 		File file = new File("_test/resources/demo.sitemap");
-		SitemapPersist persist = persistBuilder.build(file);
+		XtextSitemap persist = persistBuilder.find(file);
 		Sitemap sitemap = persist.get();
 		String xtext = xtdex.toXtext(sitemap);
 		StringHelper.printSeparateLine();
@@ -31,7 +31,7 @@ public class SitemapPersistTest {
 //	@Test
 	public void testSave() throws IOException, ModelXtdexException {
 		File file = new File("_test/resources/demo.sitemap");
-		SitemapPersist persist = persistBuilder.build(file);
+		XtextSitemap persist = persistBuilder.find(file);
 		Sitemap sitemap = persist.get();
 		StringHelper.printSeparateLine();
 		persist.save(sitemap);

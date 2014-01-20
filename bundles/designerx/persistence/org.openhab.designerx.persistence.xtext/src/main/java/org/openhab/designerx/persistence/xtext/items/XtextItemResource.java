@@ -6,7 +6,7 @@ import org.openhab.designerx.model.ModelException;
 import org.openhab.designerx.model.items.ItemResource;
 import org.openhab.designerx.model.xtdex.ModelXtdexException;
 
-public interface ItemResourcePersist {
+public interface XtextItemResource {
 	
 	public ItemResource get() throws IOException, ModelXtdexException, ModelException;
 	
