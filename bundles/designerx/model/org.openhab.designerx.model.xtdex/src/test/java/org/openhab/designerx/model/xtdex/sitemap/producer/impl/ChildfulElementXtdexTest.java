@@ -1,16 +1,56 @@
 package org.openhab.designerx.model.xtdex.sitemap.producer.impl;
 
+import static org.hamcrest.MatcherAssert.assertThat;
+
 import java.util.List;
 
+import org.hamcrest.Matchers;
+import org.junit.Test;
 import org.openhab.designerx.model.sitemap.Element;
 import org.openhab.designerx.model.xtdex.ModelXtdexException;
 
 import com.google.common.collect.Lists;
 
 public class ChildfulElementXtdexTest {
+	
+	@Test
+	public void testParseIgnoringChildren_1() throws ModelXtdexException {
+		final String xtext = "Frame label=\"Multimedia Widgets\" icon=\"frameIcon\"";
+		ChildfulElementXtextKeeper keeper = new ChildfulElementXtextKeeper(xtext);
+		Element e = ChildfulElementXtdex.parse(keeper);
+		final String actual = ChildfulElementXtdex.toXtext(e, "");
+		assertThat(actual, Matchers.equalTo(xtext));
+	}
+	
+	@Test
+	public void testParseIgnoringChildren_2() throws ModelXtdexException {
+		final String xtext = "Group item=gFF label=\"First Floor\" icon=\"firstfloor\"";
+		ChildfulElementXtextKeeper keeper = new ChildfulElementXtextKeeper(xtext);
+		Element e = ChildfulElementXtdex.parse(keeper);
+		final String actual = ChildfulElementXtdex.toXtext(e, "");
+		assertThat(actual, Matchers.equalTo(xtext));
+	}
+	
+	@Test
+	public void testParseIgnoringChildren_3() throws ModelXtdexException {
+		final String xtext = "Image label=\"openHAB\" url=\"http://localhost:8080/images/splash-ipad-h.png\" refresh=0";
+		ChildfulElementXtextKeeper keeper = new ChildfulElementXtextKeeper(xtext);
+		Element e = ChildfulElementXtdex.parse(keeper);
+		final String actual = ChildfulElementXtdex.toXtext(e, "");
+		assertThat(actual, Matchers.equalTo(xtext));
+	}
+	
+	@Test
+	public void testParseIgnoringChildren_4() throws ModelXtdexException {
+		final String xtext = "Text item=Weather_Temperature valuecolor=[Weather_LastUpdate==\"Uninitialized\"=\"lightgray\",Weather_LastUpdate>90=\"lightgray\",>25=\"orange\",>15=\"green\",>5=\"orange\",<=5=\"blue\"]";
+		ChildfulElementXtextKeeper keeper = new ChildfulElementXtextKeeper(xtext);
+		Element e = ChildfulElementXtdex.parse(keeper);
+		final String actual = ChildfulElementXtdex.toXtext(e, "");
+		assertThat(actual, Matchers.equalTo(xtext));
+	}
 
 //	@Test
-	public void testParse_1() throws ModelXtdexException {
+	public void Parse_1() throws ModelXtdexException {
 		List<String> list = Lists.newArrayList();
 		list.add("Frame {");
 		list.add("    Group item=gFF label=\"First Floor\" icon=\"firstfloor\"");
@@ -22,7 +62,7 @@ public class ChildfulElementXtdexTest {
 	}
 	
 //	@Test
-	public void testParse_2() throws ModelXtdexException {
+	public void Parse_2() throws ModelXtdexException {
 		List<String> list = Lists.newArrayList();
 		list.add("Frame {");
 		list.add("    Group item=gFF label=\"First Floor\" icon=\"firstfloor\"");
@@ -37,7 +77,7 @@ public class ChildfulElementXtdexTest {
 	}
 	
 //	@Test
-	public void testParse_3() throws ModelXtdexException {
+	public void Parse_3() throws ModelXtdexException {
 		List<String> list = Lists.newArrayList();
 		list.add("Frame {");
 		list.add("	  Text item=Weather_Temp_Max valuecolor=[>25=\"orange\",>15=\"green\",>5=\"orange\",<=5=\"blue\"]");
@@ -51,7 +91,7 @@ public class ChildfulElementXtdexTest {
 	}
 	
 //	@Test
-	public void testParse_4() throws ModelXtdexException {
+	public void Parse_4() throws ModelXtdexException {
 		List<String> list = Lists.newArrayList();
 		list.add("Frame {");
 		list.add("	  Switch item=Weather_Chart_Period label=\"Chart Period\" mappings=[0=\"Hour\", 1=\"Day\", 2=\"Week\"]");
@@ -66,7 +106,7 @@ public class ChildfulElementXtdexTest {
 	}
 	
 //	@Test
-	public void testParse_5() throws ModelXtdexException {
+	public void Parse_5() throws ModelXtdexException {
 		List<String> list = Lists.newArrayList();
 		list.add("Frame label=\"Weather\" {");
 		list.add("    Text item=Weather_Temperature valuecolor=[Weather_LastUpdate==\"Uninitialized\"=\"lightgray\",Weather_LastUpdate>90=\"lightgray\",>25=\"orange\",>15=\"green\",>5=\"orange\",<=5=\"blue\"] {");
@@ -90,7 +130,7 @@ public class ChildfulElementXtdexTest {
 	}
 	
 //	@Test
-	public void testParse_6() throws ModelXtdexException {
+	public void Parse_6() throws ModelXtdexException {
 		List<String> list = Lists.newArrayList();
 		list.add("Frame label=\"Date\" {");
 		list.add("    Text item=Date");
@@ -102,7 +142,7 @@ public class ChildfulElementXtdexTest {
 	}
 	
 //	@Test
-	public void testParse_7() throws ModelXtdexException {
+	public void Parse_7() throws ModelXtdexException {
 		List<String> list = Lists.newArrayList();
 		list.add("Frame label=\"Demo\" {");
 		list.add("    Text label=\"Group Demo\" icon=\"firstfloor\" {");
@@ -149,7 +189,7 @@ public class ChildfulElementXtdexTest {
 	}
 	
 //	@Test
-	public void testParse_8() throws ModelXtdexException {
+	public void Parse_8() throws ModelXtdexException {
 		List<String> list = Lists.newArrayList();
 		list.add("Frame {");
 		list.add("    Frame {");
