@@ -2,7 +2,6 @@ package org.openhab.designerx.model.xtdex.items;
 
 import java.util.List;
 
-import org.junit.Test;
 import org.openhab.designerx.model.ModelException;
 import org.openhab.designerx.model.items.ItemResource;
 import org.openhab.designerx.model.xtdex.ModelXtdexException;
@@ -170,7 +169,7 @@ public class ItemResourceXtdexTest {
 		System.out.println(xtdex.toXtext(ir));
 	}
 	
-	@Test
+//	@Test
 	public void testFromXtextListOfString_9() throws ModelXtdexException, ModelException {
 		List<String> list = Lists.newArrayList();
 		list.add("/* Demo items */");

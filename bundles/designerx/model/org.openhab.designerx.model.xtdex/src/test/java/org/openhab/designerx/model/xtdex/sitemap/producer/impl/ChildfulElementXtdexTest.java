@@ -2,7 +2,6 @@ package org.openhab.designerx.model.xtdex.sitemap.producer.impl;
 
 import java.util.List;
 
-import org.junit.Test;
 import org.openhab.designerx.model.sitemap.Element;
 import org.openhab.designerx.model.xtdex.ModelXtdexException;
 
@@ -10,7 +9,7 @@ import com.google.common.collect.Lists;
 
 public class ChildfulElementXtdexTest {
 
-	@Test
+//	@Test
 	public void testParse_1() throws ModelXtdexException {
 		List<String> list = Lists.newArrayList();
 		list.add("Frame {");
@@ -22,7 +21,7 @@ public class ChildfulElementXtdexTest {
 		System.out.println(actual);
 	}
 	
-	@Test
+//	@Test
 	public void testParse_2() throws ModelXtdexException {
 		List<String> list = Lists.newArrayList();
 		list.add("Frame {");
@@ -37,7 +36,7 @@ public class ChildfulElementXtdexTest {
 		System.out.println(actual);
 	}
 	
-	@Test
+//	@Test
 	public void testParse_3() throws ModelXtdexException {
 		List<String> list = Lists.newArrayList();
 		list.add("Frame {");
@@ -51,7 +50,7 @@ public class ChildfulElementXtdexTest {
 		System.out.println(actual);
 	}
 	
-	@Test
+//	@Test
 	public void testParse_4() throws ModelXtdexException {
 		List<String> list = Lists.newArrayList();
 		list.add("Frame {");
@@ -66,7 +65,7 @@ public class ChildfulElementXtdexTest {
 		System.out.println(actual);
 	}
 	
-	@Test
+//	@Test
 	public void testParse_5() throws ModelXtdexException {
 		List<String> list = Lists.newArrayList();
 		list.add("Frame label=\"Weather\" {");
@@ -90,7 +89,7 @@ public class ChildfulElementXtdexTest {
 		System.out.println(actual);
 	}
 	
-	@Test
+//	@Test
 	public void testParse_6() throws ModelXtdexException {
 		List<String> list = Lists.newArrayList();
 		list.add("Frame label=\"Date\" {");
@@ -102,7 +101,7 @@ public class ChildfulElementXtdexTest {
 		System.out.println(actual);
 	}
 	
-	@Test
+//	@Test
 	public void testParse_7() throws ModelXtdexException {
 		List<String> list = Lists.newArrayList();
 		list.add("Frame label=\"Demo\" {");
@@ -149,7 +148,7 @@ public class ChildfulElementXtdexTest {
 		System.out.println(actual);
 	}
 	
-	@Test
+//	@Test
 	public void testParse_8() throws ModelXtdexException {
 		List<String> list = Lists.newArrayList();
 		list.add("Frame {");

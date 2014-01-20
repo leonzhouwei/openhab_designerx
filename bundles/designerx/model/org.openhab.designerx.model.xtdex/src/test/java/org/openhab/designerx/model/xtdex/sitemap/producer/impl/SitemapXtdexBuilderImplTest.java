@@ -2,7 +2,6 @@ package org.openhab.designerx.model.xtdex.sitemap.producer.impl;
 
 import java.util.List;
 
-import org.junit.Test;
 import org.openhab.designerx.model.sitemap.Sitemap;
 import org.openhab.designerx.model.xtdex.ModelXtdexException;
 import org.openhab.designerx.model.xtdex.sitemap.SitemapXtdex;
@@ -12,7 +11,7 @@ import com.google.common.collect.Lists;
 public class SitemapXtdexBuilderImplTest {
 	private static final SitemapXtdex xtdex = new SitemapXtdexBuilderImpl().build();
 
-	@Test
+//	@Test
 	public void test_1() throws ModelXtdexException {
 		List<String> list = Lists.newArrayList();
 		list.add("sitemap demo label=\"Main Menu\" {");
@@ -83,7 +82,7 @@ public class SitemapXtdexBuilderImplTest {
 		System.out.println(xtdex.toXtext(sitemap));
 	}
 	
-	@Test
+//	@Test
 	public void test_2() throws ModelXtdexException {
 		List<String> list = Lists.newArrayList();
 		list.add("sitemap demo label=\"Main Menu\"");

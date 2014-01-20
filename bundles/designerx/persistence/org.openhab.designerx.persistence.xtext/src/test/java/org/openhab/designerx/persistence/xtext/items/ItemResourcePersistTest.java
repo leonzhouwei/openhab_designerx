@@ -29,7 +29,7 @@ public class ItemResourcePersistTest {
 		System.out.println(irx.toXtext(ir));
 	}
 	
-	@Test
+//	@Test
 	public void testSave() throws IOException {
 	}
 
