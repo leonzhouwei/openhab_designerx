@@ -21,6 +21,7 @@
 		<module>server</module>
 		<module>ui</module>
 		<module>util</module>
+		<module>domainobject</module>
 	</modules>
 	
 </project>
