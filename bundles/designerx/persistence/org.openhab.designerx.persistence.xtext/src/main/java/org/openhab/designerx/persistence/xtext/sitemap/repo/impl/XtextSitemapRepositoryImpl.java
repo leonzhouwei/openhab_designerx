@@ -16,7 +16,12 @@ import org.openhab.designerx.persistence.xtext.sitemap.XtextSitemap;
 import org.openhab.designerx.persistence.xtext.sitemap.repo.XtextSitemapRepository;
 import org.openhab.designerx.util.IOUtils;
 
-public final class XtextSitemapRepositoryImpl implements XtextSitemapRepository {
+final class XtextSitemapRepositoryImpl implements XtextSitemapRepository {
+	private static XtextSitemapRepository instance = new XtextSitemapRepositoryImpl();
+	
+	public static XtextSitemapRepository getInstance() {
+		return instance;
+	}
 
 	@Override
 	public XtextSitemap find(String name) {
@@ -54,7 +59,8 @@ public final class XtextSitemapRepositoryImpl implements XtextSitemapRepository 
 		public XtextSitemapImpl(File file) {
 			this.file = file;
 		}
-		
 	}
+	
+	private XtextSitemapRepositoryImpl() {}
 
 }

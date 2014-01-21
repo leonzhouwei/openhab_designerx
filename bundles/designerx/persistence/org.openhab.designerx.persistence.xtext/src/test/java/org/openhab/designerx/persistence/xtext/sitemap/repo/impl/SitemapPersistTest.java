@@ -14,7 +14,7 @@ import org.openhab.designerx.persistence.xtext.sitemap.repo.XtextSitemapReposito
 import org.openhab.designerx.util.StringHelper;
 
 public class SitemapPersistTest {
-	private XtextSitemapRepository persistBuilder = new XtextSitemapRepositoryImpl();
+	private XtextSitemapRepository persistBuilder = XtextSitemapRepositoryImpl.getInstance();
 	private SitemapXtdexBuilder xtdexBuilder = new SitemapXtdexBuilderImpl();
 	private SitemapXtdex xtdex = xtdexBuilder.build();
 
