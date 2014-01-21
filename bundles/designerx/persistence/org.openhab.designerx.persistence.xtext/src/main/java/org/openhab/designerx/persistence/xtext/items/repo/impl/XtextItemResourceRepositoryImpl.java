@@ -17,7 +17,12 @@ import org.openhab.designerx.persistence.xtext.items.XtextItemResource;
 import org.openhab.designerx.persistence.xtext.items.repo.XtextItemResourceRepository;
 import org.openhab.designerx.util.IOUtils;
 
-public final class XtextItemResourceRepositoryImpl implements XtextItemResourceRepository {
+final class XtextItemResourceRepositoryImpl implements XtextItemResourceRepository {
+	private static final XtextItemResourceRepositoryImpl instance = new XtextItemResourceRepositoryImpl();
+	
+	static XtextItemResourceRepositoryImpl getInstance() {
+		return instance;
+	}
 
 	@Override
 	public XtextItemResource find(String name) {
@@ -56,5 +61,7 @@ public final class XtextItemResourceRepositoryImpl implements XtextItemResourceR
 			IOUtils.write(file, xtext);
 		}
 	}
+	
+	private XtextItemResourceRepositoryImpl() {}
 
 }
