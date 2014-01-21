@@ -23,7 +23,6 @@ public class ItemResourcePersistTest {
 		XtextItemResource persist = persistBuilder.find(file);
 		ItemResource ir = persist.get();
 		StringHelper.printSeparateLine();
-		StringHelper.printSeparateLine();
 		System.out.println(xtdex.toXtext(ir));
 	}
 	
