@@ -13,15 +13,14 @@
 	<packaging>pom</packaging>
 
 	<modules>
-		<module>model</module>
-		<module>ui</module>
+		<module>config</module>
 		<module>core</module>
-		<module>modelrepository</module>
+		<module>dependencies</module>
+		<module>model</module>
 		<module>persistence</module>
 		<module>server</module>
-		<module>config</module>
-		
-		<module>dependencies</module>
+		<module>ui</module>
 		<module>util</module>
 	</modules>
+	
 </project>
