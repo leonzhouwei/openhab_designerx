@@ -9,8 +9,7 @@ import org.openhab.designerx.config.ConfigBuilder;
 import org.openhab.designerx.model.sitemap.Sitemap;
 import org.openhab.designerx.model.xtdex.ModelXtdexException;
 import org.openhab.designerx.model.xtdex.sitemap.SitemapXtdex;
-import org.openhab.designerx.model.xtdex.sitemap.producer.SitemapXtdexBuilder;
-import org.openhab.designerx.model.xtdex.sitemap.producer.impl.SitemapXtdexBuilderImpl;
+import org.openhab.designerx.model.xtdex.sitemap.impl.SitemapXtdexImpl;
 import org.openhab.designerx.persistence.xtext.PersistenceXtextConstants;
 import org.openhab.designerx.persistence.xtext.sitemap.XtextSitemap;
 import org.openhab.designerx.persistence.xtext.sitemap.repo.XtextSitemapRepository;
@@ -36,8 +35,7 @@ final class XtextSitemapRepositoryImpl implements XtextSitemapRepository {
 	private class XtextSitemapImpl implements XtextSitemap {
 		private File file;
 		private Config config = ConfigBuilder.build();
-		private SitemapXtdexBuilder xtdexBuilder = new SitemapXtdexBuilderImpl();
-		private SitemapXtdex xtdex = xtdexBuilder.build();
+		private SitemapXtdex xtdex = new SitemapXtdexImpl();
 		
 		public XtextSitemapImpl(String name) {
 			file = new File(config.getSitemapsFolderPath() + PersistenceXtextConstants.FILE_SEPARATOR + name + PersistenceXtextConstants.SITEMAP_FILE_EXTENSION);
