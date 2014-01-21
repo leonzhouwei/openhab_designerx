@@ -5,7 +5,8 @@ import java.util.List;
 import org.openhab.designerx.model.ModelException;
 import org.openhab.designerx.model.items.Item;
 import org.openhab.designerx.model.items.ItemResource;
-import org.openhab.designerx.model.items.impl.ItemResourceImpl;
+import org.openhab.designerx.model.items.ItemResourceFactory;
+import org.openhab.designerx.model.items.impl.ItemResourceFactoryImpl;
 import org.openhab.designerx.model.xtdex.ModelXtdexConstants;
 import org.openhab.designerx.model.xtdex.ModelXtdexException;
 import org.openhab.designerx.model.xtdex.items.ItemResourceXtdex;
@@ -15,6 +16,7 @@ import com.google.common.collect.Lists;
 
 public final class ItemResourceXtdexImpl implements ItemResourceXtdex {
 	private ItemXtdex xtdex = new ItemXtdexImpl();
+	private ItemResourceFactory factory = new ItemResourceFactoryImpl();
 
 	@Override
 	public ItemResource fromXtext(String xtext) throws ModelXtdexException, ModelException {
@@ -40,7 +42,7 @@ public final class ItemResourceXtdexImpl implements ItemResourceXtdex {
 	
 	@Override
 	public ItemResource fromXtext(List<String> xtext) throws ModelXtdexException, ModelException {
-		ItemResource ir = new ItemResourceImpl();
+		ItemResource ir = factory.createItemResource();
 		for (String string : xtext) {
 			String s = string.trim();
 			if (s.isEmpty() || s.startsWith("/*")) {

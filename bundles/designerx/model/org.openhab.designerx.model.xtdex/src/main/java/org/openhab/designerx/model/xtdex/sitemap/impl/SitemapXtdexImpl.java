@@ -2,10 +2,11 @@ package org.openhab.designerx.model.xtdex.sitemap.impl;
 
 import java.util.List;
 
+import org.openhab.designerx.model.ModelException;
 import org.openhab.designerx.model.sitemap.Element;
 import org.openhab.designerx.model.sitemap.Sitemap;
-import org.openhab.designerx.model.sitemap.producer.SitemapBuilder;
-import org.openhab.designerx.model.sitemap.producer.impl.SitemapBuilderImpl;
+import org.openhab.designerx.model.sitemap.SitemapFactory;
+import org.openhab.designerx.model.sitemap.impl.SitemapFactoryImpl;
 import org.openhab.designerx.model.xtdex.ModelXtdexConstants;
 import org.openhab.designerx.model.xtdex.ModelXtdexException;
 import org.openhab.designerx.model.xtdex.sitemap.ElementXtdex;
@@ -17,11 +18,11 @@ public final class SitemapXtdexImpl implements SitemapXtdex {
 	private static final String MATCH_REGEX = "\\s*sitemap\\b.*";
 	private static final String DEFAULT_INDENTATION = "    ";
 	
-	private SitemapBuilder builder = new SitemapBuilderImpl();
+	private SitemapFactory factory = new SitemapFactoryImpl();
 	private ElementXtdex xtdex = new ElementXtdexImpl();
 	
 	@Override
-	public Sitemap parse(String xtext) throws ModelXtdexException {
+	public Sitemap parse(String xtext) throws ModelXtdexException, ModelException {
 		SitemapXtextKeeper keeper = new SitemapXtextKeeper(xtext);
 		ImmutableList<String> il = keeper.getXtext();
 		return parse(il);
@@ -83,13 +84,13 @@ public final class SitemapXtdexImpl implements SitemapXtdex {
 		return false;
 	}
 	
-	public Sitemap parse(List<String> xtext) throws ModelXtdexException {
+	public Sitemap parse(List<String> xtext) throws ModelXtdexException, ModelException {
 		SitemapXtextKeeper keeper = new SitemapXtextKeeper(xtext);
 		ImmutableList<String> il = keeper.getXtext();
 		return parse(il);
 	}
 	
-	private Sitemap parse(ImmutableList<String> il) throws ModelXtdexException {
+	private Sitemap parse(ImmutableList<String> il) throws ModelXtdexException, ModelException {
 		if (!isSitemap(il.get(0))) {
 			throw new ModelXtdexException(il.get(0) + " is NOT a sitemap");
 		}
@@ -103,7 +104,7 @@ public final class SitemapXtdexImpl implements SitemapXtdex {
 			throw new ModelXtdexException("sitemap name NOT found in '" + first + "'");
 		}
 		//
-		Sitemap instance = builder.build();
+		Sitemap instance = factory.createSitemap(name);
 		instance.setName(name);
 		String label = PropertyHandler.getValueBetweenDoubleQuotes(first, ModelXtdexConstants.LABEL);
 		if (label != null && !label.trim().isEmpty()) {

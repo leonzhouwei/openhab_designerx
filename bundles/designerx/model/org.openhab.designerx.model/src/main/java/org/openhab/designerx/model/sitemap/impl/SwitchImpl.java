@@ -1,17 +1,19 @@
-package org.openhab.designerx.model.sitemap.producer.impl;
+package org.openhab.designerx.model.sitemap.impl;
 
 import java.util.Collection;
 import java.util.List;
 
 import org.openhab.designerx.model.sitemap.ColorArray;
 import org.openhab.designerx.model.sitemap.Element;
-import org.openhab.designerx.model.sitemap.Slider;
+import org.openhab.designerx.model.sitemap.Mapping;
+import org.openhab.designerx.model.sitemap.Switch;
 import org.openhab.designerx.model.sitemap.VisibilityRule;
 
-final class SliderImpl implements Slider {
-	private Element element = new ElementImpl(Slider.TYPE_NAME);
-	private int frequency = 0;
-	private boolean switchEnabled = false;
+import com.google.common.collect.Lists;
+
+final class SwitchImpl implements Switch {
+	private Element element = new ElementImpl(Switch.TYPE_NAME);
+	private List<Mapping> mappings = Lists.newArrayList();
 	
 	@Override
 	public void setItem(String item) {
@@ -87,35 +89,20 @@ final class SliderImpl implements Slider {
 	public List<VisibilityRule> getVisibility() {
 		return element.getVisibility();
 	}
-	
+
 	@Override
-	public int getFrequency() {
-		return frequency;
+	public List<Mapping> getMappings() {
+		return mappings;
 	}
 
 	@Override
-	public void setFrequency(int frequency) {
-		this.frequency = frequency;
+	public void addMappings(List<Mapping> mappings) {
+		this.mappings.addAll(mappings);
 	}
 
 	@Override
-	public boolean isSwitchEnabled() {
-		return switchEnabled;
-	}
-
-	@Override
-	public void setSwitchEnabled(boolean switchEnabled) {
-		this.switchEnabled = switchEnabled;
-	}
-	
-	public void setFrequency(String frequency) {
-		int i = Integer.parseInt(frequency);
-		setFrequency(i);
-	}
-
-	public void setSwitchEnabled(String switchEnabled) {
-		boolean b = Boolean.parseBoolean(switchEnabled);
-		setSwitchEnabled(b);
+	public void addMapping(Mapping mapping) {
+		this.mappings.add(mapping);
 	}
 
 	@Override

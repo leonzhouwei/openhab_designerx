@@ -3,9 +3,9 @@ package org.openhab.designerx.model.xtdex.sitemap.impl;
 import java.util.List;
 import java.util.Set;
 
+import org.openhab.designerx.model.sitemap.SitemapElementFactory;
 import org.openhab.designerx.model.sitemap.VisibilityRule;
-import org.openhab.designerx.model.sitemap.producer.VisibilityRuleBuilder;
-import org.openhab.designerx.model.sitemap.producer.impl.VisibilityRuleBuilderImpl;
+import org.openhab.designerx.model.sitemap.impl.SitemapElementFactoryImpl;
 import org.openhab.designerx.model.xtdex.ModelXtdexConstants;
 
 import com.google.common.collect.ImmutableSet;
@@ -22,7 +22,7 @@ final class VisibilityRulesXtdex {
 			.add("<")
 			.build();
 	
-	private static final VisibilityRuleBuilder builder = new VisibilityRuleBuilderImpl();
+	private static final SitemapElementFactory factory = new SitemapElementFactoryImpl();
 	
 	static List<VisibilityRule> fromXtext(String xtext) {
 		xtext = xtext.trim();
@@ -70,7 +70,7 @@ final class VisibilityRulesXtdex {
 	
 	private static VisibilityRule parseRule(String rule) {
 		rule = rule.trim();
-		VisibilityRule e = builder.build();
+		VisibilityRule e = factory.createVisibilityRule();
 		//  Valid operators are the ==, >=, <=, !=, >, <.
 		for (String operator : VALIDE_OPERATORS) {
 			if (rule.contains(operator)) {

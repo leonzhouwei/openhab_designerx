@@ -10,7 +10,7 @@ import org.openhab.designerx.model.items.ItemResource;
 import com.google.common.collect.Lists;
 import com.google.common.collect.Maps;
 
-public final class ItemResourceImpl implements ItemResource {
+final class ItemResourceImpl implements ItemResource {
 	private List<Item> items = Lists.newArrayList();
 	private Map<String, Integer> map = Maps.newHashMap();
 	

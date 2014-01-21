@@ -4,6 +4,7 @@ import java.io.File;
 import java.io.IOException;
 
 import org.junit.Test;
+import org.openhab.designerx.model.ModelException;
 import org.openhab.designerx.model.sitemap.Sitemap;
 import org.openhab.designerx.model.xtdex.ModelXtdexException;
 import org.openhab.designerx.model.xtdex.sitemap.SitemapXtdex;
@@ -17,7 +18,7 @@ public class SitemapPersistTest {
 	private SitemapXtdex xtdex = new SitemapXtdexImpl();
 
 	@Test
-	public void testGet() throws IOException, ModelXtdexException {
+	public void testGet() throws IOException, ModelXtdexException, ModelException {
 		File file = new File("_test/resources/demo.sitemap");
 		XtextSitemap persist = persistBuilder.find(file);
 		Sitemap sitemap = persist.get();
@@ -27,7 +28,7 @@ public class SitemapPersistTest {
 	}
 	
 //	@Test
-	public void testSave() throws IOException, ModelXtdexException {
+	public void testSave() throws IOException, ModelXtdexException, ModelException {
 		File file = new File("_test/resources/demo.sitemap");
 		XtextSitemap persist = persistBuilder.find(file);
 		Sitemap sitemap = persist.get();

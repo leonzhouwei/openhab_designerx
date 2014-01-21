@@ -1,4 +1,4 @@
-package org.openhab.designerx.model.sitemap.producer;
+package org.openhab.designerx.model.sitemap.impl;
 
 import org.openhab.designerx.model.sitemap.Sitemap;
 

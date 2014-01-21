@@ -1,17 +1,15 @@
-package org.openhab.designerx.model.sitemap.producer.impl;
+package org.openhab.designerx.model.sitemap.impl;
 
 import java.util.Collection;
-import java.util.List;
 
 import org.openhab.designerx.model.sitemap.ColorArray;
 import org.openhab.designerx.model.sitemap.Element;
+import org.openhab.designerx.model.sitemap.List;
 import org.openhab.designerx.model.sitemap.VisibilityRule;
-import org.openhab.designerx.model.sitemap.Webview;
 
-final class WebviewImpl implements Webview {
-	private Element element = new ElementImpl(Webview.TYPE_NAME);
-	private int height = 0;
-	private String url;
+final class ListImpl implements List {
+	private Element element = new ElementImpl(List.TYPE_NAME);
+	private String separator;
 	
 	@Override
 	public void setItem(String item) {
@@ -44,7 +42,7 @@ final class WebviewImpl implements Webview {
 	}
 
 	@Override
-	public void addLabelColor(List<ColorArray> labelColor) {
+	public void addLabelColor(java.util.List<ColorArray> labelColor) {
 		element.addLabelColor(labelColor);
 	}
 
@@ -54,12 +52,12 @@ final class WebviewImpl implements Webview {
 	}
 	
 	@Override
-	public List<ColorArray> getLabelColor() {
+	public java.util.List<ColorArray> getLabelColor() {
 		return element.getLabelColor();
 	}
 
 	@Override
-	public void addValueColor(List<ColorArray> valueColor) {
+	public void addValueColor(java.util.List<ColorArray> valueColor) {
 		element.addValueColor(valueColor);
 	}
 
@@ -67,14 +65,14 @@ final class WebviewImpl implements Webview {
 	public void addValueColor(ColorArray valueColor) {
 		element.addValueColor(valueColor);
 	}
-
+	
 	@Override
-	public List<ColorArray> getValueColor() {
+	public java.util.List<ColorArray> getValueColor() {
 		return element.getValueColor();
 	}
 
 	@Override
-	public void addVisibility(List<VisibilityRule> visibility) {
+	public void addVisibility(java.util.List<VisibilityRule> visibility) {
 		element.addVisibility(visibility);
 	}
 
@@ -84,28 +82,18 @@ final class WebviewImpl implements Webview {
 	}
 
 	@Override
-	public List<VisibilityRule> getVisibility() {
+	public java.util.List<VisibilityRule> getVisibility() {
 		return element.getVisibility();
 	}
-
+	
 	@Override
-	public int getHeight() {
-		return height;
+	public String getSeparator() {
+		return separator;
 	}
 
 	@Override
-	public void setHeight(int height) {
-		this.height = height;
-	}
-
-	@Override
-	public String getUrl() {
-		return url;
-	}
-
-	@Override
-	public void setUrl(String url) {
-		this.url = url;
+	public void setSeparator(String separator) {
+		this.separator = separator;
 	}
 
 	@Override
@@ -119,7 +107,7 @@ final class WebviewImpl implements Webview {
 	}
 
 	@Override
-	public List<Element> getChildren() {
+	public java.util.List<Element> getChildren() {
 		return element.getChildren();
 	}
 

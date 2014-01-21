@@ -1,17 +1,16 @@
-package org.openhab.designerx.model.sitemap.producer.impl;
+package org.openhab.designerx.model.sitemap.impl;
 
 import java.util.Collection;
 import java.util.List;
 
 import org.openhab.designerx.model.sitemap.ColorArray;
-import org.openhab.designerx.model.sitemap.Colorpicker;
 import org.openhab.designerx.model.sitemap.Element;
+import org.openhab.designerx.model.sitemap.Frame;
 import org.openhab.designerx.model.sitemap.VisibilityRule;
 
-final class ColorpickerImpl implements Colorpicker {
-	private Element element = new ElementImpl(Colorpicker.TYPE_NAME);
-	private int frequency = 0;
-
+final class FrameImpl implements Frame {
+	private Element element = new ElementImpl(Frame.TYPE_NAME, true);
+	
 	@Override
 	public void setItem(String item) {
 		element.setItem(item);
@@ -81,27 +80,12 @@ final class ColorpickerImpl implements Colorpicker {
 	public void addVisibility(VisibilityRule visibility) {
 		element.addVisibility(visibility);
 	}
-
+	
 	@Override
 	public List<VisibilityRule> getVisibility() {
 		return element.getVisibility();
 	}
 	
-	@Override
-	public int getFrequency() {
-		return frequency;
-	}
-
-	public void setFrequency(String frequency) {
-		int freq = Integer.parseInt(frequency);
-		setFrequency(freq);
-	}
-
-	@Override
-	public void setFrequency(int frequency) {
-		this.frequency = frequency;
-	}
-
 	@Override
 	public String getTypeName() {
 		return element.getTypeName();

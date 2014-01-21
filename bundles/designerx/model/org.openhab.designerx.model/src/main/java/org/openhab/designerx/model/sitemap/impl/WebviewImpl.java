@@ -1,15 +1,17 @@
-package org.openhab.designerx.model.sitemap.producer.impl;
+package org.openhab.designerx.model.sitemap.impl;
 
 import java.util.Collection;
 import java.util.List;
 
 import org.openhab.designerx.model.sitemap.ColorArray;
 import org.openhab.designerx.model.sitemap.Element;
-import org.openhab.designerx.model.sitemap.Frame;
 import org.openhab.designerx.model.sitemap.VisibilityRule;
+import org.openhab.designerx.model.sitemap.Webview;
 
-final class FrameImpl implements Frame {
-	private Element element = new ElementImpl(Frame.TYPE_NAME, true);
+final class WebviewImpl implements Webview {
+	private Element element = new ElementImpl(Webview.TYPE_NAME);
+	private int height = 0;
+	private String url;
 	
 	@Override
 	public void setItem(String item) {
@@ -65,7 +67,7 @@ final class FrameImpl implements Frame {
 	public void addValueColor(ColorArray valueColor) {
 		element.addValueColor(valueColor);
 	}
-	
+
 	@Override
 	public List<ColorArray> getValueColor() {
 		return element.getValueColor();
@@ -80,12 +82,32 @@ final class FrameImpl implements Frame {
 	public void addVisibility(VisibilityRule visibility) {
 		element.addVisibility(visibility);
 	}
-	
+
 	@Override
 	public List<VisibilityRule> getVisibility() {
 		return element.getVisibility();
 	}
-	
+
+	@Override
+	public int getHeight() {
+		return height;
+	}
+
+	@Override
+	public void setHeight(int height) {
+		this.height = height;
+	}
+
+	@Override
+	public String getUrl() {
+		return url;
+	}
+
+	@Override
+	public void setUrl(String url) {
+		this.url = url;
+	}
+
 	@Override
 	public String getTypeName() {
 		return element.getTypeName();

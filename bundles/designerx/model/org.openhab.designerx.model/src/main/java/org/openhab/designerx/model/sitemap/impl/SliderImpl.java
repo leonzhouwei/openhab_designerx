@@ -1,19 +1,17 @@
-package org.openhab.designerx.model.sitemap.producer.impl;
+package org.openhab.designerx.model.sitemap.impl;
 
-import java.math.BigDecimal;
 import java.util.Collection;
 import java.util.List;
 
 import org.openhab.designerx.model.sitemap.ColorArray;
 import org.openhab.designerx.model.sitemap.Element;
-import org.openhab.designerx.model.sitemap.Setpoint;
+import org.openhab.designerx.model.sitemap.Slider;
 import org.openhab.designerx.model.sitemap.VisibilityRule;
 
-final class SetpointImpl implements Setpoint {
-	private Element element = new ElementImpl(Setpoint.TYPE_NAME);
-	private BigDecimal minValue;
-	private BigDecimal maxValue;
-	private BigDecimal step;
+final class SliderImpl implements Slider {
+	private Element element = new ElementImpl(Slider.TYPE_NAME);
+	private int frequency = 0;
+	private boolean switchEnabled = false;
 	
 	@Override
 	public void setItem(String item) {
@@ -69,7 +67,7 @@ final class SetpointImpl implements Setpoint {
 	public void addValueColor(ColorArray valueColor) {
 		element.addValueColor(valueColor);
 	}
-	
+
 	@Override
 	public List<ColorArray> getValueColor() {
 		return element.getValueColor();
@@ -89,50 +87,35 @@ final class SetpointImpl implements Setpoint {
 	public List<VisibilityRule> getVisibility() {
 		return element.getVisibility();
 	}
-
+	
 	@Override
-	public BigDecimal getMinValue() {
-		return minValue;
+	public int getFrequency() {
+		return frequency;
 	}
 
 	@Override
-	public void setMinValue(BigDecimal minValue) {
-		this.minValue = minValue;
+	public void setFrequency(int frequency) {
+		this.frequency = frequency;
+	}
+
+	@Override
+	public boolean isSwitchEnabled() {
+		return switchEnabled;
+	}
+
+	@Override
+	public void setSwitchEnabled(boolean switchEnabled) {
+		this.switchEnabled = switchEnabled;
 	}
 	
-	public void setMinValue(String minValue) {
-		BigDecimal bd = new BigDecimal(minValue);
-		setMinValue(bd);
+	public void setFrequency(String frequency) {
+		int i = Integer.parseInt(frequency);
+		setFrequency(i);
 	}
 
-	@Override
-	public BigDecimal getMaxValue() {
-		return maxValue;
-	}
-
-	@Override
-	public void setMaxValue(BigDecimal maxValue) {
-		this.maxValue = maxValue;
-	}
-	
-	public void setMaxValue(String maxValue) {
-		BigDecimal bd = new BigDecimal(maxValue);
-		setMaxValue(bd);
-	}
-
-	@Override
-	public BigDecimal getStep() {
-		return step;
-	}
-
-	@Override
-	public void setStep(BigDecimal step) {
-		this.step = step;
-	}
-	
-	public void setStep(String step) {
-		BigDecimal bd = new BigDecimal(step);
-		setStep(bd);
+	public void setSwitchEnabled(String switchEnabled) {
+		boolean b = Boolean.parseBoolean(switchEnabled);
+		setSwitchEnabled(b);
 	}
 
 	@Override

@@ -1,9 +1,9 @@
 package org.openhab.designerx.model.xtdex.sitemap.impl;
 
 import org.openhab.designerx.model.sitemap.Element;
+import org.openhab.designerx.model.sitemap.SitemapElementFactory;
 import org.openhab.designerx.model.sitemap.Group;
-import org.openhab.designerx.model.sitemap.producer.ElementFactory;
-import org.openhab.designerx.model.sitemap.producer.impl.ElementFactoryImpl;
+import org.openhab.designerx.model.sitemap.impl.SitemapElementFactoryImpl;
 import org.openhab.designerx.model.xtdex.ModelXtdexConstants;
 
 /**
@@ -17,7 +17,7 @@ import org.openhab.designerx.model.xtdex.ModelXtdexConstants;
 final class GroupXtdex {
 	private static final String MATCH_REGEX = "\\s*" + Group.TYPE_NAME + "\\b.*";
 	
-	private static final ElementFactory factory = new ElementFactoryImpl();
+	private static final SitemapElementFactory factory = new SitemapElementFactoryImpl();
 	
 	static boolean isGroup(ChildfulElementXtextKeeper keeper) {
 		String xtext = keeper.getXtext().get(0);

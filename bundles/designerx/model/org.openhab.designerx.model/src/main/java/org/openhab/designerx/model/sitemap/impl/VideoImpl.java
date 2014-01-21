@@ -1,19 +1,17 @@
-package org.openhab.designerx.model.sitemap.producer.impl;
+package org.openhab.designerx.model.sitemap.impl;
 
 import java.util.Collection;
 import java.util.List;
 
-import org.openhab.designerx.model.sitemap.Chart;
 import org.openhab.designerx.model.sitemap.ColorArray;
 import org.openhab.designerx.model.sitemap.Element;
+import org.openhab.designerx.model.sitemap.Video;
 import org.openhab.designerx.model.sitemap.VisibilityRule;
 
-final class ChartImpl implements Chart {
-	private Element element = new ElementImpl(Chart.TYPE_NAME);
-	private String period;
-	private int refresh;
-	private String service;
-
+final class VideoImpl implements Video {
+	private Element element = new ElementImpl(Video.TYPE_NAME);
+	private String url;
+	
 	@Override
 	public void setItem(String item) {
 		element.setItem(item);
@@ -53,7 +51,7 @@ final class ChartImpl implements Chart {
 	public void addLabelColor(ColorArray labelColor) {
 		element.addLabelColor(labelColor);
 	}
-
+	
 	@Override
 	public List<ColorArray> getLabelColor() {
 		return element.getLabelColor();
@@ -88,40 +86,15 @@ final class ChartImpl implements Chart {
 	public List<VisibilityRule> getVisibility() {
 		return element.getVisibility();
 	}
-	
+
 	@Override
-	public String getService() {
-		return service;
+	public String getUrl() {
+		return url;
 	}
 
 	@Override
-	public void setService(String service) {
-		this.service = service;
-	}
-
-	@Override
-	public int getRefresh() {
-		return refresh;
-	}
-
-	public void setRefresh(String refresh) {
-		int i = Integer.parseInt(refresh);
-		setRefresh(i);
-	}
-
-	@Override
-	public void setRefresh(int refresh) {
-		this.refresh = refresh;
-	}
-
-	@Override
-	public String getPeriod() {
-		return period;
-	}
-
-	@Override
-	public void setPeriod(String period) {
-		this.period = period;
+	public void setUrl(String url) {
+		this.url = url;
 	}
 
 	@Override

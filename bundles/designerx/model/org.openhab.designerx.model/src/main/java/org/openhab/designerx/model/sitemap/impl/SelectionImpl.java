@@ -1,20 +1,19 @@
-package org.openhab.designerx.model.sitemap.producer.impl;
+package org.openhab.designerx.model.sitemap.impl;
 
 import java.util.Collection;
 import java.util.List;
 
 import org.openhab.designerx.model.sitemap.ColorArray;
 import org.openhab.designerx.model.sitemap.Element;
-import org.openhab.designerx.model.sitemap.Image;
+import org.openhab.designerx.model.sitemap.Mapping;
+import org.openhab.designerx.model.sitemap.Selection;
 import org.openhab.designerx.model.sitemap.VisibilityRule;
 
 import com.google.common.collect.Lists;
 
-final class ImageImpl implements Image {
-	private Element element = new ElementImpl(Image.TYPE_NAME, true);
-	private int refresh = 0;
-	private String url;
-	private List<ColorArray> iconColor = Lists.newArrayList();
+final class SelectionImpl implements Selection {
+	private Element element = new ElementImpl(Selection.TYPE_NAME);
+	private List<Mapping> mappings = Lists.newArrayList();
 	
 	@Override
 	public void setItem(String item) {
@@ -70,7 +69,7 @@ final class ImageImpl implements Image {
 	public void addValueColor(ColorArray valueColor) {
 		element.addValueColor(valueColor);
 	}
-	
+
 	@Override
 	public List<ColorArray> getValueColor() {
 		return element.getValueColor();
@@ -90,40 +89,20 @@ final class ImageImpl implements Image {
 	public List<VisibilityRule> getVisibility() {
 		return element.getVisibility();
 	}
-
-	@Override
-	public String getUrl() {
-		return url;
-	}
-
-	@Override
-	public void setUrl(String url) {
-		this.url = url;
-	}
-
-	@Override
-	public int getRefresh() {
-		return refresh;
-	}
 	
-	public void setRefresh(String refresh) {
-		int i = Integer.parseInt(refresh);
-		setRefresh(i);
+	@Override
+	public List<Mapping> getMappings() {
+		return mappings;
 	}
 
 	@Override
-	public void setRefresh(int refresh) {
-		this.refresh = refresh;
+	public void addMappings(List<Mapping> mappings) {
+		this.mappings.addAll(mappings);
 	}
 
 	@Override
-	public List<ColorArray> getIconColor() {
-		return iconColor;
-	}
-
-	@Override
-	public void addIconColor(List<ColorArray> iconColor) {
-		this.iconColor.addAll(iconColor);
+	public void addMapping(Mapping mapping) {
+		this.mappings.add(mapping);
 	}
 
 	@Override

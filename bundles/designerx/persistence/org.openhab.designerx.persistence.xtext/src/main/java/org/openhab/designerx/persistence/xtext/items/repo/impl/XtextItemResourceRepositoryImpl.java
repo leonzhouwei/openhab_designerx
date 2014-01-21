@@ -36,7 +36,7 @@ final class XtextItemResourceRepositoryImpl implements XtextItemResourceReposito
 	private class XtextItemResourceImpl implements XtextItemResource {
 		private File file;
 		private Config config = ConfigBuilder.build();
-		private ItemResourceXtdex xtdex = new ItemResourceXtdexImpl();
+		private final ItemResourceXtdex xtdex = new ItemResourceXtdexImpl();
 		
 		public XtextItemResourceImpl(String name) {
 			file = new File(config.getItemsFolderPath() + PersistenceXtextConstants.FILE_SEPARATOR + name + PersistenceXtextConstants.ITEMS_FILE_EXTENSION);

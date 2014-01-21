@@ -1,16 +1,15 @@
-package org.openhab.designerx.model.sitemap.producer.impl;
+package org.openhab.designerx.model.sitemap.impl;
 
 import java.util.Collection;
 import java.util.List;
 
 import org.openhab.designerx.model.sitemap.ColorArray;
 import org.openhab.designerx.model.sitemap.Element;
-import org.openhab.designerx.model.sitemap.Video;
+import org.openhab.designerx.model.sitemap.Group;
 import org.openhab.designerx.model.sitemap.VisibilityRule;
 
-final class VideoImpl implements Video {
-	private Element element = new ElementImpl(Video.TYPE_NAME);
-	private String url;
+final class GroupImpl implements Group {
+	private Element element = new ElementImpl(Group.TYPE_NAME, true);
 	
 	@Override
 	public void setItem(String item) {
@@ -66,7 +65,7 @@ final class VideoImpl implements Video {
 	public void addValueColor(ColorArray valueColor) {
 		element.addValueColor(valueColor);
 	}
-
+	
 	@Override
 	public List<ColorArray> getValueColor() {
 		return element.getValueColor();
@@ -86,17 +85,7 @@ final class VideoImpl implements Video {
 	public List<VisibilityRule> getVisibility() {
 		return element.getVisibility();
 	}
-
-	@Override
-	public String getUrl() {
-		return url;
-	}
-
-	@Override
-	public void setUrl(String url) {
-		this.url = url;
-	}
-
+	
 	@Override
 	public String getTypeName() {
 		return element.getTypeName();

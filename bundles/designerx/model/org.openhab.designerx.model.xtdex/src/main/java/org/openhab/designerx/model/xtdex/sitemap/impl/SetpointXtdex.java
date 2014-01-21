@@ -3,9 +3,9 @@ package org.openhab.designerx.model.xtdex.sitemap.impl;
 import java.math.BigDecimal;
 
 import org.openhab.designerx.model.sitemap.Element;
+import org.openhab.designerx.model.sitemap.SitemapElementFactory;
 import org.openhab.designerx.model.sitemap.Setpoint;
-import org.openhab.designerx.model.sitemap.producer.ElementFactory;
-import org.openhab.designerx.model.sitemap.producer.impl.ElementFactoryImpl;
+import org.openhab.designerx.model.sitemap.impl.SitemapElementFactoryImpl;
 import org.openhab.designerx.model.xtdex.ModelXtdexConstants;
 
 /**
@@ -22,7 +22,7 @@ final class SetpointXtdex {
 	private static final String MAXVALUE = "maxValue";
 	private static final String STEP = "step";
 	
-	private static final ElementFactory factory = new ElementFactoryImpl();
+	private static final SitemapElementFactory factory = new SitemapElementFactoryImpl();
 
 	static boolean isSetpoint(ChildlessElementXtextKeeper keeper) {
 		boolean result = false;

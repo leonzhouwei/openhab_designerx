@@ -3,8 +3,8 @@ package org.openhab.designerx.model.xtdex.sitemap.impl;
 import java.util.List;
 
 import org.openhab.designerx.model.sitemap.Mapping;
-import org.openhab.designerx.model.sitemap.producer.MappingBuilder;
-import org.openhab.designerx.model.sitemap.producer.impl.MappingBuilderImpl;
+import org.openhab.designerx.model.sitemap.SitemapElementFactory;
+import org.openhab.designerx.model.sitemap.impl.SitemapElementFactoryImpl;
 import org.openhab.designerx.model.xtdex.ModelXtdexConstants;
 
 import com.google.common.collect.Lists;
@@ -19,7 +19,7 @@ import com.google.common.collect.Lists;
 public final class MappingsXtdex {
 	static final String TARGET_TYPE_NAME = "mappings";
 	
-	private static final MappingBuilder builder = new MappingBuilderImpl();
+	private static final SitemapElementFactory factory = new SitemapElementFactoryImpl();
 	
 	static List<Mapping> fromXtext(String xtext) {
 		List<Mapping> mappings = Lists.newArrayList();
@@ -33,7 +33,7 @@ public final class MappingsXtdex {
 		String[] split = value.trim().split(ModelXtdexConstants.COMMA_MARK);
 		for (String s : split) {
 			String[] a = s.split(ModelXtdexConstants.EQU_MARK);
-			Mapping instance = builder.build();
+			Mapping instance = factory.createMapping();
 			instance.setCmd(a[0].trim());
 			instance.setLabel(a[1].trim());
 			mappings.add(instance);

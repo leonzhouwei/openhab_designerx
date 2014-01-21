@@ -19,7 +19,7 @@ import org.openhab.designerx.model.items.impl.ItemFactoryImpl;
 import org.openhab.designerx.model.xtdex.ModelXtdexConstants;
 import org.openhab.designerx.model.xtdex.items.ItemXtdex;
 
-public final class ItemXtdexImpl implements ItemXtdex {
+final class ItemXtdexImpl implements ItemXtdex {
 	private static final String SPACE_REGEX = "\\s*";
 	private static final String POST = "\\b.*";
 	private static final String COLOR_REGEX = SPACE_REGEX + ColorItem.TYPE_NAME + POST;

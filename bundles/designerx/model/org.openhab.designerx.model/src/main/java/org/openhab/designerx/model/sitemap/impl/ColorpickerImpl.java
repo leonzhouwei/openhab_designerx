@@ -1,20 +1,17 @@
-package org.openhab.designerx.model.sitemap.producer.impl;
+package org.openhab.designerx.model.sitemap.impl;
 
 import java.util.Collection;
 import java.util.List;
 
 import org.openhab.designerx.model.sitemap.ColorArray;
+import org.openhab.designerx.model.sitemap.Colorpicker;
 import org.openhab.designerx.model.sitemap.Element;
-import org.openhab.designerx.model.sitemap.Mapping;
-import org.openhab.designerx.model.sitemap.Switch;
 import org.openhab.designerx.model.sitemap.VisibilityRule;
 
-import com.google.common.collect.Lists;
+final class ColorpickerImpl implements Colorpicker {
+	private Element element = new ElementImpl(Colorpicker.TYPE_NAME);
+	private int frequency = 0;
 
-final class SwitchImpl implements Switch {
-	private Element element = new ElementImpl(Switch.TYPE_NAME);
-	private List<Mapping> mappings = Lists.newArrayList();
-	
 	@Override
 	public void setItem(String item) {
 		element.setItem(item);
@@ -69,7 +66,7 @@ final class SwitchImpl implements Switch {
 	public void addValueColor(ColorArray valueColor) {
 		element.addValueColor(valueColor);
 	}
-
+	
 	@Override
 	public List<ColorArray> getValueColor() {
 		return element.getValueColor();
@@ -89,20 +86,20 @@ final class SwitchImpl implements Switch {
 	public List<VisibilityRule> getVisibility() {
 		return element.getVisibility();
 	}
-
+	
 	@Override
-	public List<Mapping> getMappings() {
-		return mappings;
+	public int getFrequency() {
+		return frequency;
+	}
+
+	public void setFrequency(String frequency) {
+		int freq = Integer.parseInt(frequency);
+		setFrequency(freq);
 	}
 
 	@Override
-	public void addMappings(List<Mapping> mappings) {
-		this.mappings.addAll(mappings);
-	}
-
-	@Override
-	public void addMapping(Mapping mapping) {
-		this.mappings.add(mapping);
+	public void setFrequency(int frequency) {
+		this.frequency = frequency;
 	}
 
 	@Override

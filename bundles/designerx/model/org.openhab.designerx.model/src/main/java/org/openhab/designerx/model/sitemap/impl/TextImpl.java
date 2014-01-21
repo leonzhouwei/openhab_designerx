@@ -1,19 +1,15 @@
-package org.openhab.designerx.model.sitemap.producer.impl;
+package org.openhab.designerx.model.sitemap.impl;
 
 import java.util.Collection;
 import java.util.List;
 
 import org.openhab.designerx.model.sitemap.ColorArray;
 import org.openhab.designerx.model.sitemap.Element;
-import org.openhab.designerx.model.sitemap.Mapping;
-import org.openhab.designerx.model.sitemap.Selection;
+import org.openhab.designerx.model.sitemap.Text;
 import org.openhab.designerx.model.sitemap.VisibilityRule;
 
-import com.google.common.collect.Lists;
-
-final class SelectionImpl implements Selection {
-	private Element element = new ElementImpl(Selection.TYPE_NAME);
-	private List<Mapping> mappings = Lists.newArrayList();
+final class TextImpl implements Text {
+	private Element element = new ElementImpl(Text.TYPE_NAME, true);
 	
 	@Override
 	public void setItem(String item) {
@@ -69,7 +65,7 @@ final class SelectionImpl implements Selection {
 	public void addValueColor(ColorArray valueColor) {
 		element.addValueColor(valueColor);
 	}
-
+	
 	@Override
 	public List<ColorArray> getValueColor() {
 		return element.getValueColor();
@@ -84,27 +80,12 @@ final class SelectionImpl implements Selection {
 	public void addVisibility(VisibilityRule visibility) {
 		element.addVisibility(visibility);
 	}
-
+	
 	@Override
 	public List<VisibilityRule> getVisibility() {
 		return element.getVisibility();
 	}
 	
-	@Override
-	public List<Mapping> getMappings() {
-		return mappings;
-	}
-
-	@Override
-	public void addMappings(List<Mapping> mappings) {
-		this.mappings.addAll(mappings);
-	}
-
-	@Override
-	public void addMapping(Mapping mapping) {
-		this.mappings.add(mapping);
-	}
-
 	@Override
 	public String getTypeName() {
 		return element.getTypeName();

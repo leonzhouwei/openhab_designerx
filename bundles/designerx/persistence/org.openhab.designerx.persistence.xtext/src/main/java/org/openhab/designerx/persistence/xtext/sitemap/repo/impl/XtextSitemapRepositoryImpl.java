@@ -6,6 +6,7 @@ import java.util.List;
 
 import org.openhab.designerx.config.Config;
 import org.openhab.designerx.config.ConfigBuilder;
+import org.openhab.designerx.model.ModelException;
 import org.openhab.designerx.model.sitemap.Sitemap;
 import org.openhab.designerx.model.xtdex.ModelXtdexException;
 import org.openhab.designerx.model.xtdex.sitemap.SitemapXtdex;
@@ -42,7 +43,7 @@ final class XtextSitemapRepositoryImpl implements XtextSitemapRepository {
 		}
 
 		@Override
-		public Sitemap get() throws IOException, ModelXtdexException {
+		public Sitemap get() throws IOException, ModelXtdexException, ModelException {
 			List<String> list = IOUtils.readAll(file);
 			Sitemap result = xtdex.parse(list);
 			return result;

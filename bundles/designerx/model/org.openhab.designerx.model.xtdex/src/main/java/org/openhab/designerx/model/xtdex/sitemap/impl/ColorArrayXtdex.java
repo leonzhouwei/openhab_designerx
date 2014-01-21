@@ -4,8 +4,8 @@ import java.util.List;
 import java.util.Set;
 
 import org.openhab.designerx.model.sitemap.ColorArray;
-import org.openhab.designerx.model.sitemap.producer.ColorArrayBuilder;
-import org.openhab.designerx.model.sitemap.producer.impl.ColorArrayBuilderImpl;
+import org.openhab.designerx.model.sitemap.SitemapElementFactory;
+import org.openhab.designerx.model.sitemap.impl.SitemapElementFactoryImpl;
 import org.openhab.designerx.model.xtdex.ModelXtdexConstants;
 
 import com.google.common.collect.ImmutableSet;
@@ -22,7 +22,7 @@ final class ColorArrayXtdex {
 			.add("<")
 			.build();
 	
-	private static final ColorArrayBuilder builder = new ColorArrayBuilderImpl();
+	private static final SitemapElementFactory factory = new SitemapElementFactoryImpl();
 	
 	static List<ColorArray> fromXtext(String xtext, String type) {
 		xtext = xtext.trim();
@@ -82,7 +82,7 @@ final class ColorArrayXtdex {
 	
 	private static ColorArray parseRule(String rule) {
 		rule = rule.trim();
-		ColorArray e = builder.build();
+		ColorArray e = factory.createColorArray();
 		int equ = rule.lastIndexOf("=");
 		String pre = rule.substring(0, equ).trim();
 		String arg = rule.substring(equ + 1).trim();
