@@ -16,12 +16,6 @@ import com.google.common.collect.Sets;
 
 final class ConfigImpl implements Config {
 	private static final ConfigImpl instance = new ConfigImpl();
-	
-	private boolean loaded = false;
-	private String openHABHomeFolderPath;
-	private String sitemapsFolderPath;
-	private String itemsFolerPath;
-	
 	private static final String[] HOME_FOLDER_CHILDREN_NAMES = {
 		ConfigConstants.ADDONS,
 		ConfigConstants.CONFIGURATIONS,
@@ -42,33 +36,15 @@ final class ConfigImpl implements Config {
 		ConfigConstants.TRANSFORM
 	};
 	
+	private String openHABHomeFolderPath;
+	private String sitemapsFolderPath;
+	private String itemsFolerPath;
+	
 	public static ConfigImpl getInstance() {
 		return instance;
 	}
 
-	public void load() {
-		if (loaded) {
-			return;
-		}
-		System.out.println(ConfigConstants.STRIKETHROUGH_80);
-		loaded = true;
-		File homeFolder = null;
-		homeFolder = lookForHomeFolderInUserMode();
-		if (homeFolder == null) {
-			homeFolder = lookForHomeFolderInDevMode();
-		}
-		if (homeFolder == null) {
-			System.err.println("could not find the openHAB home folder!");
-		}
-		verifyHomeFolder(homeFolder);
-		File configFolder = new File(homeFolder.getPath() + ConfigConstants.FILE_SEPARATOR + ConfigConstants.CONFIGURATIONS);
-		verifyConfigFolder(configFolder);
-		System.out.println("listing the files in the openHAB home flder ('" + homeFolder.getPath() + "')");
-		listAsc(homeFolder);
-		openHABHomeFolderPath = homeFolder.getPath();
-		sitemapsFolderPath = configFolder.getPath() + ConfigConstants.FILE_SEPARATOR + ConfigConstants.SITEMAPS;
-		itemsFolerPath = configFolder.getPath() + ConfigConstants.FILE_SEPARATOR + ConfigConstants.ITEMS;
-	}
+	public void load() {}
 	
 	@Override
 	public String getOpenHABHomeFolderPath() {
@@ -178,5 +154,23 @@ final class ConfigImpl implements Config {
 		return itemsFolerPath;
 	}
 	
-	private ConfigImpl() {}
+	private ConfigImpl() {
+		System.out.println(ConfigConstants.STRIKETHROUGH_80);
+		File homeFolder = null;
+		homeFolder = lookForHomeFolderInUserMode();
+		if (homeFolder == null) {
+			homeFolder = lookForHomeFolderInDevMode();
+		}
+		if (homeFolder == null) {
+			System.err.println("could not find the openHAB home folder!");
+		}
+		verifyHomeFolder(homeFolder);
+		File configFolder = new File(homeFolder.getPath() + ConfigConstants.FILE_SEPARATOR + ConfigConstants.CONFIGURATIONS);
+		verifyConfigFolder(configFolder);
+		System.out.println("listing the files in the openHAB home flder ('" + homeFolder.getPath() + "')");
+		listAsc(homeFolder);
+		openHABHomeFolderPath = homeFolder.getPath();
+		sitemapsFolderPath = configFolder.getPath() + ConfigConstants.FILE_SEPARATOR + ConfigConstants.SITEMAPS;
+		itemsFolerPath = configFolder.getPath() + ConfigConstants.FILE_SEPARATOR + ConfigConstants.ITEMS;
+	}
 }
