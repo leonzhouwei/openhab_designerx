@@ -1,6 +1,5 @@
 package org.openhab.designerx.model.sitemap;
 
-
 public interface SitemapElementFactory {
 	
 	public Chart createChart();
