@@ -10,8 +10,7 @@ import org.openhab.designerx.model.ModelException;
 import org.openhab.designerx.model.items.ItemResource;
 import org.openhab.designerx.model.xtdex.ModelXtdexException;
 import org.openhab.designerx.model.xtdex.items.ItemResourceXtdex;
-import org.openhab.designerx.model.xtdex.items.producer.ItemResourceXtdexBuilder;
-import org.openhab.designerx.model.xtdex.items.producer.impl.ItemResourceXtdexBuilderImpl;
+import org.openhab.designerx.model.xtdex.items.impl.ItemResourceXtdexImpl;
 import org.openhab.designerx.persistence.xtext.PersistenceXtextConstants;
 import org.openhab.designerx.persistence.xtext.items.XtextItemResource;
 import org.openhab.designerx.persistence.xtext.items.repo.XtextItemResourceRepository;
@@ -37,8 +36,7 @@ final class XtextItemResourceRepositoryImpl implements XtextItemResourceReposito
 	private class XtextItemResourceImpl implements XtextItemResource {
 		private File file;
 		private Config config = ConfigBuilder.build();
-		private ItemResourceXtdexBuilder builder = new ItemResourceXtdexBuilderImpl();
-		private ItemResourceXtdex xtdex = builder.build();
+		private ItemResourceXtdex xtdex = new ItemResourceXtdexImpl();
 		
 		public XtextItemResourceImpl(String name) {
 			file = new File(config.getItemsFolderPath() + PersistenceXtextConstants.FILE_SEPARATOR + name + PersistenceXtextConstants.ITEMS_FILE_EXTENSION);

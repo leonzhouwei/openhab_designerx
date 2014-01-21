@@ -6,13 +6,12 @@ import org.openhab.designerx.model.ModelException;
 import org.openhab.designerx.model.items.ItemResource;
 import org.openhab.designerx.model.xtdex.ModelXtdexException;
 import org.openhab.designerx.model.xtdex.items.ItemResourceXtdex;
-import org.openhab.designerx.model.xtdex.items.producer.ItemResourceXtdexBuilder;
+import org.openhab.designerx.model.xtdex.items.impl.ItemResourceXtdexImpl;
 
 import com.google.common.collect.Lists;
 
 public class ItemResourceXtdexImplTest {
-	private static final ItemResourceXtdexBuilder builder = new ItemResourceXtdexBuilderImpl();
-	private static final ItemResourceXtdex xtdex = builder.build();
+	private static final ItemResourceXtdex xtdex = new ItemResourceXtdexImpl();
 	
 //	@Test
 	public void testFromXtextListOfString_1() throws ModelXtdexException, ModelException {

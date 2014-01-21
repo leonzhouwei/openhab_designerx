@@ -8,15 +8,14 @@ import org.openhab.designerx.model.ModelException;
 import org.openhab.designerx.model.items.ItemResource;
 import org.openhab.designerx.model.xtdex.ModelXtdexException;
 import org.openhab.designerx.model.xtdex.items.ItemResourceXtdex;
-import org.openhab.designerx.model.xtdex.items.producer.ItemResourceXtdexBuilder;
-import org.openhab.designerx.model.xtdex.items.producer.impl.ItemResourceXtdexBuilderImpl;
+import org.openhab.designerx.model.xtdex.items.impl.ItemResourceXtdexImpl;
 import org.openhab.designerx.persistence.xtext.items.XtextItemResource;
 import org.openhab.designerx.persistence.xtext.items.repo.XtextItemResourceRepository;
 import org.openhab.designerx.util.StringHelper;
 
 public class ItemResourcePersistTest {
 	private static final XtextItemResourceRepository persistBuilder = XtextItemResourceRepositoryImpl.getInstance();
-	private static final ItemResourceXtdexBuilder xtdexBuilder = new  ItemResourceXtdexBuilderImpl();
+	private static final ItemResourceXtdex xtdex = new  ItemResourceXtdexImpl();
 
 	@Test
 	public void testGet() throws IOException, ModelXtdexException, ModelException {
@@ -24,9 +23,8 @@ public class ItemResourcePersistTest {
 		XtextItemResource persist = persistBuilder.find(file);
 		ItemResource ir = persist.get();
 		StringHelper.printSeparateLine();
-		ItemResourceXtdex irx = xtdexBuilder.build();
 		StringHelper.printSeparateLine();
-		System.out.println(irx.toXtext(ir));
+		System.out.println(xtdex.toXtext(ir));
 	}
 	
 //	@Test
