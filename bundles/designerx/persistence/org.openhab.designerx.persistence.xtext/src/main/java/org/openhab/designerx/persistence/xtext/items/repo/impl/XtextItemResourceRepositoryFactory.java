@@ -8,5 +8,6 @@ public final class XtextItemResourceRepositoryFactory {
 	public static XtextItemResourceRepository create() {
 		return repo;
 	}
-
+	
+	private XtextItemResourceRepositoryFactory() {}
 }

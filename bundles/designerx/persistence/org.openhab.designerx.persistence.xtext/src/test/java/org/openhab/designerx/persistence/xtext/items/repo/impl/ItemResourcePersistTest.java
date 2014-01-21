@@ -15,7 +15,7 @@ import org.openhab.designerx.util.StringHelper;
 
 public class ItemResourcePersistTest {
 	private static final XtextItemResourceRepository persistBuilder = XtextItemResourceRepositoryImpl.getInstance();
-	private static final ItemResourceXtdex xtdex = new  ItemResourceXtdexImpl();
+	private static final ItemResourceXtdex xtdex = new ItemResourceXtdexImpl();
 
 	@Test
 	public void testGet() throws IOException, ModelXtdexException, ModelException {

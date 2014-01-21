@@ -7,10 +7,10 @@ import org.junit.Test;
 import org.openhab.designerx.model.ModelException;
 import org.openhab.designerx.model.items.Item;
 import org.openhab.designerx.model.xtdex.items.ItemXtdex;
-import org.openhab.designerx.model.xtdex.items.impl.ItemXtdexImpl;
+import org.openhab.designerx.model.xtdex.items.impl.RealItemXtdexImpl;
 
 public class ItemXtdexImplTest {
-	private static final ItemXtdex xtdex = new ItemXtdexImpl();
+	private static final ItemXtdex xtdex = new RealItemXtdexImpl();
 
 	@Test
 	public void testParseColorItem() throws ModelException {

@@ -5,7 +5,7 @@ import java.io.IOException;
 import java.util.List;
 
 import org.openhab.designerx.config.Config;
-import org.openhab.designerx.config.ConfigBuilder;
+import org.openhab.designerx.config.impl.ConfigFactory;
 import org.openhab.designerx.model.ModelException;
 import org.openhab.designerx.model.sitemap.Sitemap;
 import org.openhab.designerx.model.xtdex.ModelXtdexException;
@@ -35,7 +35,7 @@ final class XtextSitemapRepositoryImpl implements XtextSitemapRepository {
 	
 	private class XtextSitemapImpl implements XtextSitemap {
 		private File file;
-		private Config config = ConfigBuilder.build();
+		private Config config = ConfigFactory.create();
 		private SitemapXtdex xtdex = new SitemapXtdexImpl();
 		
 		public XtextSitemapImpl(String name) {
