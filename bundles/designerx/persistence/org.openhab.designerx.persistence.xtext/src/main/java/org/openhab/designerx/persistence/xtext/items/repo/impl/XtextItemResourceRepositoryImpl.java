@@ -18,9 +18,9 @@ import org.openhab.designerx.persistence.xtext.items.repo.XtextItemResourceRepos
 import org.openhab.designerx.util.IOUtils;
 
 final class XtextItemResourceRepositoryImpl implements XtextItemResourceRepository {
-	private static final XtextItemResourceRepositoryImpl instance = new XtextItemResourceRepositoryImpl();
+	private static final XtextItemResourceRepository instance = new XtextItemResourceRepositoryImpl();
 	
-	static XtextItemResourceRepositoryImpl getInstance() {
+	static XtextItemResourceRepository getInstance() {
 		return instance;
 	}
 
