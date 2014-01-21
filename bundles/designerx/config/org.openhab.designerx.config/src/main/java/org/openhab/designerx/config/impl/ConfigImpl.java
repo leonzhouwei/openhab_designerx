@@ -15,7 +15,6 @@ import com.google.common.collect.Maps;
 import com.google.common.collect.Sets;
 
 final class ConfigImpl implements Config {
-	private static final ConfigImpl instance = new ConfigImpl();
 	private static final String[] HOME_FOLDER_CHILDREN_NAMES = {
 		ConfigConstants.ADDONS,
 		ConfigConstants.CONFIGURATIONS,
@@ -35,6 +34,7 @@ final class ConfigImpl implements Config {
 		ConfigConstants.SITEMAPS,
 		ConfigConstants.TRANSFORM
 	};
+	private static final ConfigImpl instance = new ConfigImpl();
 	
 	private String openHABHomeFolderPath;
 	private String sitemapsFolderPath;
