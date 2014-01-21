@@ -1,15 +1,15 @@
-package org.openhab.designerx.model.items.producer.impl;
+package org.openhab.designerx.model.items.impl;
 
 import java.util.List;
 
 import org.openhab.designerx.model.ModelException;
-import org.openhab.designerx.model.items.DateTimeItem;
+import org.openhab.designerx.model.items.SwitchItem;
 
-final class DateTimeItemImpl implements DateTimeItem {
+final class SwitchItemImpl implements SwitchItem {
 	private ItemImpl item;
 	
-	public DateTimeItemImpl(String name) throws ModelException {
-		item = new ItemImpl(DateTimeItem.TYPE_NAME, name);
+	public SwitchItemImpl(String name) throws ModelException {
+		item = new ItemImpl(SwitchItem.TYPE_NAME, name);
 	}
 
 	@Override

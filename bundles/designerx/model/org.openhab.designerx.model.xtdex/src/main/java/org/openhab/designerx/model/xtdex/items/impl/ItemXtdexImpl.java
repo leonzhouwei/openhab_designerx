@@ -10,12 +10,12 @@ import org.openhab.designerx.model.items.DateTimeItem;
 import org.openhab.designerx.model.items.DimmerItem;
 import org.openhab.designerx.model.items.GroupItem;
 import org.openhab.designerx.model.items.Item;
+import org.openhab.designerx.model.items.ItemFactory;
 import org.openhab.designerx.model.items.NumberItem;
 import org.openhab.designerx.model.items.RollershutterItem;
 import org.openhab.designerx.model.items.StringItem;
 import org.openhab.designerx.model.items.SwitchItem;
-import org.openhab.designerx.model.items.producer.ItemFactory;
-import org.openhab.designerx.model.items.producer.impl.ItemFactoryImpl;
+import org.openhab.designerx.model.items.impl.ItemFactoryImpl;
 import org.openhab.designerx.model.xtdex.ModelXtdexConstants;
 import org.openhab.designerx.model.xtdex.items.ItemXtdex;
 

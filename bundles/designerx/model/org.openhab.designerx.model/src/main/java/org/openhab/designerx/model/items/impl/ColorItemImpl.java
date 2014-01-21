@@ -1,22 +1,20 @@
-package org.openhab.designerx.model.items.producer.impl;
+package org.openhab.designerx.model.items.impl;
 
 import java.util.List;
 
 import org.openhab.designerx.model.ModelException;
-import org.openhab.designerx.model.items.GroupItem;
+import org.openhab.designerx.model.items.ColorItem;
 
-final class GroupItemImpl implements GroupItem {
+final class ColorItemImpl implements ColorItem {
 	private ItemImpl item;
-	private String extraType;
 	
-	public GroupItemImpl(String name) throws ModelException {
-		item = new ItemImpl(GroupItem.TYPE_NAME, name);
+	public ColorItemImpl(String name) throws ModelException {
+		item = new ItemImpl(ColorItem.TYPE_NAME, name);
 	}
 
 	@Override
 	public String getTypeName() {
-		String result = item.getTypeName();
-		return result;
+		return item.getTypeName();
 	}
 
 	@Override
@@ -72,16 +70,6 @@ final class GroupItemImpl implements GroupItem {
 	@Override
 	public void setBindingConfig(String bindingConfig) {
 		item.setBindingConfig(bindingConfig);
-	}
-
-	@Override
-	public void setExtraTypeName(String extraType) {
-		this.extraType = extraType;
-	}
-
-	@Override
-	public String getExtraTypeName() {
-		return extraType;
 	}
 
 }

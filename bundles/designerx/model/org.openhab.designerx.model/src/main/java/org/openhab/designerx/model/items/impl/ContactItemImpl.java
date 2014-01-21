@@ -1,15 +1,15 @@
-package org.openhab.designerx.model.items.producer.impl;
+package org.openhab.designerx.model.items.impl;
 
 import java.util.List;
 
 import org.openhab.designerx.model.ModelException;
-import org.openhab.designerx.model.items.StringItem;
+import org.openhab.designerx.model.items.ContactItem;
 
-final class StringItemImpl implements StringItem {
+final class ContactItemImpl implements ContactItem {
 	private ItemImpl item;
 	
-	public StringItemImpl(String name) throws ModelException {
-		item = new ItemImpl(StringItem.TYPE_NAME, name);
+	public ContactItemImpl(String name) throws ModelException {
+		item = new ItemImpl(ContactItem.TYPE_NAME, name);
 	}
 
 	@Override

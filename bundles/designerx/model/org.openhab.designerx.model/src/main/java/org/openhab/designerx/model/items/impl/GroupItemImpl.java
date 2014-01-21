@@ -1,20 +1,22 @@
-package org.openhab.designerx.model.items.producer.impl;
+package org.openhab.designerx.model.items.impl;
 
 import java.util.List;
 
 import org.openhab.designerx.model.ModelException;
-import org.openhab.designerx.model.items.ContactItem;
+import org.openhab.designerx.model.items.GroupItem;
 
-final class ContactItemImpl implements ContactItem {
+final class GroupItemImpl implements GroupItem {
 	private ItemImpl item;
+	private String extraType;
 	
-	public ContactItemImpl(String name) throws ModelException {
-		item = new ItemImpl(ContactItem.TYPE_NAME, name);
+	public GroupItemImpl(String name) throws ModelException {
+		item = new ItemImpl(GroupItem.TYPE_NAME, name);
 	}
 
 	@Override
 	public String getTypeName() {
-		return item.getTypeName();
+		String result = item.getTypeName();
+		return result;
 	}
 
 	@Override
@@ -70,6 +72,16 @@ final class ContactItemImpl implements ContactItem {
 	@Override
 	public void setBindingConfig(String bindingConfig) {
 		item.setBindingConfig(bindingConfig);
+	}
+
+	@Override
+	public void setExtraTypeName(String extraType) {
+		this.extraType = extraType;
+	}
+
+	@Override
+	public String getExtraTypeName() {
+		return extraType;
 	}
 
 }

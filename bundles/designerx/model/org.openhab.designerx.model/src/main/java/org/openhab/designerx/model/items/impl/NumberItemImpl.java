@@ -1,15 +1,15 @@
-package org.openhab.designerx.model.items.producer.impl;
+package org.openhab.designerx.model.items.impl;
 
 import java.util.List;
 
 import org.openhab.designerx.model.ModelException;
-import org.openhab.designerx.model.items.ColorItem;
+import org.openhab.designerx.model.items.NumberItem;
 
-final class ColorItemImpl implements ColorItem {
+final class NumberItemImpl implements NumberItem {
 	private ItemImpl item;
 	
-	public ColorItemImpl(String name) throws ModelException {
-		item = new ItemImpl(ColorItem.TYPE_NAME, name);
+	public NumberItemImpl(String name) throws ModelException {
+		item = new ItemImpl(NumberItem.TYPE_NAME, name);
 	}
 
 	@Override

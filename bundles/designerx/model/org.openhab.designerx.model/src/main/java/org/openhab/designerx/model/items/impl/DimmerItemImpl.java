@@ -1,15 +1,15 @@
-package org.openhab.designerx.model.items.producer.impl;
+package org.openhab.designerx.model.items.impl;
 
 import java.util.List;
 
 import org.openhab.designerx.model.ModelException;
-import org.openhab.designerx.model.items.NumberItem;
+import org.openhab.designerx.model.items.DimmerItem;
 
-final class NumberItemImpl implements NumberItem {
+final class DimmerItemImpl implements DimmerItem {
 	private ItemImpl item;
 	
-	public NumberItemImpl(String name) throws ModelException {
-		item = new ItemImpl(NumberItem.TYPE_NAME, name);
+	public DimmerItemImpl(String name) throws ModelException {
+		item = new ItemImpl(DimmerItem.TYPE_NAME, name);
 	}
 
 	@Override
