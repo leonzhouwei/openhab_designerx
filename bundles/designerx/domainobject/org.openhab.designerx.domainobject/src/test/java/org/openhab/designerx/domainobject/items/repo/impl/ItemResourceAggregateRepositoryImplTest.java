@@ -14,7 +14,7 @@ public class ItemResourceAggregateRepositoryImplTest {
 		for (String name : names) {
 			StringHelper.printSeparateLine();
 			System.out.println(name);
-			System.out.println(repo.getByName(name).toString());
+			System.out.println(repo.findByName(name).toString());
 		}
 	}
 

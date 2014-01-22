@@ -20,7 +20,7 @@ final class ItemResourceAggregateRepositoryImpl implements ItemResourceAggregate
 	private static final ItemResourceAggregateRepositoryImpl instance = new ItemResourceAggregateRepositoryImpl();	
 	
 	@Override
-	public ItemResourceAggregate getByName(String name) {
+	public ItemResourceAggregate findByName(String name) {
 		return map.get(name);
 	}
 	
