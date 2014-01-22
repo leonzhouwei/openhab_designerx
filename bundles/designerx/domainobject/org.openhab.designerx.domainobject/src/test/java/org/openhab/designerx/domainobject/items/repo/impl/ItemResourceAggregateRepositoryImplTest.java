@@ -10,11 +10,11 @@ public class ItemResourceAggregateRepositoryImplTest {
 	
 	@Test
 	public void test() {
-		StringHelper.printSeparateLine();
 		Set<String> names = repo.listNames();
 		for (String name : names) {
+			StringHelper.printSeparateLine();
 			System.out.println(name);
-			System.out.println(repo.getByName(name).getId());
+			System.out.println(repo.getByName(name).toString());
 		}
 	}
 
