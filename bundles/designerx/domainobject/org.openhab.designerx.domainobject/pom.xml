@@ -40,11 +40,6 @@
         </dependency>
 
         <dependency>
-            <groupId>org.openhab.designerx</groupId>
-            <artifactId>org.openhab.designerx.model</artifactId>
-            <version>${project.version}</version>
-        </dependency>
-        <dependency>
             <groupId>org.openhab.designerx.persistence</groupId>
             <artifactId>org.openhab.designerx.persistence.xtext</artifactId>
             <version>${project.version}</version>
