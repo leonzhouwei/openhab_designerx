@@ -13,6 +13,6 @@ public interface XtextItemResourceRepository {
 	 */
 	public XtextItemResource find(String name);
 	
-	public List<String> listNames();
+	public List<String> nameList();
 
 }

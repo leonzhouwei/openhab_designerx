@@ -26,7 +26,7 @@ final class XtextItemResourceRepositoryImpl implements XtextItemResourceReposito
 	private XtextItemResourceRepositoryImpl() {}
 
 	@Override
-	public List<String> listNames() {
+	public List<String> nameList() {
 		String dirPath = config.getItemsFolderPath();
 		File directory = new File(dirPath);
 		List<File> files = IOUtils.listRegularFileNames(directory, PersistenceXtextConstants.ITEMS_FILE_EXTENSION);

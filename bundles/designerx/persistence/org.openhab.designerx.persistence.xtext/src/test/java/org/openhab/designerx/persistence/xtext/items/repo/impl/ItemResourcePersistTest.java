@@ -28,7 +28,7 @@ public class ItemResourcePersistTest {
 	@Test
 	public void testListNames() throws IOException {
 		StringHelper.printSeparateLine();
-		List<String> names = persistBuilder.listNames();
+		List<String> names = persistBuilder.nameList();
 		for (String name : names) {
 			System.out.println(name);
 		}
