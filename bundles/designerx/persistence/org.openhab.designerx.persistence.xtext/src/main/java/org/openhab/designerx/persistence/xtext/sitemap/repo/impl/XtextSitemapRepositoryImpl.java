@@ -1,7 +1,5 @@
 package org.openhab.designerx.persistence.xtext.sitemap.repo.impl;
 
-import java.io.File;
-
 import org.openhab.designerx.persistence.xtext.sitemap.XtextSitemap;
 import org.openhab.designerx.persistence.xtext.sitemap.repo.XtextSitemapRepository;
 
@@ -15,11 +13,6 @@ final class XtextSitemapRepositoryImpl implements XtextSitemapRepository {
 	@Override
 	public XtextSitemap find(String name) {
 		return new XtextSitemapImpl(name);
-	}
-	
-	@Override
-	public XtextSitemap find(File file) {
-		return new XtextSitemapImpl(file);
 	}
 	
 	private XtextSitemapRepositoryImpl() {}
