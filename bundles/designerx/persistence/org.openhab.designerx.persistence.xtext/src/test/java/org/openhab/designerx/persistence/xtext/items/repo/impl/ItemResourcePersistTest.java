@@ -1,7 +1,7 @@
 package org.openhab.designerx.persistence.xtext.items.repo.impl;
 
-import java.io.File;
 import java.io.IOException;
+import java.util.List;
 
 import org.junit.Test;
 import org.openhab.designerx.model.ModelException;
@@ -19,15 +19,19 @@ public class ItemResourcePersistTest {
 
 	@Test
 	public void testGet() throws IOException, ModelXtdexException, ModelException {
-		File file = new File("_test/resources/demo.items");
-		XtextItemResource persist = persistBuilder.find(file);
+		XtextItemResource persist = persistBuilder.find("demo");
 		ItemResource ir = persist.get();
 		StringHelper.printSeparateLine();
 		System.out.println(xtdex.toXtext(ir));
 	}
 	
-//	@Test
-	public void testSave() throws IOException {
+	@Test
+	public void testListNames() throws IOException {
+		StringHelper.printSeparateLine();
+		List<String> names = persistBuilder.listNames();
+		for (String name : names) {
+			System.out.println(name);
+		}
 	}
 
 }

@@ -65,6 +65,28 @@ public final class IOUtils {
 			closer.close();
 		}
 	}
+	
+	public static List<String> listBaseNamesWithoutExtension(List<File> files, String fileExtension) {
+		List<String> baseNames = Lists.newArrayList();
+		for (File file : files) {
+			String name = file.getName();
+			int index = name.indexOf(fileExtension);
+			String baseName = name.substring(0, index);
+			baseNames.add(baseName);
+		}
+		return baseNames;
+	}
+	
+	public static List<File> listRegularFileNames(File directory, String fileExtension) {
+		File[] array = directory.listFiles();
+		List<File> files = Lists.newArrayList();
+		for (File file : array) {
+			if (file.getName().endsWith(fileExtension)) {
+				files.add(file);
+			}
+		}
+		return files;
+	}
 
 	private IOUtils() {}
 

@@ -23,7 +23,6 @@ final class ItemResourceAggregateRepositoryImpl implements ItemResourceAggregate
 		return map.get(name);
 	}
 	
-	
 	private ItemResourceAggregateRepositoryImpl() {
 		List<String> names = Lists.newArrayList();
 		for (String name : names) {
