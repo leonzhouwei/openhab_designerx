@@ -2,12 +2,13 @@ package org.openhab.designerx.domainobject.items.repo.impl;
 
 import java.util.List;
 import java.util.Map;
+import java.util.Set;
 
-import org.openhab.designerx.domainobject.DomainObjectException;
 import org.openhab.designerx.domainobject.items.ItemResourceAggregate;
 import org.openhab.designerx.domainobject.items.repo.ItemResourceAggregateRepository;
 import org.openhab.designerx.persistence.xtext.items.repo.XtextItemResourceRepository;
 import org.openhab.designerx.persistence.xtext.items.repo.impl.XtextItemResourceRepositoryFactory;
+import org.openhab.designerx.util.IdGenerator;
 
 import com.google.common.collect.Maps;
 
@@ -15,7 +16,7 @@ final class ItemResourceAggregateRepositoryImpl implements ItemResourceAggregate
 	private XtextItemResourceRepository xtextRepo = XtextItemResourceRepositoryFactory.create();
 
 	private Map<String, ItemResourceAggregate> map = Maps.newHashMap();
-	private static long nextId = 1; 
+	private static final IdGenerator idGen = new IdGenerator();
 	private static final ItemResourceAggregateRepositoryImpl instance = new ItemResourceAggregateRepositoryImpl();	
 	
 	@Override
@@ -24,24 +25,27 @@ final class ItemResourceAggregateRepositoryImpl implements ItemResourceAggregate
 	}
 	
 	private ItemResourceAggregateRepositoryImpl() {
-		List<String> names = xtextRepo.listNames();
-		for (String name : names) {
-			ItemResourceAggregate ira = new ItemResourceAggregateImpl(id, name);
-			map.put(name, ira);
+		try {
+			List<String> names = xtextRepo.listNames();
+			for (String name : names) {
+				long id = idGen.newId();
+				ItemResourceAggregate ira = new ItemResourceAggregateImpl(id, name);
+				map.put(name, ira);
+			}
+		} catch (Exception e) {
+			RuntimeException re = new RuntimeException();
+			re.initCause(e);
+			throw re;
 		}
 	}
 	
 	static ItemResourceAggregateRepositoryImpl getInstance() {
 		return instance; 
 	}
-	
-	synchronized long generateId() {
-		long ret = nextId;
-		nextId += 1;
-		if (nextId <= 0) {
-			throw new DomainObjectException("no available ");
-		}
-		return ret;
+
+	@Override
+	public Set<String> listNames() {
+		return map.keySet();
 	}
 	
 }
