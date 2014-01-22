@@ -8,6 +8,6 @@ public interface SitemapAggregateRepository {
 	
 	public SitemapAggregate findByName(String name);
 	
-	public Set<String> listNames();
+	public Set<String> nameSet();
 
 }

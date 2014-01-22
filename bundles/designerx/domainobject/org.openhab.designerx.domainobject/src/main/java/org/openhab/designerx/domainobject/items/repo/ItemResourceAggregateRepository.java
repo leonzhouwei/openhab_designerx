@@ -8,6 +8,6 @@ public interface ItemResourceAggregateRepository {
 	
 	public ItemResourceAggregate findByName(String name);
 	
-	public Set<String> listNames();
+	public Set<String> nameSet();
 
 }

@@ -26,7 +26,7 @@ final class ItemResourceAggregateRepositoryImpl implements ItemResourceAggregate
 	
 	private ItemResourceAggregateRepositoryImpl() {
 		try {
-			List<String> names = xtextRepo.listNames();
+			List<String> names = xtextRepo.nameList();
 			for (String name : names) {
 				long id = idGen.newId();
 				ItemResourceAggregate ira = new ItemResourceAggregateImpl(id, name);
@@ -44,7 +44,7 @@ final class ItemResourceAggregateRepositoryImpl implements ItemResourceAggregate
 	}
 
 	@Override
-	public Set<String> listNames() {
+	public Set<String> nameSet() {
 		return map.keySet();
 	}
 	

@@ -1,13 +1,14 @@
-package org.openhab.designerx.domainobject.items.repo.impl;
+package org.openhab.designerx.domainobject.sitemap.repo.impl;
 
 import java.util.Set;
 
 import org.junit.Test;
+import org.openhab.designerx.domainobject.sitemap.repo.SitemapAggregateRepository;
 import org.openhab.designerx.util.StringHelper;
 
-public class ItemResourceAggregateRepositoryImplTest {
-	private ItemResourceAggregateRepositoryImpl repo = ItemResourceAggregateRepositoryImpl.getInstance();
-	
+public class SitemapAggregateRepositoryImplTest {
+	private static final SitemapAggregateRepository repo = SitemapAggregateRepositoryImpl.getInstance();
+
 	@Test
 	public void test() {
 		Set<String> names = repo.nameSet();
