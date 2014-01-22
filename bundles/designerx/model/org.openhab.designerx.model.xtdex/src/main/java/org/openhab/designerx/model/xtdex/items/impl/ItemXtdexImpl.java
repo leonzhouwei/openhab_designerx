@@ -63,7 +63,7 @@ public final class ItemXtdexImpl implements ItemXtdex {
 	}
 
 	@Override
-	public <T extends Item> String toXtext(T item) throws ModelException {
+	public <T extends Item> String toXtext(T item) {
 		return xtdex.toXtext(item);
 	}
 
@@ -73,47 +73,47 @@ public final class ItemXtdexImpl implements ItemXtdex {
 	}
 
 	@Override
-	public String toXtext(ColorItem item) throws ModelException {
+	public String toXtext(ColorItem item) {
 		return xtdex.toXtext(item);
 	}
 
 	@Override
-	public String toXtext(ContactItem item) throws ModelException {
+	public String toXtext(ContactItem item) {
 		return xtdex.toXtext(item);
 	}
 
 	@Override
-	public String toXtext(DateTimeItem item) throws ModelException {
+	public String toXtext(DateTimeItem item) {
 		return xtdex.toXtext(item);
 	}
 
 	@Override
-	public String toXtext(DimmerItem item) throws ModelException {
+	public String toXtext(DimmerItem item) {
 		return xtdex.toXtext(item);
 	}
 
 	@Override
-	public String toXtext(GroupItem item) throws ModelException {
+	public String toXtext(GroupItem item) {
 		return xtdex.toXtext(item);
 	}
 
 	@Override
-	public String toXtext(NumberItem item) throws ModelException {
+	public String toXtext(NumberItem item) {
 		return xtdex.toXtext(item);
 	}
 
 	@Override
-	public String toXtext(RollershutterItem item) throws ModelException {
+	public String toXtext(RollershutterItem item) {
 		return xtdex.toXtext(item);
 	}
 
 	@Override
-	public String toXtext(StringItem item) throws ModelException {
+	public String toXtext(StringItem item) {
 		return xtdex.toXtext(item);
 	}
 
 	@Override
-	public String toXtext(SwitchItem item) throws ModelException {
+	public String toXtext(SwitchItem item) {
 		return xtdex.toXtext(item);
 	}
 

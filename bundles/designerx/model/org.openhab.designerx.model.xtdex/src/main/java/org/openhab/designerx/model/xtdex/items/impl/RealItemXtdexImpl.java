@@ -313,27 +313,27 @@ final class RealItemXtdexImpl implements ItemXtdex {
 	}
 
 	@Override
-	public String toXtext(ColorItem item) throws ModelException {
+	public String toXtext(ColorItem item) {
 		return xtextualize(item);
 	}
 
 	@Override
-	public String toXtext(ContactItem item) throws ModelException {
+	public String toXtext(ContactItem item) {
 		return xtextualize(item);
 	}
 
 	@Override
-	public String toXtext(DateTimeItem item) throws ModelException {
+	public String toXtext(DateTimeItem item) {
 		return xtextualize(item);
 	}
 
 	@Override
-	public String toXtext(DimmerItem item) throws ModelException {
+	public String toXtext(DimmerItem item) {
 		return xtextualize(item);
 	}
 
 	@Override
-	public String toXtext(GroupItem item) throws ModelException {
+	public String toXtext(GroupItem item) {
 		String result = xtextualize(item);
 		String extraTypeName = item.getExtraTypeName();
 		if (extraTypeName != null) {
@@ -343,27 +343,27 @@ final class RealItemXtdexImpl implements ItemXtdex {
 	}
 
 	@Override
-	public String toXtext(NumberItem item) throws ModelException {
+	public String toXtext(NumberItem item) {
 		return xtextualize(item);
 	}
 
 	@Override
-	public String toXtext(RollershutterItem item) throws ModelException {
+	public String toXtext(RollershutterItem item) {
 		return xtextualize(item);
 	}
 
 	@Override
-	public String toXtext(StringItem item) throws ModelException {
+	public String toXtext(StringItem item) {
 		return xtextualize(item);
 	}
 
 	@Override
-	public String toXtext(SwitchItem item) throws ModelException {
+	public String toXtext(SwitchItem item) {
 		return xtextualize(item);
 	}
 
 	@Override
-	public <T extends Item> String toXtext(T item) throws ModelException {
+	public <T extends Item> String toXtext(T item) {
 		String result = null;
 		if (item instanceof ColorItem) {
 			result = toXtext((ColorItem) item);

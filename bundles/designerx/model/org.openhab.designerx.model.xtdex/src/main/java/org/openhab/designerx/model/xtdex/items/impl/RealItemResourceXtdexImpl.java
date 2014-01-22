@@ -30,7 +30,7 @@ final class RealItemResourceXtdexImpl implements ItemResourceXtdex {
 	}
 
 	@Override
-	public String toXtext(ItemResource itemResource) throws ModelException {
+	public String toXtext(ItemResource itemResource) {
 		StringBuilder sb = new StringBuilder();
 		List<Item> items = itemResource.getAll();
 		for (Item item : items) {

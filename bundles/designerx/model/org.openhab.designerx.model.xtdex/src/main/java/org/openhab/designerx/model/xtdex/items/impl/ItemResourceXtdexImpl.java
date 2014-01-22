@@ -17,7 +17,7 @@ public final class ItemResourceXtdexImpl implements ItemResourceXtdex {
 	}
 
 	@Override
-	public String toXtext(ItemResource itemResource) throws ModelException {
+	public String toXtext(ItemResource itemResource) {
 		return xtdex.toXtext(itemResource);
 	}
 
