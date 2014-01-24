@@ -23,7 +23,7 @@ public final class RealSitemapQueryImpl implements SitemapQuery {
 	
 	@Override
 	public Sitemap byName(String name) throws IOException, ModelXtdexException, ModelException {
-		File file = new File(config.getSitemapsFolderPath() + PersistenceXtextConstants.FILE_SEPARATOR + name + PersistenceXtextConstants.ITEMS_FILE_EXTENSION);
+		File file = new File(config.getSitemapsFolderPath() + PersistenceXtextConstants.FILE_SEPARATOR + name + PersistenceXtextConstants.SITEMAP_FILE_EXTENSION);
 		return byFile(file);
 	}
 	
@@ -32,7 +32,7 @@ public final class RealSitemapQueryImpl implements SitemapQuery {
 		List<Sitemap> list = Lists.newArrayList();
 		String dirPath = config.getSitemapsFolderPath();
 		File directory = new File(dirPath);
-		List<File> files = IOUtils.listRegularFileNames(directory, PersistenceXtextConstants.ITEMS_FILE_EXTENSION);
+		List<File> files = IOUtils.listRegularFileNames(directory, PersistenceXtextConstants.SITEMAP_FILE_EXTENSION);
 		for (File file : files) {
 			Sitemap ir = byFile(file);
 			list.add(ir);
@@ -44,8 +44,8 @@ public final class RealSitemapQueryImpl implements SitemapQuery {
 	public List<String> nameList() {
 		String dirPath = config.getSitemapsFolderPath();
 		File directory = new File(dirPath);
-		List<File> files = IOUtils.listRegularFileNames(directory, PersistenceXtextConstants.ITEMS_FILE_EXTENSION);
-		List<String> names = IOUtils.listBaseNamesWithoutExtension(files, PersistenceXtextConstants.ITEMS_FILE_EXTENSION);
+		List<File> files = IOUtils.listRegularFileNames(directory, PersistenceXtextConstants.SITEMAP_FILE_EXTENSION);
+		List<String> names = IOUtils.listBaseNamesWithoutExtension(files, PersistenceXtextConstants.SITEMAP_FILE_EXTENSION);
 		return names;
 	}
 	
