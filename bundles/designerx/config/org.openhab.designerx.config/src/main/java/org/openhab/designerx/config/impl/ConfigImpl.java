@@ -38,7 +38,7 @@ final class ConfigImpl implements Config {
 	
 	private String openHABHomeFolderPath;
 	private String sitemapsFolderPath;
-	private String itemsFolerPath;
+	private String itemsFolderPath;
 	
 	public static ConfigImpl getInstance() {
 		return instance;
@@ -151,7 +151,7 @@ final class ConfigImpl implements Config {
 
 	@Override
 	public String getItemsFolderPath() {
-		return itemsFolerPath;
+		return itemsFolderPath;
 	}
 	
 	private ConfigImpl() {
@@ -171,6 +171,22 @@ final class ConfigImpl implements Config {
 		listAsc(homeFolder);
 		openHABHomeFolderPath = homeFolder.getPath();
 		sitemapsFolderPath = configFolder.getPath() + ConfigConstants.FILE_SEPARATOR + ConfigConstants.SITEMAPS;
-		itemsFolerPath = configFolder.getPath() + ConfigConstants.FILE_SEPARATOR + ConfigConstants.ITEMS;
+		itemsFolderPath = configFolder.getPath() + ConfigConstants.FILE_SEPARATOR + ConfigConstants.ITEMS;
 	}
+	
+	@Override
+	public File getOpenHABHomeFolder() {
+		return new File(openHABHomeFolderPath);
+	}
+
+	@Override
+	public File getSitemapsFolder() {
+		return new File(sitemapsFolderPath);
+	}
+	
+	@Override
+	public File getItemsFolder() {
+		return new File(itemsFolderPath);
+	}
+	
 }
