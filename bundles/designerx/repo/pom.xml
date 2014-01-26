@@ -5,11 +5,9 @@
     <artifactId>designerx</artifactId>
     <version>0.0.1-SNAPSHOT</version>
   </parent>
-  <artifactId>bizlogic</artifactId>
+  <artifactId>repo</artifactId>
   <packaging>pom</packaging>
   <modules>
-  	<module>org.openhab.designerx.bizlogic.cqrs.query</module>
-  	<module>org.openhab.designerx.bizlogic.cqrs.command</module>
-  	<module>org.openhab.designerx.bizlogic.cqrs.eventbus</module>
+  	<module>org.openhab.designerx.repo.queryrepo</module>
   </modules>
 </project>

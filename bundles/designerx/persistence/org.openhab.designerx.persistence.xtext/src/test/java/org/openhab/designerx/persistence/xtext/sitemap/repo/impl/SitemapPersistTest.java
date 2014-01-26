@@ -18,7 +18,7 @@ public class SitemapPersistTest {
 
 	@Test
 	public void testGet() throws IOException, ModelXtdexException, ModelException {
-		XtextSitemap persist = persistBuilder.find("demo");
+		XtextSitemap persist = persistBuilder.find("test");
 		Sitemap sitemap = persist.get();
 		String xtext = xtdex.toXtext(sitemap);
 		StringHelper.printSeparateLine();

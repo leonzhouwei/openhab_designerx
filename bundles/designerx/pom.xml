@@ -23,6 +23,7 @@
 		<module>util</module>
 		<module>domainobject</module>
 		<module>bizlogic</module>
+		<module>repo</module>
 	</modules>
 	
 </project>
