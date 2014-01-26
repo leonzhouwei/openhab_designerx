@@ -1,25 +1,25 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <diagram program="umlet" version="11.5.1">
-  <zoom_level>10</zoom_level>
+  <zoom_level>9</zoom_level>
   <element>
     <type>com.umlet.element.custom.Component</type>
     <coordinates>
-      <x>440</x>
-      <y>460</y>
-      <w>200</w>
-      <h>60</h>
+      <x>261</x>
+      <y>531</y>
+      <w>180</w>
+      <h>54</h>
     </coordinates>
     <panel_attributes> 
-'model // common</panel_attributes>
+'model</panel_attributes>
     <additional_attributes/>
   </element>
   <element>
     <type>com.umlet.element.custom.Component</type>
     <coordinates>
-      <x>440</x>
-      <y>350</y>
-      <w>200</w>
-      <h>60</h>
+      <x>261</x>
+      <y>432</y>
+      <w>180</w>
+      <h>54</h>
     </coordinates>
     <panel_attributes> 
 'model.xtdex</panel_attributes>
@@ -28,10 +28,10 @@
   <element>
     <type>com.umlet.element.custom.Component</type>
     <coordinates>
-      <x>440</x>
-      <y>130</y>
-      <w>200</w>
-      <h>60</h>
+      <x>486</x>
+      <y>216</y>
+      <w>180</w>
+      <h>54</h>
     </coordinates>
     <panel_attributes> 
 'domainobject</panel_attributes>
@@ -40,10 +40,10 @@
   <element>
     <type>com.umlet.element.custom.Component</type>
     <coordinates>
-      <x>440</x>
-      <y>240</y>
-      <w>200</w>
-      <h>60</h>
+      <x>486</x>
+      <y>315</y>
+      <w>180</w>
+      <h>54</h>
     </coordinates>
     <panel_attributes> 
 'persistence.xtext</panel_attributes>
@@ -52,103 +52,183 @@
   <element>
     <type>com.umlet.element.Relation</type>
     <coordinates>
-      <x>500</x>
-      <y>160</y>
-      <w>50</w>
-      <h>100</h>
+      <x>549</x>
+      <y>243</y>
+      <w>44</w>
+      <h>89</h>
     </coordinates>
     <panel_attributes>lt=&lt;.</panel_attributes>
-    <additional_attributes>30;80;30;30</additional_attributes>
+    <additional_attributes>27;72;27;27</additional_attributes>
   </element>
   <element>
     <type>com.umlet.element.Relation</type>
     <coordinates>
-      <x>500</x>
-      <y>270</y>
-      <w>50</w>
-      <h>100</h>
+      <x>414</x>
+      <y>342</y>
+      <w>89</w>
+      <h>107</h>
     </coordinates>
     <panel_attributes>lt=&lt;.</panel_attributes>
-    <additional_attributes>30;80;30;30</additional_attributes>
+    <additional_attributes>27;90;72;27</additional_attributes>
+  </element>
+  <element>
+    <type>com.umlet.element.Relation</type>
+    <coordinates>
+      <x>315</x>
+      <y>459</y>
+      <w>44</w>
+      <h>89</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;.</panel_attributes>
+    <additional_attributes>27;72;27;27</additional_attributes>
   </element>
   <element>
     <type>com.umlet.element.custom.Component</type>
     <coordinates>
-      <x>440</x>
-      <y>20</y>
-      <w>200</w>
-      <h>60</h>
+      <x>486</x>
+      <y>531</y>
+      <w>180</w>
+      <h>54</h>
     </coordinates>
     <panel_attributes> 
-'server</panel_attributes>
-    <additional_attributes/>
-  </element>
-  <element>
-    <type>com.umlet.element.Relation</type>
-    <coordinates>
-      <x>500</x>
-      <y>50</y>
-      <w>50</w>
-      <h>100</h>
-    </coordinates>
-    <panel_attributes>lt=&lt;.</panel_attributes>
-    <additional_attributes>30;80;30;30</additional_attributes>
-  </element>
-  <element>
-    <type>com.umlet.element.Relation</type>
-    <coordinates>
-      <x>500</x>
-      <y>380</y>
-      <w>50</w>
-      <h>100</h>
-    </coordinates>
-    <panel_attributes>lt=&lt;.</panel_attributes>
-    <additional_attributes>30;80;30;30</additional_attributes>
-  </element>
-  <element>
-    <type>com.umlet.element.custom.Component</type>
-    <coordinates>
-      <x>190</x>
-      <y>460</y>
-      <w>200</w>
-      <h>60</h>
-    </coordinates>
-    <panel_attributes> 
-'config // common</panel_attributes>
+'config</panel_attributes>
     <additional_attributes/>
   </element>
   <element>
     <type>com.umlet.element.custom.Component</type>
     <coordinates>
-      <x>690</x>
-      <y>460</y>
-      <w>200</w>
-      <h>60</h>
+      <x>711</x>
+      <y>531</y>
+      <w>180</w>
+      <h>54</h>
     </coordinates>
     <panel_attributes> 
-'util // common</panel_attributes>
+'util</panel_attributes>
     <additional_attributes/>
   </element>
   <element>
     <type>com.umlet.element.Relation</type>
     <coordinates>
-      <x>610</x>
-      <y>270</y>
-      <w>190</w>
-      <h>210</h>
+      <x>639</x>
+      <y>342</y>
+      <w>170</w>
+      <h>206</h>
     </coordinates>
     <panel_attributes>lt=&lt;.</panel_attributes>
-    <additional_attributes>170;190;30;30</additional_attributes>
+    <additional_attributes>153;189;27;27</additional_attributes>
   </element>
   <element>
     <type>com.umlet.element.Relation</type>
     <coordinates>
-      <x>260</x>
-      <y>270</y>
-      <w>200</w>
-      <h>210</h>
+      <x>549</x>
+      <y>342</y>
+      <w>44</w>
+      <h>206</h>
     </coordinates>
     <panel_attributes>lt=&lt;.</panel_attributes>
-    <additional_attributes>30;190;180;30</additional_attributes>
+    <additional_attributes>27;189;27;27</additional_attributes>
+  </element>
+  <element>
+    <type>com.umlet.element.custom.Component</type>
+    <coordinates>
+      <x>27</x>
+      <y>216</y>
+      <w>180</w>
+      <h>54</h>
+    </coordinates>
+    <panel_attributes> 
+'bizlogic.cqrs.eventbus</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <type>com.umlet.element.custom.Component</type>
+    <coordinates>
+      <x>261</x>
+      <y>315</y>
+      <w>180</w>
+      <h>54</h>
+    </coordinates>
+    <panel_attributes> 
+'repo.queryrepo</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <type>com.umlet.element.custom.Component</type>
+    <coordinates>
+      <x>261</x>
+      <y>216</y>
+      <w>180</w>
+      <h>54</h>
+    </coordinates>
+    <panel_attributes> 
+'bizlogic.cqrs.query</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <type>com.umlet.element.Relation</type>
+    <coordinates>
+      <x>324</x>
+      <y>243</y>
+      <w>44</w>
+      <h>89</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;.</panel_attributes>
+    <additional_attributes>27;72;27;27</additional_attributes>
+  </element>
+  <element>
+    <type>com.umlet.element.custom.Component</type>
+    <coordinates>
+      <x>261</x>
+      <y>81</y>
+      <w>180</w>
+      <h>54</h>
+    </coordinates>
+    <panel_attributes> 
+'bizlogic.cqrs.command</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <type>com.umlet.element.Relation</type>
+    <coordinates>
+      <x>414</x>
+      <y>108</y>
+      <w>179</w>
+      <h>125</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;.</panel_attributes>
+    <additional_attributes>162;108;27;27</additional_attributes>
+  </element>
+  <element>
+    <type>com.umlet.element.Relation</type>
+    <coordinates>
+      <x>414</x>
+      <y>315</y>
+      <w>89</w>
+      <h>44</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;.</panel_attributes>
+    <additional_attributes>72;27;27;27</additional_attributes>
+  </element>
+  <element>
+    <type>com.umlet.element.Relation</type>
+    <coordinates>
+      <x>81</x>
+      <y>243</y>
+      <w>197</w>
+      <h>89</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;.</panel_attributes>
+    <additional_attributes>27;27;180;72</additional_attributes>
+  </element>
+  <element>
+    <type>com.umlet.element.Relation</type>
+    <coordinates>
+      <x>90</x>
+      <y>108</y>
+      <w>188</w>
+      <h>125</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;.</panel_attributes>
+    <additional_attributes>27;108;171;27</additional_attributes>
   </element>
 </diagram>
