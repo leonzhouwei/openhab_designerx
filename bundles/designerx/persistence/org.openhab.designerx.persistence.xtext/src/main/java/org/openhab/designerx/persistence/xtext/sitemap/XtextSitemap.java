@@ -8,7 +8,7 @@ import org.openhab.designerx.model.xtdex.ModelXtdexException;
 
 public interface XtextSitemap {
 	
-	public Sitemap get() throws IOException, ModelXtdexException, ModelException;
+	public Sitemap sitemapReplica() throws IOException, ModelXtdexException, ModelException;
 	
 	public void save(Sitemap sitemap) throws IOException;
 	

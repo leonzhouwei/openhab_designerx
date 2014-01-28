@@ -9,10 +9,8 @@ import org.openhab.designerx.model.xtdex.ModelXtdexException;
 
 public interface ItemResourceQuery {
 	
-	public ItemResource byName(String name) throws IOException, ModelXtdexException, ModelException;
+	public ItemResource getReplicaByName(String name) throws IOException, ModelXtdexException, ModelException;
 	
-	public List<ItemResource> all() throws IOException, ModelXtdexException, ModelException;
+	public List<ItemResource> replicas() throws IOException, ModelXtdexException, ModelException;
 
-	public List<String> nameList();
-	
 }

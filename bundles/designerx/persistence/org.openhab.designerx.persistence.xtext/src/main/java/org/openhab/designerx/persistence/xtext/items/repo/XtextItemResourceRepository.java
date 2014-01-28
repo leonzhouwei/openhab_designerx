@@ -1,6 +1,6 @@
 package org.openhab.designerx.persistence.xtext.items.repo;
 
-import java.util.List;
+import java.util.Set;
 
 import org.openhab.designerx.persistence.xtext.items.XtextItemResource;
 
@@ -13,6 +13,6 @@ public interface XtextItemResourceRepository {
 	 */
 	public XtextItemResource find(String name);
 	
-	public List<String> nameList();
+	public Set<String> nameSet();
 	
 }

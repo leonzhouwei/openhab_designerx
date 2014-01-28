@@ -25,7 +25,7 @@ final class XtextSitemapImpl implements XtextSitemap {
 	}
 
 	@Override
-	public Sitemap get() throws IOException, ModelXtdexException, ModelException {
+	public Sitemap sitemapReplica() throws IOException, ModelXtdexException, ModelException {
 		List<String> list = IOUtils.readAll(file);
 		Sitemap result = xtdex.parse(list);
 		return result;
@@ -35,10 +35,6 @@ final class XtextSitemapImpl implements XtextSitemap {
 	public void save(Sitemap sitemap) throws IOException {
 		String xtext = xtdex.toXtext(sitemap);
 		IOUtils.write(file, xtext);
-	}
-	
-	public XtextSitemapImpl(File file) {
-		this.file = file;
 	}
 	
 }

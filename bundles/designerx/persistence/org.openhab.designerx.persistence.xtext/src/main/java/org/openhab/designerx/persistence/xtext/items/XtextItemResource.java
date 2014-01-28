@@ -8,7 +8,7 @@ import org.openhab.designerx.model.xtdex.ModelXtdexException;
 
 public interface XtextItemResource {
 	
-	public ItemResource get() throws IOException, ModelXtdexException, ModelException;
+	public ItemResource itemResourceReplica() throws IOException, ModelXtdexException, ModelException;
 	
 	public void save(ItemResource ir) throws IOException, ModelException;
 	

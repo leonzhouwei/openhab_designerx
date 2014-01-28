@@ -1,20 +1,32 @@
 package org.openhab.designerx.persistence.xtext.sitemap.repo.impl;
 
 import java.io.File;
+import java.io.IOException;
 import java.util.List;
+import java.util.Map;
+import java.util.Set;
 
 import org.openhab.designerx.config.Config;
 import org.openhab.designerx.config.impl.ConfigFactory;
+import org.openhab.designerx.model.ModelException;
+import org.openhab.designerx.model.sitemap.Sitemap;
+import org.openhab.designerx.model.xtdex.ModelXtdexException;
 import org.openhab.designerx.persistence.xtext.PersistenceXtextConstants;
+import org.openhab.designerx.persistence.xtext.sitemap.SitemapQuery;
 import org.openhab.designerx.persistence.xtext.sitemap.XtextSitemap;
 import org.openhab.designerx.persistence.xtext.sitemap.repo.XtextSitemapRepository;
 import org.openhab.designerx.util.IOUtils;
 
-final class XtextSitemapRepositoryImpl implements XtextSitemapRepository {
-	private static XtextSitemapRepository instance = new XtextSitemapRepositoryImpl();
+import com.google.common.collect.Lists;
+import com.google.common.collect.Maps;
+
+final class XtextSitemapRepositoryImpl implements XtextSitemapRepository, SitemapQuery {
 	private static final Config config = ConfigFactory.create();
+	private static final Map<String, XtextSitemapImpl> map = Maps.newHashMap();
 	
-	public static XtextSitemapRepository getInstance() {
+	private static XtextSitemapRepositoryImpl instance = new XtextSitemapRepositoryImpl();
+	
+	public static XtextSitemapRepositoryImpl getInstance() {
 		return instance;
 	}
 
@@ -23,15 +35,41 @@ final class XtextSitemapRepositoryImpl implements XtextSitemapRepository {
 		return new XtextSitemapImpl(name);
 	}
 	
-	private XtextSitemapRepositoryImpl() {}
-
-	@Override
-	public List<String> nameList() {
+	private XtextSitemapRepositoryImpl() {
 		String dirPath = config.getSitemapsFolderPath();
 		File directory = new File(dirPath);
 		List<File> files = IOUtils.listRegularFileNames(directory, PersistenceXtextConstants.SITEMAP_FILE_EXTENSION);
 		List<String> names = IOUtils.listBaseNamesWithoutExtension(files, PersistenceXtextConstants.SITEMAP_FILE_EXTENSION);
-		return names;
+		for (String name : names) {
+			XtextSitemapImpl value = new XtextSitemapImpl(name);
+			map.put(name, value);
+		}
+	}
+
+	@Override
+	public Set<String> nameSet() {
+		return map.keySet();
+	}
+
+	@Override
+	public List<Sitemap> replicas() throws IOException, ModelXtdexException,
+			ModelException {
+		List<Sitemap> replicas = Lists.newArrayList();
+		Set<String> names = map.keySet();
+		for (String name : names) {
+			replicas.add(getReplicaByName(name));
+		}
+		return replicas;
+	}
+
+	@Override
+	public Sitemap getReplicaByName(String name) throws IOException,
+			ModelXtdexException, ModelException {
+		XtextSitemapImpl xsi = map.get(name);
+		if (xsi != null) {
+			return xsi.sitemapReplica();
+		}
+		return null;
 	}
 
 }
