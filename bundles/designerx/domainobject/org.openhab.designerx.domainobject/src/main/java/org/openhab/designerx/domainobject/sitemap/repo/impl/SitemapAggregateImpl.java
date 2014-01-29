@@ -8,7 +8,7 @@ import org.openhab.designerx.model.sitemap.Sitemap;
 import org.openhab.designerx.model.xtdex.sitemap.SitemapXtdex;
 import org.openhab.designerx.model.xtdex.sitemap.impl.SitemapXtdexImpl;
 import org.openhab.designerx.persistence.xtext.sitemap.XtextSitemap;
-import org.openhab.designerx.persistence.xtext.sitemap.repo.impl.XtextSitemapRepositoryFactory;
+import org.openhab.designerx.persistence.xtext.sitemap.repo.impl.XtextSitemapRepositoryImpl;
 
 final class SitemapAggregateImpl implements SitemapAggregate {
 	private final long id;
@@ -20,7 +20,7 @@ final class SitemapAggregateImpl implements SitemapAggregate {
 			throw new DomainObjectException("id '" + id + "' is minus");
 		}
 		this.id = id;
-		persist = XtextSitemapRepositoryFactory.create().find(name);
+		persist = XtextSitemapRepositoryImpl.create().find(name);
 		try {
 			data = persist.get();
 		} catch (Exception e) {

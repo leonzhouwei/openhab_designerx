@@ -7,6 +7,7 @@ import org.openhab.designerx.persistence.xtext.items.repo.XtextItemResourceRepos
 
 public final class XtextItemResourceRepositoryImpl implements XtextItemResourceRepository {
 	private static final XtextItemResourceRepository real = RealXtextItemResourceRepositoryImpl.getInstance();
+	
 	private static final XtextItemResourceRepositoryImpl instance = new XtextItemResourceRepositoryImpl();
 	
 	public static XtextItemResourceRepositoryImpl getInstance() {

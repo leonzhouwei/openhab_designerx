@@ -34,6 +34,7 @@ final class ConfigImpl implements Config {
 		ConfigConstants.SITEMAPS,
 		ConfigConstants.TRANSFORM
 	};
+	
 	private static final ConfigImpl instance = new ConfigImpl();
 	
 	private String openHABHomeFolderPath;

@@ -7,13 +7,13 @@ import java.util.Set;
 import org.openhab.designerx.domainobject.sitemap.SitemapAggregate;
 import org.openhab.designerx.domainobject.sitemap.repo.SitemapAggregateRepository;
 import org.openhab.designerx.persistence.xtext.sitemap.repo.XtextSitemapRepository;
-import org.openhab.designerx.persistence.xtext.sitemap.repo.impl.XtextSitemapRepositoryFactory;
+import org.openhab.designerx.persistence.xtext.sitemap.repo.impl.XtextSitemapRepositoryImpl;
 import org.openhab.designerx.util.IdGenerator;
 
 import com.google.common.collect.Maps;
 
 final class SitemapAggregateRepositoryImpl implements SitemapAggregateRepository {
-	private XtextSitemapRepository xtextRepo = XtextSitemapRepositoryFactory.create();
+	private XtextSitemapRepository xtextRepo = XtextSitemapRepositoryImpl.create();
 
 	private Map<String, SitemapAggregate> map = Maps.newHashMap();
 	private static final IdGenerator idGen = new IdGenerator();
