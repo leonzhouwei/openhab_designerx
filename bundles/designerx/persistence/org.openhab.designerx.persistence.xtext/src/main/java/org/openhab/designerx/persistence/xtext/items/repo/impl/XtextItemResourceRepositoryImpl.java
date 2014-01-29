@@ -10,7 +10,7 @@ public final class XtextItemResourceRepositoryImpl implements XtextItemResourceR
 	
 	private static final XtextItemResourceRepositoryImpl instance = new XtextItemResourceRepositoryImpl();
 	
-	public static XtextItemResourceRepositoryImpl getInstance() {
+	public static XtextItemResourceRepository getInstance() {
 		return instance;
 	}
 	
