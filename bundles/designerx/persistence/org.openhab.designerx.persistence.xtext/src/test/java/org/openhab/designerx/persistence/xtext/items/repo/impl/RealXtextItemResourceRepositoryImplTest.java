@@ -10,14 +10,22 @@ import org.openhab.designerx.model.items.ItemResource;
 import org.openhab.designerx.model.xtdex.ModelXtdexException;
 import org.openhab.designerx.model.xtdex.items.ItemResourceXtdex;
 import org.openhab.designerx.model.xtdex.items.impl.ItemResourceXtdexImpl;
+import org.openhab.designerx.persistence.xtext.items.XtextItemResource;
 import org.openhab.designerx.util.StringHelper;
 
-public class XtextItemResourceRepositoryImplTest {
-	private static final XtextItemResourceRepositoryImpl repo = XtextItemResourceRepositoryImpl.getInstance();
+public class RealXtextItemResourceRepositoryImplTest {
+	private static final RealXtextItemResourceRepositoryImpl repo = RealXtextItemResourceRepositoryImpl.getInstance();
 	private static final ItemResourceXtdex xtdex = new ItemResourceXtdexImpl();
 
 	@Test
-	public void testByName() throws IOException, ModelXtdexException, ModelException {
+	public void testFind() throws IOException, ModelXtdexException, ModelException {
+		StringHelper.printSeparateLine();
+		XtextItemResource expected = repo.find("demo");
+		System.out.println(xtdex.toXtext(expected.itemResourceReplica()));
+	}
+	
+	@Test
+	public void testGetReplicaByNameByName() throws IOException, ModelXtdexException, ModelException {
 		StringHelper.printSeparateLine();
 		ItemResource result = repo.getReplicaByName("test");
 		String xtext = xtdex.toXtext(result);
