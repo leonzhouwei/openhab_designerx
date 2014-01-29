@@ -19,15 +19,17 @@ final class XtextItemResourceImpl implements XtextItemResource {
 	private File file;
 	private Config config = ConfigFactory.create();
 	private final ItemResourceXtdex xtdex = new ItemResourceXtdexImpl();
+	private ItemResource itemResource;
 	
-	public XtextItemResourceImpl(String name) {
+	public XtextItemResourceImpl(String name) throws IOException, ModelXtdexException, ModelException {
 		file = new File(config.getItemsFolderPath() + PersistenceXtextConstants.FILE_SEPARATOR + name + PersistenceXtextConstants.ITEMS_FILE_EXTENSION);
+		List<String> list = IOUtils.readAll(file);
+		itemResource = xtdex.fromXtext(list);
 	}
 	
 	@Override
 	public ItemResource itemResourceReplica() throws IOException, ModelXtdexException, ModelException {
-		List<String> list = IOUtils.readAll(file);
-		ItemResource result = xtdex.fromXtext(list);
+		ItemResource result = xtdex.fromXtext(xtdex.toXtext(itemResource));
 		return result;
 	}
 
@@ -35,6 +37,7 @@ final class XtextItemResourceImpl implements XtextItemResource {
 	public void save(ItemResource ir) throws IOException, ModelException {
 		String xtext = xtdex.toXtext(ir);
 		IOUtils.write(file, xtext);
+		itemResource = ir;
 	}
 
 }

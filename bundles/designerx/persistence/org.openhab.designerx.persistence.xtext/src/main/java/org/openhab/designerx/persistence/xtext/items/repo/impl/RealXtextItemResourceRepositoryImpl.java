@@ -36,13 +36,17 @@ final class RealXtextItemResourceRepositoryImpl implements XtextItemResourceRepo
 	}
 	
 	private RealXtextItemResourceRepositoryImpl() {
-		String dirPath = config.getItemsFolderPath();
-		File directory = new File(dirPath);
-		List<File> files = IOUtils.listRegularFileNames(directory, PersistenceXtextConstants.ITEMS_FILE_EXTENSION);
-		List<String> names = IOUtils.listBaseNamesWithoutExtension(files, PersistenceXtextConstants.ITEMS_FILE_EXTENSION);
-		for (String name : names) {
-			XtextItemResourceImpl xir = new XtextItemResourceImpl(name);
-			map.put(name, xir);
+		try {
+			String dirPath = config.getItemsFolderPath();
+			File directory = new File(dirPath);
+			List<File> files = IOUtils.listRegularFileNames(directory, PersistenceXtextConstants.ITEMS_FILE_EXTENSION);
+			List<String> names = IOUtils.listBaseNamesWithoutExtension(files, PersistenceXtextConstants.ITEMS_FILE_EXTENSION);
+			for (String name : names) {
+				XtextItemResourceImpl xir = new XtextItemResourceImpl(name);
+				map.put(name, xir);
+			}
+		} catch (Exception e) {
+			throw new RuntimeException(e);
 		}
 	}
 
