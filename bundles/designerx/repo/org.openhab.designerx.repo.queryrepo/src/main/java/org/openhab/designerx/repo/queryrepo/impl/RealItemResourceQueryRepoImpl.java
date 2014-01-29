@@ -20,7 +20,7 @@ final class RealItemResourceQueryRepoImpl implements ItemResourceQueryRepo {
 	
 	private static final RealItemResourceQueryRepoImpl instance = new RealItemResourceQueryRepoImpl();
 
-	public static RealItemResourceQueryRepoImpl getInstance() {
+	static RealItemResourceQueryRepoImpl getInstance() {
 		return instance;
 	}
 

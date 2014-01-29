@@ -21,7 +21,7 @@ final class RealSitemapQueryRepoImpl implements SitemapQueryRepo {
 	private static Map<String, Sitemap> map = Maps.newHashMap();
 	private static final RealSitemapQueryRepoImpl instance = new RealSitemapQueryRepoImpl();
 
-	public static RealSitemapQueryRepoImpl getInstance() {
+	static RealSitemapQueryRepoImpl getInstance() {
 		return instance;
 	}
 

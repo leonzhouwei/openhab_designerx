@@ -41,12 +41,10 @@ final class RealConfigImpl implements Config {
 	private String sitemapsFolderPath;
 	private String itemsFolderPath;
 	
-	public static RealConfigImpl getInstance() {
+	static RealConfigImpl getInstance() {
 		return instance;
 	}
 
-	public void load() {}
-	
 	@Override
 	public String getOpenHABHomeFolderPath() {
 		return openHABHomeFolderPath;

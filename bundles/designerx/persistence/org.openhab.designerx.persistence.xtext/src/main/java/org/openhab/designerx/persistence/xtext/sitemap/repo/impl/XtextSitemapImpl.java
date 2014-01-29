@@ -21,7 +21,7 @@ final class XtextSitemapImpl implements XtextSitemap {
 	private SitemapXtdex xtdex = new SitemapXtdexImpl();
 	private Sitemap sitemap;
 	
-	public XtextSitemapImpl(String name) throws IOException, ModelXtdexException, ModelException {
+	XtextSitemapImpl(String name) throws IOException, ModelXtdexException, ModelException {
 		file = new File(config.getSitemapsFolderPath() + PersistenceXtextConstants.FILE_SEPARATOR + name + PersistenceXtextConstants.SITEMAP_FILE_EXTENSION);
 		List<String> list = IOUtils.readAll(file);
 		sitemap = xtdex.parse(list);

@@ -26,7 +26,7 @@ final class RealXtextSitemapRepositoryImpl implements XtextSitemapRepository, Si
 	
 	private static RealXtextSitemapRepositoryImpl instance = new RealXtextSitemapRepositoryImpl();
 	
-	public static RealXtextSitemapRepositoryImpl getInstance() {
+	static RealXtextSitemapRepositoryImpl getInstance() {
 		return instance;
 	}
 
