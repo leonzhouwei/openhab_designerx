@@ -12,5 +12,7 @@ public interface ItemResource {
 	public List<Item> getAll();
 	
 	public Item findByName(String name);
+	
+	public String name();
 
 }

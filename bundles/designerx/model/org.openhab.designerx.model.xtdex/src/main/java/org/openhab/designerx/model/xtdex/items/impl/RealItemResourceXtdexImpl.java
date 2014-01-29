@@ -19,14 +19,14 @@ final class RealItemResourceXtdexImpl implements ItemResourceXtdex {
 	private ItemResourceFactory factory = new ItemResourceFactoryImpl();
 
 	@Override
-	public ItemResource fromXtext(String xtext) throws ModelXtdexException, ModelException {
+	public ItemResource fromXtext(String name, String xtext) throws ModelXtdexException, ModelException {
 		xtext = xtext.trim();
 		String[] split = xtext.split(ModelXtdexConstants.LINE_SEPARATOR);
 		List<String> list = Lists.newArrayList();
 		for (String string : split) {
 			list.add(string);
 		}
-		return fromXtext(list);
+		return fromXtext(name, list);
 	}
 
 	@Override
@@ -41,8 +41,8 @@ final class RealItemResourceXtdexImpl implements ItemResourceXtdex {
 	}
 	
 	@Override
-	public ItemResource fromXtext(List<String> xtext) throws ModelXtdexException, ModelException {
-		ItemResource ir = factory.createItemResource();
+	public ItemResource fromXtext(String irName, List<String> xtext) throws ModelXtdexException, ModelException {
+		ItemResource ir = factory.createItemResource(irName);
 		for (String string : xtext) {
 			String s = string.trim();
 			if (s.isEmpty() || s.startsWith("/*")) {

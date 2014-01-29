@@ -4,6 +4,7 @@ import java.util.Collection;
 import java.util.List;
 import java.util.Map;
 
+import org.openhab.designerx.model.ModelException;
 import org.openhab.designerx.model.items.Item;
 import org.openhab.designerx.model.items.ItemResource;
 
@@ -13,6 +14,15 @@ import com.google.common.collect.Maps;
 final class ItemResourceImpl implements ItemResource {
 	private List<Item> items = Lists.newArrayList();
 	private Map<String, Integer> map = Maps.newHashMap();
+	private String name;
+	
+	public ItemResourceImpl(String name) throws ModelException {
+		name = name.trim();
+		if (name.isEmpty()) {
+			throw new ModelException("name is empty");
+		}
+		this.name = name;
+	}
 	
 	@Override
 	public Item append(Item item) {
@@ -49,6 +59,11 @@ final class ItemResourceImpl implements ItemResource {
 			result = items.get(index);
 		}
 		return result;
+	}
+
+	@Override
+	public String name() {
+		return name;
 	}
 	
 }

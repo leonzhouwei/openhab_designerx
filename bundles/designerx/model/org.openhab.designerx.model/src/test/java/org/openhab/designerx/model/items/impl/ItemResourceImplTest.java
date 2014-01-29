@@ -11,14 +11,14 @@ public class ItemResourceImplTest {
 
 	@Test
 	public void testAppend_1() throws ModelException {
-		ItemResource ir = new ItemResourceImpl();
+		ItemResource ir = new ItemResourceImpl("test");
 		Item first = itemFactory.createGroupItem("All");
 		ir.append(first);
 	}
 	
 	@Test
 	public void testAppend_2() throws ModelException {
-		ItemResource ir = new ItemResourceImpl();
+		ItemResource ir = new ItemResourceImpl("test");
 		Item first = itemFactory.createGroupItem("All");
 		ir.append(first);
 		Item duplicateNameItem = itemFactory.createDimmerItem("All");

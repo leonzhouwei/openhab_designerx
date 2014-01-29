@@ -35,7 +35,7 @@ public class ItemResourceXtdexImplTest {
 		list.add("Group FF_Child 		\"Child's Room\" 	<boy1> 		(gFF)");
 		list.add("Group FF_Bed 		\"Bedroom\" 		<bedroom> 	(gFF)");
 		list.add("Group FF_Corridor 	\"Corridor\" 		<corridor> 	(gFF)");
-		ItemResource ir = xtdex.fromXtext(list);
+		ItemResource ir = xtdex.fromXtext("test", list);
 		System.out.println(xtdex.toXtext(ir));
 	}
 	
@@ -47,7 +47,7 @@ public class ItemResourceXtdexImplTest {
 		list.add("Group:Switch:OR(ON, OFF) 		Heating 	\"No. of Active Heatings [(%d)]\" 	<heating> 		(All)");
 		list.add("Group:Number:AVG 				Temperature	\"Avg. Room Temperature [%.1f °C]\" 	<temperature>	(Status)");
 		list.add("Group:Contact:OR(OPEN, CLOSED) 	Windows 	\"Open windows [(%d)]\"				<contact>		(All)");
-		ItemResource ir = xtdex.fromXtext(list);
+		ItemResource ir = xtdex.fromXtext("test", list);
 		System.out.println(xtdex.toXtext(ir));
 	}
 	
@@ -78,7 +78,7 @@ public class ItemResourceXtdexImplTest {
 		list.add("Switch Light_Outdoor_Garage 		\"Garage\" 		(Outdoor, Lights)");
 		list.add("Switch Light_Outdoor_Terrace 		\"Terrace\" 		(Outdoor, Lights)");
 		list.add("Switch Light_Outdoor_Frontdoor 		\"Frontdoor\"		(Outdoor, Lights)");
-		ItemResource ir = xtdex.fromXtext(list);
+		ItemResource ir = xtdex.fromXtext("test", list);
 		System.out.println(xtdex.toXtext(ir));
 	}
 	
@@ -95,7 +95,7 @@ public class ItemResourceXtdexImplTest {
 		list.add("Switch Heating_FF_Office 	\"Office\" 		<heating>	(FF_Office, Heating)");
 		list.add("Switch Heating_FF_Child 	\"Child's Room\" 	<heating>	(FF_Child, Heating)");
 		list.add("Switch Heating_FF_Bed 		\"Bedroom\" 		<heating>	(FF_Bed, Heating)");
-		ItemResource ir = xtdex.fromXtext(list);
+		ItemResource ir = xtdex.fromXtext("test", list);
 		System.out.println(xtdex.toXtext(ir));
 	}
 	
@@ -113,7 +113,7 @@ public class ItemResourceXtdexImplTest {
 		list.add("Rollershutter Shutter_FF_Bath 			\"Bath\"			(FF_Bath, Shutters)");
 		list.add("Rollershutter Shutter_FF_Office_Window	\"Office Window\"	(FF_Office, Shutters)");
 		list.add("Rollershutter Shutter_FF_Office_Door 	\"Office Door\"	(FF_Office, Shutters)");
-		ItemResource ir = xtdex.fromXtext(list);
+		ItemResource ir = xtdex.fromXtext("test", list);
 		System.out.println(xtdex.toXtext(ir));
 	}
 	
@@ -129,7 +129,7 @@ public class ItemResourceXtdexImplTest {
 		list.add("Number Temperature_FF_Office 	\"Temperature [%.1f °C]\"	<temperature>	(Temperature, FF_Office)");
 		list.add("Number Temperature_FF_Child 	\"Temperature [%.1f °C]\"	<temperature>	(Temperature, FF_Child)");
 		list.add("Number Temperature_FF_Bed 		\"Temperature [%.1f °C]\"	<temperature>	(Temperature, FF_Bed)");
-		ItemResource ir = xtdex.fromXtext(list);
+		ItemResource ir = xtdex.fromXtext("test", list);
 		System.out.println(xtdex.toXtext(ir));
 	}
 	
@@ -155,7 +155,7 @@ public class ItemResourceXtdexImplTest {
 		list.add("Number Weather_Temp_Min 		\"Todays Minimum [%.1f °C]\"	<temperature> (Weather_Chart)");
 		list.add("Number Weather_Chart_Period		\"Chart Period\"");
 		list.add("DateTime Weather_LastUpdate		\"Last Update [%1$ta %1$tR]\"	<clock>");
-		ItemResource ir = xtdex.fromXtext(list);
+		ItemResource ir = xtdex.fromXtext("test", list);
 		System.out.println(xtdex.toXtext(ir));
 	}
 	
@@ -164,7 +164,7 @@ public class ItemResourceXtdexImplTest {
 		List<String> list = Lists.newArrayList();
 		list.add("/* NTP binding demo item */");
 		list.add("DateTime		Date			\"Date [%1$tA, %1$td.%1$tm.%1$tY]\"	<calendar>	{ ntp=\"Europe/Berlin:de_DE\" }");
-		ItemResource ir = xtdex.fromXtext(list);
+		ItemResource ir = xtdex.fromXtext("test", list);
 		System.out.println(xtdex.toXtext(ir));
 	}
 	
@@ -184,7 +184,7 @@ public class ItemResourceXtdexImplTest {
 
 		list.add("String UnknownDevices    \"Unknown Devices in Range: [%s]\" { bluetooth=\"?\" }");
 		list.add("Number NoOfPairedDevices \"Paired Devices in Range: [%d]\"  { bluetooth=\"!\" }");
-		ItemResource ir = xtdex.fromXtext(list);
+		ItemResource ir = xtdex.fromXtext("test", list);
 		System.out.println(xtdex.toXtext(ir));
 	}
 

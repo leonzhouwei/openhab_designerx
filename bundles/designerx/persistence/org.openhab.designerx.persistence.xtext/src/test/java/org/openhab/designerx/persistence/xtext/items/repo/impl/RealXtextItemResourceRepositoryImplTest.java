@@ -50,5 +50,12 @@ public class RealXtextItemResourceRepositoryImplTest {
 			System.out.println(name);
 		}
 	}
+	
+	@Test 
+	public void testName() throws IOException, ModelXtdexException, ModelException {
+		StringHelper.printSeparateLine();
+		ItemResource resource = repo.find("demo").itemResourceReplica();
+		System.out.println(resource.name());
+	}
 
 }

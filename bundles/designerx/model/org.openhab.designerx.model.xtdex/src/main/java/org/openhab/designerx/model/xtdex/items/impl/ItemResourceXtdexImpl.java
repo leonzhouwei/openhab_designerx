@@ -11,9 +11,9 @@ public final class ItemResourceXtdexImpl implements ItemResourceXtdex {
 	private static final ItemResourceXtdex xtdex = new RealItemResourceXtdexImpl();
 	
 	@Override
-	public ItemResource fromXtext(String xtext) throws ModelXtdexException,
+	public ItemResource fromXtext(String name, String xtext) throws ModelXtdexException,
 			ModelException {
-		return xtdex.fromXtext(xtext);
+		return xtdex.fromXtext(name, xtext);
 	}
 
 	@Override
@@ -22,9 +22,9 @@ public final class ItemResourceXtdexImpl implements ItemResourceXtdex {
 	}
 
 	@Override
-	public ItemResource fromXtext(List<String> xtext)
+	public ItemResource fromXtext(String name, List<String> xtext)
 			throws ModelXtdexException, ModelException {
-		return xtdex.fromXtext(xtext);
+		return xtdex.fromXtext(name, xtext);
 	}
 
 }

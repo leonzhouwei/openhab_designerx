@@ -24,12 +24,13 @@ final class XtextItemResourceImpl implements XtextItemResource {
 	public XtextItemResourceImpl(String name) throws IOException, ModelXtdexException, ModelException {
 		file = new File(config.getItemsFolderPath() + PersistenceXtextConstants.FILE_SEPARATOR + name + PersistenceXtextConstants.ITEMS_FILE_EXTENSION);
 		List<String> list = IOUtils.readAll(file);
-		itemResource = xtdex.fromXtext(list);
+		itemResource = xtdex.fromXtext(name, list);
 	}
 	
 	@Override
 	public ItemResource itemResourceReplica() throws IOException, ModelXtdexException, ModelException {
-		ItemResource result = xtdex.fromXtext(xtdex.toXtext(itemResource));
+		String name = itemResource.name();
+		ItemResource result = xtdex.fromXtext(name, xtdex.toXtext(itemResource));
 		return result;
 	}
 
