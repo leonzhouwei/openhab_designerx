@@ -36,13 +36,17 @@ final class RealXtextSitemapRepositoryImpl implements XtextSitemapRepository, Si
 	}
 	
 	private RealXtextSitemapRepositoryImpl() {
-		String dirPath = config.getSitemapsFolderPath();
-		File directory = new File(dirPath);
-		List<File> files = IOUtils.listRegularFileNames(directory, PersistenceXtextConstants.SITEMAP_FILE_EXTENSION);
-		List<String> names = IOUtils.listBaseNamesWithoutExtension(files, PersistenceXtextConstants.SITEMAP_FILE_EXTENSION);
-		for (String name : names) {
-			XtextSitemapImpl value = new XtextSitemapImpl(name);
-			map.put(name, value);
+		try {
+			String dirPath = config.getSitemapsFolderPath();
+			File directory = new File(dirPath);
+			List<File> files = IOUtils.listRegularFileNames(directory, PersistenceXtextConstants.SITEMAP_FILE_EXTENSION);
+			List<String> names = IOUtils.listBaseNamesWithoutExtension(files, PersistenceXtextConstants.SITEMAP_FILE_EXTENSION);
+			for (String name : names) {
+				XtextSitemapImpl value = new XtextSitemapImpl(name);
+				map.put(name, value);
+			}
+		} catch (Exception e) {
+			throw new RuntimeException(e);
 		}
 	}
 

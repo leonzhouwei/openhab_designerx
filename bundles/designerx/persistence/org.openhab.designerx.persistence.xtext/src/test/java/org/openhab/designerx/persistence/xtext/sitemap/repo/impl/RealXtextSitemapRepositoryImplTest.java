@@ -17,7 +17,7 @@ public class RealXtextSitemapRepositoryImplTest {
 	private RealXtextSitemapRepositoryImpl repo = RealXtextSitemapRepositoryImpl.getInstance();
 	private SitemapXtdex xtdex = new SitemapXtdexImpl();
 
-//	@Test
+	@Test
 	public void testFind() throws IOException, ModelXtdexException, ModelException {
 		StringHelper.printSeparateLine();
 		XtextSitemap persist = repo.find("test");
@@ -26,7 +26,7 @@ public class RealXtextSitemapRepositoryImplTest {
 		System.out.println(xtext);
 	}
 	
-//	@Test
+	@Test
 	public void testReplicas() throws IOException, ModelXtdexException, ModelException {
 		StringHelper.printSeparateLine();
 		List<Sitemap> replicas = repo.replicas();
@@ -44,7 +44,7 @@ public class RealXtextSitemapRepositoryImplTest {
 		}
 	}
 	
-//	@Test
+	@Test
 	public void testGetReplicaByName() throws IOException, ModelXtdexException, ModelException {
 		StringHelper.printSeparateLine();
 		Sitemap replica = repo.getReplicaByName("demo");

@@ -19,15 +19,17 @@ final class XtextSitemapImpl implements XtextSitemap {
 	private File file;
 	private Config config = ConfigFactory.create();
 	private SitemapXtdex xtdex = new SitemapXtdexImpl();
+	private Sitemap sitemap;
 	
-	public XtextSitemapImpl(String name) {
+	public XtextSitemapImpl(String name) throws IOException, ModelXtdexException, ModelException {
 		file = new File(config.getSitemapsFolderPath() + PersistenceXtextConstants.FILE_SEPARATOR + name + PersistenceXtextConstants.SITEMAP_FILE_EXTENSION);
+		List<String> list = IOUtils.readAll(file);
+		sitemap = xtdex.parse(list);
 	}
 
 	@Override
 	public Sitemap sitemapReplica() throws IOException, ModelXtdexException, ModelException {
-		List<String> list = IOUtils.readAll(file);
-		Sitemap result = xtdex.parse(list);
+		Sitemap result = xtdex.parse(xtdex.toXtext(sitemap));
 		return result;
 	}
 
@@ -35,6 +37,7 @@ final class XtextSitemapImpl implements XtextSitemap {
 	public void save(Sitemap sitemap) throws IOException {
 		String xtext = xtdex.toXtext(sitemap);
 		IOUtils.write(file, xtext);
+		this.sitemap = sitemap;
 	}
 	
 }

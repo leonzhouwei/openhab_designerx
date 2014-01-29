@@ -37,7 +37,7 @@ final class XtextItemResourceImpl implements XtextItemResource {
 	public void save(ItemResource ir) throws IOException, ModelException {
 		String xtext = xtdex.toXtext(ir);
 		IOUtils.write(file, xtext);
-		itemResource = ir;
+		this.itemResource = ir;
 	}
 
 }

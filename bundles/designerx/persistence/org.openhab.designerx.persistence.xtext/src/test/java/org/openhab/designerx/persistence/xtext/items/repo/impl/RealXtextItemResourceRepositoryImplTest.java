@@ -17,14 +17,14 @@ public class RealXtextItemResourceRepositoryImplTest {
 	private static final RealXtextItemResourceRepositoryImpl repo = RealXtextItemResourceRepositoryImpl.getInstance();
 	private static final ItemResourceXtdex xtdex = new ItemResourceXtdexImpl();
 
-//	@Test
+	@Test
 	public void testFind() throws IOException, ModelXtdexException, ModelException {
 		StringHelper.printSeparateLine();
 		XtextItemResource expected = repo.find("demo");
 		System.out.println(xtdex.toXtext(expected.itemResourceReplica()));
 	}
 	
-//	@Test
+	@Test
 	public void testGetReplicaByNameByName() throws IOException, ModelXtdexException, ModelException {
 		StringHelper.printSeparateLine();
 		ItemResource result = repo.getReplicaByName("test");
@@ -32,7 +32,7 @@ public class RealXtextItemResourceRepositoryImplTest {
 		System.out.println(xtext);
 	}
 
-//	@Test
+	@Test
 	public void testReplicas() throws IOException, ModelXtdexException, ModelException {
 		StringHelper.printSeparateLine();
 		List<ItemResource> result = repo.replicas();
