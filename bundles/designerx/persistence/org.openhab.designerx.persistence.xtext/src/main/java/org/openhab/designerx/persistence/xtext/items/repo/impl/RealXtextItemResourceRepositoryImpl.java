@@ -7,7 +7,7 @@ import java.util.Map;
 import java.util.Set;
 
 import org.openhab.designerx.config.Config;
-import org.openhab.designerx.config.impl.ConfigFactory;
+import org.openhab.designerx.config.impl.ConfigImpl;
 import org.openhab.designerx.model.ModelException;
 import org.openhab.designerx.model.items.ItemResource;
 import org.openhab.designerx.model.xtdex.ModelXtdexException;
@@ -21,7 +21,7 @@ import com.google.common.collect.Lists;
 import com.google.common.collect.Maps;
 
 final class RealXtextItemResourceRepositoryImpl implements XtextItemResourceRepository, ItemResourceQuery  {
-	private static final Config config = ConfigFactory.create();
+	private static final Config config = ConfigImpl.getInstance();
 	private static final Map<String, XtextItemResourceImpl> map = Maps.newHashMap(); 
 	
 	private static final RealXtextItemResourceRepositoryImpl instance = new RealXtextItemResourceRepositoryImpl();

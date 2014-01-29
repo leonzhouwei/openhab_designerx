@@ -5,7 +5,7 @@ import java.io.IOException;
 import java.util.List;
 
 import org.openhab.designerx.config.Config;
-import org.openhab.designerx.config.impl.ConfigFactory;
+import org.openhab.designerx.config.impl.ConfigImpl;
 import org.openhab.designerx.model.ModelException;
 import org.openhab.designerx.model.items.ItemResource;
 import org.openhab.designerx.model.xtdex.ModelXtdexException;
@@ -17,7 +17,7 @@ import org.openhab.designerx.util.IOUtils;
 
 final class XtextItemResourceImpl implements XtextItemResource {
 	private File file;
-	private Config config = ConfigFactory.create();
+	private Config config = ConfigImpl.getInstance();
 	private final ItemResourceXtdex xtdex = new ItemResourceXtdexImpl();
 	private ItemResource itemResource;
 	
