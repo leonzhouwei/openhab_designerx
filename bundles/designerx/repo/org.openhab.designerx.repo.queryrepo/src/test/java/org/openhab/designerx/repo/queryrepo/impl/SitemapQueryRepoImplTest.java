@@ -6,11 +6,12 @@ import org.junit.Test;
 import org.openhab.designerx.model.sitemap.Sitemap;
 import org.openhab.designerx.model.xtdex.sitemap.SitemapXtdex;
 import org.openhab.designerx.model.xtdex.sitemap.impl.SitemapXtdexImpl;
+import org.openhab.designerx.repo.queryrepo.SitemapQueryRepo;
 import org.openhab.designerx.util.StringHelper;
 
 public class SitemapQueryRepoImplTest {
 	private static final SitemapXtdex xtdex = new SitemapXtdexImpl();
-	private static final SitemapQueryRepoImpl repo = new SitemapQueryRepoImpl();
+	private static final SitemapQueryRepo repo = SitemapQueryRepoImpl.getInstance();
 
 	@Test
 	public void testListAllAsReplicas() {
@@ -23,8 +24,8 @@ public class SitemapQueryRepoImplTest {
 
 	@Test
 	public void testGetReplicaByName() {
-		Sitemap s = repo.getReplicaByName("test");
 		StringHelper.printSeparateLine();
+		Sitemap s = repo.getReplicaByName("test");
 		System.out.println(xtdex.toXtext(s));
 	}
 

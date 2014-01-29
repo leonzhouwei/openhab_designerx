@@ -10,8 +10,7 @@ import org.openhab.designerx.model.xtdex.ModelXtdexException;
 import org.openhab.designerx.model.xtdex.sitemap.SitemapXtdex;
 import org.openhab.designerx.model.xtdex.sitemap.impl.SitemapXtdexImpl;
 import org.openhab.designerx.persistence.xtext.sitemap.SitemapQuery;
-import org.openhab.designerx.persistence.xtext.sitemap.impl.SitemapQueryImpl;
-import org.openhab.designerx.repo.queryrepo.QueryRepoException;
+import org.openhab.designerx.persistence.xtext.sitemap.repo.impl.SitemapQueryImpl;
 import org.openhab.designerx.repo.queryrepo.SitemapQueryRepo;
 
 import com.google.common.collect.Lists;
@@ -36,7 +35,7 @@ final class RealSitemapQueryRepoImpl implements SitemapQueryRepo {
 				list.add(replica);
 			}
 		} catch (Exception e) {
-			throw new QueryRepoException(e);
+			throw new RuntimeException(e);
 		}
 		return list;
 	}
@@ -49,7 +48,7 @@ final class RealSitemapQueryRepoImpl implements SitemapQueryRepo {
 				replica = createReplica(replica);
 			}
 		} catch (Exception e) {
-			throw new QueryRepoException(e);
+			throw new RuntimeException(e);
 		}
 		return replica;
 	}
@@ -64,12 +63,12 @@ final class RealSitemapQueryRepoImpl implements SitemapQueryRepo {
 	private RealSitemapQueryRepoImpl() {
 		SitemapQuery query = new SitemapQueryImpl();
 		try {
-			List<Sitemap> list = query.all();
+			List<Sitemap> list = query.replicas();
 			for (Sitemap s : list) {
 				map.put(s.getName(), s);
 			}
 		} catch (Exception e) {
-			throw new QueryRepoException(e);
+			throw new RuntimeException(e);
 		}
 	}
 

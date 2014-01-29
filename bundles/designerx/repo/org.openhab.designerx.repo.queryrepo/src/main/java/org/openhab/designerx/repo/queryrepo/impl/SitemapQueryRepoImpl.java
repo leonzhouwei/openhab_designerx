@@ -7,6 +7,12 @@ import org.openhab.designerx.repo.queryrepo.SitemapQueryRepo;
 
 public final class SitemapQueryRepoImpl implements SitemapQueryRepo {
 	private SitemapQueryRepo real = RealSitemapQueryRepoImpl.getInstance();
+	
+	private static final SitemapQueryRepoImpl instance = new SitemapQueryRepoImpl();
+	
+	public static SitemapQueryRepo getInstance() {
+		return instance;
+	}
 
 	@Override
 	public List<Sitemap> listAllAsReplicas() {
@@ -18,4 +24,5 @@ public final class SitemapQueryRepoImpl implements SitemapQueryRepo {
 		return real.getReplicaByName(name);
 	}
 
+	private SitemapQueryRepoImpl() {}
 }

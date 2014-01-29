@@ -1,6 +1,6 @@
 package org.openhab.designerx.repo.queryrepo;
 
-public final class QueryRepoException extends RuntimeException {
+public final class QueryRepoException extends Exception {
 
 	/**
 	 * 
