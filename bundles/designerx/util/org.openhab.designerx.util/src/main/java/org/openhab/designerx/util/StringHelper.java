@@ -38,4 +38,20 @@ public final class StringHelper {
 
 	private StringHelper() {}
 
+	public static void printTestStartLine() {
+		printStartLine("TEST");
+	}
+	
+	public static void printTestEndLine() {
+		printEndLine("TEST");
+	}
+	
+	public static void printStartLine(String info) {
+		System.out.println("==== " + info + " START ====");
+	}
+	
+	public static void printEndLine(String info) {
+		System.out.println("===== " + info + " END =====");
+	}
+	
 }
