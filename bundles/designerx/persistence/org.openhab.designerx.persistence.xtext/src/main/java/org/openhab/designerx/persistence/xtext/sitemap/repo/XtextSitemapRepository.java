@@ -1,5 +1,7 @@
 package org.openhab.designerx.persistence.xtext.sitemap.repo;
 
+import java.util.Set;
+
 import org.openhab.designerx.persistence.xtext.sitemap.XtextSitemap;
 
 public interface XtextSitemapRepository {
@@ -10,5 +12,7 @@ public interface XtextSitemapRepository {
 	 * @return
 	 */
 	public XtextSitemap find(String name);
+
+	public Set<String> nameSet();
 	
 }
