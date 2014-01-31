@@ -20,9 +20,9 @@ final class SitemapAggregateImpl implements SitemapAggregate {
 			throw new DomainObjectException("id '" + id + "' is minus");
 		}
 		this.id = id;
-		persist = XtextSitemapRepositoryImpl.create().find(name);
+		persist = XtextSitemapRepositoryImpl.getInstance().find(name);
 		try {
-			data = persist.get();
+			data = persist.sitemapReplica();
 		} catch (Exception e) {
 			throw new DomainObjectException(e);
 		}

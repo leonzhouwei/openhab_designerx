@@ -8,7 +8,7 @@ import org.openhab.designerx.model.items.ItemResource;
 import org.openhab.designerx.model.xtdex.items.ItemResourceXtdex;
 import org.openhab.designerx.model.xtdex.items.impl.ItemResourceXtdexImpl;
 import org.openhab.designerx.persistence.xtext.items.XtextItemResource;
-import org.openhab.designerx.persistence.xtext.items.repo.impl.XtextItemResourceRepositoryFactory;
+import org.openhab.designerx.persistence.xtext.items.repo.impl.XtextItemResourceRepositoryImpl;
 
 final class ItemResourceAggregateImpl implements ItemResourceAggregate {
 	private final long id;
@@ -20,9 +20,9 @@ final class ItemResourceAggregateImpl implements ItemResourceAggregate {
 			throw new DomainObjectException("id '" + id + "' is minus");
 		}
 		this.id = id;
-		persist = XtextItemResourceRepositoryFactory.create().find(name);
+		persist = XtextItemResourceRepositoryImpl.getInstance().find(name);
 		try {
-			data = persist.get();
+			data = persist.itemResourceReplica();
 		} catch (Exception e) {
 			throw new DomainObjectException(e);
 		}

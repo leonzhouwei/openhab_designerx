@@ -1,6 +1,5 @@
 package org.openhab.designerx.domainobject.sitemap.repo.impl;
 
-import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
@@ -13,7 +12,7 @@ import org.openhab.designerx.util.IdGenerator;
 import com.google.common.collect.Maps;
 
 final class SitemapAggregateRepositoryImpl implements SitemapAggregateRepository {
-	private XtextSitemapRepository xtextRepo = XtextSitemapRepositoryImpl.create();
+	private XtextSitemapRepository xtextRepo = XtextSitemapRepositoryImpl.getInstance();
 
 	private Map<String, SitemapAggregate> map = Maps.newHashMap();
 	private static final IdGenerator idGen = new IdGenerator();
@@ -35,7 +34,7 @@ final class SitemapAggregateRepositoryImpl implements SitemapAggregateRepository
 
 	private SitemapAggregateRepositoryImpl() {
 		try {
-			List<String> names = xtextRepo.nameList();
+			Set<String> names = xtextRepo.nameSet();
 			for (String name : names) {
 				long id = idGen.newId();
 				SitemapAggregate ira = new SitemapAggregateImpl(id, name);

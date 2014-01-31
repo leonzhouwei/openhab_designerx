@@ -6,16 +6,17 @@ import org.junit.Test;
 import org.openhab.designerx.util.StringHelper;
 
 public class ItemResourceAggregateRepositoryImplTest {
-	private ItemResourceAggregateRepositoryImpl repo = ItemResourceAggregateRepositoryImpl.getInstance();
+	private RealItemResourceAggregateRepositoryImpl repo = RealItemResourceAggregateRepositoryImpl.getInstance();
 	
 	@Test
 	public void test() {
+		StringHelper.printTestStartLine();
 		Set<String> names = repo.nameSet();
 		for (String name : names) {
-			StringHelper.printSeparateLine();
 			System.out.println(name);
 			System.out.println(repo.findByName(name).toString());
 		}
+		StringHelper.printTestEndLine();
 	}
 
 }

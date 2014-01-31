@@ -11,12 +11,13 @@ public class SitemapAggregateRepositoryImplTest {
 
 	@Test
 	public void test() {
+		StringHelper.printTestStartLine();
 		Set<String> names = repo.nameSet();
 		for (String name : names) {
-			StringHelper.printSeparateLine();
 			System.out.println(name);
 			System.out.println(repo.findByName(name).toString());
 		}
+		StringHelper.printTestEndLine();
 	}
 
 }
