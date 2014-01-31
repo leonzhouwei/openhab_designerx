@@ -29,7 +29,7 @@ final class RealEventBusImpl implements EventBus {
 		while (it.hasNext()) {
 			try {
 				Subscriber s = it.next();
-				s.receive(event);
+				s.eventHandler().handle(event);
 			} catch (Exception e) {
 				// TODO
 			}

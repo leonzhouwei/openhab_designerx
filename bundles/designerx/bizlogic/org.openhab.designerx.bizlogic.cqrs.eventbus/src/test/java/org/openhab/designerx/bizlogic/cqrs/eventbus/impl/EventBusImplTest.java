@@ -6,6 +6,7 @@ import org.hamcrest.Matchers;
 import org.junit.Test;
 import org.openhab.designerx.bizlogic.cqrs.eventbus.Event;
 import org.openhab.designerx.bizlogic.cqrs.eventbus.EventBus;
+import org.openhab.designerx.bizlogic.cqrs.eventbus.EventHandler;
 import org.openhab.designerx.bizlogic.cqrs.eventbus.Publisher;
 import org.openhab.designerx.bizlogic.cqrs.eventbus.Subscriber;
 
@@ -30,9 +31,15 @@ public class EventBusImplTest {
 		final String expected = "hello";
 		bus.addSubscriber(new Subscriber() {
 			@Override
-			public <T extends Event> void receive(T event) {
-				final String actual = event.toString();
-				assertThat(actual, Matchers.equalTo(expected));
+			public EventHandler eventHandler() {
+				EventHandler handler = new EventHandler() {
+					@Override
+					public <T extends Event> void handle(T event) {
+						final String actual = event.toString();
+						assertThat(actual, Matchers.equalTo(expected));
+					}
+				};
+				return handler;
 			}
 		});
 		HelloEvent he = new HelloEvent(expected);
