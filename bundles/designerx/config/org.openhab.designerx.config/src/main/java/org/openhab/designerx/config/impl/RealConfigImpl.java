@@ -154,7 +154,7 @@ final class RealConfigImpl implements Config {
 	}
 	
 	private RealConfigImpl() {
-		System.out.println(ConfigConstants.STRIKETHROUGH_80);
+		System.out.println("==== Loading configurations START ====");
 		File homeFolder = null;
 		homeFolder = lookForHomeFolderInUserMode();
 		if (homeFolder == null) {
@@ -171,6 +171,7 @@ final class RealConfigImpl implements Config {
 		openHABHomeFolderPath = homeFolder.getPath();
 		sitemapsFolderPath = configFolder.getPath() + ConfigConstants.FILE_SEPARATOR + ConfigConstants.SITEMAPS;
 		itemsFolderPath = configFolder.getPath() + ConfigConstants.FILE_SEPARATOR + ConfigConstants.ITEMS;
+		System.out.println("===== Loading configurations END =====");
 	}
 	
 	@Override
