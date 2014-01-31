@@ -2,8 +2,14 @@ package org.openhab.designerx.repo.queryrepo.impl;
 
 import java.util.Collection;
 import java.util.List;
-import java.util.Map;
+import java.util.concurrent.ConcurrentMap;
 
+import org.openhab.designerx.bizlogic.cqrs.eventbus.Event;
+import org.openhab.designerx.bizlogic.cqrs.eventbus.EventBus;
+import org.openhab.designerx.bizlogic.cqrs.eventbus.EventHandler;
+import org.openhab.designerx.bizlogic.cqrs.eventbus.ItemResourceUpdatedEvent;
+import org.openhab.designerx.bizlogic.cqrs.eventbus.Subscriber;
+import org.openhab.designerx.bizlogic.cqrs.eventbus.impl.EventBusImpl;
 import org.openhab.designerx.model.items.ItemResource;
 import org.openhab.designerx.model.xtdex.items.ItemResourceXtdex;
 import org.openhab.designerx.model.xtdex.items.impl.ItemResourceXtdexImpl;
@@ -15,8 +21,8 @@ import com.google.common.collect.Lists;
 import com.google.common.collect.Maps;
 
 final class RealItemResourceQueryRepoImpl implements ItemResourceQueryRepo {
-	private ItemResourceXtdex xtdex = new ItemResourceXtdexImpl();
-	private static Map<String, ItemResource> map = Maps.newHashMap();
+	private static final ItemResourceXtdex xtdex = new ItemResourceXtdexImpl();
+	private static final ConcurrentMap<String, ItemResource> map = Maps.newConcurrentMap();
 	
 	private static final RealItemResourceQueryRepoImpl instance = new RealItemResourceQueryRepoImpl();
 
@@ -59,6 +65,20 @@ final class RealItemResourceQueryRepoImpl implements ItemResourceQueryRepo {
 			for (ItemResource e : list) {
 				map.put(e.name(), e);
 			}
+			// register the subscriber
+			EventBus bus = EventBusImpl.getInstance();
+			bus.addSubscriber(new Subscriber() {
+				@Override
+				public EventHandler eventHandler() {
+					EventHandler handler = new EventHandler() {
+						@Override
+						public <T extends Event> void handle(T event) {
+							update(event);
+						}
+					};
+					return handler;
+				}
+			});
 		} catch (Exception e) {
 			throw new RuntimeException(e);
 		}
@@ -74,5 +94,22 @@ final class RealItemResourceQueryRepoImpl implements ItemResourceQueryRepo {
 		}
 		return replica;
 	}
-
+	
+	private <T extends Event> void update(T event) {
+		if (!(event instanceof ItemResourceUpdatedEvent)) {
+			return;
+		}
+		ItemResourceUpdatedEvent irue = (ItemResourceUpdatedEvent) event;
+		String name = irue.itemResourceName();
+		if (map.containsKey(name)) {
+			try {
+				ItemResource replace = xtdex.fromXtext(name, irue.itemResourceXtext());
+				map.put(name, replace);
+			} catch (Exception e) {
+				map.remove(name);
+				// TODO
+			}
+		}
+	}
+	
 }

@@ -45,5 +45,11 @@
 			<artifactId>org.openhab.designerx.persistence.xtext</artifactId>
 			<version>${project.version}</version>
 		</dependency>
+
+		<dependency>
+			<groupId>org.openhab.designerx.bizlogic.cqrs</groupId>
+			<artifactId>org.openhab.designerx.bizlogic.cqrs.eventbus</artifactId>
+			<version>${project.version}</version>
+		</dependency>
 	</dependencies>
 </project>
