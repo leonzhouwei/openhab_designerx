@@ -25,4 +25,9 @@ public final class XtextSitemapRepositoryImpl implements XtextSitemapRepository 
 	public Set<String> nameSet() {
 		return real.nameSet();
 	}
+	
+	@Override
+	public XtextSitemap findOrCreate(String name) throws Exception {
+		return real.findOrCreate(name);
+	}
 }

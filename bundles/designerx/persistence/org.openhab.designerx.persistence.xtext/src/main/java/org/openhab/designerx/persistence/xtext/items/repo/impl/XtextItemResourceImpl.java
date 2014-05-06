@@ -23,6 +23,9 @@ final class XtextItemResourceImpl implements XtextItemResource {
 	
 	XtextItemResourceImpl(String name) throws IOException, ModelXtdexException, ModelException {
 		file = new File(config.getItemsFolderPath() + PersistenceXtextConstants.FILE_SEPARATOR + name + PersistenceXtextConstants.ITEMS_FILE_EXTENSION);
+		if (!file.exists()) {
+			file.createNewFile();
+		}
 		List<String> list = IOUtils.readAll(file);
 		itemResource = xtdex.fromXtext(name, list);
 	}

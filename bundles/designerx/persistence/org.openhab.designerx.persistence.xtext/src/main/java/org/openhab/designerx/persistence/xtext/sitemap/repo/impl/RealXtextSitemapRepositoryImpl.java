@@ -75,5 +75,14 @@ final class RealXtextSitemapRepositoryImpl implements XtextSitemapRepository, Si
 		}
 		return null;
 	}
+	
+	@Override
+	public XtextSitemap findOrCreate(String name) throws Exception {
+		if (map.containsKey(name)) {
+			return map.get(name);
+		}
+		XtextSitemap xs = new XtextSitemapImpl(name);
+		return xs;
+	}
 
 }

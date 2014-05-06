@@ -76,5 +76,17 @@ final class RealXtextItemResourceRepositoryImpl implements XtextItemResourceRepo
 		}
 		return replicas;
 	}
+	
+	@Override
+	public XtextItemResource findOrCreate(String name) throws Exception {
+		// try to find it
+		if (map.containsKey(name)) {
+			return map.get(name);
+		}
+		// not found, try to create a new one
+		XtextItemResourceImpl xir = new XtextItemResourceImpl(name);
+		map.put(name, xir);
+		return xir;
+	}
 
 }

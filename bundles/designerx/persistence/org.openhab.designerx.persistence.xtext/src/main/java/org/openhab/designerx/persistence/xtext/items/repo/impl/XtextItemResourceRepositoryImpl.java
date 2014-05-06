@@ -23,6 +23,11 @@ public final class XtextItemResourceRepositoryImpl implements XtextItemResourceR
 	public Set<String> nameSet() {
 		return real.nameSet();
 	}
+	
+	@Override
+	public XtextItemResource findOrCreate(String name) throws Exception {
+		return real.findOrCreate(name);
+	}
 
 	private XtextItemResourceRepositoryImpl() {}
 }

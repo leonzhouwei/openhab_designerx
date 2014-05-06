@@ -23,6 +23,10 @@ final class XtextSitemapImpl implements XtextSitemap {
 	
 	XtextSitemapImpl(String name) throws IOException, ModelXtdexException, ModelException {
 		file = new File(config.getSitemapsFolderPath() + PersistenceXtextConstants.FILE_SEPARATOR + name + PersistenceXtextConstants.SITEMAP_FILE_EXTENSION);
+		if (!file.exists()) {
+			file.createNewFile();
+			IOUtils.write(file, "sitemap " + name);
+		}
 		List<String> list = IOUtils.readAll(file);
 		sitemap = xtdex.parse(list);
 	}

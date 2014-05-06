@@ -15,4 +15,6 @@ public interface XtextSitemapRepository {
 
 	public Set<String> nameSet();
 	
+	public XtextSitemap findOrCreate(String name) throws Exception;
+	
 }

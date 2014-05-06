@@ -15,4 +15,6 @@ public interface XtextItemResourceRepository {
 	
 	public Set<String> nameSet();
 	
+	public XtextItemResource findOrCreate(String name) throws Exception;
+	
 }
