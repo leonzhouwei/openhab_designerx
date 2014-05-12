@@ -8,4 +8,7 @@
   <artifactId>ui</artifactId>
   <packaging>pom</packaging>
   <groupId>org.openhab.bundles.designerx</groupId>
+  <modules>
+  	<module>org.openhab.designerx.ui.javafx</module>
+  </modules>
 </project>
