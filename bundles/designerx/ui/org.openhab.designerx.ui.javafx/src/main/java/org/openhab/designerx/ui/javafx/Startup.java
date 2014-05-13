@@ -19,7 +19,7 @@ public class Startup extends Application {
 		loader.load(Startup.class.getResourceAsStream("/fxml/Main.fxml"));
 		MainController mc = loader.getController();
 		mc.create(new Stage(), stage);
-		mc.setTitle("FXML Welcome");
+		mc.setTitle("openHAB DesignerX");
 		mc.resizeMax();
 		
 		// 显示主界面
