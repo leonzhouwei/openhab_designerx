@@ -18,8 +18,7 @@ public abstract class BaseController {
 			return this;
 		}
 		this.stage = stage;
-		Dimension dimension = Toolkit.getDefaultToolkit().getScreenSize();
-		Scene scene = new Scene(getView(), dimension.getWidth(), dimension.getWidth());
+		Scene scene = new Scene(getView());
 		stage.setScene(scene);
 		if (parent != null) {
 			stage.initOwner(parent);
@@ -46,10 +45,16 @@ public abstract class BaseController {
         stage.close();
     }
     
-    public void resizeTo(int w, int h) {
+    public void resizeMax() {
+    	Dimension dim = Toolkit.getDefaultToolkit().getScreenSize();
+    	resizeTo(dim.getWidth(), dim.getHeight());
+    }
+    
+    public void resizeTo(double w, double h) {
         if (stage != null) {
             stage.setWidth(w);
             stage.setHeight(h);
         }
     }
+    
 }

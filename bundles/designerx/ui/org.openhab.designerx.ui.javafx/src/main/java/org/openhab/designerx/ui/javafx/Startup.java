@@ -2,9 +2,9 @@ package org.openhab.designerx.ui.javafx;
 
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
 import javafx.stage.Stage;
+
+import org.openhab.designerx.ui.javafx.controller.MainController;
 
 public class Startup extends Application {
 	
@@ -14,14 +14,16 @@ public class Startup extends Application {
 
 	@Override
 	public void start(Stage stage) throws Exception {
-		Parent root = FXMLLoader.load(getClass().getResource(
-				"/fxml/Main.fxml"));
-
-		Scene scene = new Scene(root);
-
-		stage.setTitle("FXML Welcome");
-		stage.setScene(scene);
-		stage.show();
+		// 初始化主界面
+		FXMLLoader loader = new FXMLLoader();
+		loader.load(Startup.class.getResourceAsStream("/fxml/Main.fxml"));
+		MainController mc = loader.getController();
+		mc.create(new Stage(), stage);
+		mc.setTitle("FXML Welcome");
+		mc.resizeMax();
+		
+		// 显示主界面
+		mc.show();
 	}
 
 }
