@@ -1,6 +1,7 @@
 package org.openhab.designerx.repo.queryrepo.impl;
 
 import java.util.List;
+import java.util.Set;
 
 import org.openhab.designerx.model.sitemap.Sitemap;
 import org.openhab.designerx.repo.queryrepo.SitemapQueryRepo;
@@ -25,4 +26,9 @@ public final class SitemapQueryRepoImpl implements SitemapQueryRepo {
 	}
 
 	private SitemapQueryRepoImpl() {}
+
+	@Override
+	public Set<String> names() {
+		return real.names();
+	}
 }

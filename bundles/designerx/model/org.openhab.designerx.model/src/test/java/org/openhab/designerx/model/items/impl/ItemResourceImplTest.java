@@ -1,8 +1,5 @@
 package org.openhab.designerx.model.items.impl;
 
-import static org.hamcrest.MatcherAssert.assertThat;
-
-import org.hamcrest.Matchers;
 import org.junit.Test;
 import org.openhab.designerx.model.ModelException;
 import org.openhab.designerx.model.items.Item;

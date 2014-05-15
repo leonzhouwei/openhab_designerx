@@ -2,6 +2,7 @@ package org.openhab.designerx.repo.queryrepo.impl;
 
 import java.util.Collection;
 import java.util.List;
+import java.util.Set;
 import java.util.concurrent.ConcurrentMap;
 
 import org.openhab.designerx.bizlogic.cqrs.eventbus.Event;
@@ -110,6 +111,11 @@ final class RealItemResourceQueryRepoImpl implements ItemResourceQueryRepo {
 				// TODO
 			}
 		}
+	}
+
+	@Override
+	public Set<String> names() {
+		return map.keySet();
 	}
 	
 }

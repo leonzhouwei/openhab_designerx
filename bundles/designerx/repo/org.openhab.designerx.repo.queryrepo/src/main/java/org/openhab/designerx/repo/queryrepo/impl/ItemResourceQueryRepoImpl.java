@@ -1,6 +1,7 @@
 package org.openhab.designerx.repo.queryrepo.impl;
 
 import java.util.List;
+import java.util.Set;
 
 import org.openhab.designerx.model.items.ItemResource;
 import org.openhab.designerx.repo.queryrepo.ItemResourceQueryRepo;
@@ -25,4 +26,9 @@ public final class ItemResourceQueryRepoImpl implements ItemResourceQueryRepo {
 	}
 
 	private ItemResourceQueryRepoImpl() {}
+
+	@Override
+	public Set<String> names() {
+		return real.names();
+	}
 }
