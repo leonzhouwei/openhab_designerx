@@ -1,6 +1,6 @@
 package org.openhab.designerx.ui.javafx.common;
 
-public class Constants {
+public final class Constants {
 	
 	// System
 	public static final String FILE_SEPARATOR = System.getProperty("file.separator");

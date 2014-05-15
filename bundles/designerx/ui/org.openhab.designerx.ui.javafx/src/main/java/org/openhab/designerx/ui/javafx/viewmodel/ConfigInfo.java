@@ -1,6 +1,6 @@
 package org.openhab.designerx.ui.javafx.viewmodel;
 
-public class ConfigItem {
+public final class ConfigInfo {
 	public enum Type {
 		NONE, ITEM_RESOURCE, SITEMAP
 	}
@@ -8,7 +8,7 @@ public class ConfigItem {
 	private Type type;
 	private String name;
 	
-	public ConfigItem(Type type, String name) {
+	public ConfigInfo(Type type, String name) {
 		this.type = type;
 		this.name = name;
 	}
@@ -22,6 +22,10 @@ public class ConfigItem {
 	}
 	
 	public String toString() {
+		return name;
+	}
+	
+	public String getName() {
 		return name;
 	}
 

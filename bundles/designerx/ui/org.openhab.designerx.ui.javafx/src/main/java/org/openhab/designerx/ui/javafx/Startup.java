@@ -6,7 +6,7 @@ import javafx.stage.Stage;
 
 import org.openhab.designerx.ui.javafx.controller.MainController;
 
-public class Startup extends Application {
+public final class Startup extends Application {
 	
 	public static void main(String[] args) {
         launch(args);

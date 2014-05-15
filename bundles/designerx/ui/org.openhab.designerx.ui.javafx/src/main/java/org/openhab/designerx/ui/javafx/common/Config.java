@@ -1,6 +1,6 @@
 package org.openhab.designerx.ui.javafx.common;
 
-public class Config {
+public final class Config {
 
 	private static String itemsDirBaseName = "items";
 	private static String sitemapsDirBaseName = "sitemaps";
