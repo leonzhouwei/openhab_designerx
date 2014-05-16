@@ -41,8 +41,8 @@ public final class MainController extends BaseController implements Initializabl
 	private Label msgLabel;
 	@FXML
 	private TreeView<ConfigInfo> treeView;
-	private TreeItem<ConfigInfo> itemResources = new TreeItem<ConfigInfo>(new ConfigInfo(ConfigInfo.Type.NONE, "items"));
-	private TreeItem<ConfigInfo> sitemaps = new TreeItem<ConfigInfo>(new ConfigInfo(ConfigInfo.Type.NONE, "sitemaps"));
+	private TreeItem<ConfigInfo> itemResources = new TreeItem<ConfigInfo>(new ConfigInfo(ConfigInfo.Type.NONE, "Items"));
+	private TreeItem<ConfigInfo> sitemaps = new TreeItem<ConfigInfo>(new ConfigInfo(ConfigInfo.Type.NONE, "Sitemaps"));
 	@FXML
 	private TableView<ItemInfo> itemResTableView;
 	@FXML
