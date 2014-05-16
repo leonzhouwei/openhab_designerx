@@ -35,7 +35,7 @@
                           <children>
                             <AnchorPane fx:id="itemResAnchorPane" prefHeight="-1.0" prefWidth="-1.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                               <children>
-                                <TableView fx:id="itemResTableView" prefHeight="226.0" prefWidth="479.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="31.0">
+                                <TableView fx:id="itemResTableView" prefHeight="-1.0" prefWidth="-1.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="31.0">
                                   <columns>
                                     <TableColumn editable="false" prefWidth="75.0" text="Type" fx:id="itemTypeColumn" />
                                     <TableColumn editable="false" prefWidth="75.0" text="Name" fx:id="itemNameColumn" />
