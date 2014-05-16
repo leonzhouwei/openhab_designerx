@@ -9,6 +9,7 @@ import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
@@ -73,6 +74,8 @@ public final class MainController extends BaseController implements Initializabl
 	private TableColumn<ItemInfo, String> itemGroupsColumn;
 	@FXML
 	private TableColumn<ItemInfo, String> itemCommandColumn;
+	@FXML
+	private Button updateItemButton;
 	//
 	private ItemResourceQueryRepo irqr = QueryRepo.itemResourceQueryRepo();
 	private SitemapQueryRepo sqr = QueryRepo.sitemapQueryRepo();
@@ -162,6 +165,11 @@ public final class MainController extends BaseController implements Initializabl
 			Safe.setErrorMessage(msgLabel, e.getMessage());
 			logger.warn("", e);
 		}
+	}
+	
+	@FXML
+	void updateItem(ActionEvent event) {
+		logger.debug("oops");
 	}
 	
 }
