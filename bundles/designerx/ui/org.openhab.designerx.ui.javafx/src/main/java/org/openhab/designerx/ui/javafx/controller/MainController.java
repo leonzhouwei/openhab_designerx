@@ -12,6 +12,7 @@ import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
+import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.SelectionMode;
 import javafx.scene.control.TableColumn;
@@ -37,12 +38,27 @@ public final class MainController extends BaseController implements Initializabl
 
 	@FXML
 	private Parent root;
+	// top
 	@FXML
 	private Label msgLabel;
+	// left
+	@FXML
+	private Button newConfigButton;
+	@FXML
+	private Button deleteConfigButton;
 	@FXML
 	private TreeView<ConfigInfo> treeView;
 	private TreeItem<ConfigInfo> itemResources = new TreeItem<ConfigInfo>(new ConfigInfo(ConfigInfo.Type.NONE, "Items"));
 	private TreeItem<ConfigInfo> sitemaps = new TreeItem<ConfigInfo>(new ConfigInfo(ConfigInfo.Type.NONE, "Sitemaps"));
+	// right
+	@FXML
+	private AnchorPane itemResAnchorPane;
+	@FXML
+	private Label itemResNameLabel;
+	@FXML
+	private Button newItemButton;
+	@FXML
+	private Button deleteItemButton;
 	@FXML
 	private TableView<ItemInfo> itemResTableView;
 	@FXML
@@ -57,9 +73,7 @@ public final class MainController extends BaseController implements Initializabl
 	private TableColumn<ItemInfo, String> itemGroupsColumn;
 	@FXML
 	private TableColumn<ItemInfo, String> itemCommandColumn;
-	@FXML
-	private AnchorPane itemResAnchorPane;
-	
+	//
 	private ItemResourceQueryRepo irqr = QueryRepo.itemResourceQueryRepo();
 	private SitemapQueryRepo sqr = QueryRepo.sitemapQueryRepo();
 	
