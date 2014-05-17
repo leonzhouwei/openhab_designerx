@@ -5,6 +5,7 @@
 <?import javafx.collections.*?>
 <?import javafx.geometry.*?>
 <?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.paint.*?>
 
@@ -30,7 +31,7 @@
                 </AnchorPane>
                 <AnchorPane minHeight="-1.0" minWidth="-1.0" prefHeight="-1.0" prefWidth="-1.0">
                   <children>
-                    <SplitPane dividerPositions="0.668141592920354" focusTraversable="true" orientation="VERTICAL" prefHeight="-1.0" prefWidth="-1.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                    <SplitPane dividerPositions="0.668141592920354" focusTraversable="true" orientation="VERTICAL" prefHeight="-1.0" prefWidth="-1.0" AnchorPane.bottomAnchor="1.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="-1.0">
                       <items>
                         <AnchorPane minHeight="-1.0" minWidth="-1.0" prefHeight="-1.0" prefWidth="-1.0">
                           <children>
@@ -77,8 +78,8 @@
                                 </ToolBar>
                                 <AnchorPane prefHeight="-1.0" prefWidth="-1.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="31.0">
                                   <children>
-                                    <Label text="Type:" AnchorPane.leftAnchor="34.0" AnchorPane.topAnchor="0.0" />
-                                    <ChoiceBox AnchorPane.leftAnchor="75.0" AnchorPane.topAnchor="0.0">
+                                    <Label text="Type:" AnchorPane.leftAnchor="124.0" AnchorPane.topAnchor="0.0" />
+                                    <ChoiceBox AnchorPane.leftAnchor="165.0" AnchorPane.topAnchor="0.0">
                                       <items>
                                         <FXCollections fx:factory="observableArrayList">
                                           <String fx:value="Color" />
@@ -93,16 +94,17 @@
                                         </FXCollections>
                                       </items>
                                     </ChoiceBox>
-                                    <Label text="Name:" AnchorPane.leftAnchor="259.0" AnchorPane.topAnchor="0.0" />
-                                    <TextField prefWidth="-1.0" AnchorPane.leftAnchor="305.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
-                                    <Label layoutX="42.0" text="Label:" AnchorPane.topAnchor="40.0" />
-                                    <TextField prefWidth="-1.0" AnchorPane.leftAnchor="75.0" AnchorPane.topAnchor="40.0" />
-                                    <Label text="Icon:" AnchorPane.leftAnchor="270.0" AnchorPane.topAnchor="40.0" />
-                                    <ChoiceBox AnchorPane.leftAnchor="305.0" AnchorPane.topAnchor="40.0" />
-                                    <Label text="Groups:" AnchorPane.leftAnchor="430.0" AnchorPane.topAnchor="40.0" />
-                                    <ChoiceBox AnchorPane.leftAnchor="485.0" AnchorPane.topAnchor="40.0" />
-                                    <Label text="Command:" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="80.0" />
-                                    <TextField prefWidth="-1.0" AnchorPane.leftAnchor="75.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="80.0" />
+                                    <Label text="Name:" AnchorPane.leftAnchor="349.0" AnchorPane.topAnchor="0.0" />
+                                    <TextField prefWidth="-1.0" AnchorPane.leftAnchor="400.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
+                                    <Label layoutX="132.0" text="Label:" AnchorPane.topAnchor="40.0" />
+                                    <TextField prefWidth="-1.0" AnchorPane.leftAnchor="165.0" AnchorPane.topAnchor="40.0" />
+                                    <Label text="Icon:" AnchorPane.leftAnchor="360.0" AnchorPane.topAnchor="40.0" />
+                                    <ChoiceBox AnchorPane.leftAnchor="395.0" AnchorPane.topAnchor="40.0" />
+                                    <Label text="Groups:" AnchorPane.leftAnchor="480.0" AnchorPane.topAnchor="40.0" />
+                                    <ChoiceBox AnchorPane.leftAnchor="535.0" AnchorPane.topAnchor="40.0" />
+                                    <Label text="Command:" AnchorPane.leftAnchor="90.0" AnchorPane.topAnchor="80.0" />
+                                    <TextField prefWidth="-1.0" AnchorPane.leftAnchor="165.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="80.0" />
+                                    <ImageView fx:id="itemIconImageView" fitHeight="69.0" fitWidth="92.0" pickOnBounds="true" preserveRatio="true" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0" />
                                   </children>
                                   <padding>
                                     <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />

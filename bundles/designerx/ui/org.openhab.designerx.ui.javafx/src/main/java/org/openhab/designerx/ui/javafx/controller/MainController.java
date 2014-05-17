@@ -21,6 +21,7 @@ import javafx.scene.control.TableView;
 import javafx.scene.control.TreeItem;
 import javafx.scene.control.TreeView;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 
 import org.openhab.designerx.model.items.Item;
@@ -76,6 +77,9 @@ public final class MainController extends BaseController implements Initializabl
 	private TableColumn<ItemInfo, String> itemCommandColumn;
 	@FXML
 	private Button updateItemButton;
+	//
+	@FXML
+	private ImageView itemIconImageView;
 	//
 	private ItemResourceQueryRepo irqr = QueryRepo.itemResourceQueryRepo();
 	private SitemapQueryRepo sqr = QueryRepo.sitemapQueryRepo();
