@@ -8,6 +8,7 @@
 <?import javafx.scene.image.*?>
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.paint.*?>
+<?import javafx.scene.text.*?>
 
 <AnchorPane id="AnchorPane" fx:id="root" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-1.0" minWidth="-1.0" prefHeight="510.0" prefWidth="680.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/2.2" fx:controller="org.openhab.designerx.ui.javafx.controller.MainController">
   <children>
@@ -31,7 +32,7 @@
                 </AnchorPane>
                 <AnchorPane minHeight="-1.0" minWidth="-1.0" prefHeight="-1.0" prefWidth="-1.0">
                   <children>
-                    <SplitPane dividerPositions="0.5685840707964602" focusTraversable="true" orientation="VERTICAL" prefHeight="-1.0" prefWidth="-1.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                    <SplitPane dividerPositions="0.5464601769911505" focusTraversable="true" orientation="VERTICAL" prefHeight="-1.0" prefWidth="-1.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                       <items>
                         <AnchorPane minHeight="-1.0" minWidth="-1.0" prefHeight="-1.0" prefWidth="-1.0">
                           <children>
@@ -78,14 +79,18 @@
                                 </ToolBar>
                                 <AnchorPane prefHeight="-1.0" prefWidth="-1.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="31.0">
                                   <children>
-                                    <Label text="Command:" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="125.0" />
-                                    <TextField fx:id="itemCommandTextField" prefWidth="-1.0" AnchorPane.leftAnchor="73.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="119.0" />
-                                    <GridPane hgap="10.0" vgap="10.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                    <Label text="Command:" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="135.0" />
+                                    <TextField fx:id="itemCommandTextField" prefWidth="-1.0" AnchorPane.leftAnchor="75.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="129.0" />
+                                    <GridPane hgap="3.0" vgap="10.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                                       <children>
                                         <AnchorPane prefHeight="-1.0" prefWidth="-1.0" GridPane.columnIndex="0" GridPane.rowIndex="0">
                                           <children>
-                                            <Label layoutY="7.0" text="Type:" AnchorPane.leftAnchor="0.0" />
-                                            <ChoiceBox fx:id="itemTypeChoiceBox" layoutY="4.0" AnchorPane.leftAnchor="37.0">
+                                            <Label alignment="CENTER_RIGHT" contentDisplay="LEFT" layoutY="7.0" text="Type:" textAlignment="LEFT" AnchorPane.leftAnchor="35.0" AnchorPane.rightAnchor="0.0" />
+                                          </children>
+                                        </AnchorPane>
+                                        <AnchorPane prefHeight="-1.0" prefWidth="-1.0" GridPane.columnIndex="1" GridPane.rowIndex="0">
+                                          <children>
+                                            <ChoiceBox fx:id="itemTypeChoiceBox" layoutY="4.0" AnchorPane.leftAnchor="0.0">
                                               <items>
                                                 <FXCollections fx:factory="observableArrayList">
                                                   <String fx:value="Color" />
@@ -102,40 +107,69 @@
                                             </ChoiceBox>
                                           </children>
                                         </AnchorPane>
-                                        <AnchorPane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="0">
+                                        <AnchorPane prefHeight="-1.0" prefWidth="-1.0" GridPane.columnIndex="0" GridPane.rowIndex="1">
                                           <children>
-                                            <Label layoutY="7.0" text="Name:" AnchorPane.leftAnchor="0.0" />
-                                            <TextField fx:id="itemNameTextField" layoutY="4.0" prefWidth="-1.0" AnchorPane.leftAnchor="46.0" AnchorPane.rightAnchor="0.0" />
+                                            <Label alignment="CENTER_RIGHT" layoutY="7.0" text="Label:" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" />
                                           </children>
                                         </AnchorPane>
-                                        <AnchorPane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="0" GridPane.rowIndex="1">
+                                        <AnchorPane prefHeight="-1.0" prefWidth="-1.0" GridPane.columnIndex="1" GridPane.rowIndex="1">
                                           <children>
-                                            <Label layoutY="7.0" text="Label:" AnchorPane.leftAnchor="0.0" />
-                                            <TextField fx:id="itemLabelTextField" layoutY="4.0" prefWidth="-1.0" AnchorPane.leftAnchor="40.0" AnchorPane.rightAnchor="0.0" />
+                                            <TextField fx:id="itemLabelTextField" layoutY="5.0" prefWidth="-1.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" />
                                           </children>
                                         </AnchorPane>
-                                        <AnchorPane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="1">
+                                        <AnchorPane prefHeight="-1.0" prefWidth="-1.0" GridPane.columnIndex="0" GridPane.rowIndex="2">
                                           <children>
-                                            <Label layoutY="7.0" text="Icon:" AnchorPane.leftAnchor="0.0" />
-                                            <ImageView fx:id="itemIconImageView" fitHeight="23.25" fitWidth="31.0" layoutY="3.0" pickOnBounds="true" preserveRatio="true" AnchorPane.leftAnchor="32.0" />
-                                            <ChoiceBox fx:id="itemIconChoiceBox" layoutY="4.0" AnchorPane.leftAnchor="110.0" />
+                                            <Label alignment="CENTER_RIGHT" layoutY="7.0" text="Groups:" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" />
                                           </children>
                                         </AnchorPane>
-                                        <AnchorPane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="0" GridPane.rowIndex="2">
+                                        <AnchorPane prefHeight="-1.0" prefWidth="-1.0" GridPane.columnIndex="1" GridPane.rowIndex="2">
                                           <children>
-                                            <Label layoutY="7.0" text="Groups:" AnchorPane.leftAnchor="0.0" />
-                                            <TextField fx:id="itemGroupsTextField" editable="false" layoutY="4.0" prefWidth="-1.0" AnchorPane.leftAnchor="55.0" AnchorPane.rightAnchor="0.0" />
+                                            <TextField fx:id="itemGroupsTextField" editable="false" layoutY="5.0" prefWidth="-1.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" />
                                           </children>
                                         </AnchorPane>
-                                        <AnchorPane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="2">
+                                        <AnchorPane prefHeight="-1.0" prefWidth="-1.0" GridPane.columnIndex="2" GridPane.rowIndex="0">
                                           <children>
-                                            <ChoiceBox fx:id="itemGroupChoiceBox" layoutY="4.0" AnchorPane.leftAnchor="0.0" />
+                                            <Label layoutY="6.0" text="Name:" AnchorPane.rightAnchor="0.0" />
+                                          </children>
+                                        </AnchorPane>
+                                        <AnchorPane prefHeight="-1.0" prefWidth="-1.0" GridPane.columnIndex="2" GridPane.rowIndex="1">
+                                          <children>
+                                            <Label layoutY="8.0" text="Icon:" AnchorPane.rightAnchor="0.0" />
+                                          </children>
+                                        </AnchorPane>
+                                        <AnchorPane prefHeight="-1.0" prefWidth="-1.0" GridPane.columnIndex="2" GridPane.rowIndex="2">
+                                          <children>
+                                            <Hyperlink layoutY="4.0" text="Add" textAlignment="CENTER" textFill="BLUE" underline="true" AnchorPane.rightAnchor="60.0" />
+                                            <Label layoutY="6.0" text="|" textAlignment="CENTER" AnchorPane.rightAnchor="50.0">
+                                              <font>
+                                                <Font size="15.0" />
+                                              </font>
+                                            </Label>
+                                            <Hyperlink layoutY="4.0" text="Delete" textAlignment="CENTER" textFill="BLUE" underline="true" AnchorPane.rightAnchor="0.0" />
+                                          </children>
+                                        </AnchorPane>
+                                        <AnchorPane prefHeight="-1.0" prefWidth="-1.0" GridPane.columnIndex="3" GridPane.rowIndex="0">
+                                          <children>
+                                            <TextField fx:id="itemNameTextField" layoutY="4.0" prefWidth="-1.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" />
+                                          </children>
+                                        </AnchorPane>
+                                        <AnchorPane prefHeight="-1.0" prefWidth="-1.0" GridPane.columnIndex="3" GridPane.rowIndex="1">
+                                          <children>
+                                            <ChoiceBox fx:id="itemIconChoiceBox" layoutY="4.0" AnchorPane.leftAnchor="35.0" />
+                                            <ImageView fx:id="itemIconImageView" fitHeight="23.25" fitWidth="31.0" layoutY="3.0" pickOnBounds="true" preserveRatio="true" AnchorPane.leftAnchor="0.0" />
+                                          </children>
+                                        </AnchorPane>
+                                        <AnchorPane prefHeight="-1.0" prefWidth="-1.0" GridPane.columnIndex="3" GridPane.rowIndex="2">
+                                          <children>
+                                            <ChoiceBox fx:id="itemGroupChoiceBox" layoutY="5.0" prefWidth="-1.0" AnchorPane.leftAnchor="0.0" />
                                           </children>
                                         </AnchorPane>
                                       </children>
                                       <columnConstraints>
-                                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-                                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                                        <ColumnConstraints fillWidth="true" halignment="LEFT" hgrow="NEVER" minWidth="-1.0" percentWidth="-1.0" prefWidth="-1.0" />
+                                        <ColumnConstraints hgrow="SOMETIMES" minWidth="-1.0" prefWidth="-1.0" />
+                                        <ColumnConstraints hgrow="NEVER" minWidth="-1.0" prefWidth="-1.0" />
+                                        <ColumnConstraints hgrow="SOMETIMES" minWidth="-1.0" prefWidth="-1.0" />
                                       </columnConstraints>
                                       <padding>
                                         <Insets />

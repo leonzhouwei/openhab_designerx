@@ -236,7 +236,7 @@ public final class MainController extends BaseController implements Initializabl
 			itemIconImageView.setImage(image);
 		}
 		itemGroupsTextField.setText(itemInfo.groupsProperty().get());
-		itemCommandTextField.setText(itemInfo.labelProperty().get());
+		itemCommandTextField.setText(itemInfo.commandProperty().get());
 	}
 	
 }
