@@ -30,6 +30,7 @@ import org.openhab.designerx.repo.queryrepo.ItemResourceQueryRepo;
 import org.openhab.designerx.repo.queryrepo.SitemapQueryRepo;
 import org.openhab.designerx.repo.queryrepo.impl.QueryRepo;
 import org.openhab.designerx.ui.javafx.view.Safe;
+import org.openhab.designerx.ui.javafx.view.Unsafe;
 import org.openhab.designerx.ui.javafx.viewmodel.ConfigInfo;
 import org.openhab.designerx.ui.javafx.viewmodel.ItemInfo;
 import org.slf4j.Logger;
@@ -103,23 +104,16 @@ public final class MainController extends BaseController implements Initializabl
         itemCommandColumn.setCellValueFactory(new PropertyValueFactory<ItemInfo, String>("command"));
     	ObservableList<ItemInfo> data = FXCollections.observableArrayList();
     	itemResTableView.setItems(data);
-	}
-	
-	private class ChangeListenerImpl implements ChangeListener<TreeItem<ConfigInfo>> {
-		@Override
-		public void changed(
-			ObservableValue<? extends TreeItem<ConfigInfo>> observable, 
-			TreeItem<ConfigInfo> oldValue, 
-			TreeItem<ConfigInfo> newValue
-		) {
-			TreeItem<ConfigInfo> selectedItem = (TreeItem<ConfigInfo>) newValue;
-			if (selectedItem != null) {
-				Safe.setNormalMessage(msgLabel, selectedItem.getValue().toString() + ", " + selectedItem.getValue().mapItemResource());
-				if (selectedItem.getValue().mapItemResource()) {
-					fillItemResourceTableView(selectedItem.getValue().getName());
+    	itemResTableView.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<ItemInfo>() {
+			@Override
+			public void changed(ObservableValue<? extends ItemInfo> arg0,
+					ItemInfo oldValue, ItemInfo newValue) {
+				if (newValue == null) {
+					return;
 				}
+				Unsafe.setNormalMessage(msgLabel, newValue.nameProperty().toString());
 			}
-		}
+		});
 	}
 	
 	private void initConfigTreeView() {
@@ -133,7 +127,22 @@ public final class MainController extends BaseController implements Initializabl
 		treeView.setRoot(root);
 		treeView.setShowRoot(false);
 		treeView.getSelectionModel().setSelectionMode(SelectionMode.SINGLE);
-		treeView.getSelectionModel().selectedItemProperty().addListener(new ChangeListenerImpl());
+		treeView.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<TreeItem<ConfigInfo>>() {
+			@Override
+			public void changed(
+				ObservableValue<? extends TreeItem<ConfigInfo>> observable, 
+				TreeItem<ConfigInfo> oldValue, 
+				TreeItem<ConfigInfo> newValue
+			) {
+				TreeItem<ConfigInfo> selectedItem = (TreeItem<ConfigInfo>) newValue;
+				if (selectedItem != null) {
+					Safe.setNormalMessage(msgLabel, selectedItem.getValue().toString());
+					if (selectedItem.getValue().mapItemResource()) {
+						fillItemResourceTableView(selectedItem.getValue().getName());
+					}
+				}
+			}
+		});
 		root.setExpanded(true);
 		root.getChildren().add(itemResources);
 		root.getChildren().add(sitemaps);

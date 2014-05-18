@@ -4,7 +4,6 @@ import javafx.application.Platform;
 import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
-import javafx.scene.paint.Color;
 
 public final class Safe {
 
@@ -20,8 +19,7 @@ public final class Safe {
 		Runnable r = new Runnable() {
 			@Override
 			public void run() {
-				msgLabel.setTextFill(Color.RED);
-				msgLabel.setText(message);
+				Unsafe.setErrorMessage(msgLabel, message);
 			}
 		};
 		runLater(r);
@@ -31,8 +29,7 @@ public final class Safe {
 		Runnable r = new Runnable() {
 			@Override
 			public void run() {
-				label.setTextFill(Color.BLACK);
-				label.setText(message);
+				Unsafe.setNormalMessage(label, message);
 			}
 		};
 		runLater(r);
