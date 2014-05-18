@@ -17,10 +17,12 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.control.Button;
+import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.SelectionMode;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
+import javafx.scene.control.TextField;
 import javafx.scene.control.TreeItem;
 import javafx.scene.control.TreeView;
 import javafx.scene.control.cell.PropertyValueFactory;
@@ -86,7 +88,21 @@ public final class MainController extends BaseController implements Initializabl
 	private Button updateItemButton;
 	//
 	@FXML
+	private ChoiceBox<String> itemTypeChoiceBox;
+	@FXML
+	private TextField itemNameTextField;
+	@FXML
+	private TextField itemLabelTextField;
+	@FXML
 	private ImageView itemIconImageView;
+	@FXML
+	private ChoiceBox<String> itemIconChoiceBox;
+	@FXML
+	private TextField itemGroupsTextField;
+	@FXML
+	private ChoiceBox<String> itemGroupChoiceBox;
+	@FXML
+	private TextField itemCommandTextField;
 	//
 	private ItemResourceQueryRepo irqr = QueryRepo.itemResourceQueryRepo();
 	private SitemapQueryRepo sqr = QueryRepo.sitemapQueryRepo();
@@ -117,13 +133,7 @@ public final class MainController extends BaseController implements Initializabl
 				if (newValue == null || itemIconImageView == null) {
 					return;
 				}
-				Unsafe.setNormalMessage(msgLabel, newValue.nameProperty().toString());
-				Image image = itemIcon(newValue);
-				if (image == null) {
-					Unsafe.setErrorMessage(msgLabel, "item icon file not found");
-					return;
-				}
-				itemIconImageView.setImage(image);
+				refreshItemParameters(newValue);
 			}
 		});
 	}
@@ -214,6 +224,19 @@ public final class MainController extends BaseController implements Initializabl
 			logger.warn("", e);
 		}
 		return image;
+	}
+	
+	void refreshItemParameters(ItemInfo itemInfo) {
+		Unsafe.setNormalMessage(msgLabel, itemInfo.nameProperty().toString());
+		itemNameTextField.setText(itemInfo.nameProperty().get());
+		itemIconImageView.setImage(null);
+		Image image = itemIcon(itemInfo);
+		itemLabelTextField.setText(itemInfo.labelProperty().get());
+		if (image != null) {
+			itemIconImageView.setImage(image);
+		}
+		itemGroupsTextField.setText(itemInfo.groupsProperty().get());
+		itemCommandTextField.setText(itemInfo.labelProperty().get());
 	}
 	
 }
