@@ -1,5 +1,8 @@
 package org.openhab.designerx.ui.javafx.controller;
 
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
 import java.net.URL;
 import java.util.List;
 import java.util.ResourceBundle;
@@ -21,14 +24,17 @@ import javafx.scene.control.TableView;
 import javafx.scene.control.TreeItem;
 import javafx.scene.control.TreeView;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 
+import org.openhab.designerx.config.impl.ConfigImpl;
 import org.openhab.designerx.model.items.Item;
 import org.openhab.designerx.model.items.ItemResource;
 import org.openhab.designerx.repo.queryrepo.ItemResourceQueryRepo;
 import org.openhab.designerx.repo.queryrepo.SitemapQueryRepo;
 import org.openhab.designerx.repo.queryrepo.impl.QueryRepo;
+import org.openhab.designerx.ui.javafx.common.Constants;
 import org.openhab.designerx.ui.javafx.view.Safe;
 import org.openhab.designerx.ui.javafx.view.Unsafe;
 import org.openhab.designerx.ui.javafx.viewmodel.ConfigInfo;
@@ -108,10 +114,16 @@ public final class MainController extends BaseController implements Initializabl
 			@Override
 			public void changed(ObservableValue<? extends ItemInfo> arg0,
 					ItemInfo oldValue, ItemInfo newValue) {
-				if (newValue == null) {
+				if (newValue == null || itemIconImageView == null) {
 					return;
 				}
 				Unsafe.setNormalMessage(msgLabel, newValue.nameProperty().toString());
+				Image image = itemIcon(newValue);
+				if (image == null) {
+					Unsafe.setErrorMessage(msgLabel, "item icon file not found");
+					return;
+				}
+				itemIconImageView.setImage(image);
 			}
 		});
 	}
@@ -183,6 +195,25 @@ public final class MainController extends BaseController implements Initializabl
 	@FXML
 	void updateItem(ActionEvent event) {
 		logger.debug("oops");
+	}
+	
+	Image itemIcon(ItemInfo itemInfo) {
+		if (itemInfo.iconProperty() == null || itemInfo.iconProperty().get().trim().isEmpty()) {
+			return null;
+		}
+		String path = ConfigImpl.getInstance().getOpenHABWebappsImagesFolderPath() + Constants.FILE_SEPARATOR + itemInfo.iconProperty().get().trim() + ".png";
+		File file = new File(path);
+		logger.debug(path);
+		if (!file.exists()) {
+			return null;
+		}
+		Image image = null;
+		try {
+			image = new Image(new FileInputStream(file));
+		} catch (FileNotFoundException e) {
+			logger.warn("", e);
+		}
+		return image;
 	}
 	
 }

@@ -16,4 +16,6 @@ public interface Config {
 
 	File getItemsFolder();
 
+	public String getOpenHABWebappsImagesFolderPath();
+
 }

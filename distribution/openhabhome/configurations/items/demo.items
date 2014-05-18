@@ -1,4 +1,4 @@
 Group All
 Group gGF (All)
 Rollershutter Shutter_GF_Living "Livingroom" <sofa> (gGF) {knx="1/0/16+0/0/16"}
-Switch Light_GF_Toilet_Mirror "Mirror" <mirrors> (gGF,All) {knx="1/0/15+0/0/15"}
+Switch Light_GF_Toilet_Mirror "Mirror" (gGF,All) {knx="1/0/15+0/0/15"}

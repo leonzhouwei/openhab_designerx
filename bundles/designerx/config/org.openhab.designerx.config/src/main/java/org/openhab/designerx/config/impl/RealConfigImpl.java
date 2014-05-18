@@ -188,5 +188,10 @@ final class RealConfigImpl implements Config {
 	public File getItemsFolder() {
 		return new File(itemsFolderPath);
 	}
+
+	@Override
+	public String getOpenHABWebappsImagesFolderPath() {
+		return openHABHomeFolderPath + ConfigConstants.FILE_SEPARATOR + "webapps" + ConfigConstants.FILE_SEPARATOR + "images";
+	}
 	
 }

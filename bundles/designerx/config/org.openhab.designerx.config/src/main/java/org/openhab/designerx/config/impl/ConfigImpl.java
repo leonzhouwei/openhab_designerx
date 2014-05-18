@@ -44,4 +44,9 @@ public final class ConfigImpl implements Config {
 	}
 	
 	private ConfigImpl() {}
+
+	@Override
+	public String getOpenHABWebappsImagesFolderPath() {
+		return real.getOpenHABWebappsImagesFolderPath();
+	}
 }
